@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1191.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.HRDashboard">
+   <children>
+      <VBox prefHeight="750.0" prefWidth="230.0">
+         <children>
+            <AnchorPane fx:id="side_bar" prefHeight="752.0" prefWidth="230.0" styleClass="side_bar" stylesheets="@style.css">
+               <children>
+                  <Pane fx:id="innerPane" layoutX="6.0" layoutY="8.0" prefHeight="73.0" prefWidth="216.0" styleClass="innerPane" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="53.0" fitWidth="186.0" layoutX="9.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo-ct.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Button fx:id="dashboard" layoutX="29.0" layoutY="132.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Dashbord" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <MenuButton layoutX="29.0" layoutY="200.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Employees" textFill="#f5f5f5">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="inventory" layoutX="29.0" layoutY="268.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Inventory" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="projects" layoutX="29.0" layoutY="337.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Projects" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="transactions" layoutX="29.0" layoutY="407.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="      Transactions" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="supplier" layoutX="29.0" layoutY="480.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="           Supplier" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <Button fx:id="dashboard1" layoutX="29.0" layoutY="553.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Personal Informations" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Pane prefHeight="750.0" prefWidth="961.0">
+         <children>
+            <Pane prefHeight="73.0" prefWidth="961.0">
+               <children>
+                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="672.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@chercher.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="741.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@utilisateur.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" />
+                  <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="73.0" prefHeight="678.0" prefWidth="949.0">
+               <children>
+                  <VBox prefHeight="675.0" prefWidth="961.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="132.0" text="Pending leaves">
+                           <font>
+                              <Font name="Berlin Sans FB" size="15.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane prefHeight="247.0" prefWidth="978.0" styleClass="transparent" stylesheets="@style.css">
+                           <content>
+                              <HBox fx:id="cardLayout" prefHeight="234.0" prefWidth="972.0" styleClass="transparent" stylesheets="@style.css" />
+                           </content>
+                        </ScrollPane>
+                        <Label text="Employees table">
+                           <font>
+                              <Font name="Berlin Sans FB" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="326.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
+                           <children>
+                              <ScrollPane prefHeight="326.0" prefWidth="935.0" styleClass="transparent" stylesheets="@style.css">
+                                 <content>
+                                    <VBox fx:id="employeesLayout" prefHeight="324.0" prefWidth="933.0" styleClass="White-background" stylesheets="@style.css">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="selected" stylesheets="@style.css">
+                                             <children>
+                                                <Label prefHeight="18.0" prefWidth="202.0" text="EMPLOYEE" />
+                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="FUNCTION" />
+                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="PHONE" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="934.0" spacing="10.0">
+                                             <children>
+                                                <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <image>
+                                                      <Image url="@utilisateur.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label prefWidth="150.0" text="employeName" />
+                                                <Label alignment="CENTER" prefWidth="130.0" text="employeeFunction" />
+                                                <Label alignment="CENTER" prefWidth="130.0" text="employeePhone" />
+                                                <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="edit">
+                                                   <graphic>
+                                                      <ImageView fitHeight="44.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@images/edit.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="13.0" />
+                                                   </font>
+                                                </Button>
+                                                <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="delete">
+                                                   <graphic>
+                                                      <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@images/delete.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="13.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</HBox>

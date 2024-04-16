@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="343.0" styleClass="transparent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLeaves">
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="309.0" styleClass="transparent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLeaves">
    <children>
-      <VBox prefHeight="361.0" prefWidth="350.0" spacing="10.0">
+      <VBox prefHeight="262.0" prefWidth="274.0" spacing="5.0">
          <children>
             <Label fx:id="name" text="employee's name" textFill="#5e72e4">
                <font>
@@ -72,7 +71,7 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="from" prefHeight="18.0" prefWidth="43.0" text="Label" textFill="#525f7f" />
+                  <Label fx:id="from" prefHeight="18.0" prefWidth="78.0" text="Label" textFill="#525f7f" />
                   <Label text="to:" textFill="#525f7f">
                      <font>
                         <Font name="Berlin Sans FB" size="15.0" />
@@ -81,10 +80,10 @@
                         <Insets right="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="to" prefHeight="18.0" prefWidth="37.0" text="Label" textFill="#525f7f" />
+                  <Label fx:id="to" prefHeight="18.0" prefWidth="91.0" text="Label" textFill="#525f7f" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox prefHeight="53.0" prefWidth="286.0" spacing="30.0">
                <children>
                   <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #2dce89;" stylesheets="@style.css" text="Approve" textFill="WHITE">
                      <font>
@@ -105,6 +104,6 @@
       </VBox>
    </children>
    <padding>
-      <Insets left="40.0" top="50.0" />
+      <Insets left="40.0" top="10.0" />
    </padding>
 </HBox>

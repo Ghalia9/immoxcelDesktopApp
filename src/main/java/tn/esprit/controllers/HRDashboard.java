@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceLeaves;
 
 import java.io.IOException;
@@ -19,7 +22,10 @@ public class HRDashboard implements Initializable {
     private HBox cardLayout;
     private List<Leaves> pendingLeaves;
 
+    @FXML
+    private VBox employeesLayout;
     private final ServiceLeaves sl= new ServiceLeaves();
+    private final ServiceEmployees se = new ServiceEmployees();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pendingLeaves=new ArrayList<>(pendingLeaves());
@@ -32,6 +38,20 @@ public class HRDashboard implements Initializable {
                 cardLayout.getChildren().add(cardBox);
             }
 
+        }catch (IOException e){
+            System.out.println("aaaaaaaaaaaaaaaaaa");
+            e.printStackTrace();
+        }
+        Set<Employees> setemployees= se.getAll();
+        List<Employees> employeesList=new ArrayList<>(setemployees);
+        try{
+            for (int i=0;i<employeesList.size();i++){
+                FXMLLoader loader=new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
+                HBox hBox=loader.load();
+                AfficherEmployees afficheremployees=loader.getController();
+                afficheremployees.setData(employeesList.get(i));
+                employeesLayout.getChildren().add(hBox);
+            }
         }catch (IOException e){
             System.out.println("aaaaaaaaaaaaaaaaaa");
             e.printStackTrace();
@@ -51,5 +71,11 @@ public class HRDashboard implements Initializable {
         System.out.println(allLeaves);
         System.out.println(pl);
         return pl;
+    }
+
+    private List<Employees> employees(){
+        Set<Employees> setemployees= se.getAll();
+        List<Employees> employeesList=new ArrayList<>(setemployees);
+        return employeesList;
     }
 }

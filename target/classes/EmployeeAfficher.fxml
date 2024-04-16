@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="934.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherEmployees">
+   <children>
+      <ImageView fx:id="img" fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <image>
+            <Image url="@utilisateur.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="employeename" prefWidth="150.0" text="employeName" />
+      <Label fx:id="employeefunction" alignment="CENTER" prefWidth="130.0" text="employeeFunction" />
+      <Label fx:id="employeephone" alignment="CENTER" prefWidth="130.0" text="employeePhone" />
+      <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="edit">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="delete">
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Berlin Sans FB" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</HBox>
