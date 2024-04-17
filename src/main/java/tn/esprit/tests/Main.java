@@ -15,7 +15,8 @@ public class Main {
         Connection cnx = DataSource.getInstance().getCnx();
         ServiceEmployees se = new ServiceEmployees();
         Employees e= new Employees("John","Doe","M","john.doe@example.com","123 Main St, Anytown","99771066","Développeur",Date.valueOf("1990-01-01"),Date.valueOf("2020-05-01"), Date.valueOf("2023-05-01"),"CDI", 5,null,0,"03456789");
-        //sp.ajouter(e);
+        se.ajouter(e);
+        //se.supprimer(6);
         //System.out.println(sp.getAll());
         Employees e1= new Employees("Johnyyyy","Doe","M","john.doe@example.com","123 Main St, Anytown","99771066","Développeur",Date.valueOf("1990-01-01"),Date.valueOf("2020-05-01"), Date.valueOf("2023-05-01"),"CDI", 5,null,0,"03456789");
         e1.setId(11);

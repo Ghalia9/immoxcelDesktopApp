@@ -33,7 +33,7 @@
             <Font name="Berlin Sans FB" size="13.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="delete">
+      <Button mnemonicParsing="false" onAction="#delete_employee" styleClass="transparent" stylesheets="@style.css" text="delete">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>

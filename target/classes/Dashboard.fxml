@@ -37,10 +37,10 @@
                      </font>
                   </Button>
                   <MenuButton layoutX="29.0" layoutY="200.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Employees" textFill="#f5f5f5">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -118,30 +118,53 @@
                   <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
                </children>
             </Pane>
-            <Pane layoutX="14.0" layoutY="73.0" prefHeight="678.0" prefWidth="949.0">
+            <Pane layoutY="60.0" prefHeight="1210.0" prefWidth="1723.0">
                <children>
-                  <VBox prefHeight="675.0" prefWidth="961.0">
+                  <VBox layoutY="-2.0" prefHeight="677.0" prefWidth="961.0">
                      <children>
                         <Label prefHeight="18.0" prefWidth="132.0" text="Pending leaves">
                            <font>
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Label>
-                        <ScrollPane prefHeight="247.0" prefWidth="978.0" styleClass="transparent" stylesheets="@style.css">
-                           <content>
-                              <HBox fx:id="cardLayout" prefHeight="234.0" prefWidth="972.0" styleClass="transparent" stylesheets="@style.css" />
-                           </content>
-                        </ScrollPane>
+                        <HBox prefHeight="268.0" prefWidth="941.0" spacing="50.0">
+                           <children>
+                              <ScrollPane prefHeight="259.0" prefWidth="531.0" styleClass="transparent" stylesheets="@style.css">
+                                 <content>
+                                    <HBox fx:id="cardLayout" prefHeight="234.0" prefWidth="385.0" styleClass="transparent" stylesheets="@style.css" />
+                                 </content>
+                              </ScrollPane>
+                              <ScrollPane prefHeight="238.0" prefWidth="309.0">
+                                 <content>
+                                    <VBox fx:id="leavesLayout" prefHeight="279.0" prefWidth="292.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="292.0" styleClass="selected" stylesheets="@style.css">
+                                             <children>
+                                                <Label prefHeight="18.0" prefWidth="202.0" text="LEAVE">
+                                                   <padding>
+                                                      <Insets left="10.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="STATUS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="58.0" prefWidth="292.0" />
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
                         <Label text="Employees table">
                            <font>
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Label>
-                        <HBox prefHeight="326.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
+                        <HBox prefHeight="337.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
                            <children>
-                              <ScrollPane prefHeight="326.0" prefWidth="935.0" styleClass="transparent" stylesheets="@style.css">
+                              <ScrollPane prefHeight="296.0" prefWidth="935.0" styleClass="transparent" stylesheets="@style.css">
                                  <content>
-                                    <VBox fx:id="employeesLayout" prefHeight="324.0" prefWidth="933.0" styleClass="White-background" stylesheets="@style.css">
+                                    <VBox fx:id="employeesLayout" prefHeight="327.0" prefWidth="934.0" styleClass="White-background" stylesheets="@style.css">
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="selected" stylesheets="@style.css">
                                              <children>
@@ -175,7 +198,7 @@
                                                       <Font name="Berlin Sans FB" size="13.0" />
                                                    </font>
                                                 </Button>
-                                                <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="delete">
+                                                <Button fx:id="deleteEmployeebtn" mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" text="delete">
                                                    <graphic>
                                                       <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>

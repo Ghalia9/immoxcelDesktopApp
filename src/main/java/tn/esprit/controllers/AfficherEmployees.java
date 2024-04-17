@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import tn.esprit.models.Employees;
+import tn.esprit.services.ServiceEmployees;
 
 public class AfficherEmployees {
     @FXML
@@ -25,6 +27,18 @@ public class AfficherEmployees {
 
     @FXML
     private ImageView img;
+    @FXML
+    void delete_employee(ActionEvent event) {
+        try {
+            Button deleteButton = (Button) event.getSource();
+        int id= Integer.parseInt(deleteButton.getId());
+        System.out.println(id);
+        //se.supprimer(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private final ServiceEmployees se = new ServiceEmployees();
 
     public void setData(Employees employee){
         if(employee.getEmpSex().equals("Female"))
