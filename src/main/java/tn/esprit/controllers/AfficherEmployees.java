@@ -1,11 +1,10 @@
 package tn.esprit.controllers;
+import javafx.scene.layout.VBox;
+import tn.esprit.controllers.HRDashboard;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +13,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import tn.esprit.models.Employees;
 import tn.esprit.services.ServiceEmployees;
+
+import java.util.Optional;
 
 public class AfficherEmployees {
     @FXML
@@ -28,16 +29,25 @@ public class AfficherEmployees {
     @FXML
     private ImageView img;
     @FXML
+    private HBox itemEmployee;
+
+    @FXML
     void delete_employee(ActionEvent event) {
-        try {
-            Button deleteButton = (Button) event.getSource();
-        int id= Integer.parseInt(deleteButton.getId());
-        System.out.println(id);
-        //se.supprimer(id);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Delete Employee");
+        alert.setContentText("Are you sure you want to delete this employee?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // User clicked OK, proceed with delete operation
+            se.supprimer(currentEmployee.getId());
+            employeesLayout.getChildren().remove(itemEmployee);
         }
     }
+    public Employees currentEmployee;
+    HRDashboard dashboard;
+    public VBox employeesLayout;
     private final ServiceEmployees se = new ServiceEmployees();
 
     public void setData(Employees employee){
@@ -48,5 +58,8 @@ public class AfficherEmployees {
         employeename.setText(employee.getEmpLastName()+ " " +employee.getEmpName());
         employeefunction.setText(employee.getEmpFunction());
         employeephone.setText(employee.getEmpPhone());
+    }
+    public int idSelected(Employees employee){
+        return employee.getId();
     }
 }

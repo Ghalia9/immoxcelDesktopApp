@@ -4,13 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
 import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceLeaves;
+import tn.esprit.controllers.AfficherEmployees;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,9 +34,23 @@ public class HRDashboard implements Initializable {
     @FXML
     private VBox employeesLayout;
 
+    public VBox getEmployeesLayout() {
+        return employeesLayout;
+    }
 
     private final ServiceLeaves sl= new ServiceLeaves();
     private final ServiceEmployees se = new ServiceEmployees();
+
+    private int idSelectedEmployee(Employees employee){
+        return employee.getId();
+    }
+    //button add on top of list of employees
+    @FXML
+    void addOnClick(ActionEvent event) throws IOException {
+        createAddEmployeeForm();
+        //showEmployeesList();
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -67,21 +86,30 @@ public class HRDashboard implements Initializable {
             e.printStackTrace();
         }
         //EMPLOYEESLIST
+        showEmployeesList();
+    }
+    private void showEmployeesList(){
         Set<Employees> setemployees= se.getAll();
+        System.out.println(setemployees.size());
         List<Employees> employeesList=new ArrayList<>(setemployees);
+        System.out.println(employeesList.size());
         try{
             for (int i=0;i<employeesList.size();i++){
                 FXMLLoader loader=new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
                 HBox hBox=loader.load();
                 AfficherEmployees afficheremployees=loader.getController();
+                afficheremployees.currentEmployee=employeesList.get(i);
                 afficheremployees.setData(employeesList.get(i));
                 employeesLayout.getChildren().add(hBox);
+                afficheremployees.employeesLayout=employeesLayout;
+                // afficheremployees.delete_employee();
             }
         }catch (IOException e){
             System.out.println("aaaaaaaaaaaaaaaaaa");
             e.printStackTrace();
         }
     }
+
     private List<Leaves> pendingLeaves(){
         Set<Leaves> allLeaves=sl.getAll();
         List<Leaves> pl=new ArrayList<>();
@@ -113,9 +141,19 @@ public class HRDashboard implements Initializable {
         return oldleaves;
     }
 
-    private List<Employees> employees(){
-        Set<Employees> setemployees= se.getAll();
-        List<Employees> employeesList=new ArrayList<>(setemployees);
-        return employeesList;
+    public void createAddEmployeeForm() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddEmployee.fxml"));
+            Parent root = loader.load();
+            Stage addEmpStage = new Stage();
+            addEmpStage.initStyle(StageStyle.DECORATED);
+            addEmpStage.setScene(new Scene(root, 638, 574));
+            addEmpStage.setTitle("Add Employee Form");
+            addEmpStage.showAndWait();
+           // showEmployeesList();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }

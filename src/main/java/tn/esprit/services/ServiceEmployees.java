@@ -149,8 +149,11 @@ public class ServiceEmployees implements IService<Employees> {
                 int empTakenLeaves = res.getInt("emp_taken_leaves");
                 String empCin = res.getString("emp_cin");
                 Employees employee = new Employees(id, empName, empLastName, empSex, empEmail, empAddress, empPhone, empFunction, birthDate, hireDate, endContractDate, contractType, allowedLeaveDays, empcv, empTakenLeaves, empCin);
-                employeesSet.add(employee);
+                if(employeesSet.add(employee))
+                    System.out.println("1");
+                else System.out.println("0");
             }
+            System.out.println(employeesSet.size());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

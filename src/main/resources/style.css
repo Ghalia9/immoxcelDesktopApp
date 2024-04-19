@@ -153,3 +153,11 @@
     -fx-border-style: solid;
     -fx-border-color: #FF0000;
 }
+.save_btn{
+    -fx-background-color: #5e72e4;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #5e72e4;
+}
