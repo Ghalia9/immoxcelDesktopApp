@@ -1,0 +1,53 @@
+.root{
+    -fx-background-color: #EAEEF4;
+}
+
+
+.side_bar{
+    -fx-background-color: #353A56;
+    -fx-border-color:#2207bb;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+
+.innerPane{
+    -fx-background-color: #748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #748CF1;
+}
+
+.dashboard{
+    -fx-background-color: #303551;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #141313;
+}
+
+.logout_btn{
+    -fx-background-color: #FF0000;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+    -fx-border-color: #FF0000;
+}
+
+.project_item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1), 10.0 , 0.0 , 0.0 ,10.0);
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
