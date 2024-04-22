@@ -19,6 +19,9 @@ import javax.sql.rowset.serial.SerialException;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 public class AddEmployee {
     @FXML
@@ -60,17 +63,43 @@ public class AddEmployee {
     @FXML
     private ChoiceBox<Sexe> sexeField;
 
+    private HRDashboard dashboard;
+
+    public void setdashbord(HRDashboard dashboard)
+    {
+        this.dashboard=dashboard;
+    }
+
     @FXML
     void add_employeeOnClick(ActionEvent event) {
         Employees e=setInformations();
-        se.ajouter(e);
-        // Show notification
-        showNotification("Employee added successfully.");
+        if (!e.exists(e)) {
 
-        // Close the form stage
-        Stage stage = (Stage) firstNameField.getScene().getWindow();
-        stage.close();
+            se.ajouter(e);
+            // Show notification
+            showNotification("Employee added successfully.");
+
+
+            // Close the form stage
+            Stage stage = (Stage) firstNameField.getScene().getWindow();
+            stage.close();
+            dashboard.getEmployeesLayout().getChildren().clear();
+            dashboard.showEmployeesList();
+        }else {
+            // If the employee already exists, show an error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Employee already exists!");
+            alert.setContentText("Employee CIN must be unique!");
+
+// Add custom CSS class to the dialog pane
+            alert.getDialogPane().getStyleClass().add("error-notification-dialog");
+
+// Show the error alert dialog
+            alert.showAndWait();
+        }
     }
+
 
     private void showNotification(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

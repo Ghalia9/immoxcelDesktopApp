@@ -38,6 +38,14 @@ public class HRDashboard implements Initializable {
         return employeesLayout;
     }
 
+    public HBox getCardLayout() {
+        return cardLayout;
+    }
+
+    public VBox getLeavesLayout() {
+        return leavesLayout;
+    }
+
     private final ServiceLeaves sl= new ServiceLeaves();
     private final ServiceEmployees se = new ServiceEmployees();
 
@@ -54,51 +62,24 @@ public class HRDashboard implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        pendingLeaves=new ArrayList<>(pendingLeaves());
+        //pendingLeaves=new ArrayList<>(pendingLeaves());
         //PENDING LEAVES
-        try{
-            for (int i=0;i<pendingLeaves.size();i++){
-                FXMLLoader loader=new FXMLLoader(getClass().getResource("/CardLeaves.fxml"));
-                HBox cardBox=loader.load();
-                AfficherLeaves afficherLeaves=loader.getController();
-                afficherLeaves.setData(pendingLeaves.get(i));
-                cardLayout.getChildren().add(cardBox);
-            }
-
-        }catch (IOException e){
-            System.out.println("aaaaaaaaaaaaaaaaaa");
-            e.printStackTrace();
-        }
+        showPendingLeaves();
         //ALLLEAVES
 
-        oldleaves=new ArrayList<>(oldLeaves());
-        try{
-            for (int i=0;i<oldleaves.size();i++){
-                FXMLLoader loader=new FXMLLoader(getClass().getResource("/OldLeave.fxml"));
-                HBox lBox=loader.load();
-                AfficherLeaves afficherLeaves=loader.getController();
-                afficherLeaves.setDataALL(oldleaves.get(i));
-                leavesLayout.getChildren().add(lBox);
-            }
-
-        }catch (IOException e){
-            System.out.println("aaaaaaaaaaaaaaaaaa");
-            e.printStackTrace();
-        }
+        showOldLeaves();
         //EMPLOYEESLIST
         showEmployeesList();
     }
-    private void showEmployeesList(){
+    public void showEmployeesList(){
         Set<Employees> setemployees= se.getAll();
-        System.out.println(setemployees.size());
         List<Employees> employeesList=new ArrayList<>(setemployees);
-        System.out.println(employeesList.size());
         try{
             for (int i=0;i<employeesList.size();i++){
                 FXMLLoader loader=new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
                 HBox hBox=loader.load();
                 AfficherEmployees afficheremployees=loader.getController();
-                afficheremployees.currentEmployee=employeesList.get(i);
+                afficheremployees.setCurrentEmployee(employeesList.get(i));
                 afficheremployees.setData(employeesList.get(i));
                 employeesLayout.getChildren().add(hBox);
                 afficheremployees.employeesLayout=employeesLayout;
@@ -109,7 +90,41 @@ public class HRDashboard implements Initializable {
             e.printStackTrace();
         }
     }
+public void showPendingLeaves(){
+    pendingLeaves=new ArrayList<>(pendingLeaves());
+    //PENDING LEAVES
+    try{
+        for (int i=0;i<pendingLeaves.size();i++){
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/CardLeaves.fxml"));
+            HBox cardBox=loader.load();
+            AfficherLeaves afficherLeaves=loader.getController();
+            afficherLeaves.setdashbord(this);
+            afficherLeaves.setCurrentLeave(pendingLeaves.get(i));
+            afficherLeaves.setData(pendingLeaves.get(i));
+            cardLayout.getChildren().add(cardBox);
+        }
 
+    }catch (IOException e){
+        System.out.println("aaaaaaaaaaaaaaaaaa");
+        e.printStackTrace();
+    }
+}
+public void showOldLeaves(){
+    oldleaves=new ArrayList<>(oldLeaves());
+    try{
+        for (int i=0;i<oldleaves.size();i++){
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/OldLeave.fxml"));
+            HBox lBox=loader.load();
+            AfficherLeaves afficherLeaves=loader.getController();
+            afficherLeaves.setDataALL(oldleaves.get(i));
+            leavesLayout.getChildren().add(lBox);
+        }
+
+    }catch (IOException e){
+        System.out.println("aaaaaaaaaaaaaaaaaa");
+        e.printStackTrace();
+    }
+}
     private List<Leaves> pendingLeaves(){
         Set<Leaves> allLeaves=sl.getAll();
         List<Leaves> pl=new ArrayList<>();
@@ -145,6 +160,8 @@ public class HRDashboard implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddEmployee.fxml"));
             Parent root = loader.load();
+            AddEmployee employee=loader.getController();
+            employee.setdashbord(this);
             Stage addEmpStage = new Stage();
             addEmpStage.initStyle(StageStyle.DECORATED);
             addEmpStage.setScene(new Scene(root, 638, 574));
@@ -156,4 +173,5 @@ public class HRDashboard implements Initializable {
             e.getCause();
         }
     }
+
 }

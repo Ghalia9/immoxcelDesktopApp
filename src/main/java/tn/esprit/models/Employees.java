@@ -1,9 +1,10 @@
 package tn.esprit.models;
 
+import tn.esprit.services.ServiceEmployees;
+
 import java.sql.Blob;
-import java.util.Arrays;
+import java.util.*;
 import java.sql.Date;
-import java.util.Objects;
 
 public class Employees {
     private int id;
@@ -236,6 +237,17 @@ public class Employees {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(empCin);
+    }
+    public boolean exists(Employees employee){
+        final ServiceEmployees se = new ServiceEmployees();
+        Set<Employees> setemployees= se.getAll();
+        List<Employees> employeesList=new ArrayList<>(setemployees);
+        for (int i=0;i<employeesList.size();i++) {
+            if (employeesList.get(i).equals(employee))
+                return true;
+        }
+        return false;
     }
 }

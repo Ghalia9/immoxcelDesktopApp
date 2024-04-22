@@ -11,27 +11,27 @@ public class Leaves {
     private String status;
     private String leaveDescription;
 
-    private int employee_id;
+    private Employees employee;
     public Leaves() {
     }
 
-    public Leaves(int id, String leaveType, Date startDate, Date finishDate,String status, String leaveDescription,int employee_id) {
+    public Leaves(int id, String leaveType, Date startDate, Date finishDate,String status, String leaveDescription,Employees employee) {
         this.id = id;
         this.leaveType = leaveType;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.status = status;
         this.leaveDescription = leaveDescription;
-        this.employee_id=employee_id;
+        this.employee=employee;
     }
 
-    public Leaves(String leaveType, Date startDate, Date finishDate,String status, String leaveDescription,int employee_id) {
+    public Leaves(String leaveType, Date startDate, Date finishDate,String status, String leaveDescription,Employees employee) {
         this.leaveType = leaveType;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.status = status;
         this.leaveDescription = leaveDescription;
-        this.employee_id=employee_id;
+        this.employee=employee;
     }
 
     public int getId() {
@@ -82,12 +82,12 @@ public class Leaves {
         this.leaveDescription = leaveDescription;
     }
 
-    public int getEmployee_id() {
-        return employee_id;
+    public Employees getEmployee() {
+        return employee;
     }
 
-    public void setEmployee_id(int employee_id) {
-        this.employee_id = employee_id;
+    public void setEmployee_id(Employees employee) {
+        this.employee = employee;
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Leaves {
                 ", finishDate=" + finishDate +
                 ", status='" + status + '\'' +
                 ", leaveDescription='" + leaveDescription + '\'' +
-                ", employee_id='" + employee_id +
+                ", employee='" + employee +
                 '}';
     }
 

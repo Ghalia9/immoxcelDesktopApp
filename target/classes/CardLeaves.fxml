@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="309.0" styleClass="transparent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLeaves">
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="273.0" style="-fx-background-color: #fff;" styleClass="innerPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherLeaves">
    <children>
       <VBox prefHeight="262.0" prefWidth="274.0" spacing="5.0">
          <children>
@@ -85,12 +85,12 @@
             </HBox>
             <HBox prefHeight="53.0" prefWidth="286.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #2dce89;" stylesheets="@style.css" text="Approve" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#approveLeave" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #2dce89;" stylesheets="@style.css" text="Approve" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #f5365c;" text="Disapprove" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#disapproveLeave" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #f5365c;" text="Disapprove" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -104,6 +104,6 @@
       </VBox>
    </children>
    <padding>
-      <Insets left="40.0" top="10.0" />
+      <Insets left="20.0" top="10.0" />
    </padding>
 </HBox>

@@ -128,12 +128,12 @@
 }
 
 .innerPane{
-    -fx-background-color: #748CF1;
+    -fx-background-color: #5e72e4;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-border-style: solid;
-    -fx-border-color: #748CF1;
+    -fx-border-color: #5e72e4;
 }
 
 .dashboard{
@@ -160,4 +160,43 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #5e72e4;
+}
+.error-notification-dialog {
+    -fx-font-size: 14px;
+}
+
+.error-notification-dialog .alert-header {
+    -fx-background-color: #e74c3c; /* Background color */
+}
+
+.error-notification-dialog .alert-header .alert-icon {
+    -fx-fill: white; /* Icon color */
+}
+
+.error-notification-dialog .alert-content {
+    -fx-text-fill: #34495e; /* Text color */
+}
+
+.error-notification-dialog .alert-button {
+    -fx-background-color: #e74c3c; /* Button color */
+}
+
+.delete-confirmation-dialog .dialog-pane {
+    -fx-background-color: #e74c3c; /* Red background color */
+}
+
+.delete-confirmation-dialog .alert-header {
+    -fx-background-color: #e74c3c; /* Red background color */
+}
+
+.delete-confirmation-dialog .alert-header .alert-icon {
+    -fx-fill: white; /* Icon color */
+}
+
+.delete-confirmation-dialog .alert-content {
+    -fx-text-fill: white; /* Text color */
+}
+
+.delete-confirmation-dialog .alert-button {
+    -fx-background-color: #c0392b; /* Red button color */
 }

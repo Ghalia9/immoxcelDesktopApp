@@ -10,6 +10,8 @@ import java.util.Set;
 
 public class ServiceLeaves implements IService<Leaves> {
     Connection cnx = DataSource.getInstance().getCnx();
+    final ServiceEmployees se = new ServiceEmployees();
+
 
     @Override
     public void ajouter(Leaves leave) {
@@ -21,7 +23,8 @@ public class ServiceLeaves implements IService<Leaves> {
             ps.setDate(3, leave.getFinishDate());
             ps.setString(4, leave.getStatus());
             ps.setString(5, leave.getLeaveDescription());
-            ps.setInt(6,leave.getEmployee_id());
+            ps.setInt(6,leave.getEmployee().getId());
+
 
             ps.executeUpdate();
             System.out.println("Leave added !");
@@ -40,7 +43,7 @@ public class ServiceLeaves implements IService<Leaves> {
             ps.setDate(3, leave.getFinishDate());
             ps.setString(4, leave.getStatus());
             ps.setString(5, leave.getLeaveDescription());
-            ps.setInt(6,leave.getEmployee_id());
+            ps.setInt(6,leave.getEmployee().getId());
             ps.setInt(7, leave.getId());
 
             ps.executeUpdate();
@@ -72,6 +75,8 @@ public class ServiceLeaves implements IService<Leaves> {
             ps.setInt(1, id);
             ResultSet res = ps.executeQuery();
             if (res.next()) {
+                int employee_id=res.getInt("employee_id");
+                Employees employee = se.getOneById(employee_id);
                 Leaves leave = new Leaves(
                         res.getInt("id"),
                         res.getString("leave_type"),
@@ -79,7 +84,7 @@ public class ServiceLeaves implements IService<Leaves> {
                         res.getDate("finish_date"),
                         res.getString("status"),
                         res.getString("leave_description"),
-                        res.getInt("employee_id")
+                        employee
                 );
                 return leave;
             }
@@ -98,6 +103,8 @@ public class ServiceLeaves implements IService<Leaves> {
             Statement st = cnx.createStatement();
             ResultSet res = st.executeQuery(req);
             while (res.next()) {
+                int employee_id=res.getInt("employee_id");
+                Employees employee = se.getOneById(employee_id);
                 Leaves leave = new Leaves(
                         res.getInt("id"),
                         res.getString("leave_type"),
@@ -105,7 +112,7 @@ public class ServiceLeaves implements IService<Leaves> {
                         res.getDate("finish_date"),
                         res.getString("status"),
                         res.getString("leave_description"),
-                        res.getInt("employee_id")
+                        employee
                 );
                 leavesSet.add(leave);
             }

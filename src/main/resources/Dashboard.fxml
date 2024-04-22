@@ -127,28 +127,34 @@
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Label>
-                        <HBox prefHeight="268.0" prefWidth="941.0" spacing="50.0">
+                        <HBox prefHeight="268.0" prefWidth="941.0" spacing="50.0" styleClass="transparent" stylesheets="@style.css">
                            <children>
-                              <ScrollPane prefHeight="259.0" prefWidth="531.0" styleClass="transparent" stylesheets="@style.css">
+                              <ScrollPane prefHeight="259.0" prefWidth="531.0" styleClass="round-layout" stylesheets="@style.css">
                                  <content>
-                                    <HBox fx:id="cardLayout" prefHeight="234.0" prefWidth="385.0" styleClass="transparent" stylesheets="@style.css" />
+                                    <HBox fx:id="cardLayout" prefHeight="247.0" prefWidth="604.0" style="-fx-background-color: #5e72e4;" styleClass="transparent" stylesheets="@style.css" />
                                  </content>
                               </ScrollPane>
-                              <ScrollPane prefHeight="238.0" prefWidth="309.0">
+                              <ScrollPane prefHeight="304.0" prefWidth="330.0" styleClass="transparent" stylesheets="@style.css">
                                  <content>
-                                    <VBox fx:id="leavesLayout" prefHeight="279.0" prefWidth="292.0">
+                                    <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="292.0" styleClass="selected" stylesheets="@style.css">
+                                          <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
                                              <children>
-                                                <Label prefHeight="18.0" prefWidth="202.0" text="LEAVE">
+                                                <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
                                                    <padding>
                                                       <Insets left="10.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="STATUS" />
+                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
                                              </children>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
                                           </HBox>
-                                          <HBox prefHeight="58.0" prefWidth="292.0" />
+                                          <VBox fx:id="leavesLayout" prefHeight="354.0" prefWidth="318.0" spacing="5.0" />
                                        </children>
                                     </VBox>
                                  </content>
@@ -162,33 +168,34 @@
                         </Label>
                         <HBox prefHeight="353.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
                            <children>
-                              <ScrollPane prefHeight="372.0" prefWidth="935.0" styleClass="transparent" stylesheets="@style.css">
-                                 <content>
-                                    <VBox fx:id="employeesLayout" prefHeight="338.0" prefWidth="934.0" styleClass="White-background" stylesheets="@style.css">
+                              <VBox prefHeight="354.0" prefWidth="944.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="selected" stylesheets="@style.css">
                                        <children>
-                                          <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="selected" stylesheets="@style.css">
-                                             <children>
-                                                <Label prefHeight="18.0" prefWidth="202.0" text="EMPLOYEE" />
-                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="FUNCTION" />
-                                                <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="PHONE" />
-                                                <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addOnClick" styleClass="transparent" stylesheets="@style.css" text="ADD">
-                                                   <HBox.margin>
-                                                      <Insets left="200.0" />
-                                                   </HBox.margin>
-                                                   <graphic>
-                                                      <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@images/add.png" />
-                                                         </image>
-                                                      </ImageView>
-                                                   </graphic>
-                                                </Button>
-                                             </children>
-                                          </HBox>
+                                          <Label prefHeight="18.0" prefWidth="202.0" text="EMPLOYEE" />
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="FUNCTION" />
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="PHONE" />
+                                          <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addOnClick" styleClass="transparent" stylesheets="@style.css" text="ADD">
+                                             <HBox.margin>
+                                                <Insets left="200.0" />
+                                             </HBox.margin>
+                                             <graphic>
+                                                <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/add.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
                                        </children>
-                                    </VBox>
-                                 </content>
-                              </ScrollPane>
+                                    </HBox>
+                                    <ScrollPane prefHeight="323.0" prefWidth="926.0" styleClass="transparent" stylesheets="@style.css">
+                                       <content>
+                                          <VBox fx:id="employeesLayout" prefHeight="338.0" prefWidth="934.0" styleClass="White-background" stylesheets="@style.css" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                      </children>
