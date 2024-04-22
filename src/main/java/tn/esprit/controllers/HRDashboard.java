@@ -79,6 +79,7 @@ public class HRDashboard implements Initializable {
                 FXMLLoader loader=new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
                 HBox hBox=loader.load();
                 AfficherEmployees afficheremployees=loader.getController();
+                afficheremployees.setdashbord(this);
                 afficheremployees.setCurrentEmployee(employeesList.get(i));
                 afficheremployees.setData(employeesList.get(i));
                 employeesLayout.getChildren().add(hBox);

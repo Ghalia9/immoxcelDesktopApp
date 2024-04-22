@@ -62,6 +62,11 @@ public class AfficherEmployees {
     }
 
     HRDashboard dashboard;
+    public void setdashbord(HRDashboard dashboard)
+    {
+        this.dashboard=dashboard;
+    }
+
     public VBox employeesLayout;
     private final ServiceEmployees se = new ServiceEmployees();
 
@@ -90,6 +95,29 @@ public class AfficherEmployees {
             detailsEmpStage.setTitle("Employee Details");
             employeedetails.setDetailsData(currentEmployee);
             detailsEmpStage.showAndWait();
+            // showEmployeesList();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    @FXML
+    void edit_employee(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditEmployee.fxml"));
+            Parent Edit = loader.load();
+            EditEmployee employeeedit=loader.getController();
+            if (dashboard==null)
+                System.out.println("hneeeeeeeeeeeeeeeeeeeeeeee");
+            employeeedit.setdashbord(dashboard);
+            Stage editEmpStage = new Stage();
+            editEmpStage.initStyle(StageStyle.DECORATED);
+            editEmpStage.setScene(new Scene(Edit, 638, 574));
+            editEmpStage.setTitle("Edit Employee");
+            employeeedit.setDetailsData(currentEmployee);
+            employeeedit.setCurrentEmployee(currentEmployee);
+            System.out.println(currentEmployee);
+            editEmpStage.showAndWait();
             // showEmployeesList();
         }catch (Exception e){
             e.printStackTrace();

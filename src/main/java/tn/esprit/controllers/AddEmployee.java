@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import tn.esprit.models.ContractType;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Functions;
@@ -107,6 +110,13 @@ public class AddEmployee {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+        // Schedule closing of the alert after the specified duration
+       /* Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(3), e -> alert.close())
+        );
+        timeline.play();
+
+        */
     }
     private final ServiceEmployees se = new ServiceEmployees();
 
