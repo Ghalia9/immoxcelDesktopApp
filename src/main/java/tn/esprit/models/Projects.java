@@ -15,13 +15,11 @@ public class Projects {
 
     private Tasks[] listoftasks;
 
-    public Projects(String project_name, Date date_pred_start, Date date_pred_finish, Date date_completion, float budget, float actual_cost) {
+    public Projects(String project_name, Date date_pred_start, Date date_pred_finish, float budget) {
         this.project_name = project_name;
         this.date_pred_start = date_pred_start;
         this.date_pred_finish = date_pred_finish;
-        this.date_completion = date_completion;
         this.budget = budget;
-        this.actual_cost = actual_cost;
     }
 
     public Projects(int id, String project_name, Date date_pred_start, Date date_pred_finish, Date date_completion, float budget, float actual_cost) {

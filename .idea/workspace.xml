@@ -5,37 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ProjectItem.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowUsers.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/arrow-51-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/chercher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/delete-181-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/details-33-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logo-ct.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/money-42-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/utilisateur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AddProject.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/EditProject.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProjectItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowUsers.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ProjectItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ProjectItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShowProjects.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowProjects.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShowUsers.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboard.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Projects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Projects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,11 +127,26 @@
       <workItem from="1713470376295" duration="6968000" />
       <workItem from="1713486231453" duration="3346000" />
       <workItem from="1713489613725" duration="140000" />
+      <workItem from="1713514659326" duration="10711000" />
+      <workItem from="1713877470346" duration="3806000" />
+      <workItem from="1713882539667" duration="4527000" />
+      <workItem from="1713905103081" duration="9660000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

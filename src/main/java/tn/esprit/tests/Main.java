@@ -12,9 +12,11 @@ public class Main {
     public static void main(String[] args) {
         Connection cnx = DataSource.getInstance().getCnx();
         ServiceProjects test = new ServiceProjects();
-        Projects bissmilleh = new Projects("bissmelleh", Date.valueOf("2023-02-22"), Date.valueOf("2023-02-22"), Date.valueOf("2023-02-22"),223.11f, 11112.32f);
-        test.ajouter(bissmilleh);
-        test.supprimer(32);
+
+
+        //Projects bissmilleh = new Projects("bissmelleh", Date.valueOf("2023-02-22"), Date.valueOf("2023-02-22"), Date.valueOf("2023-02-22"),223.11f, 11112.32f);
+        //test.ajouter(bissmilleh);
+        //test.supprimer(32);
         System.out.println(test.getAll());
     }
 }
