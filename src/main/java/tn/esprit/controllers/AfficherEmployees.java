@@ -88,12 +88,13 @@ public class AfficherEmployees {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
             Parent Details = loader.load();
             DetailsEmployee employeedetails=loader.getController();
-           // employee.setdashbord(this);
+           employeedetails.setdashbord(dashboard);
             Stage detailsEmpStage = new Stage();
             detailsEmpStage.initStyle(StageStyle.DECORATED);
             detailsEmpStage.setScene(new Scene(Details, 638, 574));
             detailsEmpStage.setTitle("Employee Details");
             employeedetails.setDetailsData(currentEmployee);
+            employeedetails.setCurrentEmployee(currentEmployee);
             detailsEmpStage.showAndWait();
             // showEmployeesList();
         }catch (Exception e){

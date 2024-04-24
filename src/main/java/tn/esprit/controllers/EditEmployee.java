@@ -85,6 +85,7 @@ public class EditEmployee {
             // Close the form stage
             Stage stage = (Stage) firstNameField.getScene().getWindow();
             stage.close();
+            System.out.println(dashboard);
             dashboard.getEmployeesLayout().getChildren().clear();
             dashboard.showEmployeesList();
         }else {

@@ -206,6 +206,10 @@ public class Employees {
 
     @Override
     public String toString() {
+        String l="";
+        for (Leaves leave : listofleaves) {
+            l=l+"/";
+        }
         return "Employees{" +
                 "id=" + id +
                 ", empName='" + empName + '\'' +
@@ -223,7 +227,8 @@ public class Employees {
                 ", empCV=" + empCV +
                 ", empTakenLeaves=" + empTakenLeaves +
                 ", empCin='" + empCin + '\'' +
-                ", listofleaves=" + Arrays.toString(listofleaves) +
+                ", listofleaves=" + listofleaves +
+                ", listofleaves=" + l +
                 '}';
     }
 
@@ -250,4 +255,5 @@ public class Employees {
         }
         return false;
     }
+
 }
