@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="961.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UserCardController">
+   <children>
+      <ImageView fitHeight="50.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@utilisateur.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="username" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="204.0" text="Selim" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="function" alignment="CENTER" prefHeight="50.0" prefWidth="204.0" text="Admin" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="FullName" alignment="CENTER" prefHeight="49.0" prefWidth="165.0" text="Selim Kedidi" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="337.0" spacing="30.0">
+         <children>
+            <HBox fx:id="updateUser" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#update" prefHeight="35.0" prefWidth="29.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@refresh-button.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="deleteUser" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#delete" prefHeight="35.0" prefWidth="29.0" spacing="15.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@delete.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</HBox>

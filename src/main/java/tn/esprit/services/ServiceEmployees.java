@@ -21,7 +21,7 @@ public class ServiceEmployees implements IService<Employees> {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }*/
-        String req = "INSERT INTO `employees`(`nom`, `prenom`) VALUES (?,?)";
+       /* String req = "INSERT INTO `employees`(`nom`, `prenom`) VALUES (?,?)";
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
           //  ps.setString(1,employee.getNom());
@@ -30,7 +30,7 @@ public class ServiceEmployees implements IService<Employees> {
             System.out.println("Personne added !");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ServiceEmployees implements IService<Employees> {
 
     @Override
     public Set<Employees> getAll() {
-        Set<Employees> employees = new HashSet<>();
+        /*Set<Employees> employees = new HashSet<>();
 
         String req = "Select * from employees";
         try {
@@ -68,6 +68,7 @@ public class ServiceEmployees implements IService<Employees> {
             System.out.println(e.getMessage());
         }
 
-        return employees;
+        return employees;*/
+        return null;
     }
 }
