@@ -6,7 +6,7 @@ import tn.esprit.utils.DataSource;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
-
+/*
 public class ServiceProjects implements IService<Projects>{
 
         Connection cnx = DataSource.getInstance().getCnx();
@@ -20,7 +20,7 @@ public class ServiceProjects implements IService<Projects>{
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }*/
-            String req = "INSERT INTO `personne`(`nom`, `prenom`) VALUES (?,?)";
+/*            String req = "INSERT INTO `personne`(`nom`, `prenom`) VALUES (?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setString(1,.getNom());
@@ -65,8 +65,9 @@ public class ServiceProjects implements IService<Projects>{
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }*/
-
+/*
             return P;
         }
     }
 }
+*/

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.CardDepotController">
+    <children>
+      <Label fx:id="image" prefHeight="55.0" prefWidth="61.0" />
+      <Label fx:id="Depotlocation" alignment="CENTER" prefHeight="50.0" prefWidth="141.0" text="Label">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+        <Label fx:id="address" alignment="CENTER" prefHeight="50.0" prefWidth="159.0" text="Marsa Plage" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="limitStock" alignment="CENTER" prefHeight="49.0" prefWidth="156.0" text="100" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+      <Label fx:id="quantityAvailable" alignment="CENTER" layoutX="468.0" layoutY="20.0" prefHeight="49.0" prefWidth="165.0" text="100" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="272.0" spacing="20.0">
+         <children>
+            <HBox fx:id="updateDepot" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#ShowUpdateDepot">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@boucler.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="deleteDepot" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#deleteDepot" prefHeight="35.0" prefWidth="29.0" spacing="15.0" >
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@supprimer.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="addMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#showAddMaterials">
+               <children>
+                  <ImageView fx:id="addMaterial" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@materiel.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="showMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#showMaterials">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@seo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+    </children>
+</HBox>
