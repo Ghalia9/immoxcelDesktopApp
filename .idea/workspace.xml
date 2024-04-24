@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="" />
+    <list default="true" id="6b2e9356-d8d6-46ea-99da-758f8e6b86fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/DisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/DisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierAddController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierContainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierContainerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/TableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateSupplierController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateTransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Dispa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Dispa.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Display.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Display.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Table.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateSupplier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/hello-view.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,43 +35,157 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
-  <component name="ProjectId" id="2eJYpvmO0nJZz6wN4MzI9QYMgmx" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2e0v0x9F3urILnG6gFog9wsXEzR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Alice/IdeaProjects/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Pictures&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Alice\IdeaProjects\MyJavaFxApp\src\main\resources\com\example\myjavafxapp\Pictures" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.myjavafxapp.HelloApplication" />
+      <module name="MyJavaFxApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.myjavafxapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="" />
-      <created>1711624339264</created>
+      <changelist id="6b2e9356-d8d6-46ea-99da-758f8e6b86fa" name="Changes" comment="" />
+      <created>1711054094678</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711624339264</updated>
-      <workItem from="1711624340402" duration="3560000" />
+      <updated>1711054094678</updated>
+      <workItem from="1711054095734" duration="3694000" />
+      <workItem from="1711134004925" duration="2741000" />
+      <workItem from="1711146301833" duration="3800000" />
+      <workItem from="1711194531337" duration="7000" />
+      <workItem from="1711394780613" duration="7255000" />
+      <workItem from="1711448857823" duration="892000" />
+      <workItem from="1711480413289" duration="12891000" />
+      <workItem from="1711494621992" duration="388000" />
+      <workItem from="1711570465915" duration="1085000" />
+      <workItem from="1711961198486" duration="37000" />
+      <workItem from="1711961356976" duration="63000" />
+      <workItem from="1712158094561" duration="3059000" />
+      <workItem from="1712185496424" duration="3794000" />
+      <workItem from="1712271779369" duration="3192000" />
+      <workItem from="1712309165200" duration="1026000" />
+      <workItem from="1712490774491" duration="6442000" />
+      <workItem from="1712528386737" duration="4014000" />
+      <workItem from="1712779362264" duration="5047000" />
+      <workItem from="1712847537764" duration="10515000" />
+      <workItem from="1712858699619" duration="17000" />
+      <workItem from="1712871651865" duration="9592000" />
+      <workItem from="1712881850180" duration="1782000" />
+      <workItem from="1712959872094" duration="5272000" />
+      <workItem from="1712997148796" duration="1559000" />
+      <workItem from="1713019786760" duration="1077000" />
+      <workItem from="1713021250381" duration="2172000" />
+      <workItem from="1713038443464" duration="2823000" />
+      <workItem from="1713083144800" duration="2720000" />
+      <workItem from="1713115968280" duration="2848000" />
+      <workItem from="1713174710620" duration="2382000" />
+      <workItem from="1713179913781" duration="1388000" />
+      <workItem from="1713207325410" duration="1514000" />
+      <workItem from="1713295731515" duration="2064000" />
+      <workItem from="1713299576648" duration="14000" />
+      <workItem from="1713299610011" duration="10039000" />
+      <workItem from="1713357544945" duration="2958000" />
+      <workItem from="1713378885773" duration="2421000" />
+      <workItem from="1713383774527" duration="5067000" />
+      <workItem from="1713443007847" duration="21000" />
+      <workItem from="1713443427557" duration="1335000" />
+      <workItem from="1713467499560" duration="2257000" />
+      <workItem from="1713469776393" duration="9373000" />
+      <workItem from="1713481444547" duration="4010000" />
+      <workItem from="1713510162081" duration="3271000" />
+      <workItem from="1713514575307" duration="2301000" />
+      <workItem from="1713517483931" duration="229000" />
+      <workItem from="1713518535793" duration="1015000" />
+      <workItem from="1713554024643" duration="801000" />
+      <workItem from="1713555605670" duration="8296000" />
+      <workItem from="1713612049492" duration="3651000" />
+      <workItem from="1713618115651" duration="1545000" />
+      <workItem from="1713621658587" duration="7585000" />
+      <workItem from="1713643742673" duration="4705000" />
+      <workItem from="1713653423947" duration="2163000" />
+      <workItem from="1713687803777" duration="974000" />
+      <workItem from="1713693270798" duration="19054000" />
+      <workItem from="1713717634188" duration="5124000" />
+      <workItem from="1713728632870" duration="695000" />
+      <workItem from="1713731100218" duration="2946000" />
+      <workItem from="1713770623751" duration="288000" />
+      <workItem from="1713794884239" duration="433000" />
+      <workItem from="1713803999980" duration="1540000" />
+      <workItem from="1713876760605" duration="5150000" />
+      <workItem from="1713882183396" duration="70000" />
+      <workItem from="1713882689203" duration="2000" />
+      <workItem from="1713882701721" duration="396000" />
+      <workItem from="1713883121625" duration="703000" />
+      <workItem from="1713883834863" duration="64000" />
+      <workItem from="1713885181009" duration="342000" />
+      <workItem from="1713886470620" duration="9145000" />
+      <workItem from="1713945629541" duration="252000" />
+      <workItem from="1713951163412" duration="1881000" />
+      <workItem from="1713980910142" duration="3779000" />
+      <workItem from="1713984786935" duration="8418000" />
+      <workItem from="1713993859194" duration="371000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

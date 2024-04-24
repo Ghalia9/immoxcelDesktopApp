@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="520.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myjavafxapp.RegisterController">
+   <children>
+      <AnchorPane prefHeight="82.0" prefWidth="520.0" style="-fx-background-color: #5499c7;">
+         <children>
+            <ImageView fitHeight="35.0" fitWidth="90.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mobile-payment.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="86.0" layoutY="26.0" text="Transaction " textFill="#531471">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="12.0" />
+               </padding>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="92.0" layoutY="92.0" text="Type" />
+      <Label layoutX="92.0" layoutY="162.0" text="Quantity" />
+      <TextField fx:id="QuantityTextField" layoutX="92.0" layoutY="186.0" prefHeight="25.0" prefWidth="336.0" promptText="Quantity " />
+      <Label layoutX="92.0" layoutY="226.0" text="Description" />
+      <TextField fx:id="DescrptionTextField" layoutX="92.0" layoutY="250.0" prefHeight="25.0" prefWidth="336.0" promptText="Description" />
+      <Label layoutX="92.0" layoutY="291.0" text="cost" />
+      <TextField fx:id="CostTextField" layoutX="92.0" layoutY="315.0" prefHeight="25.0" prefWidth="336.0" promptText="cost" />
+      <Button fx:id="saveButton" layoutX="110.0" layoutY="400.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Save" textFill="#c3c9cf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="CancelButton" layoutX="110.0" layoutY="440.0" mnemonicParsing="false" onAction="#setCancelButtonIDAction" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Canel" textFill="#c3c9cf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="LabelMessage" layoutX="234.0" layoutY="354.0" />
+      <ComboBox fx:id="typeTextField" layoutX="92.0" layoutY="122.0" prefHeight="26.0" prefWidth="336.0" promptText="Income" />
+      <Label layoutX="90.0" layoutY="345.0" text="Supplier" />
+      <ComboBox fx:id="SupplierComboBox" layoutX="92.0" layoutY="363.0" prefHeight="26.0" prefWidth="336.0" promptText="--" />
+      <Button layoutX="110.0" layoutY="476.0" mnemonicParsing="false" onAction="#EditOnClickOn" prefWidth="300.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Edit" textFill="#c3c9cf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="idtrans" layoutX="441.0" layoutY="122.0" opacity="0.0" text="Label" />
+   </children>
+</AnchorPane>

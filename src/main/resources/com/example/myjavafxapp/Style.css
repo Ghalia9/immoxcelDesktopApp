@@ -1,0 +1,189 @@
+.card{
+    -fx-background-color:rgba(0,0,0,0);
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 10);
+}
+.root{
+    -fx-background-color: #EAEEF4;
+
+}
+.HboxTop{
+    -fx-background-color:rgba(0,0,0,0);
+
+}
+
+.side_ankerpane{
+    -fx-background-color: #353A56;
+    /*-fx-border-color: #2207bb;*/
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.inner_pane{
+    -fx-background-color: #748CF1;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.most_inner_pane{
+    -fx-background-color: #6780E2;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.HboxTopTitle{
+    -fx-background-color: #6780E2;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.btn_first_in_the_menu{
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.Deletebtn{
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.editbtn{
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.btn_second_in_the_menu {
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+/*.btn_first_in_the_menuu{*/
+/*    -fx-background-color: #303551;*/
+/*    -fx-border-color: #141313;*/
+/*    -fx-border-width: 2px 2px 2px 2px;*/
+/*    -fx-border-radius: 20px;*/
+/*    -fx-background-radius: 20px;*/
+/*    -fx-border-style: solid;*/
+/*}*/
+.text_search{
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+
+.pane_1{
+
+    -fx-background-color: #748CF1;
+    -fx-border-color: #748CF1;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.pane_11{
+
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.pane_111{
+
+    -fx-background-color: #FD9999;
+    -fx-border-color: #FD9999;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.pane_1111{
+
+    -fx-background-color: #353A56;
+    -fx-border-color: #353A56;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.selected{
+    -fx-background-color: #303551;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #303551;
+}
+.transparent{
+    -fx-background-color:rgba(0,0,0,0);
+}
+.over:hover {
+    -fx-background-color: #F4F4F4;
+}
+.newAddbutton{
+    -fx-background-color: #303551;
+    -fx-border-color: #141313;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+
+}
+.TransparentWithConditionsForLabelForm{
+    -fx-background-color:rgba(0,0,0,0);
+    -fx-border-color: #FD9999;
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill:White;
+    -fx-color:white;
+}
+.TransparentWithConditionsLabel{
+    -fx-background-color: #D3D3D3;
+    -fx-border-color: #FD9999;
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill:White;
+    -fx-color:black;
+}
+.Pane112Container{
+    -fx-border-color: rgba(0,0,0,0);
+}
+
+.ClearButton{
+    -fx-background-color:#E71036;
+    -fx-text-fill:Noir;
+    -fx-border-color:white;
+}
+.pane_AddSupplier{
+    -fx-background-color:rgba(0,0,0,0);
+    -fx-border-color: #FD9999;
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill:black;
+    -fx-color:white;
+
+}

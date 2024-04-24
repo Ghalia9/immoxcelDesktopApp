@@ -1,0 +1,32 @@
+.white-background {
+    -fx-background-color:#fff;
+}
+.transparent{
+    -fx-background-color:rgba(0,0,0,0);
+}
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color: #070707;
+}
+.selected {
+    -fx-background-color: #F3F3F3;
+}
+.mouse-moved :hover {
+    -fx-background-color: #E4E4E4;
+}
+.shadow {
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 10);
+}
+.textfield:focused{
+    -fx-background-color:#fff;
+    -fx-border-width:8px;
+    -fx-border-color:#000;
+}
+.clear-btn{
+    -fx-background-color: #753566 ;
+    -fx-background-radius: 8px ;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-cursor: hand;
+}
