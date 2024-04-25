@@ -171,8 +171,7 @@ public class AddEmployee {
 
         // Validate phone number
         String phoneNumber = phoneField.getText();
-        if (!phoneNumber.matches("\\d{8}")) {
-            showValidationError("Phone number must be 8 digits.");
+        if (!validatePhoneNumber(phoneNumber)) {
             return false;
         }
 
@@ -194,6 +193,17 @@ public class AddEmployee {
         return true;
     }
 
+    private boolean validatePhoneNumber(String phoneNumber) {
+        // Define the regular expression pattern for the phone number
+        String regexPattern = "^(9\\d{7}|40\\d{6}|41\\d{6}|42\\d{6}|44\\d{6}|5[0-5]\\d{6}|58\\d{6}|2\\d{7}|46\\d{6})$";
+
+        // Check if the phone number matches the pattern
+        if (!phoneNumber.matches(regexPattern)) {
+            showValidationError("Please enter a valid phone number.");
+            return false;
+        }
+        return true;
+    }
     private boolean isValidEmail(String email) {
         // Basic email validation
         // You can implement more sophisticated validation if needed
