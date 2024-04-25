@@ -92,7 +92,9 @@ public class LeavesEmployee {
 
     @FXML
     void editLeaveOnClick(ActionEvent event) {
-        try {
+        if (currentLeave.getStatus().equals("Pending")) {
+
+            try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/EditLeave.fxml"));
             Parent EditLeave = loader.load();
             EditLeave leaveedit=loader.getController();
@@ -113,6 +115,13 @@ public class LeavesEmployee {
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
+        }}else {
+            // Display a message saying only pending leaves can be deleted
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Only pending leaves can be edited.");
+            alert.showAndWait();
         }
     }
 

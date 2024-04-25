@@ -62,6 +62,7 @@ public class AddLeave {
             sl.ajouter(l);
 
             leave[index] = l;
+
         } else {
             // Handle the case where the index is out of bounds
             System.out.println("Index out of bounds");

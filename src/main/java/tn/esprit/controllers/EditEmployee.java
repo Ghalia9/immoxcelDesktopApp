@@ -11,6 +11,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.esprit.models.ContractType;
@@ -20,12 +21,17 @@ import tn.esprit.models.Sexe;
 import tn.esprit.services.ServiceEmployees;
 
 import javax.sql.rowset.serial.SerialBlob;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.UUID;
 
 public class EditEmployee {
     @FXML
@@ -83,6 +89,52 @@ public class EditEmployee {
     {
         this.displayPage=displayPage;
     }
+    private static final String UPLOAD_DIRECTORY = "C:/Users/ghali/Desktop/Fac3/S2/PIJava/immoxcel/src/main/resources/CVuploads"; // Change this to your desired directory
+
+    @FXML
+    void uploadCVOnClick(ActionEvent event) {
+        System.out.println("uploaddddddddddddddddddddd");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload CV");
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            try {
+                // Generate a unique file name (e.g., using UUID)
+                // String fileName = UUID.randomUUID().toString() + "_" + file.getName();
+                String fileName= "CV_"+currentEmployee.getEmpName()+"_"+currentEmployee.getEmpLastName()+".pdf";
+               // String fileName = file.getName();
+                //cvField.setText(cvFileName);
+                // Construct the full destination path
+                String destinationPath = UPLOAD_DIRECTORY + "/" + fileName;
+                System.out.println("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                System.out.println(destinationPath);
+                if (currentEmployee.getEmpCV() != null) {
+                    System.out.println("aaaaaaaaaaaaaa");
+                    System.out.println("delete");
+                    String oldCVFileName = "CV_" + currentEmployee.getEmpName() +"_"+ currentEmployee.getEmpLastName(); // Or any other identifier you choose
+                    File oldCVFile = new File(UPLOAD_DIRECTORY + "/" + oldCVFileName);
+                    System.out.println(oldCVFileName);
+                    if (oldCVFile.delete()) {
+                        System.out.println("Old CV file deleted successfully.");
+                    } else {
+                        System.out.println("Failed to delete old CV file.");
+                    }
+                }
+
+                // Copy the file to the centralized directory
+                Files.copy(file.toPath(), Paths.get(destinationPath), StandardCopyOption.REPLACE_EXISTING);
+
+                // Store the file name or relative path in your database
+                // Instead of cvField.setText(), you can store fileName or relativePath in your database
+                cvField.setText(file.getName()); // For display purposes (optional)
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle error
+                showNotification("Error occurred while uploading CV.");
+            }
+        }
+    }
     @FXML
     void save_employeeOnClick(ActionEvent event) throws IOException {
         System.out.println(currentEmployee);
@@ -101,6 +153,10 @@ public class EditEmployee {
             System.out.println(dashboard);
             dashboard.getEmployeesLayout().getChildren().clear();
             dashboard.showEmployeesList();
+            dashboard.getLeavesLayout().getChildren().clear();
+            dashboard.showOldLeaves();
+            dashboard.getCardLayout().getChildren().clear();
+            dashboard.showPendingLeaves();
             //displayPage.getChildren().clear();
             //REFRESH DETAILS EMPLOYEE
            /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
@@ -202,7 +258,8 @@ public class EditEmployee {
         if(employee.getEmpCV() == null){
             cvField.setText("no cv uploaded yet!");
         }else {
-            cvField.setText("we need a solution for the cv");
+            String defaultFileName = "CV_" + employee.getEmpName() +"_"+ employee.getEmpLastName(); // Or any other identifier you choose
+            cvField.setText(defaultFileName);
         }
         emailField.setText(employee.getEmpEmail());
         endContractField.setValue(employee.getEndContractDate().toLocalDate());
@@ -217,7 +274,7 @@ public class EditEmployee {
     public Employees setInformations(int id){
         try {
             Blob cv =new SerialBlob(cvField.getText().getBytes());
-            Employees employee=new Employees(id,firstNameField.getText(),lastNameField.getText(),sexeField.getValue().toString(),emailField.getText(),addressField.getText(),phoneField.getText(),functionField.getValue().toString(), Date.valueOf(birthdayField.getValue()),Date.valueOf(hiraDateField.getValue()),Date.valueOf(endContractField.getValue()),contractTypeField.getValue().toString(),12,cv,0,cinField.getText());
+            Employees employee=new Employees(id,firstNameField.getText(),lastNameField.getText(),sexeField.getValue().toString(),emailField.getText(),addressField.getText(),phoneField.getText(),functionField.getValue().toString(), Date.valueOf(birthdayField.getValue()),Date.valueOf(hiraDateField.getValue()),Date.valueOf(endContractField.getValue()),contractTypeField.getValue().toString(),12,cv,currentEmployee.getEmpTakenLeaves(),cinField.getText());
 
             System.out.println("settttttttttt");
             System.out.println(employee);

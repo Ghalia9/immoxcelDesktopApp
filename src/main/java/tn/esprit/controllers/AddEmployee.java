@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import tn.esprit.models.ContractType;
@@ -19,6 +20,12 @@ import tn.esprit.services.ServiceEmployees;
 
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -26,6 +33,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public class AddEmployee {
     @FXML
@@ -73,7 +81,53 @@ public class AddEmployee {
     {
         this.dashboard=dashboard;
     }
+    private static final String UPLOAD_DIRECTORY = "C:/Users/ghali/Desktop/Fac3/S2/PIJava/immoxcel/src/main/resources/CVuploads"; // Change this to your desired directory
 
+    @FXML
+    void uploadCVOnClick(ActionEvent event) {
+        System.out.println("uploaddddddddddddddddddddd");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload CV");
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            try {
+                // Generate a unique file name (e.g., using UUID)
+               // String fileName = UUID.randomUUID().toString() + "_" + file.getName();
+                String fileName = file.getName();
+                //cvField.setText(cvFileName);
+                // Construct the full destination path
+                String destinationPath = UPLOAD_DIRECTORY + "/" + fileName;
+                System.out.println("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                System.out.println(destinationPath);
+                // Copy the file to the centralized directory
+                Files.copy(file.toPath(), Paths.get(destinationPath), StandardCopyOption.REPLACE_EXISTING);
+
+                // Store the file name or relative path in your database
+                // Instead of cvField.setText(), you can store fileName or relativePath in your database
+                cvField.setText(file.getName()); // For display purposes (optional)
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle error
+                showNotification("Error occurred while uploading CV.");
+            }
+        }
+    }
+
+    // Method to construct the full file path
+    private String getFullFilePath(String fileName) {
+        return UPLOAD_DIRECTORY + "/" + fileName;
+    }
+
+
+    // Method to convert a file to Blob
+    private Blob fileToBlob(File file) throws IOException, SQLException {
+        FileInputStream fileInputStream = new FileInputStream(file);
+        byte[] fileBytes = new byte[(int) file.length()];
+        fileInputStream.read(fileBytes);
+        fileInputStream.close();
+        return new SerialBlob(fileBytes);
+    }
     @FXML
     void add_employeeOnClick(ActionEvent event) {
         if (validateInputs()) {
@@ -170,7 +224,7 @@ public class AddEmployee {
     private final ServiceEmployees se = new ServiceEmployees();
 
     @FXML
-            public void initialize(){
+    public void initialize(){
         contractTypeField.setItems(FXCollections.observableArrayList(ContractType.values()));
         functionField.setItems(FXCollections.observableArrayList(Functions.values()));
         sexeField.setItems(FXCollections.observableArrayList(Sexe.values()));
@@ -178,11 +232,13 @@ public class AddEmployee {
 
     public Employees setInformations(){
         try {
-            Blob cv =new SerialBlob(cvField.getText().getBytes());
+            Blob cv = fileToBlob(new File(getFullFilePath(cvField.getText())));
             Employees employee=new Employees(firstNameField.getText(),lastNameField.getText(),sexeField.getValue().toString(),emailField.getText(),addressField.getText(),phoneField.getText(),functionField.getValue().toString(), Date.valueOf(birthdayField.getValue()),Date.valueOf(hiraDateField.getValue()),Date.valueOf(endContractField.getValue()),contractTypeField.getValue().toString(),12,cv,0,cinField.getText());
             return employee;
         }catch (SQLException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         return null;

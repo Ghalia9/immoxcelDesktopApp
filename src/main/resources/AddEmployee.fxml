@@ -61,7 +61,12 @@
                               <Insets top="10.0" />
                            </padding>
                         </Label>
-                        <TextField fx:id="cvField" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="cvField" prefHeight="26.0" prefWidth="170.0" />
+                              <Button mnemonicParsing="false" onAction="#uploadCVOnClick" prefHeight="26.0" prefWidth="130.0" text="Upload CV" />
+                           </children>
+                        </HBox>
                      </children>
                      <HBox.margin>
                         <Insets />

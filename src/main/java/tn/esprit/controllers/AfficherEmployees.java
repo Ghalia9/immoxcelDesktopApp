@@ -52,6 +52,10 @@ public class AfficherEmployees {
             // User clicked OK, proceed with delete operation
             se.supprimer(currentEmployee.getId());
             employeesLayout.getChildren().remove(itemEmployee);
+            dashboard.getCardLayout().getChildren().clear();
+            dashboard.showPendingLeaves();
+            dashboard.getLeavesLayout().getChildren().clear();
+            dashboard.showOldLeaves();
         }
     }
     private Employees currentEmployee;

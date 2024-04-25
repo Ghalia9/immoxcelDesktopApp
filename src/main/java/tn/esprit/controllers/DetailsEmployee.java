@@ -177,7 +177,9 @@ public class DetailsEmployee {
         if(employee.getEmpCV() == null){
             cv.setText("no cv uploaded yet!");
         }else {
-            cv.setText("we need a solution for the cv");
+            String defaultFileName = "CV_" + firstName.toString()+"_"+ lastname.toString(); // Or any other identifier you choose
+            System.out.println(defaultFileName);
+            cv.setText("CV_"+employee.getEmpLastName()+"_"+employee.getEmpName());
         }
         email.setText(employee.getEmpEmail());
         endContractDate.setText(employee.getEndContractDate().toString());
