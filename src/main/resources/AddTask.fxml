@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,8 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="208.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddProjectController">
+<AnchorPane prefHeight="208.0" prefWidth="491.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddTaskController">
    <children>
       <Pane prefHeight="209.0" prefWidth="491.0">
          <children>
@@ -21,7 +21,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label text="Create project" textFill="#33a5d1">
+                        <Label text="Add Task" textFill="#33a5d1">
                            <font>
                               <Font name="Montserrat Regular" size="15.0" />
                            </font>
@@ -37,7 +37,7 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Label layoutX="10.0" layoutY="10.0" text="Please add the project information below" textFill="#33a5d1">
+                  <Label layoutX="10.0" layoutY="10.0" text="Please add the task information below" textFill="#33a5d1">
                      <font>
                         <Font name="Montserrat Regular" size="10.0" />
                      </font>
@@ -52,8 +52,8 @@
                      <children>
                         <VBox prefHeight="48.0" prefWidth="282.0">
                            <children>
-                              <Label text="Project Name" />
-                              <TextField fx:id="projectNameInput" prefHeight="26.0" prefWidth="226.0">
+                              <Label text="Task Title" />
+                              <TextField fx:id="taskTitleInput" prefHeight="26.0" prefWidth="226.0">
                                  <padding>
                                     <Insets left="10.0" />
                                  </padding>
@@ -70,8 +70,8 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="268.0">
                            <children>
-                              <Label text="Budget" />
-                              <TextField fx:id="budgetInput" prefHeight="26.0" prefWidth="226.0" />
+                              <Label text="Task Description" />
+                              <TextArea fx:id="taskDescriptionInput" prefHeight="74.0" prefWidth="200.0" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="10.0" />
@@ -86,8 +86,8 @@
                      <children>
                         <VBox prefHeight="48.0" prefWidth="282.0">
                            <children>
-                              <Label text="Predicted Start Date" />
-                              <DatePicker fx:id="predStartDateInput" prefHeight="26.0" prefWidth="227.0" />
+                              <Label text="Task Deadline" />
+                              <DatePicker fx:id="taskDeadlineInput" prefHeight="26.0" prefWidth="227.0" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="10.0" />
@@ -99,10 +99,6 @@
                            </padding>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="268.0">
-                           <children>
-                              <Label text="Predicted Finish Date" />
-                              <DatePicker fx:id="predFinishDateInput" prefHeight="26.0" prefWidth="307.0" />
-                           </children>
                            <padding>
                               <Insets left="10.0" right="10.0" />
                            </padding>
@@ -121,7 +117,7 @@
                               <Insets top="10.0" />
                            </padding>
                         </VBox>
-                        <Button fx:id="createButton" mnemonicParsing="false" text="Create" onAction="#addProject"/>
+                        <Button fx:id="createButton" mnemonicParsing="false" onAction="#addTask" text="Create" />
                      </children>
                      <padding>
                         <Insets right="10.0" />

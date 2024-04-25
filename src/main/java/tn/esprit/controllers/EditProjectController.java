@@ -40,6 +40,12 @@ public class EditProjectController {
     private final ServiceProjects serviceProjects = new ServiceProjects();
     private BooleanProperty projectUpdated = new SimpleBooleanProperty(false);
 
+    private ProjectsDashboardController projectsDashboardController;
+
+    public void setProjectsDashboardController(ProjectsDashboardController controller) {
+        this.projectsDashboardController = controller;
+    }
+
     public void setData(Projects project) {
         this.project = project;
         projectNameInput.setText(project.getProject_name());
@@ -50,10 +56,6 @@ public class EditProjectController {
         completionDateInput.setValue(convertToLocalDate(project.getDate_completion()));
     }
 
-    @FXML
-    private void initialize() {
-        createButton.setOnAction(event -> updateProject());
-    }
 
     @FXML
     private void updateProject() {
@@ -63,22 +65,36 @@ public class EditProjectController {
             float budget = Float.parseFloat(budgetInput.getText());
             LocalDate predStartDate = predStartDateInput.getValue();
             LocalDate predFinishDate = predFinishDateInput.getValue();
+            LocalDate completionDate = completionDateInput.getValue(); // Might be null
+
+            float cost;
+            if (!costInput.getText().isEmpty()) {
+                cost = Float.parseFloat(costInput.getText());
+            } else {
+                cost = 0; // Set a default value if cost is empty
+            }
 
             // Convert LocalDate to Date
-            Date startDate = Date.valueOf(predStartDate);
-            Date finishDate = Date.valueOf(predFinishDate);
+            Date startDate = (predStartDate != null) ? Date.valueOf(predStartDate) : null;
+            Date finishDate = (predFinishDate != null) ? Date.valueOf(predFinishDate) : null;
+            Date completion = (completionDate != null) ? Date.valueOf(completionDate) : null;
 
             // Update the existing project
             project.setProject_name(projectName);
             project.setBudget(budget);
             project.setDate_pred_start(startDate);
             project.setDate_pred_finish(finishDate);
+            project.setActual_cost(cost);
+            project.setDate_completion(completion);
 
             // Call service to update project in database
             serviceProjects.modifier(project);
 
             // Show success message
             showAlert(Alert.AlertType.INFORMATION, "Success", "Project updated successfully");
+
+            // Updating projects
+            projectsDashboardController.refreshProjects();
 
             // Notify ProjectsDashboardController that a project was updated
             projectUpdated.set(true);
@@ -93,6 +109,7 @@ public class EditProjectController {
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);

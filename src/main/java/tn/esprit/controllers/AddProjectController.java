@@ -37,11 +37,6 @@ public class AddProjectController {
         this.projectAdded = projectAdded;
     }
 
-    @FXML
-    private void initialize() {
-        // Lier la méthode addProject() à l'événement de clic du bouton createButton
-        createButton.setOnAction(event -> addProject());
-    }
 
     @FXML
     private void addProject() {
@@ -58,10 +53,9 @@ public class AddProjectController {
 
             // Create Projects object
             Projects project = new Projects(projectName, startDate, finishDate, budget);
-
+System.out.println(project);
             // Save project to database or perform any other action
             serviceProjects.ajouter(project);
-
             // Show success message
             showAlert(Alert.AlertType.INFORMATION, "Success", "Project added successfully");
 

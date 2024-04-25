@@ -15,6 +15,7 @@ public class ServiceProjects implements IService<Projects>{
             String req = "INSERT INTO `project` (`project_name`, `date_pred_start`, `date_pred_finish`, `date_completion`, `budget`, `actual_cost`) VALUES (?,?,?,?,?,?)";
             try {
                 PreparedStatement ps = cnx.prepareStatement(req);
+                System.out.println("After statement");
                 ps.setString(1,project.getProject_name());
                 ps.setDate(2,project.getDate_pred_start());
                 ps.setDate(3,project.getDate_pred_finish());

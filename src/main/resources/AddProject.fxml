@@ -121,7 +121,7 @@
                               <Insets top="10.0" />
                            </padding>
                         </VBox>
-                        <Button fx:id="createButton" mnemonicParsing="false" text="Create" />
+                        <Button fx:id="createButton" mnemonicParsing="false" text="Create" onAction="#addProject"/>
                      </children>
                      <padding>
                         <Insets right="10.0" />

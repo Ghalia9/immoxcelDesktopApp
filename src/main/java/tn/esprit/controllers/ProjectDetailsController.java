@@ -37,6 +37,12 @@ public class ProjectDetailsController {
 
     private Projects project;
 
+    private ProjectsDashboardController projectsDashboardController;
+
+    public void setProjectsDashboardController(ProjectsDashboardController controller) {
+        this.projectsDashboardController = controller;
+    }
+
 
     public void setData(Projects project){
         this.project=project;
@@ -54,6 +60,7 @@ public class ProjectDetailsController {
             Parent parent = fxmlLoader.load();
 
             EditProjectController editProjectController = fxmlLoader.getController();
+            editProjectController.setProjectsDashboardController(projectsDashboardController);
             editProjectController.setData(project);
 
             Stage stage = new Stage();

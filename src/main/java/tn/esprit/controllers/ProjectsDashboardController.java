@@ -84,6 +84,7 @@ public class ProjectsDashboardController {
 
                 projectItem.setProjectsDashboardController(this); //This is for the Delete button to get the current Dashboard Controller to refresh
 
+
                 int finalI = i;
                 anchorPane.setOnMouseClicked(event -> {
                     try {
@@ -115,6 +116,7 @@ public class ProjectsDashboardController {
             stage.setScene(new Scene(root1));
 
             ProjectDetailsController projectDetails = fxmlLoader.getController();
+            projectDetails.setProjectsDashboardController(this);
             projectDetails.setData(project);
 
             stage.show();
