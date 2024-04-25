@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Label;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceLeaves;
 
 
@@ -62,8 +63,10 @@ public class AfficherLeaves {
     public void setDataALL(Leaves leave){
         if(leave.getStatus().equals("Approved"))
             status.setImage(new Image("file:src/main/resources/images/Accept.png"));
-        else
+        else if (leave.getStatus().equals("Disapproved"))
             status.setImage(new Image("file:src/main/resources/images/refuse.png"));
+        else
+            status.setImage(new Image("file:src/main/resources/images/pending.png"));
         employeeNameALL.setText(leave.getEmployee().getEmpLastName()+" "+leave.getEmployee().getEmpName());
         leavetypeALL.setText(leave.getLeaveType());
         fromALL.setText(new SimpleDateFormat("yyyy-MM-dd").format(leave.getStartDate()));
@@ -83,7 +86,14 @@ public class AfficherLeaves {
     {
         this.dashboard=dashboard;
     }
+    private final ServiceEmployees se = new ServiceEmployees();
 
+    private Employees currentEmployee;
+
+    public void setCurrentEmployee(Employees currentEmployee)
+    {
+        this.currentEmployee=currentEmployee;
+    }
 
     @FXML
     void approveLeave(ActionEvent event) {
@@ -91,10 +101,16 @@ public class AfficherLeaves {
         l.setStatus("Approved");
         sl.modifier(l);
         System.out.println("ok");
+        System.out.println(currentEmployee.getEmpTakenLeaves());
+        currentEmployee.setEmpTakenLeaves(currentEmployee.getEmpTakenLeaves()+1);
+        System.out.println(currentEmployee.getEmpTakenLeaves());
+        se.modifier(currentEmployee);
         dashboard.getCardLayout().getChildren().clear();
         dashboard.getLeavesLayout().getChildren().clear();
+        dashboard.getEmployeesLayout().getChildren().clear();
         dashboard.showOldLeaves();
         dashboard.showPendingLeaves();
+        dashboard.showEmployeesList();
     }
 
     @FXML

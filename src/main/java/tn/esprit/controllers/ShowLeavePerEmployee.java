@@ -13,7 +13,11 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Set;
+
 import javafx.fxml.Initializable;
+import tn.esprit.services.ServiceEmployees;
+import tn.esprit.services.ServiceLeaves;
 
 
 public class ShowLeavePerEmployee
@@ -36,32 +40,39 @@ public class ShowLeavePerEmployee
         }
         else System.out.println("booooooooooo");
     }*/
+    private final ServiceLeaves sl= new ServiceLeaves();
+    private final ServiceEmployees se = new ServiceEmployees();
+
     public void displayLeaves(Employees currentEmployee) {
         // Retrieve the list of leaves for the current employee
         if (currentEmployee != null) {
             System.out.println("seeeeeeeeeee");
         }
         System.out.println(currentEmployee);
-        Leaves[] leaves = currentEmployee.getListofleaves();
+        Set<Leaves> leaves = sl.getLeavesByEmployee(currentEmployee);
 
         // Clear existing leaves from the container
         leavesDisplay.getChildren().clear();
 
         // Iterate over the leaves and create a visual representation for each one
         for (Leaves leave : leaves) {
-            System.out.println(leave);
-            // Create a new instance of AfficherLeave for each leave
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OldLeave.fxml"));
-            try {
-
-
-                HBox lBox=loader.load();
-                AfficherLeaves afficherLeaves=loader.getController();
-                afficherLeaves.setDataALL(leave);
-                leavesDisplay.getChildren().add(lBox);
-
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (leave != null) {
+                System.out.println(leave);
+                // Create a new instance of AfficherLeave for each leave
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/LeavesEmployee.fxml"));
+                try {
+                    HBox lBox = loader.load();
+                    LeavesEmployee leavesPerEmployee = loader.getController();
+                    leavesPerEmployee.setDataALL(leave);
+                    leavesDisplay.getChildren().add(lBox);
+                    leavesPerEmployee.setCurrentLeave(leave);
+                   // editLeave.setCurrentLeave(leave);
+                    leavesPerEmployee.setCurrentEmployee(leave.getEmployee());
+                    leavesPerEmployee.setdashbord(dashboard);
+                    leavesPerEmployee.setDisplay(leavesDisplay);//VBox for instant refresh
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

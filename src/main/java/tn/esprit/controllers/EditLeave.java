@@ -7,18 +7,19 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import tn.esprit.models.*;
+import tn.esprit.models.ContractType;
+import tn.esprit.models.Employees;
+import tn.esprit.models.LeaveType;
+import tn.esprit.models.Leaves;
 import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceLeaves;
 
-import javax.sql.rowset.serial.SerialBlob;
-import java.sql.Blob;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class AddLeave {
+public class EditLeave {
     @FXML
     private TextArea descriptionField;
 
@@ -30,57 +31,48 @@ public class AddLeave {
 
     @FXML
     private DatePicker startDateField;
+    private VBox display;
 
-    private HRDashboard dashboard;
-
-    public void setdashbord(HRDashboard dashboard)
+    public void setDisplay(VBox display)
     {
-        this.dashboard=dashboard;
+        this.display=display;
     }
-
-    private Employees currentEmployee;
-
-    public void setCurrentEmployee(Employees currentEmployee)
-    {
-        this.currentEmployee=currentEmployee;
-    }
-    private final ServiceLeaves sl=new ServiceLeaves();
     @FXML
-    void addLeaveOnClick(ActionEvent event) {
+    void saveLeaveOnClick(ActionEvent event) {
+
         if (validateLeaveInputs()) {
+            if (currentLeave == null)
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        Leaves old = currentLeave;
 
-            Leaves l=setInformations();
-
-
-        Leaves[] leave = currentEmployee.getListofleaves();
-
-        System.out.println(leave);
-        int index = currentEmployee.getEmpTakenLeaves(); // Calculate the index
-
-        if (index <= leave.length) {
-            // Assign a value to the array element at the calculated index
-            sl.ajouter(l);
-
-            leave[index] = l;
-        } else {
-            // Handle the case where the index is out of bounds
-            System.out.println("Index out of bounds");
-        }
-        currentEmployee.setListofleaves(leave);
-            // Show notification
-        for (Leaves le : leave) {
-            System.out.println(le);
-        }
-            showNotification("Leave added successfully.");
-
-            System.out.println(l);
-            System.out.println(currentEmployee);
-            // Close the form stage
+        Leaves l = setInformations(currentLeave.getId());
+        System.out.println("leaveeeeeeeeeeeeeee");
+        System.out.println(l);
+        if (l.getStatus().equals("Pending")) {
+            sl.modifier(l);
+            showNotification("Leave updated successfully.");
             Stage stage = (Stage) descriptionField.getScene().getWindow();
             stage.close();
+            Stage stage2 = (Stage) display.getScene().getWindow();
+            stage2.close();
             dashboard.getCardLayout().getChildren().clear();
             dashboard.showPendingLeaves();
-    }}
+        } else {
+            // Display a message saying only pending leaves can be deleted
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Only pending leaves can be deleted.");
+            alert.showAndWait();
+        }
+    }
+
+        // Close the form stage
+
+        //display.getChildren().clear();
+
+    }
+
     private boolean validateLeaveInputs() {
         // Check if leave type is selected
         if (leaveTypeField.getValue() == null) {
@@ -121,6 +113,33 @@ public class AddLeave {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public void setDetailsData(Leaves leave) {
+        leaveTypeField.setValue(LeaveType.valueOf(leave.getLeaveType()));
+        descriptionField.setText(leave.getLeaveDescription());
+        startDateField.setValue(leave.getStartDate().toLocalDate());
+        finishDateField.setValue(leave.getFinishDate().toLocalDate());
+    }
+    private HRDashboard dashboard;
+
+    public void setdashbord(HRDashboard dashboard)
+    {
+        this.dashboard=dashboard;
+    }
+
+    private Employees currentEmployee;
+
+    public void setCurrentEmployee(Employees currentEmployee)
+    {
+        this.currentEmployee=currentEmployee;
+    }
+    private Leaves currentLeave;
+
+    public void setCurrentLeave(Leaves currentLeave)
+    {
+        this.currentLeave=currentLeave;
+    }
+    private final ServiceLeaves sl=new ServiceLeaves();
+
     private void showNotification(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
@@ -143,9 +162,11 @@ public class AddLeave {
 
     }
 
-    public Leaves setInformations(){
-        Leaves leave=new Leaves(leaveTypeField.getValue().toString(), Date.valueOf(startDateField.getValue()),Date.valueOf(finishDateField.getValue()),"Pending",descriptionField.getText(),currentEmployee);
+    public Leaves setInformations(int id){
+        Leaves leave=new Leaves(id,leaveTypeField.getValue().toString(), Date.valueOf(startDateField.getValue()),Date.valueOf(finishDateField.getValue()),"Pending",descriptionField.getText(),currentEmployee);
         return leave;
 
     }
+
+
 }

@@ -3,11 +3,16 @@ package tn.esprit.controllers;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.ContractType;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Functions;
@@ -15,9 +20,11 @@ import tn.esprit.models.Sexe;
 import tn.esprit.services.ServiceEmployees;
 
 import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.ZoneId;
 
 public class EditEmployee {
@@ -70,10 +77,16 @@ public class EditEmployee {
     {
         this.dashboard=dashboard;
     }
+    private AnchorPane displayPage;
 
+    public void setDisplayPage(AnchorPane displayPage)
+    {
+        this.displayPage=displayPage;
+    }
     @FXML
-    void save_employeeOnClick(ActionEvent event) {
+    void save_employeeOnClick(ActionEvent event) throws IOException {
         System.out.println(currentEmployee);
+        if (validateInputs()) {
         Employees old=currentEmployee;
         Employees e=setInformations(currentEmployee.getId());
         if(old.equals(e)) {
@@ -88,6 +101,22 @@ public class EditEmployee {
             System.out.println(dashboard);
             dashboard.getEmployeesLayout().getChildren().clear();
             dashboard.showEmployeesList();
+            //displayPage.getChildren().clear();
+            //REFRESH DETAILS EMPLOYEE
+           /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+            Parent Details = loader.load();
+            DetailsEmployee employeedetails=loader.getController();
+           // employeedetails.details_employee(event);
+           /* Stage detailsEmpStage = new Stage();
+            detailsEmpStage.initStyle(StageStyle.DECORATED);
+            detailsEmpStage.setScene(new Scene(Details, 638, 574));
+            detailsEmpStage.setTitle("Employee Details");
+            employeedetails.setDetailsData(currentEmployee);
+            employeedetails.setCurrentEmployee(currentEmployee);
+            detailsEmpStage.showAndWait();*/
+            //END REFRESH EMPLOYEE DETAILS
+            //dashboard.getEmployeesLayout().getChildren().clear();
+            //dashboard.showEmployeesList();
         }else {
         // If the employee already exists, show an error message
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -100,10 +129,56 @@ public class EditEmployee {
 
 // Show the error alert dialog
         alert.showAndWait();
-    }
+    }}
     }
 
+    private boolean validateInputs() {
+        // Validate age
+        LocalDate birthday = birthdayField.getValue();
+        LocalDate currentDate = LocalDate.now();
+        if (birthday != null && birthday.plusYears(18).isAfter(currentDate)) {
+            showValidationError("Employee must be at least 18 years old.");
+            return false;
+        }
 
+        // Validate phone number
+        String phoneNumber = phoneField.getText();
+        if (!phoneNumber.matches("\\d{8}")) {
+            showValidationError("Phone number must be 8 digits.");
+            return false;
+        }
+
+        // Validate email
+        String email = emailField.getText();
+        if (!isValidEmail(email)) {
+            showValidationError("Invalid email address.");
+            return false;
+        }
+
+        // Validate hire date and end contract date
+        LocalDate hireDate = hiraDateField.getValue();
+        LocalDate endContractDate = endContractField.getValue();
+        if (hireDate != null && endContractDate != null && hireDate.isAfter(endContractDate)) {
+            showValidationError("Hire date must be before end contract date.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isValidEmail(String email) {
+        // Basic email validation
+        // You can implement more sophisticated validation if needed
+        return email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+    }
+
+    private void showValidationError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Validation Error");
+        alert.setHeaderText("Invalid Input");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void showNotification(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");

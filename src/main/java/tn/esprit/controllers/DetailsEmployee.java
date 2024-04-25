@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -67,11 +68,12 @@ public class DetailsEmployee {
     {
         this.currentEmployee=currentEmployee;
     }
+    @FXML
+    private AnchorPane displayPage;
 
-    HRDashboard dashboard;
-    public void setdashbord(HRDashboard dashboard)
+    //public void setDisplayPage(AnchorPane displayPage)
     {
-        this.dashboard=dashboard;
+        this.displayPage=displayPage;
     }
     @FXML
     void showLeavesOnClick(ActionEvent event) {
@@ -88,7 +90,7 @@ public class DetailsEmployee {
                 System.out.println("currentEmployee is null!");
             }            Stage leavesEmpStage = new Stage();
             leavesEmpStage.initStyle(StageStyle.DECORATED);
-            leavesEmpStage.setScene(new Scene(leaves, 638, 574));
+            leavesEmpStage.setScene(new Scene(leaves, 343, 400));
             leavesEmpStage.setTitle("Employee leaves");
             //employeeLeaves.setDetailsData(currentEmployee);
             System.out.println(currentEmployee);
@@ -122,12 +124,13 @@ public class DetailsEmployee {
                 leave.setCurrentEmployee(currentEmployee);
                 Stage addLeaveStage = new Stage();
                 addLeaveStage.initStyle(StageStyle.DECORATED);
-                addLeaveStage.setScene(new Scene(root, 638, 574));
+                addLeaveStage.setScene(new Scene(root, 337, 405));
                 addLeaveStage.setTitle("Add leave Form");
                 addLeaveStage.showAndWait();
                 // showEmployeesList();
                 // Close the details stage
                 Stage stage = (Stage) firstName.getScene().getWindow();
+
                 stage.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -153,6 +156,7 @@ public class DetailsEmployee {
             editEmpStage.setTitle("Edit Employee");
             employeeedit.setDetailsData(currentEmployee);
             employeeedit.setCurrentEmployee(currentEmployee);
+            employeeedit.setDisplayPage(displayPage);
             System.out.println(currentEmployee);
             editEmpStage.showAndWait();
             // Close the details stage
@@ -185,5 +189,11 @@ public class DetailsEmployee {
         sexe.setText(employee.getEmpSex());
         takenLeaveDays.setText(String.valueOf(employee.getEmpTakenLeaves()));
         allowedLeaveDays.setText(String.valueOf(employee.getAllowedLeaveDays()));
+    }
+    private HRDashboard dashboard;
+
+    public void setdashbord(HRDashboard dashboard)
+    {
+        this.dashboard=dashboard;
     }
 }

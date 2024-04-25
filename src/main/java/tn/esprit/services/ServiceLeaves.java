@@ -121,4 +121,31 @@ public class ServiceLeaves implements IService<Leaves> {
         }
         return leavesSet;
     }
+    public Set<Leaves> getLeavesByEmployee(Employees employee){
+        Set<Leaves> leavesSet = new HashSet<>();
+        String req = "SELECT * FROM `leaves` WHERE `employee_id`=?";
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, employee.getId());
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                //int employee_id=res.getInt("employee_id");
+               // Employees employee = se.getOneById(employee_id);
+                Leaves leave = new Leaves(
+                        res.getInt("id"),
+                        res.getString("leave_type"),
+                        res.getDate("start_date"),
+                        res.getDate("finish_date"),
+                        res.getString("status"),
+                        res.getString("leave_description"),
+                        employee
+                );
+                leavesSet.add(leave);
+
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return leavesSet;
+    }
 }

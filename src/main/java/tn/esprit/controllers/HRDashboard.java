@@ -102,6 +102,7 @@ public void showPendingLeaves(){
             afficherLeaves.setdashbord(this);
             afficherLeaves.setCurrentLeave(pendingLeaves.get(i));
             afficherLeaves.setData(pendingLeaves.get(i));
+            afficherLeaves.setCurrentEmployee(pendingLeaves.get(i).getEmployee());
             cardLayout.getChildren().add(cardBox);
         }
 
