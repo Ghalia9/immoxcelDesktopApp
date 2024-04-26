@@ -43,7 +43,7 @@ public class AddProjectController {
     private void addProject() {
         try {
             // Get data from input fields
-// Get data from input fields
+            // Get data from input fields
             String projectName = projectNameInput.getText();
             String budgetText = budgetInput.getText();
             LocalDate predStartDate = predStartDateInput.getValue();

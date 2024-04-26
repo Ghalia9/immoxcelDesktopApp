@@ -126,14 +126,29 @@
                             <children>
                                 <HBox prefHeight="46.0" prefWidth="939.0">
                                     <children>
+                              <Button fx:id="navigateBackbutton" mnemonicParsing="false" prefHeight="17.0" prefWidth="26.0" style="-fx-background-color: 0;" onAction="#navigateBack">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="28.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@navback.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                                         <Label text="Project Tasks">
                                             <font>
                                                 <Font name="Montserrat Bold Italic" size="24.0" />
                                             </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
                                         </Label>
                                         <Button fx:id="addTaslkButton" mnemonicParsing="false" text="Add">
                                             <HBox.margin>
-                                                <Insets left="10.0" top="5.0" />
+                                                <Insets left="10.0" top="13.0" />
                                             </HBox.margin>
                                         </Button>
                                     </children>

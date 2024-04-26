@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import tn.esprit.models.Projects;
 import tn.esprit.models.Tasks;
 import tn.esprit.services.ServiceTasks;
@@ -52,36 +53,39 @@ public class AddTaskController {
             if (title.isEmpty() || deadline == null) {
                 showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all required fields.");
                 return;
-            }
+            }else{
 
-            // Check if the deadline is in the future
-            LocalDate today = LocalDate.now();
-            if (deadline.isBefore(today)) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Task deadline must be in the future.");
-                return;
-            }
 
-            // Convert LocalDate to Date
-            Date taskDeadline = Date.valueOf(deadline);
+                // Check if the deadline is in the future
+                LocalDate today = LocalDate.now();
+                if (deadline.isBefore(today)) {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Task deadline must be in the future.");
+                    return;
+                }
 
-            // Create Tasks object
-            Tasks task = new Tasks(title, description, taskDeadline, "To Do", null); // Assuming "To Do" status for new tasks
-            task.setProject(project);
+                    // Convert LocalDate to Date
+                    Date taskDeadline = Date.valueOf(deadline);
 
-            // Save task to database or perform any other action
-            serviceTasks.ajouter(task);
+                    // Create Tasks object
+                    Tasks task = new Tasks(title, description, taskDeadline, "To Do", null); // Assuming "To Do" status for new tasks
+                    task.setProject(project);
 
-            // Show success message
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Task added successfully");
+                    // Save task to database or perform any other action
+                    serviceTasks.ajouter(task);
 
-            // Clear input fields
-            clearFields();
+                    // Show success message
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Task added successfully");
 
-            // Notify parent controller that a task was added
-            taskAdded.set(true);
+                    // Clear input fields
+                    clearFields();
 
-            // Close the AddTask window
-            createButton.getScene().getWindow().hide();
+                    // Notify parent controller that a task was added
+                    taskAdded.set(true);
+
+                    // Close the AddTask window
+                    createButton.getScene().getWindow().hide();
+                }
+
 
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to add task. Check input data.");

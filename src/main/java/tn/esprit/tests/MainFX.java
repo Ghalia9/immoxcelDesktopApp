@@ -12,7 +12,7 @@ public class MainFX extends Application {
         Parent root = loader.load();
         Scene scene=new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("mine");
+        stage.setTitle("Projects");
         stage.show();
     }
     public static void main(String[] args) {

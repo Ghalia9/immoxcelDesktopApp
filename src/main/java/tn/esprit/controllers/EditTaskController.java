@@ -4,6 +4,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import tn.esprit.models.Tasks;
 import tn.esprit.services.ServiceTasks;
 
@@ -62,38 +63,38 @@ public class EditTaskController {
             if (title.isEmpty()  || deadline == null || status.isEmpty()) {
                 showAlert(Alert.AlertType.ERROR, "Error", "All fields are required.");
                 return; // Exit the method if any field is empty
+            }else {
+                Date taskDeadline = Date.valueOf(deadline);
+
+                // Update the existing task
+                task.setTitle(title);
+                task.setDescription(description);
+                task.setDeadline(taskDeadline);
+                task.setStatus(status);
+
+                // Check if the status is set to "Done" and update the completion date accordingly
+                if (status.equals("Done")) {
+                    LocalDate completionDate = LocalDate.now(); // Assuming completion date is set to current date
+                    task.setCompletion_date(Date.valueOf(completionDate));
+                } else {
+                    task.setCompletion_date(null); // Set completion date to null
+                }
+
+                // Call service to update task in database
+                serviceTasks.modifier(task);
+
+                // Show success message
+                showAlert(Alert.AlertType.INFORMATION, "Success", "Task updated successfully");
+
+                // Updating Tasks
+                showTasksController.refreshTasks();
+
+                // Notify ShowTasksController that a task was updated
+                taskUpdated.set(true);
+
+                // Close the EditTask window
+                updateButton.getScene().getWindow().hide();
             }
-
-            Date taskDeadline = Date.valueOf(deadline);
-
-            // Update the existing task
-            task.setTitle(title);
-            task.setDescription(description);
-            task.setDeadline(taskDeadline);
-            task.setStatus(status);
-
-            // Check if the status is set to "Done" and update the completion date accordingly
-            if (status.equals("Done")) {
-                LocalDate completionDate = LocalDate.now(); // Assuming completion date is set to current date
-                task.setCompletion_date(Date.valueOf(completionDate));
-            } else {
-                task.setCompletion_date(null); // Set completion date to null
-            }
-
-            // Call service to update task in database
-            serviceTasks.modifier(task);
-
-            // Show success message
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Task updated successfully");
-
-            // Updating projects
-            showTasksController.refreshTasks();
-
-            // Notify ShowTasksController that a task was updated
-            taskUpdated.set(true);
-
-            // Close the EditTask window
-            updateButton.getScene().getWindow().hide();
 
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Failed to update task. Check input data.");

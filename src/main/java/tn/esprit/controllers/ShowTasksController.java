@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
@@ -15,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tn.esprit.models.Projects;
 import tn.esprit.models.Tasks;
@@ -86,6 +88,9 @@ public class ShowTasksController {
 
     @FXML
     private Text username;
+
+    @FXML
+    private Button navigateBackbutton;
     private final ServiceTasks serviceTasks = new ServiceTasks();
 private Projects project;
 
@@ -172,12 +177,13 @@ private Projects project;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/AddTask.fxml"));
             AnchorPane root1 = fxmlLoader.load();
             Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
 
             // Pass projectAdded property to AddProjectController
             AddTaskController addTaskController = fxmlLoader.getController();
             addTaskController.setTaskAddedProperty(taskAdded);
-addTaskController.setProject(project);
+            addTaskController.setProject(project);
             stage.setOnHidden(event -> {
                 taskAdded.set(true); // When AddProject window is closed, set projectAdded to true
             });
@@ -202,6 +208,24 @@ addTaskController.setProject(project);
             stage.show();
         } catch (Exception e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    @FXML
+    public void navigateBack() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ShowProjects.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root1));
+
+            ProjectsDashboardController projectsDashboardController = fxmlLoader.getController();
+            projectsDashboardController.refreshProjects(); // Refresh projects when navigating back
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
