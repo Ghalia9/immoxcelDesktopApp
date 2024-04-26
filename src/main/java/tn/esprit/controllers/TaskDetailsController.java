@@ -63,6 +63,7 @@ public class TaskDetailsController {
             stage.setTitle("Edit Project");
             stage.setScene(new Scene(parent));
             stage.showAndWait();
+            editButton.getScene().getWindow().hide();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

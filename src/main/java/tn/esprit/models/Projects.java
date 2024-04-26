@@ -2,6 +2,7 @@ package tn.esprit.models;
 
 import java.util.Collections;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Projects {
@@ -13,7 +14,7 @@ public class Projects {
     private float budget;
     private float actual_cost;
 
-    private Tasks[] listoftasks;
+    private List<Tasks> tasks;
 
     public Projects(String project_name, Date date_pred_start, Date date_pred_finish, float budget) {
         this.project_name = project_name;
@@ -80,12 +81,12 @@ public class Projects {
         this.budget = budget;
     }
 
-    public Tasks[] getListoftasks() {
-        return listoftasks;
+    public List<Tasks> getListoftasks() {
+        return tasks;
     }
 
-    public void setListoftasks(Tasks[] listoftasks) {
-        this.listoftasks = listoftasks;
+    public void setListoftasks(List<Tasks> listoftasks) {
+        this.tasks = listoftasks;
     }
 
     public void setActual_cost(float actual_cost) {
@@ -114,7 +115,7 @@ public class Projects {
                 ", date_completion=" + date_completion +
                 ", budget=" + budget +
                 ", actual_cost=" + actual_cost +
-                ", listoftasks=" + listoftasks +
+                ", listoftasks=" + tasks +
                 '}';
     }
 

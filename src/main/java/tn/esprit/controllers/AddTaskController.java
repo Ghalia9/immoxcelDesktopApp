@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import tn.esprit.models.Projects;
 import tn.esprit.models.Tasks;
 import tn.esprit.services.ServiceTasks;
 
@@ -30,9 +31,13 @@ public class AddTaskController {
 
     private final ServiceTasks serviceTasks = new ServiceTasks();
     private BooleanProperty taskAdded = new SimpleBooleanProperty(false);
-
+    private Projects project;
     public void setTaskAddedProperty(BooleanProperty taskAdded) {
         this.taskAdded = taskAdded;
+    }
+
+    public void setProject(Projects project){
+        this.project=project;
     }
 
     @FXML
@@ -44,8 +49,15 @@ public class AddTaskController {
             LocalDate deadline = taskDeadlineInput.getValue();
 
             // Validate input
-            if (title.isEmpty() || description.isEmpty() || deadline == null) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields.");
+            if (title.isEmpty() || deadline == null) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all required fields.");
+                return;
+            }
+
+            // Check if the deadline is in the future
+            LocalDate today = LocalDate.now();
+            if (deadline.isBefore(today)) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Task deadline must be in the future.");
                 return;
             }
 
@@ -54,6 +66,7 @@ public class AddTaskController {
 
             // Create Tasks object
             Tasks task = new Tasks(title, description, taskDeadline, "To Do", null); // Assuming "To Do" status for new tasks
+            task.setProject(project);
 
             // Save task to database or perform any other action
             serviceTasks.ajouter(task);
@@ -75,6 +88,7 @@ public class AddTaskController {
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);

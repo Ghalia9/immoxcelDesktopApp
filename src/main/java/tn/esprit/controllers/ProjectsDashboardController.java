@@ -113,6 +113,7 @@ public class ProjectsDashboardController {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ProjectDetails.fxml"));
             AnchorPane root1 = fxmlLoader.load();
             Stage stage = new Stage();
+            stage.setTitle("Project Details");
             stage.setScene(new Scene(root1));
 
             ProjectDetailsController projectDetails = fxmlLoader.getController();

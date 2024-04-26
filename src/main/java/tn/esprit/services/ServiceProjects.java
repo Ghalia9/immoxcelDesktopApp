@@ -1,10 +1,13 @@
 package tn.esprit.services;
 
+import javafx.concurrent.Task;
 import tn.esprit.models.Projects;
 import tn.esprit.utils.DataSource;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ServiceProjects implements IService<Projects>{
@@ -108,4 +111,22 @@ public class ServiceProjects implements IService<Projects>{
             }
             return projectsSet;
         }
+    public List<String> getAllProjectNames() {
+        List<String> projectNames = new ArrayList<>();
+
+        Set<Projects> projects = getAll();
+
+        for (Projects project : projects) {
+            projectNames.add(project.getProject_name());
+        }
+
+        return projectNames;
+    }
+    public boolean isProjectNameUnique(String projectName) {
+        // Assuming you have a list of existing project names
+        List<String> existingProjectNames = getAllProjectNames();
+
+        // Check if the provided project name already exists in the list
+        return !existingProjectNames.contains(projectName);
+    }
 }

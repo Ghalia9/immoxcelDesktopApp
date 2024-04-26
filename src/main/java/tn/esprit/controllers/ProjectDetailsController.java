@@ -1,8 +1,10 @@
 package tn.esprit.controllers;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import tn.esprit.models.Projects;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,6 +36,9 @@ public class ProjectDetailsController {
 
     @FXML
     private Button editButtton;
+
+    @FXML
+    private Button tasksButton;
 
     private Projects project;
 
@@ -72,6 +77,39 @@ public class ProjectDetailsController {
             System.out.println(e.getMessage());
         }
     }
+
+    @FXML
+    void handleProjectTasks(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ShowTasks.fxml"));
+            Parent parent = fxmlLoader.load();
+
+            ShowTasksController showTasksController = fxmlLoader.getController();
+            showTasksController.setData(project); // Pass the Projects object
+            showTasksController.refreshTasks();
+
+            // Close all open windows except the ShowTasks stage
+            closeAllWindowsExceptShowTasks();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Tasks");
+            stage.setScene(new Scene(parent));
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void closeAllWindowsExceptShowTasks() {
+        for (Window window : Window.getWindows()) {
+            if (window instanceof Stage) {
+                ((Stage) window).close();
+            }
+        }
+        tasksButton.getScene().getWindow().hide();
+    }
+
 
     private String formatDate(Date date) {
         return date != null ? date.toString() : "Not set yet";

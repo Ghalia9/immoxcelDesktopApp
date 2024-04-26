@@ -14,7 +14,7 @@
    <children>
       <Pane prefHeight="294.0" prefWidth="413.0">
          <children>
-            <VBox prefHeight="294.0" prefWidth="414.0">
+            <VBox alignment="CENTER" prefHeight="294.0" prefWidth="414.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="538.0">
                      <children>
@@ -26,41 +26,40 @@
                               <Font name="Montserrat Regular" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="projectName" text="Immobilier Ghalia">
+                        <Label fx:id="projectName" prefHeight="15.0" prefWidth="174.0" text="Immobilier Ghalia">
                            <font>
                               <Font name="Montserrat Bold Italic" size="12.0" />
                            </font>
                         </Label>
+                        <Separator prefHeight="8.0" prefWidth="58.0" visible="false" />
+                        <Button mnemonicParsing="false" onAction="#handleEditProject" text="Edit" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="26.0" prefWidth="538.0">
                      <children>
-                        <Label text="Predicted Start Date" textFill="#00c93c">
+                        <Label prefHeight="18.0" prefWidth="119.0" text="Predicted Start Date:" textFill="#00c93c">
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Label text="Predicted Finish Date" textFill="#ff7429">
+                        <Label fx:id="pred_start_date" prefHeight="18.0" prefWidth="67.0" text="22/23/2345">
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets right="5.0" />
                            </HBox.margin>
                         </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="17.0" prefWidth="538.0">
-                     <children>
-                        <Label fx:id="pred_start_date" text="22/23/2345">
+                        <Label prefHeight="18.0" prefWidth="125.0" text="Predicted Finish Date:" textFill="#ff7429">
                            <HBox.margin>
-                              <Insets right="30.0" />
+                              <Insets />
                            </HBox.margin>
                         </Label>
                         <Label fx:id="pred_finish_date" text="22/56/3245">
                            <HBox.margin>
-                              <Insets left="30.0" />
+                              <Insets left="5.0" />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="17.0" prefWidth="538.0" />
                   <VBox alignment="CENTER" prefHeight="71.0" prefWidth="538.0">
                      <children>
                         <Label text="Completion Date" textFill="RED" />
@@ -105,11 +104,14 @@
                         <Insets bottom="20.0" top="20.0" />
                      </opaqueInsets>
                   </Separator>
-                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="538.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#handleEditProject" text="Edit" />
-                     </children>
-                  </HBox>
+                  <Button fx:id="tasksButton" mnemonicParsing="false" text="Tasks" onAction="#handleProjectTasks">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="100.0" right="100.0" top="5.0" />
+                     </padding>
+                  </Button>
                </children>
             </VBox>
          </children>

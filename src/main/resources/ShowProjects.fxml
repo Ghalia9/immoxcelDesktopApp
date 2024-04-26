@@ -138,11 +138,11 @@
                               </Button>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="405.0" prefWidth="939.0">
+                        <HBox alignment="CENTER" prefHeight="600.0" prefWidth="939.0">
                            <children>
-                              <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" prefHeight="578.0" prefWidth="904.0" styleClass="transparent" stylesheets="@style.css">
+                              <ScrollPane fx:id="scroll" fitToHeight="true" fitToWidth="true" prefHeight="508.0" prefWidth="904.0" styleClass="transparent" stylesheets="@style.css">
                                  <content>
-                                    <GridPane fx:id="grid" alignment="CENTER" prefHeight="443.0" prefWidth="902.0" styleClass="root" stylesheets="@style.css">
+                                    <GridPane fx:id="grid" alignment="CENTER" prefHeight="471.0" prefWidth="902.0" styleClass="root" stylesheets="@style.css">
                                        <rowConstraints>
                                           <RowConstraints />
                                        </rowConstraints>

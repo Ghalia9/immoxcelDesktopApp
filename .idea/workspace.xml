@@ -5,36 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceTasks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EditTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/TaskDetails.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/TaskItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceTasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceTasks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AddProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddProject.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/EditProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/EditProject.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/EditTask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/EditTask.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AddProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddProject.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/EditProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EditProject.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ProjectDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ProjectDetails.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddProjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddProjectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditProjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditProjectController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectDetailsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TaskDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TaskDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" afterDir="false" />
     </list>
@@ -69,28 +58,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "ProjectsManagement",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Users/moham/Desktop/Esprit/3 eme A/S2/JAVA/javafx-sdk-22/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ProjectsManagement&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/Desktop/Esprit/3 eme A/S2/JAVA/javafx-sdk-22/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\moham\Desktop\Esprit\3 eme A\S2\JAVA\immoxcelRemote\src\main\resources" />
@@ -141,7 +130,8 @@
       <workItem from="1713882539667" duration="4527000" />
       <workItem from="1713905103081" duration="10064000" />
       <workItem from="1713946622883" duration="8957000" />
-      <workItem from="1713987981108" duration="13176000" />
+      <workItem from="1713987981108" duration="13653000" />
+      <workItem from="1714033277229" duration="20250000" />
     </task>
     <servers />
   </component>

@@ -62,10 +62,40 @@ public class EditProjectController {
         try {
             // Get data from input fields
             String projectName = projectNameInput.getText();
-            float budget = Float.parseFloat(budgetInput.getText());
+            String budgetText = budgetInput.getText();
             LocalDate predStartDate = predStartDateInput.getValue();
             LocalDate predFinishDate = predFinishDateInput.getValue();
             LocalDate completionDate = completionDateInput.getValue(); // Might be null
+
+            // Check if any required input field is null or empty
+            if (projectName.isEmpty() || budgetText.isEmpty() || predStartDate == null || predFinishDate == null) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all required fields");
+                return; // Exit the method early if any required field is empty or null
+            }
+
+            float budget = Float.parseFloat(budgetText);
+
+// Check if project name is unique if it has been modified
+            if (!projectName.equals(project.getProject_name()) && !serviceProjects.isProjectNameUnique(projectName)) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Project name must be unique");
+                return; // Exit the method if project name is not unique
+            }
+
+            // Check if predicted finish date is after predicted start date
+            if (!predFinishDate.isAfter(predStartDate)) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Predicted finish date must be after predicted start date");
+                return; // Exit the method if predicted finish date is not after predicted start date
+            }
+
+            // Validate completion date if not null
+            Date completion = null;
+            if (completionDate != null) {
+                completion = Date.valueOf(completionDate);
+                if (completion.before(Date.valueOf(predStartDate))) {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Completion date must be after predicted start date");
+                    return; // Exit the method if completion date is before predicted start date
+                }
+            }
 
             float cost;
             if (!costInput.getText().isEmpty()) {
@@ -75,9 +105,8 @@ public class EditProjectController {
             }
 
             // Convert LocalDate to Date
-            Date startDate = (predStartDate != null) ? Date.valueOf(predStartDate) : null;
-            Date finishDate = (predFinishDate != null) ? Date.valueOf(predFinishDate) : null;
-            Date completion = (completionDate != null) ? Date.valueOf(completionDate) : null;
+            Date startDate = Date.valueOf(predStartDate);
+            Date finishDate = Date.valueOf(predFinishDate);
 
             // Update the existing project
             project.setProject_name(projectName);
@@ -109,6 +138,8 @@ public class EditProjectController {
             e.printStackTrace();
         }
     }
+
+
 
 
     private void showAlert(Alert.AlertType type, String title, String content) {

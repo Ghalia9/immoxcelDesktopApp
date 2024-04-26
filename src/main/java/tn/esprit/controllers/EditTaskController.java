@@ -3,11 +3,7 @@ package tn.esprit.controllers;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import tn.esprit.models.Tasks;
 import tn.esprit.services.ServiceTasks;
 
@@ -28,6 +24,10 @@ public class EditTaskController {
     @FXML
     private TextField taskTitleInput;
 
+
+    @FXML
+    private TextField taskStatusInput;
+
     @FXML
     private Button updateButton;
 
@@ -46,7 +46,7 @@ public class EditTaskController {
         taskTitleInput.setText(task.getTitle());
         taskDescriptionInput.setText(task.getDescription());
         taskDeadlineInput.setValue(convertToLocalDate(task.getDeadline()));
-        taskCompletionDateInput.setValue(convertToLocalDate(task.getCompletion_date()));
+        taskStatusInput.setText(task.getStatus());
     }
 
     @FXML
@@ -56,23 +56,29 @@ public class EditTaskController {
             String title = taskTitleInput.getText();
             String description = taskDescriptionInput.getText();
             LocalDate deadline = taskDeadlineInput.getValue();
-            LocalDate completionDate = taskCompletionDateInput.getValue();
+            String status = taskStatusInput.getText();
 
-            // Validate input
-            if (title.isEmpty() || description.isEmpty() || deadline == null || completionDate == null) {
-                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields.");
-                return;
+            // Perform input validation
+            if (title.isEmpty()  || deadline == null || status.isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, "Error", "All fields are required.");
+                return; // Exit the method if any field is empty
             }
 
-            // Convert LocalDate to Date
             Date taskDeadline = Date.valueOf(deadline);
-            Date taskCompletionDate = Date.valueOf(completionDate);
 
             // Update the existing task
             task.setTitle(title);
             task.setDescription(description);
             task.setDeadline(taskDeadline);
-            task.setCompletion_date(taskCompletionDate);
+            task.setStatus(status);
+
+            // Check if the status is set to "Done" and update the completion date accordingly
+            if (status.equals("Done")) {
+                LocalDate completionDate = LocalDate.now(); // Assuming completion date is set to current date
+                task.setCompletion_date(Date.valueOf(completionDate));
+            } else {
+                task.setCompletion_date(null); // Set completion date to null
+            }
 
             // Call service to update task in database
             serviceTasks.modifier(task);
@@ -94,6 +100,7 @@ public class EditTaskController {
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);

@@ -87,6 +87,7 @@ public class ShowTasksController {
     @FXML
     private Text username;
     private final ServiceTasks serviceTasks = new ServiceTasks();
+private Projects project;
 
     private final BooleanProperty taskAdded = new SimpleBooleanProperty(false);
     public void refreshTasks() {
@@ -111,7 +112,7 @@ public class ShowTasksController {
 
 
         // Load tasks initially
-        loadTasks();
+        //loadTasks();
     }
 
     private void loadTasks() {
@@ -121,7 +122,7 @@ public class ShowTasksController {
         gridDone.getChildren().clear();
 
         // Retrieve tasks from the database
-        Set<Tasks> tasksList = serviceTasks.getAll();
+        Set<Tasks> tasksList = serviceTasks.getTasksByProjectId(project.getId());
 
         for (Tasks task : tasksList) {
             try {
@@ -176,7 +177,7 @@ public class ShowTasksController {
             // Pass projectAdded property to AddProjectController
             AddTaskController addTaskController = fxmlLoader.getController();
             addTaskController.setTaskAddedProperty(taskAdded);
-
+addTaskController.setProject(project);
             stage.setOnHidden(event -> {
                 taskAdded.set(true); // When AddProject window is closed, set projectAdded to true
             });
@@ -202,5 +203,9 @@ public class ShowTasksController {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    public void setData(Projects project) {
+        this.project=project;
     }
 }

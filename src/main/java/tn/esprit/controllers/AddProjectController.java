@@ -12,6 +12,7 @@ import tn.esprit.services.ServiceProjects;
 
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.List;
 
 public class AddProjectController {
 
@@ -42,31 +43,51 @@ public class AddProjectController {
     private void addProject() {
         try {
             // Get data from input fields
+// Get data from input fields
             String projectName = projectNameInput.getText();
-            float budget = Float.parseFloat(budgetInput.getText());
+            String budgetText = budgetInput.getText();
             LocalDate predStartDate = predStartDateInput.getValue();
             LocalDate predFinishDate = predFinishDateInput.getValue();
 
-            // Convert LocalDate to Date
-            Date startDate = Date.valueOf(predStartDate);
-            Date finishDate = Date.valueOf(predFinishDate);
+            // Check if any input field is null or empty
+            if (projectName.isEmpty() || budgetText.isEmpty() || predStartDate == null || predFinishDate == null) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Please fill in all fields");
+                return; // Exit the method early if any field is empty or null
+            }
 
-            // Create Projects object
-            Projects project = new Projects(projectName, startDate, finishDate, budget);
-System.out.println(project);
-            // Save project to database or perform any other action
-            serviceProjects.ajouter(project);
-            // Show success message
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Project added successfully");
+            // Convert budget input to float
+            float budget = Float.parseFloat(budgetText);
 
-            // Clear input fields
-            clearFields();
+            // Check if project name is unique
+            if (serviceProjects.isProjectNameUnique(projectName)) {
+                // Check if predicted finish date is after predicted start date
+                if (predFinishDate.isAfter(predStartDate)) {
+                    // Convert LocalDate to Date
+                    Date startDate = Date.valueOf(predStartDate);
+                    Date finishDate = Date.valueOf(predFinishDate);
 
-            // Notify ProjectsDashboardController that a project was added
-            projectAdded.set(true);
+                    // Create Projects object
+                    Projects project = new Projects(projectName, startDate, finishDate, budget);
 
-            // Close the AddProject window
-            createButton.getScene().getWindow().hide();
+                    // Save project to database or perform any other action
+                    serviceProjects.ajouter(project);
+                    // Show success message
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Project added successfully");
+
+                    // Clear input fields
+                    clearFields();
+
+                    // Notify ProjectsDashboardController that a project was added
+                    projectAdded.set(true);
+
+                    // Close the AddProject window
+                    createButton.getScene().getWindow().hide();
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Error", "Predicted finish date must be after predicted start date");
+                }
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Error", "Project name must be unique");
+            }
 
         } catch (NumberFormatException e) {
             showAlert(Alert.AlertType.ERROR, "Error", "Budget must be a valid number");
@@ -75,6 +96,7 @@ System.out.println(project);
             e.printStackTrace();
         }
     }
+
 
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);

@@ -12,6 +12,8 @@ public class Tasks {
     private String status;
     private Date completion_date;
 
+    private Projects project;
+
     public Tasks(int id, String title, String description, Date deadline, String status, Date completion_date) {
         this.id = id;
         this.title = title;
@@ -96,4 +98,13 @@ public class Tasks {
                 ", completion_date=" + completion_date +
                 '}';
     }
+
+    public Projects getProject() {
+        return project;
+    }
+
+    public void setProject(Projects project) {
+        this.project = project;
+    }
+
 }

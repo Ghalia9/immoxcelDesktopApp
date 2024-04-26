@@ -15,7 +15,7 @@ public class ServiceTasks implements IService<Tasks> {
 
     @Override
     public void ajouter(Tasks tasks) {
-        String req = "INSERT INTO `task` (`task_title`, `task_description`, `task_deadline`, `task_status`, `task_completion_date`) VALUES (?,?,?,?,?)";
+        String req = "INSERT INTO `task` (`task_title`, `task_description`, `task_deadline`, `task_status`, `task_completion_date` , `project_id`) VALUES (?,?,?,?,?,?)";
 
         try {
             PreparedStatement ps = cnx.prepareStatement(req);
@@ -24,7 +24,7 @@ public class ServiceTasks implements IService<Tasks> {
             ps.setDate(3, tasks.getDeadline());
             ps.setString(4, "To Do");
             ps.setDate(5, tasks.getCompletion_date());
-
+            ps.setInt(6,tasks.getProject().getId());
             ps.executeUpdate();
             System.out.println("Task added!");
         } catch (SQLException e) {
@@ -127,5 +127,30 @@ public class ServiceTasks implements IService<Tasks> {
         }
 
         return tasksSet;
+    }
+    public Set<Tasks> getTasksByProjectId(int projectId) {
+        Set<Tasks> tasks = new HashSet<>();
+        String query = "SELECT * FROM task WHERE project_id = ?";
+
+        try {
+            PreparedStatement ps = cnx.prepareStatement(query);
+ps.setInt(1,projectId);
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                Tasks task = new Tasks(
+                        resultSet.getInt("id"),
+                        resultSet.getString("task_title"),
+                        resultSet.getString("task_description"),
+                        resultSet.getDate("task_deadline"),
+                        resultSet.getString("task_status"),
+                        resultSet.getDate("task_completion_date")
+                );
+                tasks.add(task);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error getting all tasks: " + e.getMessage());
+        }
+
+        return tasks;
     }
 }
