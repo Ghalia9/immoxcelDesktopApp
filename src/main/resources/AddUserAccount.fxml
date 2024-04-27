@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="1292.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AddAccountController">
+   <children>
+      <HBox layoutY="135.0" prefHeight="502.0" prefWidth="834.0">
+         <children>
+            <ScrollPane prefHeight="502.0" prefWidth="842.0">
+               <content>
+                  <VBox fx:id="employeesLayout" prefHeight="501.0" prefWidth="819.0" styleClass="white-background" stylesheets="@style.css">
+                     <children>
+                        <HBox prefHeight="55.0" prefWidth="651.0" styleClass="light-grey-background" stylesheets="@style.css">
+                           <children>
+                              <ImageView fitHeight="55.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@utilisateur.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" prefHeight="55.0" prefWidth="360.0" text="Full Name">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="57.0" layoutY="10.0" prefHeight="55.0" prefWidth="354.0" text="Function">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="194.0" layoutY="10.0" prefHeight="55.0" prefWidth="325.0" text="Action">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Label layoutX="853.0" layoutY="284.0" text="Employee">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="853.0" layoutY="332.0" text="Username">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="852.0" layoutY="383.0" text="Email">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="852.0" layoutY="430.0" text="Password">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="852.0" layoutY="487.0" text="Confirm Password">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="fusername" layoutX="1039.0" layoutY="328.0" />
+      <TextField fx:id="email" layoutX="1039.0" layoutY="379.0" />
+      <PasswordField fx:id="password" layoutX="1040.0" layoutY="431.0" />
+      <PasswordField fx:id="confirm_password" layoutX="1039.0" layoutY="488.0" />
+      <Button layoutX="954.0" layoutY="542.0" mnemonicParsing="false" onAction="#AddUserAction" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: #748CF1; -fx-border-color: #748CF1;" styleClass="logout_btn" stylesheets="@style.css" text="Add" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="82.0" fitWidth="128.0" layoutX="985.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@employees.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="employeeName" layoutX="1039.0" layoutY="280.0" prefHeight="26.0" prefWidth="149.0" />
+      <Pane prefHeight="92.0" prefWidth="1292.0" styleClass="top_bar" stylesheets="@style.css">
+         <children>
+            <ImageView fitHeight="98.0" fitWidth="200.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo-ct.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="searchEmployee" layoutX="942.0" layoutY="22.0" onKeyTyped="#handleSearch" prefHeight="42.0" prefWidth="246.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+   </children>
+</Pane>
