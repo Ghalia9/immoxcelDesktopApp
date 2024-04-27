@@ -4,6 +4,7 @@ import Entities.Capital;
 import Entities.Supplier;
 import Entities.Transaction;
 import Utils.DataSource;
+import javafx.scene.control.Alert;
 
 import java.sql.*;
 import java.time.ZoneId;
@@ -14,89 +15,65 @@ import java.time.LocalDateTime;
 
 public class ServiceTransaction implements Iservice<Transaction> {
     Connection cnx = DataSource.getInstance().getCnx();
+    Alert alert;
     @Override
     public void ajouter(Transaction transaction) throws SQLException {
+        System.out.println(" i am here ");
         // Retrieve current capital data from the database
         Capital currentCapital = retrieveCurrentCapitalFromDatabase();
-        Date utilDate = new Date();
 
+        Date utilDate = new Date();
         // Convert java.util.Date to java.sql.Date
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-
-
+        transaction.setDate(sqlDate);
+        // Insert the transaction into the database
         // Ensure currentCapital is not null before proceeding
         if (currentCapital == null) {
             System.out.println("Error: Unable to retrieve current capital data from the database.");
             return;
         }
-
         // Compare currentCapital data with the transaction details
         float totalAmount = transaction.getQuantity() * transaction.getCost();
         String type = transaction.getType();
         if ("Salary".equals(type)){
             if(currentCapital.getSalary() < totalAmount) {
                 System.out.println("You cannot proceed. Insufficient salary.");
-                return;
+
             } else {
                 currentCapital.setSalary(currentCapital.getSalary() - totalAmount);
                 currentCapital.setBig_capital(currentCapital.getBig_capital() - totalAmount);
+                addTransaction(transaction,currentCapital,totalAmount);
             }
         } else if ("Expenses".equals(type)){
             if(currentCapital.getExepenses() < totalAmount) {
                 System.out.println("You cannot proceed. Insufficient expenses.");
-                return;
+
             } else {
                 currentCapital.setExepenses(currentCapital.getExepenses() - totalAmount);
                 currentCapital.setBig_capital(currentCapital.getBig_capital() - totalAmount);
+                addTransaction(transaction,currentCapital,totalAmount);
             }
-        } else {
+        } else if ("Income".equals(type)){
             currentCapital.setProfits(currentCapital.getProfits() + totalAmount);
+
+            System.out.println("  avant add statement profits equal to  "+ currentCapital.getProfits());
+            double newValueProfits=currentCapital.getProfits() * (0.1);
+            float insertProfitspart= (float)newValueProfits;
+            System.out.println("la valeur de new "+newValueProfits);
+            float exepenses= currentCapital.getExepenses()+insertProfitspart;
+            float salary= currentCapital.getSalary()+insertProfitspart;
+
             currentCapital.setBig_capital(currentCapital.getBig_capital() + totalAmount);
-        }
-
-
-        transaction.setDate(sqlDate);
-        // Insert the transaction into the database
-        String insertTransactionQuery = "INSERT INTO expenses (Type,Date_e, quantity_e, Description, coast, totalamount, archived,supplier_id) VALUES (?,?, ?, ?, ?, ?, false,?)";
-        try (PreparedStatement ps = cnx.prepareStatement(insertTransactionQuery)) {
-//            System.out.println("the supplier inside Transaction add = "+transaction.getSupplier_entity().getCompany_name());
-            ps.setString(1, transaction.getType());
-            ps.setDate(2, transaction.getDate());
-            ps.setFloat(3, transaction.getQuantity());
-            ps.setString(4, transaction.getDescription());
-            ps.setFloat(5, transaction.getCost());
-            ps.setFloat(6, totalAmount);
-           ps.setInt(7, transaction.getSupplier_entity().getId_supp());
-
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected > 0) {
-                System.out.println("Transaction added successfully!");
-            } else {
-                System.out.println("Failed to add transaction!");
-                // Update capital entity in the database
-                String updateCapitalQuery = "UPDATE capital SET salary=?, expensess=?, profits=?, big_capital=? WHERE id=1";
-                try (PreparedStatement updateStatement = cnx.prepareStatement(updateCapitalQuery)) {
-                    updateStatement.setFloat(1, currentCapital.getSalary());
-                    updateStatement.setFloat(2, currentCapital.getExepenses());
-                    updateStatement.setFloat(3, currentCapital.getProfits());
-                    updateStatement.setFloat(4, currentCapital.getBig_capital());
-                    int rowsAffectedCapital = updateStatement.executeUpdate();
-                    if (rowsAffectedCapital <= 0) {
-                        System.out.println("Failed to update capital entity.");
-                        return;
-                    }
-                } catch (SQLException e) {
-                    System.err.println("Error while updating capital entity: " + e.getMessage());
-                    throw e;
-                }
-            }
-        } catch (SQLException e) {
-            System.err.println("Error while adding transaction: " + e.getMessage());
-            throw e;
+            currentCapital.setExepenses(exepenses);
+            currentCapital.setSalary(salary);
+            addTransaction(transaction,currentCapital,totalAmount);
         }
     }
     @Override
     public void modifier(Transaction transaction) throws SQLException {
+        float result , newone;
+        float ancientTotalAmount= transaction.getTotalamount();
+
         // Retrieve current capital data from the database
         Capital currentCapital = retrieveCurrentCapitalFromDatabase();
         // Ensure currentCapital is not null before proceeding
@@ -110,17 +87,32 @@ public class ServiceTransaction implements Iservice<Transaction> {
         if ("Salary".equals(type)){
             if(currentCapital.getSalary() < totalAmount) {
                 System.out.println("You cannot proceed. Insufficient salary.");
-                return;
-            } else {
-                currentCapital.setSalary(currentCapital.getSalary() - totalAmount);
+                displayErrorAlert("Insufficient salary, you cannot proceed" );
+            } else if (currentCapital.getSalary() == totalAmount){
+                System.out.println("nothing to change ");
+                currentCapital.setSalary(currentCapital.getSalary());
+            }
+            else
+            {
+                result=ancientTotalAmount - totalAmount;
+                newone=currentCapital.getSalary()-result;
+                currentCapital.setSalary(newone);
                 currentCapital.setBig_capital(currentCapital.getBig_capital() - totalAmount);
             }
         } else if ("Expenses".equals(type)){
             if(currentCapital.getExepenses() < totalAmount) {
                 System.out.println("You cannot proceed. Insufficient expenses.");
-                return;
-            } else {
-                currentCapital.setExepenses(currentCapital.getExepenses() - totalAmount);
+                displayErrorAlert("Insufficient salary, you cannot proceed" );
+            }
+            else if (currentCapital.getExepenses() == totalAmount){
+                System.out.println("nothing to change ");
+                currentCapital.setExepenses(currentCapital.getExepenses());
+            }
+            else
+            {
+                result=ancientTotalAmount - totalAmount;
+                newone=currentCapital.getExepenses()-result;
+                currentCapital.setExepenses(newone);
                 currentCapital.setBig_capital(currentCapital.getBig_capital() - totalAmount);
             }
         } else {
@@ -145,22 +137,8 @@ public class ServiceTransaction implements Iservice<Transaction> {
             int rowsAffected = ps.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Transaction updated successfully!");
-                // Update capital entity in the database
-                String updateCapitalQuery = "UPDATE capital SET salary=?, expensess=?, profits=?, big_capital=? WHERE id=1";
-                try (PreparedStatement updateStatement = cnx.prepareStatement(updateCapitalQuery)) {
-                    updateStatement.setFloat(1, currentCapital.getSalary());
-                    updateStatement.setFloat(2, currentCapital.getExepenses());
-                    updateStatement.setFloat(3, currentCapital.getProfits());
-                    updateStatement.setFloat(4, currentCapital.getBig_capital());
-                    int rowsAffectedCapital = updateStatement.executeUpdate();
-                    if (rowsAffectedCapital <= 0) {
-                        System.out.println("Failed to update capital entity.");
-                        return;
-                    }
-                } catch (SQLException e) {
-                    System.err.println("Error while updating capital entity: " + e.getMessage());
-                    throw e;
-                }
+                // Updating capital entity in the database
+                addCapital(currentCapital);
             } else {
                 System.out.println("Failed to update transaction!");
             }
@@ -259,12 +237,8 @@ public class ServiceTransaction implements Iservice<Transaction> {
             System.err.println("Error while fetching transaction by ID: " + e.getMessage());
 
         }
-
         return supplier;
-
     }
-
-
     @Override
     public Set<Transaction> getAll()     {
         Set<Transaction> Trans = new HashSet<>();
@@ -293,7 +267,7 @@ public class ServiceTransaction implements Iservice<Transaction> {
 
     // Method to retrieve current capital data from the database
     public Capital retrieveCurrentCapitalFromDatabase() {
-        String query = "SELECT salary, expensess, profits, big_capital FROM capital WHERE id = 1";
+        String query = "SELECT salary,expensess, profits,funds FROM capital WHERE id = 1";
         Capital capitalEntity = null;
 
         try (Statement statement = cnx.createStatement();
@@ -303,12 +277,61 @@ public class ServiceTransaction implements Iservice<Transaction> {
                 capitalEntity.setSalary(resultSet.getFloat("salary"));
                 capitalEntity.setExepenses(resultSet.getFloat("expensess"));
                 capitalEntity.setProfits(resultSet.getFloat("profits"));
-                capitalEntity.setBig_capital(resultSet.getFloat("big_capital"));
+                capitalEntity.setBig_capital(resultSet.getFloat("funds"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return capitalEntity;
+    }
+
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    private void addTransaction(Transaction transaction, Capital currentCapital,float totalAmount){
+        String insertTransactionQuery = "INSERT INTO expenses (Type,Date_e, quantity_e, Description, coast, totalamount, archived,supplier_id) VALUES (?,?, ?, ?, ?, ?, false,?)";
+        try (PreparedStatement ps = cnx.prepareStatement(insertTransactionQuery)) {
+            ps.setString(1, transaction.getType());
+            ps.setDate(2, transaction.getDate());
+            ps.setFloat(3, transaction.getQuantity());
+            ps.setString(4, transaction.getDescription());
+            ps.setFloat(5, transaction.getCost());
+            ps.setFloat(6, totalAmount);
+            ps.setInt(7, transaction.getSupplier_entity().getId_supp());
+
+            int rowsAffected = ps.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Transaction added successfully!");
+                //updating the database
+                addCapital(currentCapital);
+
+            } else {
+                System.out.println("Failed to add transaction!");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while adding transaction: " + e.getMessage());
+        }
+
+    }
+    private void addCapital(Capital capital){
+        String updateCapitalQuery = "UPDATE capital SET salary=?, expensess=?, profits=?, big_capital=? WHERE id=1";
+        try (PreparedStatement updateStatement = cnx.prepareStatement(updateCapitalQuery)) {
+            updateStatement.setFloat(1, capital.getSalary());
+            updateStatement.setFloat(2, capital.getExepenses());
+            updateStatement.setFloat(3, capital.getProfits());
+            updateStatement.setFloat(4, capital.getBig_capital());
+            int rowsAffectedCapital = updateStatement.executeUpdate();
+            if (rowsAffectedCapital <= 0) {
+                System.out.println("Failed to update capital entity.");
+                return;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while updating capital entity: " + e.getMessage());
+
+        }
+
     }
 
 }

@@ -5,25 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b2e9356-d8d6-46ea-99da-758f8e6b86fa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceSupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entities/Capital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entities/Capital.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceTransaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utils/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/CardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/CardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/Display2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/Display2Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/DisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/DisplayController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SendSms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SendSms.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierAddController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierAddController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierContainerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/SupplierContainerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/TableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/TableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateSupplierController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateTransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/myjavafxapp/UpdateTransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Dispa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Dispa.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Display.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Display.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/Table.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierContainer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/SupplierContainer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/TransactionAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/TransactionAdd.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateSupplier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/UpdateTransaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/display2.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/myjavafxapp/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,6 +36,7 @@
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -71,6 +71,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.myjavafxapp" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Alice\IdeaProjects\MyJavaFxApp\src\main\resources\com\example\myjavafxapp\Pictures" />
     </key>
@@ -177,7 +180,16 @@
       <workItem from="1713951163412" duration="1881000" />
       <workItem from="1713980910142" duration="3779000" />
       <workItem from="1713984786935" duration="8418000" />
-      <workItem from="1713993859194" duration="371000" />
+      <workItem from="1713993859194" duration="1996000" />
+      <workItem from="1714032939037" duration="10233000" />
+      <workItem from="1714052995937" duration="893000" />
+      <workItem from="1714071588605" duration="10623000" />
+      <workItem from="1714084646365" duration="373000" />
+      <workItem from="1714116101127" duration="6928000" />
+      <workItem from="1714126823037" duration="228000" />
+      <workItem from="1714137562111" duration="725000" />
+      <workItem from="1714158696229" duration="617000" />
+      <workItem from="1714216072964" duration="219000" />
     </task>
     <servers />
   </component>

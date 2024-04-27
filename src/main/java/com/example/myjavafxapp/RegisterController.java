@@ -1,4 +1,5 @@
 package com.example.myjavafxapp;
+import Entities.Capital;
 import Entities.Supplier;
 import Entities.Transaction;
 import Services.ServiceTransaction;
@@ -54,33 +55,29 @@ public class RegisterController  implements Initializable {
     }
     public void saveButtonOnAction(ActionEvent event){
         if (QuantityTextField.getText().isEmpty() || DescrptionTextField.getText().isEmpty() || CostTextField.getText().isEmpty() || SupplierComboBox.getValue()== null ||typeTextField.getValue()==null) {
-            /*if (DescrptionTextField.getText().length() < 3) {
+            QuantityTextField.setStyle("-fx-border-color: #821515 ; -fx-border-width:2px; ");
+            CostTextField.setStyle("-fx-border-color: #821515 ; -fx-border-width:2px; ");
+            SupplierComboBox.setStyle("-fx-border-color: #821515 ; -fx-border-width:2px; ");
+            typeTextField.setStyle("-fx-border-color: #821515 ; -fx-border-width:2px; ");
+            if (DescrptionTextField.getText().length() < 3) {
                 DescrptionTextField.setStyle("-fx-border-color: #821515 ; -fx-border-width:2px; ");
-
             } else {
                 DescrptionTextField.setStyle(null);
-            }*/
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("You need to fill blank field ");
-            alert.showAndWait();
-
-        }else {
-            if(!isNumeric(QuantityTextField.getText()) || !isNumeric(CostTextField.getText()) ){
-                alert=new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setContentText("Requires numbers"+ "Check The Quantity and cost Field ");
-                alert.showAndWait();
             }
-            else {
-                if (DescrptionTextField.getText().length() < 3) {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setContentText(" Description field requires more than 3 caracteres ");
-                    alert.showAndWait();
-
-                } else {
+        }else {
+            DescrptionTextField.setStyle(null);
+            QuantityTextField.setStyle(null);
+            CostTextField.setStyle(null);
+            SupplierComboBox.setStyle(null);
+            typeTextField.setStyle(null);
+            if(!isNumeric(QuantityTextField.getText()) || !isNumeric(CostTextField.getText()) ){
+                displayErrorAlert("Requires Numbers Check The Quantity and cost Field ");
+            }
+            else
+            {
+                    QuantityTextField.setStyle(null);
+                    CostTextField.setStyle(null);
+                    DescrptionTextField.setStyle(null);
                     LabelMessage.setText("You Try to do a Transaction ");
                     float quantity = Float.parseFloat(QuantityTextField.getText());
                     // extracting the selected supplier
@@ -93,16 +90,35 @@ public class RegisterController  implements Initializable {
                         System.out.println("it is empty");
                         supplierId=5;
                     }
-                    else {
+                    else
+                    {
                         Supplier supplier1 = transaction.getOneByIdSupplier(supplierId);
                         try {
-                            System.out.println("//////////////////////////"+supplier1);
-                            sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
-                            System.out.println("the supplier is:"+supplier1.getId_supp());
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Success");
-                            alert.setContentText("GG");
-                            alert.show();
+                            Capital capital=sp.retrieveCurrentCapitalFromDatabase();
+                            float totalAmount = quantity *cost;
+                            String type = typeTextField.getValue();
+                            if ("Salary".equals(type)){
+                                if(capital.getSalary() < totalAmount) {
+                                    System.out.println("You cannot proceed. Insufficient salary.");
+                                    displayErrorAlert("You cannot proceed. Insufficient salary.");
+                                } else {
+                                    sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                                    displayConfirmationAlert("Added Succefully ");
+                                }
+                           }
+                            else if("Expenses".equals(type)){
+                                if(capital.getExepenses() < totalAmount) {
+                                    System.out.println("You cannot proceed. Insufficient Money in Expenses.");
+                                    displayErrorAlert("You cannot proceed. Insufficient Money in Expenses.");
+                                } else {
+                                    sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                                    displayConfirmationAlert("Added Succefully ");
+                                }
+                            }
+                            else {
+                                sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                                displayConfirmationAlert("Added Succefully ");
+                            }
                         } catch (SQLException e) {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("SQL Exception");
@@ -110,9 +126,18 @@ public class RegisterController  implements Initializable {
                             alert.showAndWait();
                         }
                     }
-                }
             }
         }
+    }
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    private void displayConfirmationAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
     public void setCancelButtonIDAction(ActionEvent event ){
         Stage stage = (Stage)  CancelButton.getScene().getWindow();

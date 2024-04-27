@@ -185,5 +185,20 @@
     -fx-border-width: 0 0 2 0;
     -fx-text-fill:black;
     -fx-color:white;
-
+}
+.EditOnClickButtonUpdate{
+    -fx-background-color: #FD9999;
+    -fx-border-color: #FD9999;
+    -fx-text-fill:black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-style: solid;
+}
+.pane_112{
+    -fx-background-color:rgba(0,0,0,0);
+    -fx-border-color: #303551;
+    -fx-border-width: 0 0 2 0;
+    -fx-text-fill:black;
+    -fx-color:white;
 }

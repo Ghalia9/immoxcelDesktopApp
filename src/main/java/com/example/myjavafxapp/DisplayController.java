@@ -30,6 +30,8 @@ public class DisplayController implements Initializable {
     @FXML
     private TextField text_search;
 
+    @FXML
+    private Button CancelButtonn;
     private final ServiceSupplier sp = new ServiceSupplier();
 
     private UpdateSupplierController updateSupplierController;
@@ -87,7 +89,7 @@ public class DisplayController implements Initializable {
                 supplier.getPhone_number() + supplier.getMaterails_s();
     }
     // we put the list of pane here
-    private void showAllSuppliers() {
+    public void showAllSuppliers() {
         displaySuppliers(recentlyAddedSuppliers());
     }
     // displaying  data in the gridPane with verfication empty or not
@@ -150,7 +152,10 @@ public class DisplayController implements Initializable {
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
-
+    public void  setCancelButtonIDActionOn(ActionEvent event) {
+        Stage stage = (Stage) CancelButtonn.getScene().getWindow();
+        stage.close();
+    }
 
     private void showPopUp(Parent root) {
         Scene scene = new Scene(root);

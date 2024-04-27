@@ -75,8 +75,6 @@ public class SupplierAddController  implements Initializable {
     private  DisplayController displayController;
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Read the JSON file
@@ -199,7 +197,6 @@ public class SupplierAddController  implements Initializable {
             }
         }
     }
-
     @FXML
     private void setCancelButtonIDAction(ActionEvent event) {
         Stage stage = (Stage)  CancelButton.getScene().getWindow();
@@ -217,24 +214,18 @@ public class SupplierAddController  implements Initializable {
             JSONArray jsonArray = (JSONArray) obj;
             Map< List<String>,List<String> > map = new HashMap<>();
 
-
-
             // Extract country names from JSON and add them to a list
             List<String> countryNames = new ArrayList<>();
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
                 String countryName = (String) jsonObject.get("name");
                 String phoneNumberPrefix=(String) jsonObject.get("dial_code");
-
                 countryNames.add(countryName);
 
-
                 if(comboboxCountries.getValue().equals(countryName)){
-
                     System.out.println("Selected Item: " + selectedItem);
                     System.out.println("the phonenumber=" +phoneNumberPrefix);
                     prefixLabel.setText(phoneNumberPrefix);
-
                 }
             }
             // Populate the ComboBox with country names

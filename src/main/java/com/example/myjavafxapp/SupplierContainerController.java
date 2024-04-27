@@ -1,9 +1,7 @@
 package com.example.myjavafxapp;
 
 import Entities.Supplier;
-import Entities.Transaction;
 import Services.ServiceSupplier;
-import Services.ServiceTransaction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -37,14 +34,11 @@ public class SupplierContainerController {
 
     @FXML
     private ImageView imageViewRef;
-
-
     @FXML
     private Label patentRef;
 
     @FXML
     private Label phoneNumber;
-
     @FXML
     private HBox hbox;
 
@@ -191,13 +185,11 @@ public class SupplierContainerController {
     @FXML
     void detailsOnclickbtn(ActionEvent event) {
         try {
-
             int  idSupplier= Integer.parseInt(idSup.getText());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DetailsSupplier.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SupplierContainer.fxml"));
             Parent root = loader.load();
-            UpdateSupplierController updateSupplierController = loader.getController();
+            SupplierDetailsController supplierContainerDetailsController = loader.getController();
             // Create a new stage for the popup window
-
             Stage popupStage= new Stage();
             popupStage.initModality(Modality.APPLICATION_MODAL);// Make the pop-up Window  model
             popupStage.initStyle(StageStyle.UTILITY);
@@ -207,10 +199,11 @@ public class SupplierContainerController {
             popupStage.setScene(scene);
 
             Supplier supplier = sp.getOneById(idSupplier);
+            Supplier supp=new Supplier(idSupplier,supplier.getCompany_name(), supplier.getAddress(), supplier.getMaterails_s(), supplier.getPhone_number(),supplier.getPatent_ref(),supplier.getImage());
             if (supplier != null) {
                 System.out.println("id transaction before "+idSupplier);
-                updateSupplierController.setFields(idSupplier,supplier.getCompany_name(), supplier.getAddress(), supplier.getMaterails_s(), supplier.getPhone_number(),supplier.getPatent_ref(),supplier.getImage());
-                System.out.println("transactionid : "+supplier.getId_supp());
+                supplierContainerDetailsController.setData(supp);
+                System.out.println("supplier : "+supplier.getId_supp());
             } else {
                 System.out.println("Transaction with ID " + idSupplier + " not found.");
             }

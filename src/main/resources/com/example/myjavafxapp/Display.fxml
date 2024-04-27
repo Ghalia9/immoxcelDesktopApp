@@ -42,7 +42,7 @@
                         <Button layoutX="2.0" layoutY="25.0" mnemonicParsing="false" onAction="#menuGO" opacity="0.0" prefHeight="31.0" prefWidth="154.0" text="Button" />
                      </children>
                   </Pane>
-                  <Button fx:id="btn_first_in_the_menu" layoutX="17.0" layoutY="150.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Transaction" textFill="#070000">
+                  <Button fx:id="btn_first_in_the_menu" layoutX="17.0" layoutY="142.0" mnemonicParsing="false" onAction="#menuGO" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Transaction" textFill="#070000">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -58,7 +58,7 @@
                         <String fx:value="mouse-moved" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="btn_second_in_the_menu" layoutX="17.0" layoutY="241.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Supplier" textFill="#070000">
+                  <Button fx:id="btn_second_in_the_menu" layoutX="17.0" layoutY="228.0" mnemonicParsing="false" onAction="#showAllSuppliers" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Supplier" textFill="#070000">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -100,7 +100,7 @@
                         </Button>
                         <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Button">
                            <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="25.0" fitWidth="36.0" onDragDetected="#refrechData" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Pictures/exit.png" />
                                  </image>
@@ -109,7 +109,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <Button fx:id="CancelButton" layoutX="791.0" layoutY="27.0" mnemonicParsing="false"  text="Cancel" />
+                  <Button fx:id="CancelButtonn" layoutX="774.0" layoutY="27.0" mnemonicParsing="false" onAction="#setCancelButtonIDActionOn" prefHeight="29.0" prefWidth="68.0" text="logout" />
                </children>
             </Pane>
             <Text fx:id="allSuppliersLabel" layoutX="32.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Suppliers" wrappingWidth="154.0">

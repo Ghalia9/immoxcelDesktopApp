@@ -49,6 +49,8 @@ public class Display2Controller implements Initializable {
 
     @FXML
     private Button newAddbutton1;
+    @FXML
+    private Label fundsTextField;
 
     @FXML
     private ImageView imageView;
@@ -135,6 +137,7 @@ public class Display2Controller implements Initializable {
             salaryLabel.setText(String.valueOf(capital.getSalary()));
             expensesLabel.setText(String.valueOf(capital.getExepenses()));
             profitsLabel.setText(String.valueOf(capital.getProfits()));
+            fundsTextField.setText(String.valueOf(capital.getBig_capital()));
 
             // here displaying the data of the transaction
             //

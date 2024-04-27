@@ -7,11 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-
 public class SendSms {
 
     @FXML
     private Button ClearButton;
+
+    public static String url_str;
 
     @FXML
     private Button Editbtn;
@@ -31,12 +32,10 @@ public class SendSms {
     @FXML
     private Pane pane_112;
 
+
     @FXML
     void setCancelButtonIDAction(ActionEvent event) {
-
     }
-
-
 
 
 }

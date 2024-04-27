@@ -1,5 +1,6 @@
 package com.example.myjavafxapp;
 
+import Entities.Capital;
 import Entities.Supplier;
 import Entities.Transaction;
 import Services.ServiceSupplier;
@@ -83,24 +84,15 @@ public class UpdateTransactionController implements Initializable {
 
     public void EditOnClickOnUP(ActionEvent event){
         if (QuantityTextField.getText().isEmpty() || DescrptionTextField.getText().isEmpty() || CostTextField.getText().isEmpty() || SupplierComboBox.getValue()== null ||typeTextField.getValue()==null) {
-            alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Message");
-            alert.setHeaderText(null);
-            alert.setContentText("You need to fill blank field ");
-            alert.showAndWait();
+
+            displayErrorAlert( "You need to fill blank field " );
         }else {
             if(!isNumeric(QuantityTextField.getText()) || !isNumeric(CostTextField.getText()) ){
-                alert=new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error Message");
-                alert.setContentText("Requires numbers"+ "Check The Quantity and cost Field ");
-                alert.showAndWait();
+                displayErrorAlert( "Requires numbers Check The Quantity and cost Fields " );
             }
             else {
                 if (DescrptionTextField.getText().length() < 3) {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error Message");
-                    alert.setContentText(" Description field requires more than 3 caracteres ");
-                    alert.showAndWait();
+                    displayErrorAlert( "Description field requires more than 3 caracteres" );
                 } else {
 
                     LabelMessage.setText("You Try to do a Transaction ");
@@ -118,12 +110,32 @@ public class UpdateTransactionController implements Initializable {
                     else {
                         Supplier supplier1 = transaction.getOneByIdSupplier(supplierId);
                         try {
-                            // Here is the Update function
-                            sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Success");
-                            alert.setContentText("GG");
-                            alert.show();
+
+                            Capital capital=sp.retrieveCurrentCapitalFromDatabase();
+                            float totalAmount = quantity *cost;
+                            String type = typeTextField.getValue();
+                            if ("Salary".equals(type)){
+                                if(capital.getSalary() < totalAmount) {
+                                    System.out.println("You cannot proceed. Insufficient salary.");
+                                    displayErrorAlert("You cannot proceed. Insufficient salary.");
+                                } else {
+                                    sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
+                                    displayConfirmationAlert("Modified Succefully ");
+                                }
+                            }
+                            else if("Expenses".equals(type)){
+                                if(capital.getExepenses() < totalAmount) {
+                                    System.out.println("You cannot proceed. Insufficient Money in Expenses.");
+                                    displayErrorAlert("You cannot proceed. Insufficient Money in Expenses.");
+                                } else {
+                                    sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
+                                    displayConfirmationAlert("Modified Succefully ");
+                                }
+                            }
+                            else {
+                                sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
+                                displayConfirmationAlert("Modified Succefully ");
+                            }
                         } catch (SQLException e) {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("SQL Exception");
@@ -135,5 +147,16 @@ public class UpdateTransactionController implements Initializable {
             }
         }
 
+    }
+
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    private void displayConfirmationAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -6,7 +6,7 @@ public class Capital {
     private int Id;
     private float  Salary;
     private float  Exepenses ;
-    private float  Funds;
+    private float  funds;
     private float  Profits;
     private float  Big_capital;
 
@@ -16,7 +16,7 @@ public class Capital {
     public Capital(float salary, float exepenses, float funds, float profits, float big_capital) {
         Salary = salary;
         Exepenses = exepenses;
-        Funds = funds;
+        funds = funds;
         this.Profits = profits;
         this.Big_capital =  salary + exepenses + funds + profits;
     }
@@ -25,7 +25,7 @@ public class Capital {
         Id = id;
         Salary = salary;
         Exepenses = exepenses;
-        Funds = funds;
+        funds = funds;
         this.Profits = profits;
         this.Big_capital =  salary + exepenses + funds + profits;
     }
@@ -55,11 +55,11 @@ public class Capital {
     }
 
     public float getFunds() {
-        return Funds;
+        return funds;
     }
 
     public void setFunds(float funds) {
-        Funds = funds;
+        funds = funds;
     }
 
     public float getProfits() {
@@ -83,11 +83,11 @@ public class Capital {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Capital capital = (Capital) o;
-        return Id == capital.Id && Float.compare(Salary, capital.Salary) == 0 && Float.compare(Exepenses, capital.Exepenses) == 0 && Float.compare(Funds, capital.Funds) == 0 && Float.compare(Profits, capital.Profits) == 0 && Float.compare(Big_capital, capital.Big_capital) == 0;
+        return Id == capital.Id && Float.compare(Salary, capital.Salary) == 0 && Float.compare(Exepenses, capital.Exepenses) == 0 && Float.compare(funds, capital.funds) == 0 && Float.compare(Profits, capital.Profits) == 0 && Float.compare(Big_capital, capital.Big_capital) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Id, Salary, Exepenses, Funds, Profits, Big_capital);
+        return Objects.hash(Id, Salary, Exepenses, funds, Profits, Big_capital);
     }
 }
