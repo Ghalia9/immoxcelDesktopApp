@@ -4,69 +4,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="USER + HR into main">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddAccountController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EmployeeCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UserCardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddAccount.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddUserAccount.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Admin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EmployeeCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/UpdateUser.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/UserCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/add-group.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/building.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/depot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/employees.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/refresh-button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/AddAccount.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/AddUserAccount.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/EmployeeCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/UpdateUser.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/UserCard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/add-group.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/building.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cancel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/delete.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/depot.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/employees.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/next.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/refresh-button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddAccountController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DashboardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EmployeeCardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateUserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UserCardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/test.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/update.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+    <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddDepotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddMaterialsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardMaterialsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowMaterialsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateDepotController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateMaterialsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceDepot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceMaterials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFx.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AddDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AddMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CardDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CardMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/UpdateDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/UpdateMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/adddepot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/boucler.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/carousel-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/depot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/materiel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/seo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/supprimer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/AddDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/AddMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/CardDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/CardMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/ShowMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/UpdateDepot.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/UpdateMaterials.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/adddepot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/boucler.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/carousel-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/depot.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/materiel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/seo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/supprimer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddDepotController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddMaterialsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardMaterialsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowMaterialsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateDepotController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateMaterialsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceDepot.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceMaterials.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFx.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Depot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Depot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Materials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Materials.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Depot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Depot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Materials.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Materials.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/IService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/IService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceEmployees.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceLeaves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceLeaves.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,29 +99,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.MainSelim">
+}</component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFX" />
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFx" />
       <module name="immoxcel" />
       <shortenClasspath name="NONE" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,7 +129,7 @@
     <configuration name="MainSelim" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.test" />
       <module name="immoxcel" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
