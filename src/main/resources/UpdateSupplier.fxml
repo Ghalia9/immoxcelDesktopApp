@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pane_112" prefHeight="557.0" prefWidth="371.0" styleClass="pane_11" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.UpdateSupplierController">
+   <children>
+      <Label layoutX="9.0" layoutY="63.0" prefHeight="18.0" prefWidth="114.0" text="New Supplier" textFill="#fffefe">
+         <font>
+            <Font name="Century Gothic" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="118.0" fitWidth="132.0" layoutX="123.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/blogger(1).png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="30.0" layoutY="152.0">
+         <children>
+            <VBox prefHeight="402.0" prefWidth="350.0" spacing="2.0">
+               <children>
+                  <Label text="Company Name" />
+                  <TextField fx:id="companyNameTextFiled" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="315.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                     <font>
+                        <Font name="Century Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="18.0" prefWidth="114.0" text="Address" />
+                  <TextField fx:id="addressTextFiled" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="223.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                     <font>
+                        <Font name="Century Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="18.0" prefWidth="90.0" text="Product" />
+                  <TextField fx:id="ProductTextField" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="25.0" prefWidth="150.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                     <font>
+                        <Font name="Century Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label prefHeight="18.0" prefWidth="137.0" text="Phone number" />
+                  <HBox spacing="20.0">
+                     <children>
+                        <ComboBox fx:id="comboboxCountriesUpdate" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="100.0" onAction="#CountriesOnClick" prefHeight="28.0" prefWidth="126.0" promptText="Countries" styleClass="pane_AddSupplier" stylesheets="@Style.css" />
+                        <TextField fx:id="prefixLabel" layoutY="10.0" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="60.0" prefHeight="30.0" prefWidth="124.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                           <font>
+                              <Font name="Century Gothic Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="PhoneNumberTextFiled" layoutY="10.0" maxHeight="30.0" maxWidth="103.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="103.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                           <font>
+                              <Font name="Century Gothic Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label text="Patent Ref" />
+                  <TextField fx:id="PatentTextField" maxHeight="30.0" maxWidth="298.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="298.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                     <font>
+                        <Font name="Century Gothic Bold" size="14.0" />
+                     </font>
+                  </TextField>
+                  <HBox prefHeight="138.0" prefWidth="322.0" spacing="20.0">
+                     <children>
+                        <VBox prefHeight="118.0" prefWidth="146.0" spacing="15.0">
+                           <children>
+                              <Button fx:id="EditOnClickButtonUpdate" mnemonicParsing="false" onAction="#EditOnClickButtonUpdate" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@Style.css" text="Save" textFill="#c3c9cf">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#setCancelButtonIDActionUpdate" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@Style.css" text="Canel" textFill="#c3c9cf">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox onMouseClicked="#supplierInsertImage" prefHeight="151.0" prefWidth="133.0" spacing="12.0">
+                           <children>
+                              <Pane style="-fx-border-color: #FD9999; -fx-focus-traversable: 0 0 0 0;" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ImageView fx:id="ImageView" fitHeight="62.0" fitWidth="86.0" layoutX="24.0" layoutY="5.0" onMouseClicked="#supplierInsertImage" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </Pane>
+                              <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="EditOnClickButtonUpdate" stylesheets="@Style.css" text="Import" textFill="#efefef">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="5.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets top="6.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <TextField fx:id="idSuppTextField" layoutX="14.0" layoutY="114.0" opacity="0.0" prefHeight="25.0" prefWidth="35.0" />
+   </children>
+</Pane>
