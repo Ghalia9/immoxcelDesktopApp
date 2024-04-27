@@ -74,50 +74,72 @@ public class UpdateMaterialsController {
     }
 
     public void UpdateMaterials(ActionEvent actionEvent) throws SQLException, IOException {
-        if (materials.getQuantity()==Integer.parseInt(QuantityUpdate.getText())){
-            materials.setTypematerials(TypematerialsUpdate.getText());
-            materials.setUnitprice(Float.parseFloat(UnitpriceUpdate.getText()));
-            materials.setQuantity(Integer.parseInt(QuantityUpdate.getText()));
-            sm.modifier(materials);
-            refreshTableMaterials();
-            refreshTableDepot();
-        }else{
-            if (Integer.parseInt(QuantityUpdate.getText())<=depot.getStock_available()){
+        try {
+            String typematerialsUpdateText = TypematerialsUpdate.getText();
+            String quantityUpdateText = QuantityUpdate.getText();
+            String unitPriceUpdateText = UnitpriceUpdate.getText();
 
-
-                if (Integer.parseInt(QuantityUpdate.getText())<materials.getQuantity()){
-
-                    materials.setTypematerials(TypematerialsUpdate.getText());
-                    materials.setUnitprice(Float.parseFloat(UnitpriceUpdate.getText()));
-                    int diff= materials.getQuantity()-Integer.parseInt(QuantityUpdate.getText());
-                    materials.setQuantity(Integer.parseInt(QuantityUpdate.getText()));
-                    depot.setStock_available(depot.getStock_available()+diff);
-                    sm.modifier(materials);
-                    sd.modifier(depot);
-                    refreshTableMaterials();
-                    refreshTableDepot();
-
-                }else {
-
-                    materials.setTypematerials(TypematerialsUpdate.getText());
-                    materials.setUnitprice(Float.parseFloat(UnitpriceUpdate.getText()));
-                    int diff=Integer.parseInt(QuantityUpdate.getText())-materials.getQuantity();
-                    materials.setQuantity(Integer.parseInt(QuantityUpdate.getText()));
-                    depot.setStock_available(depot.getStock_available()-diff);
-                    sm.modifier(materials);
-                    sd.modifier(depot);
-                    refreshTableMaterials();
-                    refreshTableDepot();
-
-
-                }
-
-            }else {
+            if (typematerialsUpdateText.isEmpty() || quantityUpdateText.isEmpty() || unitPriceUpdateText.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR");
-                alert.setContentText("Quantity must be equal or lower than Quantity Available");
+                alert.setTitle("Error");
+                alert.setContentText("Type Materials, Quantity, and Unit Price must not be empty");
                 alert.showAndWait();
+                return;
             }
+
+            int quantityUpdate = Integer.parseInt(quantityUpdateText);
+            float unitPriceUpdate = Float.parseFloat(unitPriceUpdateText);
+
+            if (quantityUpdate < 0 || unitPriceUpdate < 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Quantity and Unit Price must be non-negative");
+                alert.showAndWait();
+                return;
+            }
+
+            if (materials.getQuantity() == quantityUpdate) {
+                materials.setTypematerials(typematerialsUpdateText);
+                materials.setUnitprice(unitPriceUpdate);
+                materials.setQuantity(quantityUpdate);
+                sm.modifier(materials);
+                refreshTableMaterials();
+                refreshTableDepot();
+            } else {
+                if (quantityUpdate <= depot.getStock_available()) {
+                    if (quantityUpdate < materials.getQuantity()) {
+                        materials.setTypematerials(typematerialsUpdateText);
+                        materials.setUnitprice(unitPriceUpdate);
+                        int diff = materials.getQuantity() - quantityUpdate;
+                        materials.setQuantity(quantityUpdate);
+                        depot.setStock_available(depot.getStock_available() + diff);
+                        sm.modifier(materials);
+                        sd.modifier(depot);
+                        refreshTableMaterials();
+                        refreshTableDepot();
+                    } else {
+                        materials.setTypematerials(typematerialsUpdateText);
+                        materials.setUnitprice(unitPriceUpdate);
+                        int diff = quantityUpdate - materials.getQuantity();
+                        materials.setQuantity(quantityUpdate);
+                        depot.setStock_available(depot.getStock_available() - diff);
+                        sm.modifier(materials);
+                        sd.modifier(depot);
+                        refreshTableMaterials();
+                        refreshTableDepot();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("ERROR");
+                    alert.setContentText("Quantity must be equal or lower than Quantity Available");
+                    alert.showAndWait();
+                }
+            }
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Please enter valid numbers for Quantity and Unit Price");
+            alert.showAndWait();
         }
     }
 }

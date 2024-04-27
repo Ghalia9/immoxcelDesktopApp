@@ -64,57 +64,71 @@ public class AddMaterialsController {
     }
 
    public void ajouterMaterialsAction (javafx.event.ActionEvent actionEvent){
-        try {
+       try {
+           String unitPriceText = Unitprice.getText();
+           String quantityText = Quantity.getText();
+           String typeMaterialsText = Typematerials.getText();
 
-            String query="SELECT * FROM depot WHERE id=?";
-            PreparedStatement statement=cnx.prepareStatement(query);
-            statement.setInt(1,idDepot);
-            ResultSet rst=statement.executeQuery();
-            if(rst.next()){
+           if (unitPriceText.isEmpty() || quantityText.isEmpty() || typeMaterialsText.isEmpty()) {
+               // If any of the fields are empty, show an error message
+               Alert alert = new Alert(Alert.AlertType.ERROR);
+               alert.setTitle("Error");
+               alert.setContentText("All fields are required");
+               alert.showAndWait();
+               return; // Exit the method to prevent further execution
+           }
 
-                int quantityFromDepot=rst.getInt("quantity_available");
+           float unitPrice = Float.parseFloat(unitPriceText);
+           int quantity = Integer.parseInt(quantityText);
 
-            if (Float.parseFloat(Unitprice.getText())>0 && Integer.parseInt(Quantity.getText())>0 &&  Typematerials.getText().length()>0 && Integer.parseInt(Quantity.getText())<=quantityFromDepot && Quantity.getText().length()>0) {
+           String query = "SELECT * FROM depot WHERE id=?";
+           PreparedStatement statement = cnx.prepareStatement(query);
+           statement.setInt(1, idDepot);
+           ResultSet rst = statement.executeQuery();
+           if (rst.next()) {
+               int quantityFromDepot = rst.getInt("quantity_available");
 
-                sm.ajouter(new Materials(Typematerials.getText(), Float.parseFloat(Unitprice.getText()), Integer.parseInt(Quantity.getText()),rst.getInt("id")));
+               if (unitPrice > 0 && quantity > 0 && quantity <= quantityFromDepot) {
+                   sm.ajouter(new Materials(typeMaterialsText, unitPrice, quantity, rst.getInt("id")));
 
-                int quantityToUpdate=quantityFromDepot-Integer.parseInt(Quantity.getText());
-                sd.modifier(new Depot(rst.getInt("id"),rst.getString("location"),rst.getString("adresse"),rst.getInt("limit_stock"),quantityToUpdate));
-                refreshTable();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setContentText("Materials added");
-                alert.show();
-            } else if (Float.parseFloat(Unitprice.getText())<0 || Unitprice.getText().length()==0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Unit Price");
-                alert.setContentText("Unit Price must be positive");
-                alert.showAndWait();
-            }else if (Integer.parseInt(Quantity.getText())<0 || Quantity.getText().isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Quantity");
-                alert.setContentText("Quantity must be positive");
-                alert.showAndWait();
-            }else if (Typematerials.getText().length()==0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Type Materials");
-                alert.setContentText("Type Materials can't be blank");
-                alert.showAndWait();
-            }else if(Integer.parseInt(Quantity.getText())>quantityFromDepot)
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Quantity");
-                alert.setContentText("Quantity is over the Quantity available of the Depot");
-                alert.showAndWait();
-            }
-            }
-        } catch (SQLException | IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("SQL Exception");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-            System.out.println(e.getMessage());
-        }
+                   int quantityToUpdate = quantityFromDepot - quantity;
+                   sd.modifier(new Depot(rst.getInt("id"), rst.getString("location"), rst.getString("adresse"), rst.getInt("limit_stock"), quantityToUpdate));
+                   refreshTable();
+                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                   alert.setTitle("Success");
+                   alert.setContentText("Materials added");
+                   alert.show();
+               } else if (unitPrice <= 0) {
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setTitle("Unit Price");
+                   alert.setContentText("Unit Price must be positive");
+                   alert.showAndWait();
+               } else if (quantity <= 0) {
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setTitle("Quantity");
+                   alert.setContentText("Quantity must be positive");
+                   alert.showAndWait();
+               } else if (quantity > quantityFromDepot) {
+                   Alert alert = new Alert(Alert.AlertType.ERROR);
+                   alert.setTitle("Quantity");
+                   alert.setContentText("Quantity is over the Quantity available of the Depot");
+                   alert.showAndWait();
+               }
+           }
+       } catch (NumberFormatException e) {
+           // Handle the case where Unitprice or Quantity is not a valid number
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Input Error");
+           alert.setContentText("Please enter valid numbers for Unit Price and Quantity");
+           alert.showAndWait();
+       } catch (SQLException | IOException e) {
+           // Handle SQL exceptions
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("SQL Exception");
+           alert.setContentText(e.getMessage());
+           alert.showAndWait();
+           System.out.println(e.getMessage());
+       }
 
     }
 

@@ -56,32 +56,53 @@ public class UpdateDepotController {
     }
 
     public void UpdateDepot(ActionEvent actionEvent) throws SQLException, IOException {
-        if(depot.getStock_available()==depot.getLimit_stock()){
-           depot.setLocation(LocationUpdate.getText());
-           depot.setAdresse(AdresseUpdate.getText());
-           depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
-           depot.setStock_available(Integer.parseInt(LimitstockUpdate.getText()));
-           sd.modifier(depot);
-           refreshTable();
-
-        }else {
-            int materialsQuantity=depot.getLimit_stock()-depot.getStock_available();
-            if(Integer.parseInt(LimitstockUpdate.getText())<materialsQuantity){
+        if(LocationUpdate.getText().isEmpty() || AdresseUpdate.getText().isEmpty() || LimitstockUpdate.getText().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("All fields are required");
+            alert.showAndWait();
+            return;
+        }
+        else {
+            int LimitStock = Integer.parseInt(LimitstockUpdate.getText());
+            if(LimitStock < 0)
+            {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ERROR");
-                alert.setContentText("Limit Stock must be greater or equal to the materials quantity");
+                alert.setTitle("Error");
+                alert.setContentText("Limit Stock must be positive");
                 alert.showAndWait();
-            }else {
-                int quantityToadd=Integer.parseInt(LimitstockUpdate.getText())-depot.getLimit_stock();
-                depot.setLocation(LocationUpdate.getText());
-                depot.setAdresse(AdresseUpdate.getText());
-                depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
-                depot.setStock_available(depot.getStock_available()+quantityToadd);
-                sd.modifier(depot);
-                refreshTable();
+                return;
             }
+            else {
+                if (depot.getStock_available() == depot.getLimit_stock()) {
+                    depot.setLocation(LocationUpdate.getText());
+                    depot.setAdresse(AdresseUpdate.getText());
+                    depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
+                    depot.setStock_available(Integer.parseInt(LimitstockUpdate.getText()));
+                    sd.modifier(depot);
+                    refreshTable();
+
+                } else {
+                    int materialsQuantity = depot.getLimit_stock() - depot.getStock_available();
+                    if (Integer.parseInt(LimitstockUpdate.getText()) < materialsQuantity) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("ERROR");
+                        alert.setContentText("Limit Stock must be greater or equal to the materials quantity");
+                        alert.showAndWait();
+                    } else {
+                        int quantityToadd = Integer.parseInt(LimitstockUpdate.getText()) - depot.getLimit_stock();
+                        depot.setLocation(LocationUpdate.getText());
+                        depot.setAdresse(AdresseUpdate.getText());
+                        depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
+                        depot.setStock_available(depot.getStock_available() + quantityToadd);
+                        sd.modifier(depot);
+                        refreshTable();
+                    }
 
 
+                }
+            }
         }
     }
 }

@@ -36,6 +36,7 @@ public class AddDepotController {
     }
 
     private void refreshTable() throws SQLException, IOException {
+
         ObservableList<Node> children = depot.depotLayout.getChildren();
         List<Node> nodesToRemove = new ArrayList<>();
         for (Node child : children) {
@@ -53,33 +54,43 @@ public class AddDepotController {
 
     public void ajouterDepotAction (javafx.event.ActionEvent actionEvent){
         try {
-            if (Integer.parseInt(Limitstock.getText())>0  &&  Location.getText().length()>0  &&  Adresse.getText().length()>0) {
-                sm.ajouter(new Depot(Location.getText(),Adresse.getText(), Integer.parseInt(Limitstock.getText()), Integer.parseInt(Limitstock.getText())));
-                Location.clear();
-                Adresse.clear();
-                Limitstock.clear();
-                refreshTable();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Success");
-                alert.setContentText("Depot added");
-                alert.show();
-            } else if (Integer.parseInt(Limitstock.getText())<0 || Limitstock.getText().length()==0) {
+            if (Location.getText().isEmpty() || Adresse.getText().isEmpty() || Limitstock.getText().isEmpty()) {
+                // If any of the fields are empty, show an error message
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("All fields are required");
+                alert.showAndWait();
+                return; // Exit the method to prevent further execution
+            }
+
+            int limitStock = Integer.parseInt(Limitstock.getText()); // Parse the limit stock value
+            if (limitStock <= 0) {
+                // If the limit stock is not positive, show an error message
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Limit Stock");
                 alert.setContentText("Limit Stock must be positive");
                 alert.showAndWait();
-            }else if (Location.getText().length()==0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Location");
-                alert.setContentText("Location can't be blank");
-                alert.showAndWait();
-            }else if (Adresse.getText().length()==0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Adresse");
-                alert.setContentText("Adresse can't be blank");
-                alert.showAndWait();
+                return; // Exit the method to prevent further execution
             }
+
+            // If all validations pass, proceed with adding the depot
+            sm.ajouter(new Depot(Location.getText(), Adresse.getText(), limitStock, limitStock));
+            Location.clear();
+            Adresse.clear();
+            Limitstock.clear();
+            refreshTable();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setContentText("Depot added");
+            alert.show();
+        } catch (NumberFormatException e) {
+            // Handle the case where Limitstock is not a valid integer
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Limit Stock");
+            alert.setContentText("Limit Stock must be a valid integer");
+            alert.showAndWait();
         } catch (SQLException | IOException e) {
+            // Handle SQL exceptions
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("SQL Exception");
             alert.setContentText(e.getMessage());
