@@ -112,18 +112,7 @@ public class UpdateUserController {
     }
 
     private void updateData() throws SQLException {
-<<<<<<< Updated upstream
         System.out.println(password);
-=======
-        if(username.getText().isEmpty())
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setContentText("Username is empty");
-            alert.showAndWait();
-        }
-        else {
->>>>>>> Stashed changes
             if (AddAccountController.validateMail(email.getText())) {
                 if (!oldPassword.getText().isEmpty()) {
                     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(13);
@@ -141,11 +130,7 @@ public class UpdateUserController {
                         } else {
                             String hashed_password = encoder.encode(newPassword.getText());
 
-<<<<<<< Updated upstream
                             su.modifier(new User(userID,hashed_password, username.getText(), email.getText(), emp_id));
-=======
-                            su.modifier(new User(userID, hashed_password, username.getText(), email.getText(), emp_id));
->>>>>>> Stashed changes
                             oldPassword.clear();
                             newPassword.clear();
 
@@ -153,11 +138,7 @@ public class UpdateUserController {
                     }
                 } else {
 
-<<<<<<< Updated upstream
                     su.modifier(new User(userID,password, username.getText(), email.getText(), emp_id));
-=======
-                    su.modifier(new User(userID, password, username.getText(), email.getText(), emp_id));
->>>>>>> Stashed changes
                     oldPassword.clear();
                     newPassword.clear();
 
@@ -169,10 +150,6 @@ public class UpdateUserController {
                 alert.showAndWait();
             }
         }
-<<<<<<< Updated upstream
-=======
-        }
->>>>>>> Stashed changes
     public void updateUser(ActionEvent actionEvent) throws SQLException, IOException {
        if(dashboardController.verifyUpdateFrom==2)
        { if(username.getText().equals(dashboardController.usernameConnected.getText()))

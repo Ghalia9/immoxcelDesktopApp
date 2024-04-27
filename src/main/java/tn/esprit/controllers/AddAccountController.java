@@ -182,19 +182,8 @@ public class AddAccountController {
         try {
 
 
-<<<<<<< Updated upstream
 
 
-=======
-            if(fusername.getText().isEmpty())
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Username");
-                alert.setContentText("Write a Username");
-                alert.showAndWait();
-            }
-        else{
->>>>>>> Stashed changes
             String user_query= "SELECT username FROM User WHERE username=?";
 
             if(confirm_password.getText().isEmpty() && password.getText().isEmpty() && !validateMail(email.getText()) && email.getText().isEmpty() && fusername.getText().isEmpty() && emp_id==0)
@@ -274,10 +263,6 @@ public class AddAccountController {
                         alert.showAndWait();
                     }
 
-<<<<<<< Updated upstream
-=======
-                }
->>>>>>> Stashed changes
 
                 }
             }
