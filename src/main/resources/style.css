@@ -15,8 +15,13 @@
 .innerPane{
     -fx-background-color: #748CF1;
     -fx-border-width: 2px 2px 2px 2px;
+<<<<<<< Updated upstream
     /*-fx-border-radius: 20px;
     -fx-background-radius: 20px;*/
+=======
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+>>>>>>> Stashed changes
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
 }
@@ -49,6 +54,7 @@
 }
 
 
+<<<<<<< Updated upstream
 .top_bar{
     -fx-background-color: #748CF1;
     -fx-border-width: 2px 2px 2px 2px;
@@ -57,6 +63,9 @@
     -fx-border-style: solid;
     -fx-border-color: #748CF1;
 }
+=======
+
+>>>>>>> Stashed changes
 
 .users_pane {
     -fx-background-color: #748CF1;
