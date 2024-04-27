@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 import tn.esprit.utils.DataSource;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.io.IOException;
 
-public class test extends Application {
+public class MainAhmed extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -27,12 +25,11 @@ public class test extends Application {
         } else {
             System.out.println("Failed to establish database connection.");
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowDepots.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setResizable(true);
-        stage.setTitle("ImmoXcel");
+        stage.setTitle("Depots");
         stage.show();
     }
 }
