@@ -1,14 +1,8 @@
 package tn.esprit.controllers;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javafx.scene.control.PasswordField;
-import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,22 +10,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.regex.Pattern;
 
 import javafx.stage.Stage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javafx.scene.control.TextField;
 
 import tn.esprit.models.User;
-import tn.esprit.services.ServiceUser;
 import tn.esprit.utils.DataSource;
 public class LoginController {
     User test1;
@@ -74,7 +63,7 @@ public class LoginController {
                                 {
                                     String role = emp_result.getString("emp_function");
                                     User user= new User(result.getInt("id"),result.getString("password"),result.getString("username"),result.getString("email"),result.getInt("employee_id"));
-                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Admin.fxml"));
                                     Parent root = loader.load();
                                     DashboardController controller = loader.getController();
                                     controller.setLoginController(this, user);
