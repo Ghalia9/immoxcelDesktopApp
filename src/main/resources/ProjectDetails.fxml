@@ -104,7 +104,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </opaqueInsets>
                   </Separator>
-                  <Button fx:id="tasksButton" mnemonicParsing="false" text="Tasks" onAction="#handleProjectTasks">
+                  <Button fx:id="tasksButton" mnemonicParsing="false" onAction="#handleProjectTasks" text="Tasks">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>

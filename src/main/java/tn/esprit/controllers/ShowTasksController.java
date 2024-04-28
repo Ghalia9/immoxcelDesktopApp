@@ -216,8 +216,8 @@ private Projects project;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ShowProjects.fxml"));
             Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Stage stage = (Stage) navigateBackbutton.getScene().getWindow(); // Get the current stage
             stage.setScene(new Scene(root1));
 
             ProjectsDashboardController projectsDashboardController = fxmlLoader.getController();

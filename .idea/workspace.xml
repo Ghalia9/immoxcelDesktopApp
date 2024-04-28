@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainIsmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ProjectDetails.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ProjectDetails.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowTasksController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowTasksController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +71,8 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFX" />
+    <configuration name="MainIsmail" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainIsmail" />
       <module name="immoxcel" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\moham\Desktop\Esprit\3 eme A\S2\JAVA\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
@@ -89,7 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainFX" />
+        <item itemvalue="Application.MainIsmail" />
       </list>
     </recent_temporary>
   </component>
@@ -118,7 +116,8 @@
       <workItem from="1713905103081" duration="10064000" />
       <workItem from="1713946622883" duration="8957000" />
       <workItem from="1713987981108" duration="13653000" />
-      <workItem from="1714033277229" duration="23713000" />
+      <workItem from="1714033277229" duration="25912000" />
+      <workItem from="1714217869217" duration="1340000" />
     </task>
     <servers />
   </component>
