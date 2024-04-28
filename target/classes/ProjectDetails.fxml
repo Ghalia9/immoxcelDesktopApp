@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="294.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ProjectDetailsController">
+   <children>
+      <Pane prefHeight="294.0" prefWidth="413.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="294.0" prefWidth="414.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="538.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="97.0" text="Project Name:" textFill="#25d0ff">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Montserrat Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="projectName" prefHeight="15.0" prefWidth="174.0" text="Immobilier Ghalia">
+                           <font>
+                              <Font name="Montserrat Bold Italic" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="8.0" prefWidth="58.0" visible="false" />
+                        <Button mnemonicParsing="false" onAction="#handleEditProject" text="Edit" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="538.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="119.0" text="Predicted Start Date:" textFill="#00c93c">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="pred_start_date" prefHeight="18.0" prefWidth="67.0" text="22/23/2345">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label prefHeight="18.0" prefWidth="125.0" text="Predicted Finish Date:" textFill="#ff7429">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="pred_finish_date" text="22/56/3245">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="17.0" prefWidth="538.0" />
+                  <VBox alignment="CENTER" prefHeight="71.0" prefWidth="538.0">
+                     <children>
+                        <Label text="Completion Date" textFill="RED" />
+                        <Label fx:id="completion_date" text="21/23/0987" />
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="26.0" prefWidth="538.0">
+                     <children>
+                        <Label text="Budget" textFill="#004605">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="            " />
+                        <Label text="ongoing Cost" textFill="RED">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="17.0" prefWidth="538.0">
+                     <children>
+                        <Label fx:id="budget" text="12345678">
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="cost" text="09876543">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="20.0" />
+                     </opaqueInsets>
+                  </HBox>
+                  <Separator opacity="0.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
+                  <Separator prefWidth="200.0">
+                     <opaqueInsets>
+                        <Insets bottom="20.0" top="20.0" />
+                     </opaqueInsets>
+                  </Separator>
+                  <Button fx:id="tasksButton" mnemonicParsing="false" onAction="#handleProjectTasks" text="Tasks">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="100.0" right="100.0" top="5.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

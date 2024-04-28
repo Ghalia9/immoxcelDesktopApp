@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="65.0" prefWidth="279.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TaskItemController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="21.0" prefHeight="194.0" prefWidth="237.0" AnchorPane.bottomAnchor="21.400000000000006" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="4.599999999999966" AnchorPane.topAnchor="21.0">
+         <children>
+            <HBox prefHeight="61.0" prefWidth="225.0">
+               <children>
+                  <Label fx:id="taskTitleLabel" prefHeight="53.0" prefWidth="227.0" text="Clean Rooms And Buy Clothes">
+                     <font>
+                        <Font name="Montserrat SemiBold Italic" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="27.0" prefWidth="225.0" />
+            <HBox alignment="CENTER" prefHeight="150.0" prefWidth="249.0">
+               <opaqueInsets>
+                  <Insets bottom="20.0" />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </VBox>
+      <Label layoutX="22.0" layoutY="64.0" text="Deadline:" />
+      <Label fx:id="taskDeadlineLabel" layoutX="78.0" layoutY="64.0" text="21/12/1111" textFill="RED" />
+      <Button fx:id="deleteTaskButton" layoutX="195.0" layoutY="57.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Delete" textFill="WHITE" >
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
+   </children>
+   <styleClass>
+      <String fx:value="project_item" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>
