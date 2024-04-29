@@ -5,74 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddProjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddTaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditProjectController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditTaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/TaskItemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceTasks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainIsmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddProject.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EditProject.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EditTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ProjectDetails.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ProjectItem.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/TaskDetails.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/TaskItem.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/arrow-51-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/delete-181-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/details-33-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/money-42-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/navback.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/AddProject.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/AddTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/EditProject.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/EditTask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ProjectDetails.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ProjectItem.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ShowProjects.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ShowTasks.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/TaskDetails.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/TaskItem.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/arrow-51-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/delete-181-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/details-33-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/money-42-512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/navback.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddProjectController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddTaskController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditProjectController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditTaskController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectDetailsController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectItemController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowTasksController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TaskDetailsController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TaskItemController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceTasks.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainIsmail.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Projects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Tasks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/utils/DataSource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Projects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Projects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Tasks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceProjects.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "jbr-17",
     "last_opened_file_path": "C:/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
     "node.js.detected.package.eslint": "true",
@@ -120,7 +55,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MainAhmed">
+  <component name="RunManager" selected="Application.MainSelim">
     <configuration name="MainAhmed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainAhmed" />
       <module name="MyJavaFxApp" />
@@ -147,11 +82,11 @@
       </method>
     </configuration>
     <configuration name="MainSelim" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainSelim" />
       <module name="MyJavaFxApp" />
-      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\Users\moham\Desktop\Esprit\3 eme A\S2\JAVA\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
