@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 import tn.esprit.utils.DataSource;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.io.IOException;
 
-public class test extends Application {
+public class MainSelim extends Application {
 
     public static void main(String[] args) {
         launch(args);

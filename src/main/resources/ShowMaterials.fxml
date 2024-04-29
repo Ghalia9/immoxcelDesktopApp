@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="967.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ShowMaterialsController">
+   <children>
+      <Pane prefHeight="750.0" prefWidth="967.0">
+         <children>
+            <Label layoutX="46.0" layoutY="20.0" prefHeight="55.0" prefWidth="155.0" text="Materials">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Pane layoutX="-3.0" layoutY="92.0" prefHeight="3.0" prefWidth="966.0" style="-fx-background-color: black;" />
+            <HBox layoutX="3.0" layoutY="161.0" prefHeight="438.0" prefWidth="963.0">
+               <children>
+                  <ScrollPane prefHeight="438.0" prefWidth="982.0">
+                     <content>
+                        <VBox fx:id="materialsLayout" prefHeight="439.0" prefWidth="963.0">
+                           <children>
+                              <HBox prefHeight="55.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="55.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@carousel-1.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="username1" alignment="CENTER" prefHeight="55.0" prefWidth="324.0" style="-fx-background-color: white;" text="Type Materials" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="username2" alignment="CENTER" prefHeight="55.0" prefWidth="237.0" style="-fx-background-color: white;" text="Unit Price" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="username3" alignment="CENTER" prefHeight="55.0" prefWidth="237.0" style="-fx-background-color: white;" text="Quantity" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="username4" alignment="CENTER" prefHeight="55.0" prefWidth="237.0" style="-fx-background-color: white;" text="Actions" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</HBox>

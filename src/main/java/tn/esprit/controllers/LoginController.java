@@ -17,9 +17,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import javafx.stage.Stage;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javafx.scene.control.TextField;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tn.esprit.models.User;
 import tn.esprit.utils.DataSource;
 public class LoginController {
