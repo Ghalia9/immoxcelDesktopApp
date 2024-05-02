@@ -4,8 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
+    <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge HR into main">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AiAssistant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayLeaves.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/GMailer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Mail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AiAssistant.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CVuploads/CV_Ahmed_Gharbi.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CVuploads/CV_Aziz_mr.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/CVuploads/Certificate of participation NMTC-23.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DisplayLeaves.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/HRMailer.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/client_secret_74306902155-04rsnb3kmsk1m36qvibvasll5p4e8o3e.apps.googleusercontent.com.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/email_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/attach.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddLeave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherEmployees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherLeaves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherLeaves.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AjouterEmployee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EditLeave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/LeavesEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/LeavesEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowLeavePerEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowLeavePerEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateEmployee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/HRDashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/HRDashboard.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddLeave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddLeave.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherEmployees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherLeaves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherLeaves.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AjouterEmployee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditLeave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EditLeave.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/LeavesEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/LeavesEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowLeavePerEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowLeavePerEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateEmployee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +60,10 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
+        <option value="package.json" />
+        <option value="HTML File" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,25 +89,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;HRManagement&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ghali/Downloads/openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.11820328&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "HRManagement",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/ghali/Desktop/Fac3/S2/PIJava/idkBackupJava",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.11820328",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ghali\Desktop\Fac3\S2\PIJava\immoxcel\src\main\resources\images" />
@@ -72,7 +120,7 @@
     <configuration name="MainFX" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFX" />
       <module name="immoxcel" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ghali\Downloads\openjfx-22_windows-x64_bin-sdk\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ghali\Downloads\openjfx-22_windows-x64_bin-sdk\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,14 +140,53 @@
       <workItem from="1713358134216" duration="6578000" />
       <workItem from="1713365066958" duration="79918000" />
       <workItem from="1713952942334" duration="20058000" />
-      <workItem from="1714034860378" duration="22210000" />
+      <workItem from="1714034860378" duration="37806000" />
+      <workItem from="1714511714790" duration="150000" />
+      <workItem from="1714594719682" duration="3721000" />
+      <workItem from="1714600558235" duration="281000" />
+      <workItem from="1714600853387" duration="13000" />
+      <workItem from="1714600871057" duration="514000" />
+      <workItem from="1714601392855" duration="585000" />
+      <workItem from="1714601995762" duration="51000" />
+      <workItem from="1714602133787" duration="154000" />
+      <workItem from="1714602380817" duration="22215000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge HR into main">
+      <option name="closed" value="true" />
+      <created>1714220630617</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714220630617</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Merge HR into main">
+      <option name="closed" value="true" />
+      <created>1714220729266</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714220729266</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Merge HR into main" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge HR into main" />
   </component>
 </project>

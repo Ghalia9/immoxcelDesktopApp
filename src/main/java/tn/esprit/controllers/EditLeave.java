@@ -37,6 +37,12 @@ public class EditLeave {
     {
         this.display=display;
     }
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
+
     @FXML
     void saveLeaveOnClick(ActionEvent event) {
 
@@ -55,8 +61,8 @@ public class EditLeave {
             stage.close();
             Stage stage2 = (Stage) display.getScene().getWindow();
             stage2.close();
-            dashboard.getCardLayout().getChildren().clear();
-            dashboard.showPendingLeaves();
+            //dl.getCardLayout().getChildren().clear();
+            //dl.showPendingLeaves();
         } else {
             // Display a message saying only pending leaves can be deleted
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

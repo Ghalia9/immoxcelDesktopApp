@@ -44,9 +44,20 @@ public class AddLeave {
     {
         this.currentEmployee=currentEmployee;
     }
+
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
+
     private final ServiceLeaves sl=new ServiceLeaves();
     @FXML
     void addLeaveOnClick(ActionEvent event) {
+        if (!allFieldsFilled()) {
+            showValidationError("All fields must be filled.");
+            return;
+        }
         if (validateLeaveInputs()) {
 
             Leaves l=setInformations();
@@ -79,8 +90,11 @@ public class AddLeave {
             // Close the form stage
             Stage stage = (Stage) descriptionField.getScene().getWindow();
             stage.close();
+            /*
             dashboard.getCardLayout().getChildren().clear();
             dashboard.showPendingLeaves();
+
+             */
     }}
     private boolean validateLeaveInputs() {
         // Check if leave type is selected
@@ -114,7 +128,11 @@ public class AddLeave {
         // All inputs are valid
         return true;
     }
-
+    private boolean allFieldsFilled() {
+        return  startDateField.getValue() != null &&
+                finishDateField.getValue() != null &&
+                leaveTypeField.getValue() != null;
+    }
     private void showValidationError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Validation Error");

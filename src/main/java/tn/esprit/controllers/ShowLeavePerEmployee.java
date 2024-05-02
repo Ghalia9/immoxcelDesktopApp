@@ -25,6 +25,16 @@ public class ShowLeavePerEmployee
     @FXML
     private VBox leavesDisplay;
     private Employees currentEmployee;
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
+    }
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
 
     public void setCurrentEmployee(Employees currentEmployee)
     {
@@ -68,7 +78,9 @@ public class ShowLeavePerEmployee
                     leavesPerEmployee.setCurrentLeave(leave);
                    // editLeave.setCurrentLeave(leave);
                     leavesPerEmployee.setCurrentEmployee(leave.getEmployee());
-                    leavesPerEmployee.setdashbord(dashboard);
+                    leavesPerEmployee.setDE(de);
+                    leavesPerEmployee.setDl(dl);
+                    //leavesPerEmployee.setdashbord(dashboard);
                     leavesPerEmployee.setDisplay(leavesDisplay);//VBox for instant refresh
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -52,10 +52,12 @@ public class AfficherEmployees {
             // User clicked OK, proceed with delete operation
             se.supprimer(currentEmployee.getId());
             employeesLayout.getChildren().remove(itemEmployee);
+            /*
             dashboard.getCardLayout().getChildren().clear();
             dashboard.showPendingLeaves();
             dashboard.getLeavesLayout().getChildren().clear();
             dashboard.showOldLeaves();
+             */
         }
     }
     private Employees currentEmployee;
@@ -69,6 +71,11 @@ public class AfficherEmployees {
     public void setdashbord(HRDashboard dashboard)
     {
         this.dashboard=dashboard;
+    }
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
     }
 
     public VBox employeesLayout;
@@ -92,7 +99,8 @@ public class AfficherEmployees {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
             Parent Details = loader.load();
             DetailsEmployee employeedetails=loader.getController();
-           employeedetails.setdashbord(dashboard);
+            employeedetails.setDE(de);
+            //employeedetails.setdashbord(dashboard);
             Stage detailsEmpStage = new Stage();
             detailsEmpStage.initStyle(StageStyle.DECORATED);
             detailsEmpStage.setScene(new Scene(Details, 638, 574));
@@ -114,7 +122,8 @@ public class AfficherEmployees {
             EditEmployee employeeedit=loader.getController();
             if (dashboard==null)
                 System.out.println("hneeeeeeeeeeeeeeeeeeeeeeee");
-            employeeedit.setdashbord(dashboard);
+            employeeedit.setDE(de);
+            //employeeedit.setdashbord(dashboard);
             Stage editEmpStage = new Stage();
             editEmpStage.initStyle(StageStyle.DECORATED);
             editEmpStage.setScene(new Scene(Edit, 638, 574));

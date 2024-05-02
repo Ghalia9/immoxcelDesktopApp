@@ -68,6 +68,17 @@ public class DetailsEmployee {
     {
         this.currentEmployee=currentEmployee;
     }
+
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
+    }
     @FXML
     private AnchorPane displayPage;
 
@@ -81,7 +92,8 @@ public class DetailsEmployee {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowLeavePerEmployee.fxml"));
             Parent leaves = loader.load();
             ShowLeavePerEmployee employeeLeaves=loader.getController();
-            employeeLeaves.setdashbord(dashboard);
+            employeeLeaves.setDE(de);
+            //employeeLeaves.setdashbord(dashboard);
             System.out.println(currentEmployee);
             employeeLeaves.displayLeaves(currentEmployee);
             if (currentEmployee != null) {
@@ -119,7 +131,8 @@ public class DetailsEmployee {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddLeave.fxml"));
                 Parent root = loader.load();
                 AddLeave leave = loader.getController();
-                leave.setdashbord(dashboard);
+                leave.setDl(dl);
+                //leave.setdashbord(dashboard);
                 System.out.println(currentEmployee);
                 leave.setCurrentEmployee(currentEmployee);
                 Stage addLeaveStage = new Stage();
@@ -149,7 +162,8 @@ public class DetailsEmployee {
             EditEmployee employeeedit=loader.getController();
             if (dashboard==null)
                 System.out.println("hneeeeeeeeeeeeeeeeeeeeeeee");
-            employeeedit.setdashbord(dashboard);
+            employeeedit.setDE(de);
+            //employeeedit.setdashbord(dashboard);
             Stage editEmpStage = new Stage();
             editEmpStage.initStyle(StageStyle.DECORATED);
             editEmpStage.setScene(new Scene(Edit, 638, 574));

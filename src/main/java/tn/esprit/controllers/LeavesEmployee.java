@@ -59,6 +59,16 @@ public class LeavesEmployee {
     {
         this.currentEmployee=currentEmployee;
     }
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
+    }
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
 
 
     @FXML
@@ -78,7 +88,7 @@ public class LeavesEmployee {
                 // User clicked OK, proceed with delete operation
                 sl.supprimer(currentLeave.getId());
                 display.getChildren().remove(itemLeave);
-                dashboard.getCardLayout().getChildren().remove(itemLeave);
+                //dl.getCardLayout().getChildren().remove(itemLeave);
             }
         }else {
             // Display a message saying only pending leaves can be deleted
@@ -100,7 +110,8 @@ public class LeavesEmployee {
             EditLeave leaveedit=loader.getController();
             if (dashboard==null)
                 System.out.println("hneeeeeeeeeeeeeeeeeeeeeeee");
-            leaveedit.setdashbord(dashboard);
+            leaveedit.setDl(dl);
+            //leaveedit.setdashbord(dashboard);
             Stage editLeaveStage = new Stage();
             editLeaveStage.initStyle(StageStyle.DECORATED);
             editLeaveStage.setScene(new Scene(EditLeave, 337, 405));

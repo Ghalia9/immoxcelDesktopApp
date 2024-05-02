@@ -82,6 +82,12 @@ public class AfficherLeaves {
     }
     private HRDashboard dashboard;
 
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
+
     public void setdashbord(HRDashboard dashboard)
     {
         this.dashboard=dashboard;
@@ -105,12 +111,19 @@ public class AfficherLeaves {
         currentEmployee.setEmpTakenLeaves(currentEmployee.getEmpTakenLeaves()+1);
         System.out.println(currentEmployee.getEmpTakenLeaves());
         se.modifier(currentEmployee);
+        /*OLD WORKKK
         dashboard.getCardLayout().getChildren().clear();
         dashboard.getLeavesLayout().getChildren().clear();
         dashboard.getEmployeesLayout().getChildren().clear();
         dashboard.showOldLeaves();
         dashboard.showPendingLeaves();
         dashboard.showEmployeesList();
+        */
+        dl.getCardLayout().getChildren().clear();
+        dl.getLeavesLayout().getChildren().clear();
+        dl.showOldLeaves();
+        dl.showPendingLeaves();
+
     }
 
     @FXML
@@ -120,10 +133,16 @@ public class AfficherLeaves {
         sl.modifier(l);
         System.out.println(l);
         System.out.println("not ok");
+        /*old work
         dashboard.getCardLayout().getChildren().clear();
         dashboard.getLeavesLayout().getChildren().clear();
         dashboard.showOldLeaves();
         dashboard.showPendingLeaves();
+*/
+        dl.getCardLayout().getChildren().clear();
+        dl.getLeavesLayout().getChildren().clear();
+        dl.showOldLeaves();
+        dl.showPendingLeaves();
 
     }
 
