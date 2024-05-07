@@ -5,13 +5,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import tn.esprit.models.Tasks;
 import tn.esprit.services.ServiceProjects;
 import tn.esprit.services.ServiceTasks;
 
+import java.util.Objects;
+
 public class TaskItemController {
-private Tasks task;
+    private Tasks task;
     @FXML
     private Button deleteTaskButton;
 
@@ -32,6 +34,10 @@ private Tasks task;
         // Link the handleDeleteProject method to the click event of projectDeleteButton
         deleteTaskButton.setOnMouseClicked(this::handleDeleteTask);
 
+
+        taskTitleLabel.setOnDragDetected(this::onDragDetected);
+        taskDeadlineLabel.setOnDragDetected(this::onDragDetected);
+        deleteTaskButton.setOnDragDetected(this::onDragDetected);
     }
 
     public void setTask(Tasks task) {
@@ -67,4 +73,51 @@ private Tasks task;
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    // Drag handlers
+    @FXML
+    private void onDragDetected(MouseEvent event) {
+        System.out.println("dragging");
+        Dragboard dragboard = taskTitleLabel.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+        content.putString(task.getTitle()); // Pass task ID or relevant data
+        System.out.println(task.getTitle());
+        dragboard.setContent(content);
+        event.consume();
+    }
+    @FXML
+    private void onDragDone(DragEvent event) {
+        System.out.println("Drag Done");
+        event.consume();
+    }
+
+    @FXML
+    private void onDragDropped(DragEvent event) {
+        Dragboard dragboard = event.getDragboard();
+        boolean success = false;
+        if (dragboard.hasString()) {
+            String taskName = dragboard.getString();
+            // Determine where the task was dropped
+            if (Objects.equals(task.getStatus(), "Doing"))  {
+                // Update task status to "Doing"
+                serviceTasks.updateStatus(taskName, "Doing");
+                success = true;
+            } else if (Objects.equals(task.getStatus(), "Done"))  {
+                // Update task status to "Done"
+                serviceTasks.updateStatus(taskName, "Done");
+                success = true;
+            } else if (Objects.equals(task.getStatus(), "To Do"))  {
+                // Update task status to "Done"
+                serviceTasks.updateStatus(taskName, "To Do");
+                success = true;
+            }
+            // Refresh tasks view
+            if (success) {
+                showTasksController.refreshTasks();
+            }
+        }
+        event.setDropCompleted(success);
+        event.consume();
+    }
 }
+

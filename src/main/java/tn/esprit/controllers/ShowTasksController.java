@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -11,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -92,7 +96,7 @@ public class ShowTasksController {
     @FXML
     private Button navigateBackbutton;
     private final ServiceTasks serviceTasks = new ServiceTasks();
-private Projects project;
+    private Projects project;
 
     private final BooleanProperty taskAdded = new SimpleBooleanProperty(false);
     public void refreshTasks() {
@@ -115,9 +119,42 @@ private Projects project;
             }
         });
 
+        // Set event handlers for drag over
+        gridDoing.setOnDragOver(event -> {
+            if (event.getGestureSource() != gridDoing && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.MOVE);
+            }
+            event.consume();
+        });
 
+        gridDone.setOnDragOver(event -> {
+            if (event.getGestureSource() != gridDone && event.getDragboard().hasString()) {
+                event.acceptTransferModes(TransferMode.MOVE);
+            }
+            event.consume();
+        });
+// Handle drag over event for all scroll panes
+        gridToDo.setOnDragOver(event -> handleDragOver(event, gridToDo));
+        gridDoing.setOnDragOver(event -> handleDragOver(event, gridDoing));
+        gridDone.setOnDragOver(event -> handleDragOver(event, gridDone));
+
+// Handle drag dropped event for all scroll panes
+        gridToDo.setOnDragDropped(event -> handleDrop(event, "TO DO"));
+        gridDoing.setOnDragDropped(event -> handleDrop(event, "DOING"));
+        gridDone.setOnDragDropped(event -> handleDrop(event, "DONE"));
         // Load tasks initially
         //loadTasks();
+    }
+    public GridPane getGridDoing() {
+        return gridDoing;
+    }
+
+    public GridPane getGridDone() {
+        return gridDone;
+    }
+
+    public GridPane getGridToDo() {
+        return gridToDo;
     }
 
     private void loadTasks() {
@@ -232,4 +269,65 @@ private Projects project;
     public void setData(Projects project) {
         this.project=project;
     }
+
+
+    public void handleDropDoing(DragEvent event) {
+        Dragboard dragboard = event.getDragboard();
+        boolean success = false;
+        System.out.println(dragboard.getString());
+        if (dragboard.hasString()) {
+            String taskName = dragboard.getString();
+            // Determine where the task was dropped
+            if (event.getTarget() == this.getGridDoing()) {
+                // Update task status to "Doing"
+                serviceTasks.updateStatus(taskName, "Doing");
+                success = true;
+            }
+            // Refresh tasks view
+            if (success) {
+                this.refreshTasks();
+            }
+        }
+        event.setDropCompleted(success);
+        event.consume();
+    }
+
+    @FXML
+    private void handleDragOver(DragEvent event, GridPane targetGrid) {
+        if (event.getGestureSource() != targetGrid && event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.MOVE);
+        }
+        event.consume();
+    }
+
+    // Handle drop event
+    private void handleDrop(DragEvent event, String targetStatus) {
+        Dragboard dragboard = event.getDragboard();
+        boolean success = false;
+        if (dragboard.hasString()) {
+            String taskName = dragboard.getString();
+            // Determine where the task was dropped
+            if (event.getTarget() == this.getGridDoing()) {
+                // Update task status to "Doing"
+                serviceTasks.updateStatus(taskName, "Doing");
+                success = true;
+            } else if (event.getTarget() == this.getGridDone()) {
+                // Update task status to "Doing"
+                serviceTasks.updateStatus(taskName, "Done");
+                success = true;
+            } else if (event.getTarget() == this.getGridToDo()) {
+                // Update task status to "Doing"
+                serviceTasks.updateStatus(taskName, "To Do");
+                success = true;
+            }
+
+            // Refresh tasks view
+            if (success) {
+                this.refreshTasks();
+            }
+        }
+        event.setDropCompleted(success);
+        event.consume();
+    }
+
 }
