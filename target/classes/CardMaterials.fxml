@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.CardMaterialsController">
+    <children>
+        <Label fx:id="image" prefHeight="55.0" prefWidth="80.0" />
+        <Label fx:id="typematerials" alignment="CENTER" prefHeight="50.0" prefWidth="324.0" text="mtarka" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="unitprice" alignment="CENTER" prefHeight="55.0" prefWidth="237.0" text="100" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label fx:id="fquantity" alignment="CENTER" layoutX="468.0" layoutY="20.0" prefHeight="55.0" prefWidth="237.0" text="100" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="237.0" spacing="20.0">
+            <children>
+                <HBox fx:id="updateMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#ShowUpdateMaterials">
+                    <children>
+                        <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@boucler.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <HBox fx:id="deleteMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" spacing="15.0" onMouseClicked="#deleteMaterials">
+                    <children>
+                        <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@supprimer.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <HBox fx:id="showMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" />
+            </children>
+        </HBox>
+    </children>
+</HBox>

@@ -2,6 +2,7 @@ package tn.esprit.services;
 
 import tn.esprit.models.Employees;
 
+import java.sql.SQLException;
 import java.util.Set;
 
 public interface IService <T> {
