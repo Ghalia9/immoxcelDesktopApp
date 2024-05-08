@@ -18,7 +18,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.esprit.services.ServiceTransaction;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 
 public class TableController {
@@ -49,6 +51,8 @@ public class TableController {
     @FXML
     private Label typeTextField;
     private final ServiceTransaction sp = new ServiceTransaction();
+
+    private PdfGenerator pdfIns = new PdfGenerator();
     public void setData(Transaction transaction){
 
         System.out.println("the id is retrieved from cardController "+transaction.getId());
@@ -60,35 +64,7 @@ public class TableController {
         TotalAmount.setText(String.valueOf(transaction.getTotalamount()));
 
     }
-    public void deleteOnClickButton(ActionEvent event ) {
-        try {
-            int  idTransaction= Integer.parseInt(id.getText());
-            // Ask for confirmation before deleting
-            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationAlert.setTitle("Delete Transaction");
-            confirmationAlert.setHeaderText("Are you sure you want to delete this transaction?");
-            confirmationAlert.setContentText("This action cannot be undone.");
-            confirmationAlert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    // Delete the transaction from the database
-                    sp.supprimer(idTransaction);
-                    // Remove the card from the UI
-                    Card.getChildren().clear();
-                    Card.setVisible(false); // Hide the card
-                    Card.setManaged(false); // Make sure it's not managed by the layout
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Success");
-                    successAlert.setContentText("Transaction deleted successfully!");
-                    successAlert.showAndWait();
-                }
-            });
-        } catch (Exception e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Error");
-            errorAlert.setContentText("An unexpected error occurred: " + e.getMessage());
-            errorAlert.showAndWait();
-        }
-    }
+
     public void EditOnClickButton(ActionEvent event){
 
         try {
@@ -177,8 +153,24 @@ public class TableController {
             errorAlert.setContentText("An unexpected error occurred: " + e.getMessage());
             errorAlert.showAndWait();
         }
+    }
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    } private void displayConfirmation(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("PDF Confirmation ✅ ");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void GeneratePDF() throws FileNotFoundException, MalformedURLException {
+
+            int idTransaction = Integer.parseInt(id.getText());
+
+            pdfIns.GeneratePDFTransaction(idTransaction);
+            displayConfirmation("Check Your Folder");
 
 
     }
-
 }

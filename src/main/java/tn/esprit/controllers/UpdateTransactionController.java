@@ -75,7 +75,7 @@ public class UpdateTransactionController implements Initializable {
     }
     private boolean isNumeric (String str ){
         try {
-            double d = Double.parseDouble(str);
+            float d = Float.parseFloat(str);
 
         }catch (NumberFormatException | NullPointerException e ){
             return false ;
@@ -90,13 +90,18 @@ public class UpdateTransactionController implements Initializable {
         }else {
             if(!isNumeric(QuantityTextField.getText()) || !isNumeric(CostTextField.getText()) ){
                 displayErrorAlert( "Requires numbers Check The Quantity and cost Fields " );
+
             }
             else {
                 if (DescrptionTextField.getText().length() < 3) {
                     displayErrorAlert( "Description field requires more than 3 caracteres" );
+
+                } else if (Integer.parseInt(QuantityTextField.getText())<0 ||Integer.parseInt(CostTextField.getText())<0) {
+                    displayErrorAlert( "Required Positive Numbers" );
                 } else {
 
                     LabelMessage.setText("You Try to do a Transaction ");
+
                     float quantity = Float.parseFloat(QuantityTextField.getText());
                     // Convert CostTextField input to a float
                     float cost = Float.parseFloat(CostTextField.getText());
@@ -121,6 +126,8 @@ public class UpdateTransactionController implements Initializable {
                             } else {
                                 sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
                                 displayConfirmationAlert("Modified Succefully ");
+                                Stage stage = (Stage) CostTextField.getScene().getWindow();
+                                stage.close();
                             }
                         }
                         else if("Expenses".equals(type)){
@@ -130,11 +137,15 @@ public class UpdateTransactionController implements Initializable {
                             } else {
                                 sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
                                 displayConfirmationAlert("Modified Succefully ");
+                                Stage stage = (Stage) CostTextField.getScene().getWindow();
+                                stage.close();
                             }
                         }
                         else {
                             sp.modifier(new Transaction(id, typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost,supplier1));
                             displayConfirmationAlert("Modified Succefully ");
+                            Stage stage = (Stage) CostTextField.getScene().getWindow();
+                            stage.close();
                         }
                     }
                 }

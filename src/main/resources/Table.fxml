@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<HBox fx:id="Card" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="799.0" spacing="35.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TableController">
+<HBox fx:id="Card" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="799.0" spacing="35.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TableController">
    <children>
       <Pane prefHeight="57.0" prefWidth="793.0" HBox.hgrow="ALWAYS">
          <children>
             <Label fx:id="dateLabel" layoutY="4.0" text="Label" />
             <Label fx:id="typeTextField" layoutX="82.0" layoutY="4.0" text="Label" />
-            <Label fx:id="Descrption" layoutX="148.0" layoutY="6.0" prefHeight="17.0" prefWidth="268.0" text="Label" />
-            <Label fx:id="Quantity" layoutX="420.0" layoutY="6.0" text="Label" />
-            <Label fx:id="TotalAmount" layoutX="480.0" layoutY="5.0" prefHeight="18.0" prefWidth="94.0" text="Label" />
-            <Button fx:id="editbtn" layoutX="572.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="29.0" prefWidth="54.0" styleClass="editbtn" stylesheets="@Style.css" text="Edit" textFill="#948d8d" />
-            <Button fx:id="Deletebtn" layoutX="635.0" mnemonicParsing="false" onAction="#deleteOnClickButton" styleClass="Deletebtn" stylesheets="@Style.css" text="Delete" textFill="#9e9c9c" />
+            <Label fx:id="Descrption" layoutX="148.0" layoutY="4.0" prefHeight="17.0" prefWidth="268.0" text="Label" />
+            <Label fx:id="Quantity" layoutX="420.0" layoutY="4.0" text="Label" />
+            <Label fx:id="TotalAmount" layoutX="480.0" layoutY="4.0" prefHeight="18.0" prefWidth="94.0" text="Label" />
             <Label fx:id="id" layoutX="705.0" layoutY="4.0" opacity="0.0" prefHeight="18.0" prefWidth="0.0" text="Label" />
-            <Button fx:id="ArchiveOn" layoutX="700.0" mnemonicParsing="false" onAction="#ArchiveOnClick" styleClass="Deletebtn" stylesheets="@Style.css" text="Archive" textFill="#9e9c9c" />
+            <Button fx:id="ArchiveOn" layoutX="709.0" maxHeight="30.0" maxWidth="60.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#ArchiveOnClick" prefHeight="45.0" prefWidth="100.0" styleClass="Deletebtn" stylesheets="@style.css" text="Archive" textFill="#9e9c9c" />
+            <Button layoutX="639.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefWidth="60.0" styleClass="Deletebtn" stylesheets="@style.css" text="Edit" textFill="#9e9c9c" />
+            <Button layoutX="568.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#GeneratePDF" prefWidth="60.0" styleClass="Deletebtn" stylesheets="@style.css" text="PDF" textFill="#9e9c9c" />
          </children>
          <HBox.margin>
             <Insets top="20.0" />

@@ -19,20 +19,16 @@ public class ServiceTransaction implements IService<Transaction> {
     @Override
     public void ajouter(Transaction transaction)  {
         System.out.println(" i am here ");
-        // Retrieve current capital data from the database
         Capital currentCapital = retrieveCurrentCapitalFromDatabase();
 
         Date utilDate = new Date();
-        // Convert java.util.Date to java.sql.Date
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         transaction.setDate(sqlDate);
-        // Insert the transaction into the database
-        // Ensure currentCapital is not null before proceeding
+
         if (currentCapital == null) {
             System.out.println("Error: Unable to retrieve current capital data from the database.");
             return;
         }
-        // Compare currentCapital data with the transaction details
         float totalAmount = transaction.getQuantity() * transaction.getCost();
         String type = transaction.getType();
         if ("Salary".equals(type)){
@@ -71,23 +67,21 @@ public class ServiceTransaction implements IService<Transaction> {
     }
     @Override
     public void modifier(Transaction transaction) {
+        int idTransactionBefore= transaction.getId();
+        Transaction transac= getOneById(idTransactionBefore);
         float result , newone;
-        float ancientTotalAmount= transaction.getTotalamount();
-
-        // Retrieve current capital data from the database
+        float ancientTotalAmount= transac.getCost()* transac.getQuantity();
         Capital currentCapital = retrieveCurrentCapitalFromDatabase();
-        // Ensure currentCapital is not null before proceeding
         if (currentCapital == null) {
             System.out.println("Error: Unable to retrieve current capital data from the database.");
             return;
         }
-        // Compare currentCapital data with the transaction details
         float totalAmount = transaction.getQuantity() * transaction.getCost();
         String type = transaction.getType();
+        float currentValue= totalAmount;
         if ("Salary".equals(type)){
             if(currentCapital.getSalary() < totalAmount) {
                 System.out.println("You cannot proceed. Insufficient salary.");
-                displayErrorAlert("Insufficient salary, you cannot proceed" );
             } else if (currentCapital.getSalary() == totalAmount){
                 System.out.println("nothing to change ");
                 currentCapital.setSalary(currentCapital.getSalary());
@@ -144,7 +138,6 @@ public class ServiceTransaction implements IService<Transaction> {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
     }
     @Override
@@ -282,6 +275,31 @@ public class ServiceTransaction implements IService<Transaction> {
             e.printStackTrace();
         }
         return capitalEntity;
+    }
+    public Set<Transaction> getAllArchived(){
+        Set<Transaction> Trans = new HashSet<>();
+        // dispaying only not archived data
+
+        String req = " SELECT * FROM expenses WHERE archived=true";
+        try {
+            Statement st = cnx.createStatement();
+            ResultSet res = st.executeQuery(req);
+            while (res.next()){
+                int id = res.getInt("id");
+                java.sql.Date date = res.getDate("date_e");
+                String type = res.getString("type");
+                float Quantity = res.getFloat("quantity_e");
+                float cost = res.getFloat("coast");
+                String description  = res.getString("Description");
+                float totalAmount = res.getFloat("totalamount");
+                Transaction transaction = new Transaction (id,date,type,description,Quantity,cost,totalAmount);
+                Trans.add(transaction);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Trans;
+
     }
 
     private void displayErrorAlert(String message) {

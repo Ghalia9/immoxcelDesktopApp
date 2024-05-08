@@ -19,6 +19,7 @@ import tn.esprit.services.ServiceSupplier;
 import tn.esprit.utils.DataSource;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.sql.Connection;
@@ -26,6 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
+
 
 public class SupplierAddController  implements Initializable {
 
@@ -71,6 +73,8 @@ public class SupplierAddController  implements Initializable {
     Connection cnx = DataSource.getInstance().getCnx();
 
     private DisplayController displayController;
+
+    private PdfGenerator pdfSupplier;
 
 
     @Override
@@ -120,8 +124,7 @@ public class SupplierAddController  implements Initializable {
 
     private boolean isNumeric (String str ){
         try {
-            double d = Double.parseDouble(str);
-
+            float d = Float.parseFloat(str);
         }catch (NumberFormatException | NullPointerException e ){
             return false ;
         }
@@ -130,11 +133,6 @@ public class SupplierAddController  implements Initializable {
     public void saveSupplierButtonOnAction(ActionEvent event) {
 
         System.out.println("hell i am inside the addSupplier function");
-        //String companyName = companyNameTextFiled.getText();
-        //String address = addressTextFiled.getText();
-        //String Products = ProductTextField.getText();
-        //String patentRef = PatentTextField.getText();
-       // int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
         String imagePath = "";
         System.out.println("i am just after getting the data from the fields");
         if (image != null) {
@@ -154,10 +152,15 @@ public class SupplierAddController  implements Initializable {
                 alert.setContentText("Requires numbers" + "Check The Quantity and cost Field ");
                 alert.showAndWait();
             } else {
-                if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3 || PhoneNumberTextFiled.getText().length() < 8 || PatentTextField.getText().length() < 8) {
+                if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3 ) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setContentText("fields requires more than 3 caracteres ");
+                    alert.showAndWait();
+                } else if ( PhoneNumberTextFiled.getText().length() < 8 || PatentTextField.getText().length() < 8) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setContentText("fields requires more than 8 caracteres ");
                     alert.showAndWait();
                 } else {
                     try {
@@ -176,15 +179,17 @@ public class SupplierAddController  implements Initializable {
                         if (res.next()) {
                             alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Error Message");
-                            alert.setContentText("Supplier :" + companyNameTextFiled.getText() + " was already created");
+                            alert.setContentText("This Phone Number :" + PhoneNumberTextFiled.getText() + " Already Exist");
                             alert.showAndWait();
                         } else {
+                           // pdfSupplier.GeneratePDFSupplier(companyName,address,prefixLabel.getText(),PhoneNumberTextFiled.getText(),PatentTextField.getText());
                             sup.ajouter(new Supplier(companyName, address, Products, phone, patentRef, imagePath));
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Success");
+                            alert.setContentText("Add Successfully ✅");
                             alert.show();
-                            refreshDisplay();
-                        }
+                            Stage stage = (Stage) companyNameTextFiled.getScene().getWindow();
+                            stage.close();                        }
                     } catch (SQLException e) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("SQL Exception");

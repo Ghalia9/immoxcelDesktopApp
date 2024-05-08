@@ -12,46 +12,48 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane_AddSupplier" prefHeight="590.0" prefWidth="486.0" styleClass="pane_11" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupplierAddController">
+<Pane fx:id="pane_AddSupplier" prefHeight="556.0" prefWidth="373.0" styleClass="pane_11" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupplierAddController">
    <children>
       <Label layoutX="9.0" layoutY="63.0" prefHeight="18.0" prefWidth="114.0" text="New Supplier" textFill="#fffefe">
          <font>
             <Font name="Century Gothic" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="113.0" fitWidth="132.0" layoutX="192.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="99.0" fitWidth="113.0" layoutX="130.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/blogger(1).png" />
+            <Image url="@blogger(1).png" />
          </image>
       </ImageView>
-      <VBox layoutX="55.0" layoutY="120.0" prefHeight="461.0" prefWidth="390.0" spacing="3.0">
+      <VBox layoutX="44.0" layoutY="138.0" prefHeight="402.0" prefWidth="350.0" spacing="2.0">
          <children>
             <Label text="Company Name" />
-            <TextField fx:id="companyNameTextFiled" prefHeight="30.0" prefWidth="340.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+            <TextField fx:id="companyNameTextFiled" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="315.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Label prefHeight="18.0" prefWidth="114.0" text="Address" />
-            <TextField fx:id="addressTextFiled" prefHeight="25.0" prefWidth="336.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+            <TextField fx:id="addressTextFiled" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="223.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
-               </font></TextField>
+               </font>
+            </TextField>
             <Label prefHeight="18.0" prefWidth="90.0" text="Product" />
-            <TextField fx:id="ProductTextField" prefHeight="25.0" prefWidth="336.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@Style.css">
+            <TextField fx:id="ProductTextField" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="300.0" prefHeight="25.0" prefWidth="150.0" promptText="..." styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
-               </font></TextField>
-            <Label layoutX="10.0" layoutY="114.0" prefHeight="18.0" prefWidth="90.0" text="Country" />
-            <ComboBox fx:id="comboboxCountries" onAction="#CountriesOnClick" prefHeight="26.0" prefWidth="389.0" styleClass="pane_AddSupplier" stylesheets="@Style.css" />
+               </font>
+            </TextField>
             <Label prefHeight="18.0" prefWidth="137.0" text="Phone number" />
-            <HBox spacing="30.0">
+            <HBox spacing="20.0">
                <children>
-                  <TextField fx:id="prefixLabel" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="57.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                  <ComboBox fx:id="comboboxCountriesUpdate" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="100.0" onAction="#CountriesOnClick" prefHeight="28.0" prefWidth="126.0" promptText="Countries" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css" />
+                  <TextField fx:id="prefixLabel" layoutY="10.0" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="60.0" prefHeight="30.0" prefWidth="124.0" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                      <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="PhoneNumberTextFiled" prefHeight="30.0" prefWidth="236.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+                  <TextField fx:id="PhoneNumberTextFiled" layoutY="10.0" maxHeight="30.0" maxWidth="103.0" minHeight="30.0" minWidth="90.0" prefHeight="30.0" prefWidth="103.0" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                      <font>
                         <Font name="Century Gothic Bold" size="14.0" />
                      </font>
@@ -59,40 +61,40 @@
                </children>
             </HBox>
             <Label text="Patent Ref" />
-            <TextField fx:id="PatentTextField" prefHeight="25.0" prefWidth="336.0" styleClass="pane_AddSupplier" stylesheets="@Style.css">
+            <TextField fx:id="PatentTextField" maxHeight="30.0" maxWidth="298.0" minHeight="30.0" minWidth="300.0" prefHeight="30.0" prefWidth="298.0" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                <font>
                   <Font name="Century Gothic Bold" size="14.0" />
-               </font></TextField>
-            <HBox prefHeight="132.0" prefWidth="390.0" spacing="20.0">
+               </font>
+            </TextField>
+            <HBox prefHeight="138.0" prefWidth="322.0" spacing="20.0">
                <children>
-                  <VBox prefHeight="142.0" prefWidth="192.0" spacing="15.0">
+                  <VBox prefHeight="118.0" prefWidth="146.0" spacing="15.0">
                      <children>
-                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveSupplierButtonOnAction" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="btn_first_in_the_menu" stylesheets="@Style.css" text="Save" textFill="#c3c9cf">
+                        <Button fx:id="EditOnClickButtonUpdate" mnemonicParsing="false" onAction="#saveSupplierButtonOnAction" prefHeight="30.0" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css" text="Save" textFill="#c3c9cf">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets left="5.0" top="20.0" />
                            </VBox.margin>
                         </Button>
-                        <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#setCancelButtonIDAction" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="btn_second_in_the_menu" stylesheets="@Style.css" text="Canel" textFill="#c3c9cf">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" styleClass="EditOnClickButtonUpdate" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css" text="Import" textFill="#efefef">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="5.0" />
+                           </VBox.margin>
                         </Button>
                      </children>
-                     <padding>
-                        <Insets top="15.0" />
-                     </padding>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
                   </VBox>
                   <VBox onMouseClicked="#supplierInsertImage" prefHeight="151.0" prefWidth="133.0" spacing="12.0">
                      <children>
                         <Pane style="-fx-border-color: #FD9999; -fx-focus-traversable: 0 0 0 0;" VBox.vgrow="ALWAYS">
                            <children>
-                              <ImageView fx:id="ImageView" fitHeight="58.0" fitWidth="98.0" layoutX="13.0" layoutY="10.0" onMouseClicked="#supplierInsertImage" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="ImageView" fitHeight="62.0" fitWidth="86.0" layoutX="24.0" layoutY="5.0" onMouseClicked="#supplierInsertImage" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </Pane>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" styleClass="btn_second_in_the_menu" stylesheets="@Style.css" text="Import" textFill="#efefef" />
                      </children>
                      <padding>
                         <Insets top="6.0" />

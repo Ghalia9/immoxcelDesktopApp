@@ -17,20 +17,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1105.0" styleClass="root" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DisplayController">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1105.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DisplayController">
    <children>
       <VBox prefHeight="755.0" prefWidth="232.0">
          <children>
-            <AnchorPane fx:id="side_ankerpane" prefHeight="767.0" prefWidth="232.0" styleClass="side_ankerpane" stylesheets="@Style.css">
+            <AnchorPane fx:id="side_ankerpane" prefHeight="767.0" prefWidth="232.0" styleClass="side_ankerpane" stylesheets="@style.css">
                <children>
-                  <Pane fx:id="inner_pane" layoutX="16.0" layoutY="22.0" prefHeight="74.0" prefWidth="200.0" styleClass="inner_pane" stylesheets="@Style.css">
+                  <Pane fx:id="inner_pane" layoutX="16.0" layoutY="22.0" prefHeight="74.0" prefWidth="200.0" styleClass="inner_pane" stylesheets="@style.css">
                      <children>
                         <ImageView fitHeight="31.0" fitWidth="154.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="/logo-ct.png" />
                            </image>
                         </ImageView>
-                        <Pane fx:id="most_inner_pane" layoutX="162.0" layoutY="8.0" prefHeight="59.0" prefWidth="34.0" styleClass="most_inner_pane" stylesheets="@Style.css">
+                        <Pane fx:id="most_inner_pane" layoutX="162.0" layoutY="8.0" prefHeight="59.0" prefWidth="34.0" styleClass="most_inner_pane" stylesheets="@style.css">
                            <children>
                               <ImageView fitHeight="47.0" fitWidth="28.0" layoutX="3.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -42,7 +42,7 @@
                         <Button layoutX="2.0" layoutY="25.0" mnemonicParsing="false" onAction="#menuGO" opacity="0.0" prefHeight="31.0" prefWidth="154.0" text="Button" />
                      </children>
                   </Pane>
-                  <Button fx:id="btn_first_in_the_menu" layoutX="17.0" layoutY="142.0" mnemonicParsing="false" onAction="#menuGO" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Transaction" textFill="#070000">
+                  <Button fx:id="btn_first_in_the_menu" layoutX="17.0" layoutY="142.0" mnemonicParsing="false" onAction="#menuGO" prefHeight="38.0" prefWidth="193.0" stylesheets="@style.css" text="Transaction" textFill="#070000">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -58,7 +58,7 @@
                         <String fx:value="mouse-moved" />
                      </styleClass>
                   </Button>
-                  <Button fx:id="btn_second_in_the_menu" layoutX="17.0" layoutY="228.0" mnemonicParsing="false" onAction="#showAllSuppliers" prefHeight="38.0" prefWidth="193.0" stylesheets="@Style.css" text="Supplier" textFill="#070000">
+                  <Button fx:id="btn_second_in_the_menu" layoutX="17.0" layoutY="228.0" mnemonicParsing="false" onAction="#showAllSuppliers" prefHeight="38.0" prefWidth="193.0" stylesheets="@style.css" text="Supplier" textFill="#070000">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -80,11 +80,11 @@
       </VBox>
       <Pane prefHeight="755.0" prefWidth="874.0">
          <children>
-            <Pane layoutX="1.0" layoutY="14.0" prefHeight="74.0" prefWidth="874.0" stylesheets="@Style.css">
+            <Pane layoutX="1.0" layoutY="14.0" prefHeight="74.0" prefWidth="874.0" stylesheets="@style.css">
                <children>
-                  <HBox fx:id="HboxTop" alignment="TOP_RIGHT" layoutX="464.0" layoutY="24.0" spacing="15.0" styleClass="HboxTop" stylesheets="@Style.css">
+                  <HBox fx:id="HboxTop" alignment="TOP_RIGHT" layoutX="464.0" layoutY="24.0" spacing="15.0" styleClass="HboxTop" stylesheets="@style.css">
                      <children>
-                        <TextField fx:id="text_search" promptText="Search:" styleClass="text_search" stylesheets="@Style.css">
+                        <TextField fx:id="text_search" promptText="Search:" styleClass="text_search" stylesheets="@style.css">
                            <font>
                               <Font name="Century Gothic" size="14.0" />
                            </font>
@@ -122,7 +122,7 @@
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
             </Label>
-            <ScrollPane layoutX="14.0" layoutY="137.0" onDragDetected="#newSupplierPopUp" prefHeight="587.0" prefWidth="850.0" styleClass="transparent" stylesheets="@Style.css">
+            <ScrollPane layoutX="14.0" layoutY="137.0" onDragDetected="#newSupplierPopUp" prefHeight="587.0" prefWidth="850.0" styleClass="transparent" stylesheets="@style.css">
                <content>
                   <GridPane fx:id="supplierContainer" alignment="CENTER">
                      <rowConstraints>

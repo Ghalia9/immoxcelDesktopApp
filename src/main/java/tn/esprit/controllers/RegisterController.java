@@ -89,8 +89,9 @@ public class RegisterController  implements Initializable {
                     if (SupplierComboBox.getValue().isEmpty()) {
                         System.out.println("it is empty");
                         supplierId=5;
-                    }
-                    else
+                    } else if (Integer.parseInt(QuantityTextField.getText())<0 || Integer.parseInt(CostTextField.getText())<0) {
+                        displayErrorAlert("Required positive number");
+                    } else
                     {
                         Supplier supplier1 = transaction.getOneByIdSupplier(supplierId);
                         Capital capital=sp.retrieveCurrentCapitalFromDatabase();
@@ -103,6 +104,9 @@ public class RegisterController  implements Initializable {
                             } else {
                                 sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
                                 displayConfirmationAlert("Added Succefully ");
+                                Stage stage = (Stage) CostTextField.getScene().getWindow();
+                                stage.close();
+
                             }
                        }
                         else if("Expenses".equals(type)){
@@ -112,11 +116,15 @@ public class RegisterController  implements Initializable {
                             } else {
                                 sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
                                 displayConfirmationAlert("Added Succefully ");
+                                Stage stage = (Stage) CostTextField.getScene().getWindow();
+                                stage.close();
                             }
                         }
                         else {
                             sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
                             displayConfirmationAlert("Added Succefully ");
+                            Stage stage = (Stage) CostTextField.getScene().getWindow();
+                            stage.close();
                         }
                     }
             }
@@ -155,8 +163,7 @@ public class RegisterController  implements Initializable {
     }
     private boolean isNumeric (String str ){
         try {
-            double d = Double.parseDouble(str);
-
+            float d = Float.parseFloat(str);
         }catch (NumberFormatException | NullPointerException e ){
             return false ;
         }

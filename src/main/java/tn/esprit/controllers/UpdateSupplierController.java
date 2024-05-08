@@ -145,21 +145,11 @@ public class UpdateSupplierController implements Initializable {
                     int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
                     // Convert CostTextField input to a float
                     int id = Integer.parseInt(idSuppTextField.getText());
-                    /*String check = "SELECT phone_number FROM supplier WHERE phone_number=?";
-                    PreparedStatement statement = cnx.prepareStatement(check);
-                    statement.setString(1, PhoneNumberTextFiled.getText());
-                    ResultSet res = statement.executeQuery();
-                    if (res.next()) {
-                        alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Error Message");
-                        alert.setContentText("Supplier :" + companyNameTextFiled.getText() + " was already created");
-                        alert.showAndWait();
-                    } else {*/
                     sp.modifier(new Supplier(id,companyNameTextFiled.getText(), addressTextFiled.getText(),ProductTextField.getText(),phone,PatentTextField.getText(),imagePath));
                     refreshDisplay();
                     displayConfirmationAlert("Modified Succfuly");
-                    // Clear fields
-                    clearFields();//}
+                    Stage stage = (Stage) companyNameTextFiled.getScene().getWindow();
+                    stage.close();
                 }
             }
         }
@@ -190,7 +180,6 @@ public class UpdateSupplierController implements Initializable {
                 if (file.exists()) {
                     Image image = new Image(file.toURI().toString());
                     ImageView.setImage(image);
-                    System.out.println("the path of the picture is ");
                 } else {
                 }
             } catch (Exception e) {
@@ -205,7 +194,7 @@ public class UpdateSupplierController implements Initializable {
 
     private boolean isNumeric (String str ){
         try {
-            double d = Double.parseDouble(str);
+            int d = Integer.parseInt(str);
 
         }catch (NumberFormatException | NullPointerException e ){
             return false ;
@@ -234,8 +223,6 @@ public class UpdateSupplierController implements Initializable {
                 String phoneNumberPrefix = (String) jsonObject.get("dial_code");
                 countryNames.add(countryName);
                 if (comboboxCountriesUpdate.getValue().equals(countryName)) {
-                    System.out.println("Selected Item: " + selectedItem);
-                    System.out.println("the phonenumber=" + phoneNumberPrefix);
                     prefixLabel.setText(phoneNumberPrefix);
                 }
             }
