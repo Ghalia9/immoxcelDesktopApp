@@ -1,17 +1,23 @@
 package tn.esprit.controllers;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
 import tn.esprit.services.ServiceEmployees;
@@ -21,10 +27,9 @@ import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class DisplayEmployees implements Initializable {
 
     @FXML
@@ -46,20 +51,99 @@ public class DisplayEmployees implements Initializable {
     }
     //button add on top of list of employees
     @FXML
+    private TextField search_field;
+
+    @FXML
+    void SearchOnClick(ActionEvent event) {
+        // Add listener to the search field text property for real-time updating
+        search_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Update the list of employees dynamically
+            updateEmployeesList(newValue);
+        });
+    }
+    @FXML
     void addOnClick(ActionEvent event) throws IOException {
         createAddEmployeeForm();
         //showEmployeesList();
-
+    }
+    @FXML
+    void sortOnClick(ActionEvent event) {
+// Get all employees and sort them by hire date
+        employeesLayout.getChildren().clear();
+        se.getAll().stream()
+                .sorted(Comparator.comparing(Employees::getHireDate))
+                .forEach(employee -> {
+                    System.out.println(employee.getHireDate());
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
+                    HBox hBox = null;
+                    try {
+                        hBox = loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    AfficherEmployees afficherEmployees = loader.getController();
+                    afficherEmployees.setDE(this);
+                    afficherEmployees.setCurrentEmployee(employee);
+                    afficherEmployees.setData(employee);
+                    afficherEmployees.employeesLayout = employeesLayout;
+                    employeesLayout.getChildren().add(hBox);
+                });
     }
 
     @FXML
     private WebView webView;
-
+    // List to hold all employees
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //EMPLOYEESLIST
         showEmployeesList();
+        // Add listener to the search field text property for real-time updating
+        search_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Update the list of employees dynamically
+            updateEmployeesList(newValue);
+        });
+    }
+    private List<Employees> allEmployees=se.getAll().stream().toList();
 
+    // Method to update the list of employees based on the search query
+    private void updateEmployeesList(String searchQuery) {
+        //noEmployeesLabel.setVisible(false);
+
+        List<Employees> filteredEmployees = allEmployees.stream()
+                .filter(employee -> matchesSearchQuery(employee, searchQuery))
+                .collect(Collectors.toList());
+
+        // Clear existing UI
+        employeesLayout.getChildren().clear();
+
+        // Display filtered employees or show "No employees found" label
+        if (filteredEmployees.isEmpty()) {
+            showNoEmployeesAlert();
+        } else {
+            try {
+                for (Employees employee : filteredEmployees) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmployeeAfficher.fxml"));
+                    HBox hBox = loader.load();
+                    AfficherEmployees afficherEmployees = loader.getController();
+                    afficherEmployees.setDE(this);
+                    afficherEmployees.setCurrentEmployee(employee);
+                    afficherEmployees.setData(employee);
+                    afficherEmployees.employeesLayout = employeesLayout;
+                    employeesLayout.getChildren().add(hBox);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    // Method to check if an employee matches the search query
+    private boolean matchesSearchQuery(Employees employee, String searchQuery) {
+        // You can customize this method based on your search requirements
+        // For example, you can check if the search query matches the employee's first name, last name, or function
+        // For simplicity, this example checks if the employee's full name contains the search query
+        String fullName = employee.getEmpName() + " " + employee.getEmpLastName();
+        String fuction= employee.getEmpFunction();
+        return fullName.toLowerCase().contains(searchQuery.toLowerCase()) ||fuction.toLowerCase().contains(searchQuery.toLowerCase());
     }
     public void showEmployeesList(){
         Set<Employees> setemployees= se.getAll();
@@ -162,5 +246,20 @@ public class DisplayEmployees implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    // Method to display alert when no employees are found
+    private void showNoEmployeesAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No Employees Found");
+        alert.setHeaderText(null);
+        alert.setContentText("No employee matches the search criteria.");
+        alert.show();
+        // Close the alert after 3 seconds
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
+            alert.close();
+            showEmployeesList(); // Call showEmployeesList() after 3 seconds
+        }));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 }

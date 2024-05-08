@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Pagination;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,6 +28,8 @@ public class DisplayLeaves implements Initializable{
     private HBox cardLayout;
     @FXML
     private VBox leavesLayout;
+    @FXML
+    private Pagination pagination;
     private List<Leaves> pendingLeaves,oldleaves;
 
     public HBox getCardLayout() {
@@ -136,7 +139,7 @@ public class DisplayLeaves implements Initializable{
             Stage stage = (Stage) cardLayout.getScene().getWindow(); // Get the current stage
             stage.setScene(new Scene(root));
             DisplayEmployees employees=loader.getController();
-           // employees.showEmployeesList();
+            // employees.showEmployeesList();
 /*
             addEmpStage.initStyle(StageStyle.DECORATED);
             addEmpStage.setScene(new Scene(root, 638, 574));

@@ -137,34 +137,27 @@
                               </ScrollPane>
                            </children>
                         </HBox>
-                        <ScrollPane prefHeight="304.0" prefWidth="903.0" styleClass="transparent" stylesheets="@style.css">
-                           <content>
-                              <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                        <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
                                  <children>
-                                    <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
-                                       </children>
+                                    <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
                                        <padding>
-                                          <Insets bottom="5.0" top="5.0" />
+                                          <Insets left="10.0" />
                                        </padding>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <VBox fx:id="leavesLayout" prefHeight="354.0" prefWidth="318.0" spacing="5.0">
-                                       <children>
-                                          <Pagination fx:id="pagination" prefHeight="200.0" prefWidth="200.0" />
-                                       </children></VBox>
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
                                  </children>
-                              </VBox>
-                           </content>
-                        </ScrollPane>
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pagination fx:id="pagination" prefHeight="287.0" prefWidth="934.0" />
+                           </children>
+                        </VBox>
                         <Button mnemonicParsing="false" onAction="#navigateToEmployees" styleClass="save_btn" stylesheets="@style.css" text="to employees" />
                         <Button mnemonicParsing="false" onAction="#toEmailOnClick" styleClass="save_btn" stylesheets="@style.css" text="Email" />
                      </children>

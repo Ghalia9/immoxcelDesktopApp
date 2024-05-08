@@ -3,10 +3,7 @@ package tn.esprit.controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -24,7 +21,7 @@ import java.util.Properties;
 
 public class Mail {
     @FXML
-    private TextField message;
+    private TextArea message;
 
     @FXML
     private TextField recepient;
@@ -36,9 +33,21 @@ public class Mail {
 
     @FXML
     private Pane paneProgressor;
+
+    private String to;
+
+
+    public void setTo(String to) {
+        this.to = to;
+        if (recepient != null && to != null) {
+            recepient.setText(to);
+        }
+    }
+
     @FXML
     public void initialize() {
         progressIndicator.setVisible(false);
+
     }
 
     private String attachedFilePath;
@@ -66,8 +75,18 @@ public class Mail {
         String emailSubject = subject.getText();
         String emailMessage = message.getText();
 
+        if (recipientEmail.isEmpty() || emailSubject.isEmpty() || emailMessage.isEmpty()) {
+            // Show an error message to the user indicating that all fields are required
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill in all fields.");
+            alert.showAndWait();
+            return; // Exit the method if any field is empty
+        }
         try {
             sendEmail(progressIndicator,paneProgressor,recipientEmail, emailSubject, emailMessage,attachedFilePath);
+
         } catch (MessagingException | IOException e) {
             e.printStackTrace();
             // Handle the error, such as showing an error message to the user
@@ -120,6 +139,7 @@ public class Mail {
         // Load HTML content from a file
         String htmlContent = loadEmailTemplate("src/main/resources/email_template.html");
         htmlContent = htmlContent.replace("{{name}}", recipientEmail)
+                .replace("{{subject}}",emailSubject)
                 .replace("{{message}}", emailMessage)
                 .replace("{{signature}}", "Signed from immoxcel's HR Manager");
 
@@ -185,7 +205,13 @@ public class Mail {
             alert.setTitle("Email Sent");
             alert.setHeaderText(null);
             alert.setContentText("Your email has been sent successfully.");
-            alert.showAndWait();
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    recepient.clear();
+                    subject.clear();
+                    message.clear();
+                }
+            });
         });
     }
 }

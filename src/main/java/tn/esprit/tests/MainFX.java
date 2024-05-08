@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 
 public class MainFX extends Application {
     public void start(Stage stage) throws Exception{
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
-
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/DisplayLeaves.fxml"));
+        //FXMLLoader loader=new FXMLLoader(getClass().getResource("/Pagination.fxml"));
         Parent root = loader.load();
         Scene scene=new Scene(root);
         stage.setScene(scene);

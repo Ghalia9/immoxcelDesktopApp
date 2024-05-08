@@ -47,7 +47,7 @@
       </Button>
       <Button mnemonicParsing="false" onAction="#delete_employee" styleClass="transparent" stylesheets="@style.css" text="delete">
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/delete.png" />
                </image>
@@ -56,6 +56,15 @@
          <font>
             <Font name="Berlin Sans FB" size="13.0" />
          </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#emailEmployeeOnClick" styleClass="transparent" stylesheets="@style.css" text="email">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/mail.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
    </children>
 </HBox>

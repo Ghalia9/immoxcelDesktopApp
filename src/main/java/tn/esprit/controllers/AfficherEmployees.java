@@ -138,4 +138,27 @@ public class AfficherEmployees {
             e.getCause();
         }
     }
+    @FXML
+    void emailEmployeeOnClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/HRMailer.fxml"));
+            Parent root = loader.load();
+            //Stage stage = (Stage) employeesLayout.getScene().getWindow(); // Get the current stage
+            //stage.setScene(new Scene(root));
+            Mail mail=loader.getController();
+            System.out.println(currentEmployee.getEmpEmail());
+            mail.setTo(currentEmployee.getEmpEmail());
+            Stage mailstage = new Stage();
+            mailstage.initStyle(StageStyle.DECORATED);
+            mailstage.setScene(new Scene(root, 498, 400));
+            mailstage.setTitle("Add Employee Form");
+            mailstage.showAndWait();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
 }

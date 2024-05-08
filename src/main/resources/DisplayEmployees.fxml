@@ -104,11 +104,15 @@
                         <Font size="15.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="672.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@chercher.png" />
-                     </image>
-                  </ImageView>
+                  <Button layoutX="670.0" layoutY="15.0" mnemonicParsing="false" onAction="#SearchOnClick" styleClass="transparent" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@chercher.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                   <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="741.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@utilisateur.png" />
@@ -127,18 +131,30 @@
                               <Font name="Berlin Sans FB" size="15.0" />
                            </font>
                         </Label>
-                        <HBox prefHeight="353.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
+                        <HBox prefHeight="546.0" prefWidth="941.0" styleClass="White-background" stylesheets="@style.css">
                            <children>
-                              <VBox prefHeight="354.0" prefWidth="944.0">
+                              <VBox prefHeight="501.0" prefWidth="941.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="selected" stylesheets="@style.css">
                                        <children>
                                           <Label prefHeight="18.0" prefWidth="202.0" text="EMPLOYEE" />
                                           <Label alignment="CENTER" prefHeight="18.0" prefWidth="155.0" text="FUNCTION" />
                                           <Label alignment="CENTER" prefHeight="18.0" prefWidth="120.0" text="PHONE" />
+                                          <Button mnemonicParsing="false" onAction="#sortOnClick" styleClass="transparent" stylesheets="@style.css" text="sort">
+                                             <graphic>
+                                                <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@images/sort.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <HBox.margin>
+                                                <Insets left="150.0" />
+                                             </HBox.margin>
+                                          </Button>
                                           <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addOnClick" styleClass="transparent" stylesheets="@style.css" text="ADD">
                                              <HBox.margin>
-                                                <Insets left="200.0" />
+                                                <Insets left="100.0" />
                                              </HBox.margin>
                                              <graphic>
                                                 <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
@@ -150,9 +166,9 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <ScrollPane prefHeight="323.0" prefWidth="926.0" styleClass="transparent" stylesheets="@style.css">
+                                    <ScrollPane prefHeight="478.0" prefWidth="941.0" styleClass="transparent" stylesheets="@style.css">
                                        <content>
-                                          <VBox fx:id="employeesLayout" prefHeight="338.0" prefWidth="934.0" styleClass="White-background" stylesheets="@style.css" />
+                                          <VBox fx:id="employeesLayout" prefHeight="478.0" prefWidth="934.0" styleClass="White-background" stylesheets="@style.css" />
                                        </content>
                                     </ScrollPane>
                                  </children>

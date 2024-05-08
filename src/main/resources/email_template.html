@@ -4,13 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 0;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        .email-subject {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .signature {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .signature img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .signature p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-<h2>Hello {{name}},</h2>
-<ul>
-    <li>message: {{message}}</li>
-</ul>
-<p>{{signature}}</p>
-<img src="cid:image" alt="Company Logo">
+<div class="container">
+    <h1>Email Notification</h1>
+    <p>Dear {{name}},</p>
+    <p>You have received an email from immoxcel HR department. We hope this message finds you well.</p>
+    <p><span class="email-subject">Email Subject:</span> {{subject}}</p>
+    <hr>
+    <p>{{message}}</p>
+    <div class="signature">
+        <img src="https://i.ibb.co/RhCFm4n/logo.png"  alt="ImmoXcel Logo">
+        <p>Best Regards,<br>ImmoXcel HR</p>
+    </div>
+</div>
 </body>
 </html>
