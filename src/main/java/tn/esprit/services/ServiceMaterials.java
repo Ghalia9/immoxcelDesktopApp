@@ -12,17 +12,23 @@ public class ServiceMaterials implements IService<Materials> {
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Materials materials) throws SQLException
+    public void ajouter(Materials materials)
     {
         System.out.println(materials.getDepot_id());
         String req = "INSERT INTO `materials`(`depot_id`, `type_material`,`unit_price`,`quantity`) VALUES (?,?,?,?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
-        ps.setInt(1,materials.getDepot_id());
-        ps.setString(2,materials.getTypematerials());
-        ps.setFloat(3,materials.getUnitprice());
-        ps.setInt(4,materials.getQuantity());
-        ps.executeUpdate();
-        System.out.println("Materials added !");
+        PreparedStatement ps = null;
+        try {
+            ps = cnx.prepareStatement(req);
+            ps.setInt(1,materials.getDepot_id());
+            ps.setString(2,materials.getTypematerials());
+            ps.setFloat(3,materials.getUnitprice());
+            ps.setInt(4,materials.getQuantity());
+            ps.executeUpdate();
+            System.out.println("Materials added !");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -47,11 +53,17 @@ public class ServiceMaterials implements IService<Materials> {
     }
 
     @Override
-    public void supprimer(int id) throws SQLException {
+    public void supprimer(int id) {
         String query= "DELETE FROM materials WHERE id=?";
-        PreparedStatement statement= cnx.prepareStatement(query);
-        statement.setInt(1,id);
-        statement.executeUpdate();
+        PreparedStatement statement= null;
+        try {
+            statement = cnx.prepareStatement(query);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

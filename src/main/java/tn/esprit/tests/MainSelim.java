@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.io.IOException;
 
-public class MainFx extends Application {
+public class MainSelim extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -25,11 +25,12 @@ public class MainFx extends Application {
         } else {
             System.out.println("Failed to establish database connection.");
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowDepots.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("Depots");
+        stage.setResizable(true);
+        stage.setTitle("ImmoXcel");
         stage.show();
     }
 }

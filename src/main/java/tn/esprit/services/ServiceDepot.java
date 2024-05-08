@@ -13,16 +13,20 @@ public class ServiceDepot implements IService<Depot>{
     Connection cnx = DataSource.getInstance().getCnx();
 
     @Override
-    public void ajouter(Depot depot)throws SQLException {
+    public void ajouter(Depot depot){
         String req = "INSERT INTO `depot`(`location`, `adresse`,`limit_stock`,`quantity_available`) VALUES (?,?,?,?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
+        PreparedStatement ps = null;
+        try {
+            ps = cnx.prepareStatement(req);
         ps.setString(1,depot.getLocation());
         ps.setString(2,depot.getAdresse());
         ps.setInt(3,depot.getLimit_stock());
         ps.setInt(4,depot.getStock_available());
         ps.executeUpdate();
         System.out.println("Depot added !");
-
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -45,11 +49,17 @@ public class ServiceDepot implements IService<Depot>{
     }
 
     @Override
-    public void supprimer(int id) throws SQLException {
+    public void supprimer(int id) {
         String query= "DELETE FROM depot WHERE id=?";
-        PreparedStatement statement= cnx.prepareStatement(query);
-        statement.setInt(1,id);
-        statement.executeUpdate();
+        PreparedStatement statement= null;
+        try {
+            statement = cnx.prepareStatement(query);
+
+            statement.setInt(1,id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

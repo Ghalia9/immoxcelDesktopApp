@@ -7,9 +7,9 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="itextpdf-repo" />
-      <option name="name" value="itextpdf-repo" />
-      <option name="url" value="https://repo.itextsupport.com/releases" />
+      <option name="id" value="twilio-releases" />
+      <option name="name" value="twilio-releases" />
+      <option name="url" value="https://repo.twilio.com/releases" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

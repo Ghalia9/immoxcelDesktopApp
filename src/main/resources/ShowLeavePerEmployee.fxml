@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="400.0" maxWidth="343.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="314.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ShowLeavePerEmployee">
+   <content>
+      <VBox fx:id="leavesDisplay" prefHeight="432.0" prefWidth="325.0" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
