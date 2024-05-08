@@ -5,44 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge HR into main">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/pagination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/mail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/send-mail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/sort.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/pagination.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_04_2024_5_31_PM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_04_2024_5_31_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_04_2024_5_31_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_04_2024_5_31_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AfficherEmployees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayLeaves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayLeaves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Mail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AiAssistant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AiAssistant.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEmployee.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DetailsEmployee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DetailsEmployee.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainGhalia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainGhalia.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/DisplayLeaves.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DisplayLeaves.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/EmployeeAfficher.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/EmployeeAfficher.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/HRMailer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/HRMailer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/email_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/email_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AiAssistant.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AiAssistant.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AjouterEmployee.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CVuploads/Certificate of participation NMTC-23.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pagination.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/CVuploads/attestation de stage23.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DetailsEmployee.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DetailsEmployee.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DisplayLeaves.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DisplayLeaves.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/EmployeeAfficher.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EmployeeAfficher.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/HRMailer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/HRMailer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/email_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/email_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AfficherEmployees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagination.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayLeaves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayLeaves.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +73,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "HRManagement",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/ghali/Desktop/Fac3/S2/PIJava/idkBackupJava",
+    "last_opened_file_path": "C:/Users/ghali/Desktop/Fac3/S2/PIJava/backup0805",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,15 +91,31 @@
       <recent name="C:\Users\ghali\Desktop\Fac3\S2\PIJava\immoxcel\src\main\resources\images" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainGhalia">
     <configuration name="MainFX" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFX" />
-      <module name="immoxcel" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ghali\Downloads\openjfx-22_windows-x64_bin-sdk\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web " />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainGhalia" />
+      <module name="MyJavaFxApp" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ghali\Downloads\openjfx-22_windows-x64_bin-sdk\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web  " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainGhalia" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-17 (2)" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainGhalia" />
+      <module name="MyJavaFxApp" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\ghali\Downloads\openjfx-22_windows-x64_bin-sdk\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MainFX" />
+      <item itemvalue="Application.MainGhalia" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -144,6 +141,7 @@
       <workItem from="1714601995762" duration="51000" />
       <workItem from="1714602133787" duration="154000" />
       <workItem from="1714602380817" duration="52667000" />
+      <workItem from="1715195645228" duration="2416000" />
     </task>
     <task id="LOCAL-00001" summary="Merge HR into main">
       <option name="closed" value="true" />
@@ -181,6 +179,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Merge HR into main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge HR into main" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>

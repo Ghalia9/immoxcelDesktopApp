@@ -25,7 +25,7 @@ public class MainGhalia extends Application {
         } else {
             System.out.println("Failed to establish database connection.");
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

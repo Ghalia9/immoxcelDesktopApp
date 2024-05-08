@@ -185,7 +185,7 @@ public class DisplayEmployees implements Initializable {
     @FXML
     void navigateToLeaves(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayLeaves.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/pagination.fxml"));
             Parent root = loader.load();
             DisplayLeaves leaves=loader.getController();
             //employees.setDE(this);

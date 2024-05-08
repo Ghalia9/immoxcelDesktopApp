@@ -3,6 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -55,13 +56,41 @@ public class DisplayLeaves implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        oldleaves=new ArrayList<>(oldLeaves());
 
         //pendingLeaves=new ArrayList<>(pendingLeaves());
         //PENDING LEAVES
         showPendingLeaves();
         //ALLLEAVES
 
-        showOldLeaves();
+        // Initialize pagination
+        pagination.setPageFactory(this::createPage);
+        pagination.setPageCount(oldleaves.size() / 4);
+    }
+
+    private Node createPage(int pageIndex) {
+        oldleaves=new ArrayList<>(oldLeaves());
+System.out.println(oldleaves.size());
+        VBox pageContent = new VBox();
+        int itemsPerPage = 4;
+
+        int startIndex = pageIndex * itemsPerPage;
+        int endIndex = Math.min(startIndex + itemsPerPage, oldleaves.size());
+System.out.println(endIndex);
+        for (int i = startIndex; i < endIndex; i++) {
+            System.out.println(i);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/OldLeave.fxml"));
+            try {
+                HBox lBox = loader.load();
+                AfficherLeaves afficherLeaves = loader.getController();
+                afficherLeaves.setDataALL(oldleaves.get(i));
+                pageContent.getChildren().add(lBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return pageContent;
     }
     public void showPendingLeaves(){
         pendingLeaves=new ArrayList<>(pendingLeaves());
