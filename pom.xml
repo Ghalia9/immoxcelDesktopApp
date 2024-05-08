@@ -14,8 +14,22 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <!--DEPENDENCIES-->
     <dependencies>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.15</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version> <!-- Remplacez la version par la dernière version disponible -->
+        </dependency>
+
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -31,7 +45,10 @@
             <artifactId>javafx-controls</artifactId>
             <version>21.0.2</version>
         </dependency>
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     </dependencies>
     <!--DEPENDENCIES-->
     <build>
@@ -47,4 +64,8 @@
         </plugins>
     </build>
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 </project>

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddDepotController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddMaterialsController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" afterDir="false" />
@@ -27,11 +28,59 @@
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Depot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Depot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Materials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Materials.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Employees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Leaves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Leaves.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/User.java" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceDepot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceDepot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceEmployees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceMaterials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceMaterials.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/services/ServiceProjects.java" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Depot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Depot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Materials.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Materials.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CardDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CardDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CardMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CardMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AddDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AddMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CardDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CardDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CardMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CardMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShowMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UpdateDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UpdateMaterials.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateMaterials.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Employees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Employees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Leaves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Leaves.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/IService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/IService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceDepot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceDepot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceEmployees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceMaterials.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceMaterials.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainFX.class" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +103,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -62,6 +114,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -77,6 +130,23 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/MSI/Desktop/immoxcel-java/immoxcelDesktopApp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+>>>>>>> Stashed changes
   <component name="RunManager">
     <configuration name="MainFx" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainFx" />
@@ -129,6 +199,13 @@
       <workItem from="1713514937155" duration="187000" />
       <workItem from="1713515180254" duration="1215000" />
       <workItem from="1713692067431" duration="54267000" />
+<<<<<<< Updated upstream
+=======
+      <workItem from="1714234686069" duration="98000" />
+      <workItem from="1714236173046" duration="48000" />
+      <workItem from="1714902713325" duration="12325000" />
+      <workItem from="1715191158611" duration="124000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

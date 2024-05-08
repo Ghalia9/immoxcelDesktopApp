@@ -57,7 +57,7 @@
          <children>
             <Pane prefHeight="73.0" prefWidth="961.0" styleClass="top_bar" stylesheets="@style.css">
                <children>
-                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css">
+                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css" onKeyTyped="#handleSearch">
                      <font>
                         <Font size="15.0" />
                      </font>

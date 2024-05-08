@@ -6,10 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,14 +33,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ShowDepotController implements Initializable {
+
+    List<Node> originalOrder = new ArrayList<>();
     Connection cnx = DataSource.getInstance().getCnx();
 
     public List<Depot> depotToUpdate= new ArrayList<>();
     @FXML
     public VBox depotLayout;
 
-    @FXML
-    private TableView<ObservableList<String>> usersTable;
+
 
     public List<Depot> depots() throws SQLException {
         List<Depot> ls = new ArrayList<>();
@@ -85,6 +89,9 @@ public class ShowDepotController implements Initializable {
 
         }
 
+        List<Node> test = new ArrayList<>(depotLayout.getChildren());
+        originalOrder=test;
+
     }
     public void showAddDepot(MouseEvent mouseEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddDepot.fxml"));
@@ -96,5 +103,58 @@ public class ShowDepotController implements Initializable {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
+    }
+
+    @FXML
+    private TextField search_field;
+    public void handleSearch() {
+
+
+        String query = search_field.getText().trim().toLowerCase();
+        List<Node> nodesToRemove = new ArrayList<>();
+        List<Node> nodesToAdd = new ArrayList<>();
+        // Store the original order of user cards
+
+        // If the query is empty, reset visibility and restore original order
+        if (query.isEmpty()) {
+
+            for (Node child : depotLayout.getChildren()) {
+                if (child instanceof HBox) {
+                    child.setVisible(true);
+                }
+            }
+            // Clear the layout and add user cards back in original order
+            depotLayout.getChildren().clear();
+            //original order of cards
+            depotLayout.getChildren().addAll(originalOrder);
+            return;
+        }
+
+        for (Node child : originalOrder) { // Iterate over the original order list
+            if (child instanceof HBox) {
+                CardDepotController card = (CardDepotController) child.getProperties().get("controller");
+                if (card != null) {
+                    if (card.Depotlocation.getText().toLowerCase().contains(query)) {
+                        child.setVisible(true);
+                        nodesToRemove.add(child); // Remove the matching node
+                        nodesToAdd.add(child); // Add it below the headers
+
+                    } else {
+                        child.setVisible(false);
+                    }
+                }
+            }
+        }
+
+        // Perform removal and addition after the iteration
+        depotLayout.getChildren().removeAll(nodesToRemove);
+        if (!nodesToAdd.isEmpty()) {
+            if (depotLayout.getChildren().size() > 1) {
+                depotLayout.getChildren().addAll(1, nodesToAdd);
+            } else {
+                // If the list size is 1 or less, just add nodes without specifying index
+                depotLayout.getChildren().addAll(nodesToAdd);
+            }
+        }
     }
 }
