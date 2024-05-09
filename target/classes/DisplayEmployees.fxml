@@ -187,9 +187,13 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#navigateToLeaves" styleClass="save_btn" stylesheets="@style.css" text="to Leaves" />
-                        <Button mnemonicParsing="false" onAction="#toEmailOnClick" styleClass="save_btn" stylesheets="@style.css" text="Email" />
-                        <Button mnemonicParsing="false" onAction="#AIOnClick" text="AI" />
+                        <HBox spacing="390.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#navigateToLeaves" styleClass="save_btn" stylesheets="@style.css" text="to Leaves" />
+                              <Button mnemonicParsing="false" onAction="#toEmailOnClick" styleClass="save_btn" stylesheets="@style.css" text="Email" />
+                              <Button mnemonicParsing="false" onAction="#AIOnClick" styleClass="save_btn" stylesheets="@style.css" text="AI" />
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

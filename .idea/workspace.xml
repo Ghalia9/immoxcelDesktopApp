@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge HR into main">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Statistics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/statistics.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/statistics.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Mail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/EmployeeAfficher.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/EmployeeAfficher.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/email_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/email_template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/EmployeeAfficher.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/EmployeeAfficher.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/email_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/email_template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Mail.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +128,7 @@
       <workItem from="1714601995762" duration="51000" />
       <workItem from="1714602133787" duration="154000" />
       <workItem from="1714602380817" duration="52667000" />
-      <workItem from="1715195645228" duration="14125000" />
+      <workItem from="1715195645228" duration="17990000" />
     </task>
     <task id="LOCAL-00001" summary="Merge HR into main">
       <option name="closed" value="true" />

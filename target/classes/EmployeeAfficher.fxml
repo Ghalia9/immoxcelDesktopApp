@@ -44,6 +44,9 @@
          <font>
             <Font name="Berlin Sans FB" size="13.0" />
          </font>
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
       </Button>
       <Button mnemonicParsing="false" onAction="#delete_employee" styleClass="transparent" stylesheets="@style.css" text="delete">
          <graphic>
@@ -56,6 +59,9 @@
          <font>
             <Font name="Berlin Sans FB" size="13.0" />
          </font>
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
       </Button>
       <Button mnemonicParsing="false" onAction="#emailEmployeeOnClick" styleClass="transparent" stylesheets="@style.css" text="email">
          <graphic>
@@ -65,6 +71,9 @@
                </image>
             </ImageView>
          </graphic>
+         <HBox.margin>
+            <Insets left="25.0" />
+         </HBox.margin>
       </Button>
    </children>
 </HBox>
