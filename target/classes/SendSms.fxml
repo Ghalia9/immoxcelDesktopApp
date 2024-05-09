@@ -13,9 +13,9 @@
 
 <AnchorPane prefHeight="582.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SendSms">
    <children>
-      <Pane fx:id="pane_112" layoutX="10.0" layoutY="10.0" prefHeight="572.0" prefWidth="557.0" style="-fx-border-radius: 20;" styleClass="pane_1111" stylesheets="@Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="pane_112" layoutX="10.0" layoutY="10.0" prefHeight="572.0" prefWidth="557.0" style="-fx-border-radius: 20;" styleClass="pane_1111" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="107.0" layoutY="124.0" prefHeight="438.0" prefWidth="393.0" styleClass="transparent" stylesheets="@Style.css">
+            <Pane layoutX="107.0" layoutY="124.0" prefHeight="438.0" prefWidth="393.0" styleClass="transparent" stylesheets="@style.css">
                <children>
                   <Label layoutX="5.0" layoutY="38.0" text="Phone Number" textFill="WHITE">
                      <font>
@@ -27,17 +27,17 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="MessageTextField" layoutX="2.0" layoutY="158.0" prefHeight="132.0" prefWidth="336.0" promptText="Message.." styleClass="TransparentWithConditionsForLabelForm" stylesheets="@Style.css">
+                  <TextField fx:id="MessageTextField" layoutX="2.0" layoutY="158.0" prefHeight="132.0" prefWidth="336.0" promptText="Message.." styleClass="TransparentWithConditionsForLabelForm" stylesheets="@style.css">
                      <font>
                         <Font name="Century Gothic" size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="Editbtn" layoutX="20.0" layoutY="308.0" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="Deletebtn" stylesheets="@Style.css" text="Save" textFill="#c3c9cf">
+                  <Button fx:id="Editbtn" layoutX="20.0" layoutY="308.0" mnemonicParsing="false" prefWidth="300.0" style="-fx-background-radius: 20;" styleClass="Deletebtn" stylesheets="@style.css" text="Save" textFill="#c3c9cf">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="ClearButton" layoutX="20.0" layoutY="348.0" mnemonicParsing="false" onAction="#setCancelButtonIDAction" prefWidth="300.0" style="-fx-background-radius: 20;" stylesheets="@Style.css" text="Clear" textFill="#c3c9cf">
+                  <Button fx:id="ClearButton" layoutX="20.0" layoutY="348.0" mnemonicParsing="false" onAction="#setCancelButtonIDAction" prefWidth="300.0" style="-fx-background-radius: 20;" stylesheets="@style.css" text="Clear" textFill="#c3c9cf">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -48,7 +48,7 @@
                   </Button>
                   <Label fx:id="LabelMessage" layoutX="144.0" layoutY="262.0" />
                   <Label fx:id="idtrans" layoutX="351.0" layoutY="30.0" opacity="0.0" text="Label" />
-                  <TextField fx:id="PhoneNumberTextFiled" layoutX="2.0" layoutY="68.0" prefHeight="43.0" prefWidth="336.0" promptText="Phone number..." styleClass="TransparentWithConditionsForLabelForm" stylesheets="@Style.css">
+                  <TextField fx:id="PhoneNumberTextFiled" layoutX="2.0" layoutY="68.0" prefHeight="43.0" prefWidth="336.0" promptText="Phone number..." styleClass="TransparentWithConditionsForLabelForm" stylesheets="@style.css">
                      <font>
                         <Font name="Century Gothic" size="14.0" />
                      </font>

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="Pane112Container" prefHeight="222.0" prefWidth="236.0" style="-fx-border-radius: 50;" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupplierContainerController">
+<Pane fx:id="Pane112Container" prefHeight="222.0" prefWidth="236.0" style="-fx-border-radius: 50;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupplierContainerController">
    <children>
       <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier" wrappingWidth="86.199951171875">
          <font>
@@ -35,9 +35,9 @@
       </Label>
       <HBox layoutX="-1.0" layoutY="156.0" prefHeight="50.0" prefWidth="221.0" spacing="12.0">
          <children>
-            <Button fx:id="editButton" minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="30.0" prefWidth="57.0" styleClass="editbtn" stylesheets="@Style.css" text="Edit " textFill="WHITE" />
-            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#deleteOnClickButton" styleClass="editbtn" stylesheets="@Style.css" text="Delete" textFill="WHITE" />
-            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#detailsOnclickbtn" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@Style.css" text="Details" textFill="#fff6f6">
+            <Button fx:id="editButton" minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="30.0" prefWidth="57.0" styleClass="editbtn" stylesheets="@style.css" text="Edit " textFill="WHITE" />
+            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#deleteOnClickButton" styleClass="editbtn" stylesheets="@style.css" text="Delete" textFill="WHITE" />
+            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#detailsOnclickbtn" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@style.css" text="Details" textFill="#fff6f6">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

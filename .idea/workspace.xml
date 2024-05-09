@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SendSms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SendSms.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SupplierAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SupplierAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/SupplierContainer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SupplierContainer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Table.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TransactionAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TransactionAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateSupplier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateTransaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SendSms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SendSms.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SupplierAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SupplierAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SupplierContainer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SupplierContainer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Table.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/TransactionAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TransactionAdd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UpdateSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateSupplier.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UpdateTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateTransaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,24 +54,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "jbr-17",
-    "last_opened_file_path": "C:/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.MainSelim">
     <configuration name="MainAhmed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainAhmed" />
@@ -139,6 +156,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class&#10;" />
+    <MESSAGE value="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class" />
   </component>
 </project>
