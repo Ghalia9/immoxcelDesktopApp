@@ -6,4 +6,5 @@ public enum Functions {
             Production_Manager,
             Inventory_Manager,
             Financial_Manager,
+            Admin
 }

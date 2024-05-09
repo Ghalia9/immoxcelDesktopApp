@@ -47,5 +47,10 @@ public class EmployeeCardController {
     @FXML
     void CancelDelete(MouseEvent event) {
         AddController.setUserToAdd(0,"");
+        AddController.fusername.clear();
+        AddController.email.clear();
+        AddController.password.clear();
+        AddController.confirm_password.clear();
+
     }
 }
