@@ -11,9 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.esprit.models.Depot;
+import tn.esprit.models.User;
 import tn.esprit.services.ServiceDepot;
 
 import java.io.IOException;
@@ -22,6 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDepotController {
+
+    private User userConnected;
+
+
 
     @FXML
     private ImageView addMaterial;
@@ -57,12 +63,16 @@ public class CardDepotController {
 
     public Depot depotEntity;
 
+    private LoginController loginController;
+
     private ServiceDepot sd= new ServiceDepot();
 
     public void initDepot(ShowDepotController depotController ,Depot d)
     {
         this.depot=depotController;
         this.depotEntity=d;
+
+
     }
 
     public void setData(Depot depot)
@@ -115,7 +125,9 @@ public class CardDepotController {
     public void showMaterials(MouseEvent mouseEvent) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowMaterials.fxml"));
         Parent parent=loader.load();
+
         ShowMaterialsController ShowMaterials = loader.getController();
+
         ShowMaterials.initDepot(depot,depotEntity.getId(),this);
         ShowMaterials.initData();
         Scene scene=new Scene(parent);

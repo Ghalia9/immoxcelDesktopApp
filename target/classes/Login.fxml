@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.LoginController">
     <right>
@@ -41,7 +42,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="fusername" layoutX="120.0" layoutY="124.0" />
-                <Button layoutX="92.0" layoutY="293.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #748CF1; -fx-border-color: #748CF1;" styleClass="logout_btn" stylesheets="@style.css" text="Login" textFill="WHITE">
+                <Button fx:id="loginButton" layoutX="94.0" layoutY="273.0" mnemonicParsing="false" onAction="#LoginAction" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #748CF1; -fx-border-color: #748CF1;" styleClass="logout_btn" stylesheets="@style.css" text="Login" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="17.0" />
                     </font>
@@ -52,6 +53,17 @@
                </image>
             </ImageView>
             <PasswordField fx:id="fpassword" layoutX="120.0" layoutY="193.0" />
+            <Text layoutX="14.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+            <Button layoutX="195.0" layoutY="356.0" mnemonicParsing="false" onAction="#ShowSendMail" prefHeight="18.0" prefWidth="122.0" styleClass="transparent" stylesheets="@style.css" text="Click Here" textFill="#145dda">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+
             </children>
         </AnchorPane>
     </left>

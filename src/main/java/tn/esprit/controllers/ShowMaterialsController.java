@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import tn.esprit.models.Depot;
 import tn.esprit.models.Materials;
+import tn.esprit.models.User;
 import tn.esprit.utils.DataSource;
 
 import java.io.IOException;
@@ -36,10 +38,17 @@ public class ShowMaterialsController{
     @FXML
     private HBox root;
 
+
+
+    private User userConnected;
+
     public void initDepot(ShowDepotController depot, int i,CardDepotController card) {
+
         id_depot=i;
         this.depotCard=card;
         depotController=depot;
+
+
     }
     public void initData() throws SQLException, IOException {loadData();}
 

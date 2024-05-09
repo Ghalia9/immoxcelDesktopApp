@@ -1,8 +1,8 @@
 package tn.esprit.controllers;
 
-import tn.esprit.models.Transaction;
-import tn.esprit.models.Supplier;
-import tn.esprit.models.Capital;
+import javafx.scene.Node;
+import javafx.scene.text.Text;
+import tn.esprit.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,16 +18,26 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceSupplier;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DisplayController implements Initializable {
+
+    @FXML
+    public Pane paneToChange;
+
+    @FXML
+    public Text username;
 
     @FXML
     private GridPane supplierContainer;
@@ -96,6 +106,7 @@ public class DisplayController implements Initializable {
     // we put the list of pane here
     public void showAllSuppliers() {
         displaySuppliers(recentlyAddedSuppliers());
+
     }
     // displaying  data in the gridPane with verfication empty or not
     private void displaySuppliers(List<Supplier> suppliers) {
@@ -136,6 +147,7 @@ public class DisplayController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dispa.fxml"));
             Parent root = loader.load();
             Display2Controller display2Controller = loader.getController();
+            display2Controller.setLoginController(loginController,userConnected);
             text_search.getScene().setRoot(root);
         } catch (IOException e) {
             displayErrorAlert("Error loading Dispa.fxml");
@@ -176,4 +188,67 @@ public class DisplayController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    //Selim
+    private LoginController loginController;
+    public User userConnected;
+
+    public void setLoginController(LoginController loginController, User user) {
+        this.loginController=loginController;
+        this.userConnected=user;
+        this.username.setText(userConnected.getUsername());
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public int verifyUpdateFrom=0;
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+
+            verifyUpdateFrom=2;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+            Parent parent = loader.load();
+
+            // Set the instance of DashboardController to AddAccountController
+            UpdateUserController updateUser = loader.getController();
+            updateUser.setSupplierContorller(this,userConnected.getId(),username.getText());
+            updateUser.initializeFields();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+
+        }
+
+    private ServiceEmployees se=new ServiceEmployees();
+
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        Parent HrRoot = HrLoader.load();
+        HRDashboard HrController = HrLoader.getController();
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setdashbord(HrController);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
+    }
+
 }
