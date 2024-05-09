@@ -89,7 +89,26 @@ public class DisplayEmployees implements Initializable {
                     employeesLayout.getChildren().add(hBox);
                 });
     }
+    @FXML
+    void statsOnClick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/statistics.fxml"));
+            AnchorPane root = loader.load();
 
+            // Get the controller
+            Statistics controller = loader.getController();
+            //controller.loadChatbot();
+
+            // Create a scene and set it on the stage
+            Scene scene = new Scene(root, 540, 400);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("Employees statistics");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private WebView webView;
     // List to hold all employees
@@ -108,6 +127,7 @@ public class DisplayEmployees implements Initializable {
     // Method to update the list of employees based on the search query
     private void updateEmployeesList(String searchQuery) {
         //noEmployeesLabel.setVisible(false);
+        List<Employees> allEmployees = se.getAll().stream().toList();
 
         List<Employees> filteredEmployees = allEmployees.stream()
                 .filter(employee -> matchesSearchQuery(employee, searchQuery))

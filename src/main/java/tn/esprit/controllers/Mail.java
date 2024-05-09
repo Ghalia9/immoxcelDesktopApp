@@ -105,10 +105,9 @@ public class Mail {
         return contentBuilder.toString();
     }
 
-    private void sendEmail(ProgressIndicator progressIndicator , Pane paneProgressor,String recipientEmail, String emailSubject, String emailMessage, String attachmentPath) throws MessagingException, IOException {
-
-
+    private void sendEmail(ProgressIndicator progressIndicator, Pane paneProgressor, String recipientEmail, String emailSubject, String emailMessage, String attachmentPath) throws MessagingException, IOException {
         // Your existing email sending code here
+
         final String username = "chiboub.ghalia@gmail.com";
         final String password = "twsv pulq brpo nfes";
 
@@ -119,7 +118,7 @@ public class Mail {
         prop.put("mail.smtp.starttls.enable", "true");
 
         Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
+                new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
                         return new PasswordAuthentication(username, password);
                     }
@@ -131,38 +130,45 @@ public class Mail {
                     progressIndicator.setVisible(true);
                     progressIndicator.setProgress(-1);
                 });
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("chiboub.ghalia@gmail.com"));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-        message.setSubject(emailSubject);
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress("chiboub.ghalia@gmail.com"));
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+                message.setSubject(emailSubject);
 
-        // Load HTML content from a file
-        String htmlContent = loadEmailTemplate("src/main/resources/email_template.html");
-        htmlContent = htmlContent.replace("{{name}}", recipientEmail)
-                .replace("{{subject}}",emailSubject)
-                .replace("{{message}}", emailMessage)
-                .replace("{{signature}}", "Signed from immoxcel's HR Manager");
+                // Load HTML content from the template file
+                String htmlContent = loadEmailTemplate("src/main/resources/email_template.html");
 
-        // Add an image attachment
-        String imagePath = "src/main/resources/images/logo2.png"; // Replace this with the path to your image file
-        addImageToEmail(message, imagePath);
+                // Replace placeholders in the HTML content
+                htmlContent = htmlContent.replace("{{name}}", recipientEmail)
+                        .replace("{{subject}}", emailSubject)
+                        .replace("{{message}}", emailMessage)
+                        .replace("{{signature}}", "Signed from immoxcel's HR Manager")
+                        .replace("{{attachmentLink}}", "<a href=\"cid:attachment\">Attached File</a>");
 
-        // Add file attachment
-        if (attachmentPath != null && !attachmentPath.isEmpty()) {
-            try {
-                addAttachmentToEmail(message, attachmentPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Handle the IOException, such as showing an error message to the user
-                return; // Stop sending the email if there's an issue with the attachment
-            }
-        }
-        message.setContent(htmlContent, "text/html");
+                // Create the multipart
+                Multipart multipart = new MimeMultipart();
 
-        Transport.send(message);
+                // HTML content
+                MimeBodyPart htmlPart = new MimeBodyPart();
+                htmlPart.setContent(htmlContent, "text/html");
+                multipart.addBodyPart(htmlPart);
 
-        // Show confirmation popup
-        showConfirmationAlert();
+                // Attachment
+                if (attachmentPath != null && !attachmentPath.isEmpty()) {
+                    MimeBodyPart attachmentPart = new MimeBodyPart();
+                    DataSource source = new FileDataSource(attachmentPath);
+                    attachmentPart.setDataHandler(new DataHandler(source));
+                    attachmentPart.setFileName(source.getName());
+                    multipart.addBodyPart(attachmentPart);
+                }
+
+                // Set the multipart as the message content
+                message.setContent(multipart);
+
+                Transport.send(message);
+
+                // Show confirmation popup
+                showConfirmationAlert();
             } catch (MessagingException e) {
                 e.printStackTrace();
                 System.out.println("Failed to send email");
@@ -173,8 +179,8 @@ public class Mail {
                 });
             }
         }).start();
-
     }
+
 
     private void addImageToEmail(Message message, String imagePath) throws MessagingException {
         MimeBodyPart imagePart = new MimeBodyPart();
