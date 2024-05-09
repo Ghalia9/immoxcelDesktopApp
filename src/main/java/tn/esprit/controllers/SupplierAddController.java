@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
 
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import tn.esprit.models.Transaction;
 import tn.esprit.models.Supplier;
 import tn.esprit.models.Capital;
@@ -60,6 +62,7 @@ public class SupplierAddController  implements Initializable {
     @FXML
     private Pane pane_AddSupplier;
 
+
     @FXML
     private TextField prefixLabel;
 
@@ -77,7 +80,7 @@ public class SupplierAddController  implements Initializable {
 
     private DisplayController displayController;
 
-    private PdfGenerator pdfSupplier;
+    private PdfGenerator pdfSupplier = new PdfGenerator();
 
 
     @Override
@@ -131,16 +134,11 @@ public class SupplierAddController  implements Initializable {
         return true;
     }
     public void saveSupplierButtonOnAction(ActionEvent event) throws IOException {
-
         String imagePath = "";
+        double percentage = 0.0;
         if (image != null) {
             imagePath = image.getUrl();
-            double percentage =compareim.compare( imagePath );
-            if(percentage <20){
-                System.out.println("it is inserted ");
-            }else {
-                displayErrorAlert("The Image isn't a document ");
-            }
+            percentage = compareim.compare(imagePath);
         }
         if (companyNameTextFiled.getText().isEmpty() || addressTextFiled.getText().isEmpty() || ProductTextField.getText().isEmpty() || PhoneNumberTextFiled.getText().isEmpty() || PatentTextField.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -148,34 +146,32 @@ public class SupplierAddController  implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("You need to fill blank field ");
             alert.showAndWait();
-        }
-        else {
+        } else {
             if (!isNumeric(PhoneNumberTextFiled.getText())) {
                 alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Message");
                 alert.setContentText("Requires numbers" + "Check The Quantity and cost Field ");
                 alert.showAndWait();
             } else {
-                if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3 ) {
+                if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setContentText("fields requires more than 3 caracteres ");
                     alert.showAndWait();
-                } else if ( PhoneNumberTextFiled.getText().length() < 8 || PatentTextField.getText().length() < 8) {
+                } else if (PhoneNumberTextFiled.getText().length() < 8 || PatentTextField.getText().length() < 8) {
                     alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Message");
                     alert.setContentText("fields requires more than 8 caracteres ");
                     alert.showAndWait();
+                } else if (percentage > 20) {
+                    displayErrorAlert("It is not the correct document ");
                 } else {
                     try {
                         String companyName = companyNameTextFiled.getText();
                         String address = addressTextFiled.getText();
                         String Products = ProductTextField.getText();
                         String patentRef = PatentTextField.getText();
-                        //if(comboboxCountries.getValue().equals()
-
-
-                         int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
+                        int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
                         String check = "SELECT phone_number FROM supplier WHERE phone_number=?";
                         PreparedStatement statement = cnx.prepareStatement(check);
                         statement.setString(1, PhoneNumberTextFiled.getText());
@@ -186,14 +182,17 @@ public class SupplierAddController  implements Initializable {
                             alert.setContentText("This Phone Number :" + PhoneNumberTextFiled.getText() + " Already Exist");
                             alert.showAndWait();
                         } else {
-                           // pdfSupplier.GeneratePDFSupplier(companyName,address,prefixLabel.getText(),PhoneNumberTextFiled.getText(),PatentTextField.getText());
+                            String phoneStr = String.valueOf(phone);
+                            pdfSupplier.GeneratePDFSupplier(companyName, address, prefixLabel.getText(), phoneStr, patentRef);
                             sup.ajouter(new Supplier(companyName, address, Products, phone, patentRef, imagePath));
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Success");
                             alert.setContentText("Add Successfully ✅");
                             alert.show();
                             Stage stage = (Stage) companyNameTextFiled.getScene().getWindow();
-                            stage.close();                        }
+                            stage.close();
+
+                        }
                     } catch (SQLException e) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("SQL Exception");
@@ -209,8 +208,6 @@ public class SupplierAddController  implements Initializable {
         Stage stage = (Stage)  CancelButton.getScene().getWindow();
         stage.close();
     }
-
-
     public void CountriesOnClick(ActionEvent event) {
         // Add an event handler to listen for changes in the selected item
         String selectedItem = comboboxCountries.getValue();
@@ -241,6 +238,32 @@ public class SupplierAddController  implements Initializable {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    
+    public void sendNotification() {
+        Label notificationLabel = new Label("Contract Add Successfully ✅ ");
+        notificationLabel.setStyle("-fx-background-color: #303551; -fx-text-fill: white; -fx-border-radius: 20px;-fx-background-radius: 20px; -fx-padding: 10px;");
+        notificationLabel.setPrefWidth(300);
+
+        // Add the notification
+        pane_AddSupplier.getChildren().add(notificationLabel);
+
+        notificationLabel.setLayoutX((pane_AddSupplier.getWidth() - notificationLabel.getWidth()) / 2);
+
+        // Animate
+        TranslateTransition slideIn = new TranslateTransition(Duration.seconds(2), notificationLabel);
+        slideIn.setFromY(-pane_AddSupplier.getHeight());
+        slideIn.setToY((pane_AddSupplier.getHeight() - notificationLabel.getHeight()) / 2);
+        slideIn.play();
+
+        slideIn.setOnFinished(e -> {
+            TranslateTransition slideOut = new TranslateTransition(Duration.seconds(2), notificationLabel);
+            slideOut.setFromY((pane_AddSupplier.getHeight() - notificationLabel.getHeight()) / 2);
+            slideOut.setToY(-pane_AddSupplier.getHeight());
+            slideOut.play();
+
+            slideOut.setOnFinished(finishedEvent -> pane_AddSupplier.getChildren().remove(notificationLabel));
+        });
     }
 
 

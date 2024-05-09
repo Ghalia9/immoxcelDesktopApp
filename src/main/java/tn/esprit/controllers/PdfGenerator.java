@@ -167,6 +167,8 @@ public class PdfGenerator {
         document.close();
     }
 
+
+
     public void GeneratePDFSupplier(String companyName,String address,String prefixLabel, String  phone,String patentRef) throws FileNotFoundException {
 
         System.out.println("date in pdf generator function eqauls to "+currentDateTime);
@@ -182,14 +184,16 @@ public class PdfGenerator {
         float twocol150=twocol+150f;
         float twocolumnWidth[]={twocol150,twocol};
         float fullwidth[]={threecol*3};
-        Table table = new Table(twocolumnWidth);
         float threeColumnWidth []= {threecol,threecol,threecol};
+        Table table = new Table(twocolumnWidth);
         table.addCell(getTransaction("Contract"));
         Table nestedtable= new Table( new float[]{ twocol/2,twocol/2});
-        nestedtable.addCell(getHeaderTextCell("Immoxcel "));
+        nestedtable.addCell(getHeaderTextCell(" Company"));
+        nestedtable.addCell(getHeaderTextCellValue("Immoxcel"));
         nestedtable.addCell(getHeaderTextCell("Date: "));
         nestedtable.addCell(getHeaderTextCellValue(currentDateTime));
         table.addCell(new Cell().add(nestedtable).setBorder(Border.NO_BORDER));
+
         Border gb = new SolidBorder(com.itextpdf.kernel.color.Color.BLACK, 1f/2f);
         Table divider= new Table (fullwidth);
         divider.setBorder(gb);
@@ -197,10 +201,10 @@ public class PdfGenerator {
         document.add(onesp);
         document.add(divider);
         document.add(onesp);
-        Table bodyTable= new Table( twocolumnWidth);
-        bodyTable.addCell(getHeaderTextCell("Party One  "));
-        bodyTable.addCell(getHeaderTextCell("Party Two  "));
-        document.add(bodyTable.setMarginBottom(12f));
+//        Table bodyTable= new Table( twocolumnWidth);
+//        bodyTable.addCell(getHeaderTextCell("Party One  "));
+//        bodyTable.addCell(getHeaderTextCell("Party Two  "));
+//        document.add(bodyTable.setMarginBottom(12f));
 
         Table BodyTableContent= new Table( twocolumnWidth);
 
@@ -221,30 +225,17 @@ public class PdfGenerator {
         float oneColumnwidth[]={twocol150};
 
         Table oneColTab1= new Table( oneColumnwidth);
-
-        //  oneColTab1.addCell(getCell10toLeft("Company ",true));
-//        oneColTab1.addCell(getCell10toLeft("Name ",true));
         oneColTab1.addCell(getCell10toLeft("Email ",true));
         oneColTab1.addCell(getCell10toLeft("Immoxcel@yandex.com  ",false));
-        oneColTab1.addCell(getCell10toLeft("Patent Refrence  ",true));
-        oneColTab1.addCell(getCell10toLeft(patentRef,false));
         document.add(oneColTab1.setMarginBottom(10f));
+
+
+
 
         Table tableDivider2= new Table(fullwidth);
         Border dgb= new DashedBorder(com.itextpdf.kernel.color.Color.BLACK,0.5f);
         document.add(onesp);
         document.add(tableDivider2.setBorder(dgb));
-        document.add(onesp);
-
-        Paragraph prductText=new Paragraph("The Transaction Details ");
-        document.add(prductText.setBold().setFontColor(com.itextpdf.kernel.color.Color.RED));
-
-        Table threeColTab= new Table(threeColumnWidth);
-        threeColTab.setBackgroundColor(com.itextpdf.kernel.color.Color.BLACK,0.7f);
-        threeColTab.addCell(titleColorsFont("Description "));
-        threeColTab.addCell(titleColorsCenter("Quantity "));
-        threeColTab.addCell(titleColorsCenterWithMergine("Price"));
-        document.add(threeColTab);
 
         Table tb= new Table(fullwidth);
 
@@ -262,10 +253,8 @@ public class PdfGenerator {
         tncList.add("9. This agreement constitutes the entire understanding between the parties and supersedes all prior agreements or understandings, whether oral or written.");
         tncList.add("10. Any modifications or amendments to this agreement must be made in writing and signed by both parties to be valid.");
         tncList.add("\n");
-        tncList.add("\n");
-        tncList.add("\n");
         tncList.add("Sign Here");
-        tncList.add("       .    ");
+
 
 
         for (String tnc : tncList){
