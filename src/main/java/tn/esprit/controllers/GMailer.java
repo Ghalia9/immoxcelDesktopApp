@@ -1,5 +1,5 @@
 package tn.esprit.controllers;
-
+/*
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -27,8 +27,9 @@ import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.util.Properties;
 import java.util.Set;
-
+*/
 public class GMailer {
+    /*
     private final Gmail service;
 
     public GMailer() throws Exception {
@@ -48,6 +49,7 @@ public class GMailer {
         if (in == null) {
             throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
         }*/
+    /*
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GMailer.class.getResourceAsStream("/client_secret_74306902155-04rsnb3kmsk1m36qvibvasll5p4e8o3e.apps.googleusercontent.com.json")));
 
@@ -100,4 +102,6 @@ public class GMailer {
     public static void main(String[] args) throws Exception{
         new GMailer().sendMail("test","this is a test form immoxcel HR");
     }
+
+     */
 }

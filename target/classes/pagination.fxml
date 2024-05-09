@@ -7,7 +7,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -138,33 +137,27 @@
                               </ScrollPane>
                            </children>
                         </HBox>
-                        <HBox>
+                        <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
                            <children>
-                              <Separator prefWidth="235.0" />
-                              <VBox prefHeight="348.0" prefWidth="661.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                              <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
                                  <children>
-                                    <HBox alignment="CENTER" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
-                                          </Label>
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
-                                       </children>
+                                    <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
                                        <padding>
-                                          <Insets bottom="5.0" top="5.0" />
+                                          <Insets left="10.0" />
                                        </padding>
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </HBox>
-                                    <Pagination fx:id="pagination" maxPageIndicatorCount="500" prefHeight="318.0" prefWidth="673.0" />
+                                    </Label>
+                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
                                  </children>
-                              </VBox>
-                              <Separator prefWidth="230.0" />
+                                 <padding>
+                                    <Insets bottom="5.0" top="5.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                              <Pagination fx:id="pagination" prefHeight="287.0" prefWidth="934.0" />
                            </children>
-                        </HBox>
+                        </VBox>
                         <HBox spacing="790.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#navigateToEmployees" styleClass="save_btn" stylesheets="@style.css" text="to employees" />
