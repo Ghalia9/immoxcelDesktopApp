@@ -1,41 +1,34 @@
 package tn.esprit.controllers;
 
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import com.twilio.Twilio;
 public class SendSms {
 
-    @FXML
-    private Button ClearButton;
+    public void sendsms(String msg) {
+//        Twilio.init(, );
 
-    public static String url_str;
-
-    @FXML
-    private Button Editbtn;
-
-    @FXML
-    private Label LabelMessage;
-
-    @FXML
-    private TextField MessageTextField;
-
-    @FXML
-    private TextField PhoneNumberTextFiled;
-
-    @FXML
-    private Label idtrans;
-
-    @FXML
-    private Pane pane_112;
-
-
-    @FXML
-    void setCancelButtonIDAction(ActionEvent event) {
+        Message message = Message.creator(
+                        new PhoneNumber("+"),
+                        new PhoneNumber("+"),
+                        "Hello Sir/Madam The Type of Transaction is  "+ msg+ " Please check it out for more information \uD83D\uDE03 📞")
+                .create();
+        System.out.println(message.getSid());
     }
 
+    public void sendsmsCodeVerification(String msg) {
+//        Twilio.init();
+
+        Message message = Message.creator(
+                        new PhoneNumber("+"),
+                        new PhoneNumber("+"),
+                        "" +
+                                "Hello Sir/Madam  " +
+                                "The code \uD83D\uDD11 is  = "+ msg+" ||  To Delete The Archive Transaction 📞")
+                .create();
+        System.out.println(message.getSid());
+    }
 
 }

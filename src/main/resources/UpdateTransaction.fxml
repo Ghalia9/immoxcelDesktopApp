@@ -63,7 +63,7 @@
             </TextField>
             <HBox layoutX="20.0" layoutY="308.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <Button fx:id="Editbtn" mnemonicParsing="false" onAction="#EditOnClickOnUP" prefWidth="110.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@style.css" text="Save" textFill="#c3c9cf">
+                  <Button mnemonicParsing="false" onAction="#EditOnClickOnUP" prefWidth="110.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@style.css" text="Save" textFill="#c3c9cf">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -208,6 +208,31 @@ public class Display2Controller implements Initializable {
             alert.showAndWait();
         }
     }
+    public void refreshTransactionDisplay(KeyEvent event) {
+        if(event.getCode()==KeyCode.F) {
+            Capital capital = sptrans.retrieveCurrentCapitalFromDatabase();
+            salaryLabel.setText(String.valueOf(capital.getSalary()));
+            expensesLabel.setText(String.valueOf(capital.getExepenses()));
+            profitsLabel.setText(String.valueOf(capital.getProfits()));
+            fundsTextField.setText(String.valueOf(capital.getBig_capital()));
+            cardLayout.getChildren().clear(); // Clear existing display
+
+            // Reload transactions
+            List<Transaction> recentlyAdded = recentlyAdded();
+            for (Transaction transaction : recentlyAdded) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
+                try {
+                    HBox cardBox = fxmlLoader.load();
+                    TableController cardController = fxmlLoader.getController();
+                    cardController.setData(transaction);
+                    cardLayout.getChildren().add(cardBox);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     @FXML
     void ArchiveGo(ActionEvent event) {
         try {

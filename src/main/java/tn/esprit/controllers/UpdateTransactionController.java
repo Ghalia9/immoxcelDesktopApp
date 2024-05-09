@@ -82,7 +82,6 @@ public class UpdateTransactionController implements Initializable {
         }
         return true;
     }
-
     public void EditOnClickOnUP(ActionEvent event){
         if (QuantityTextField.getText().isEmpty() || DescrptionTextField.getText().isEmpty() || CostTextField.getText().isEmpty() || SupplierComboBox.getValue()== null ||typeTextField.getValue()==null) {
 
@@ -93,15 +92,14 @@ public class UpdateTransactionController implements Initializable {
 
             }
             else {
-                if (DescrptionTextField.getText().length() < 3) {
+                if (DescrptionTextField.getText().length() < 3)
+                {
                     displayErrorAlert( "Description field requires more than 3 caracteres" );
-
-                } else if (Integer.parseInt(QuantityTextField.getText())<0 ||Integer.parseInt(CostTextField.getText())<0) {
+                } else if (Integer.parseInt(QuantityTextField.getText())<0 || Integer.parseInt(CostTextField.getText())<0) {
                     displayErrorAlert( "Required Positive Numbers" );
-                } else {
-
+                } else
+                {
                     LabelMessage.setText("You Try to do a Transaction ");
-
                     float quantity = Float.parseFloat(QuantityTextField.getText());
                     // Convert CostTextField input to a float
                     float cost = Float.parseFloat(CostTextField.getText());
@@ -115,7 +113,6 @@ public class UpdateTransactionController implements Initializable {
                     }
                     else {
                         Supplier supplier1 = transaction.getOneByIdSupplier(supplierId);
-
                         Capital capital=sp.retrieveCurrentCapitalFromDatabase();
                         float totalAmount = quantity *cost;
                         String type = typeTextField.getValue();

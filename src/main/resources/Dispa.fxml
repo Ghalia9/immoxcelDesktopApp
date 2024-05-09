@@ -96,7 +96,7 @@
                 </AnchorPane>
             </children>
         </VBox>
-        <Pane prefHeight="750.0" prefWidth="959.0">
+        <Pane onKeyPressed="#refreshTransactionDisplay" prefHeight="750.0" prefWidth="959.0">
             <children>
                 <Pane fx:id="pane_1" layoutX="38.0" layoutY="150.0" prefHeight="100.0" prefWidth="120.0" stylesheets="@style.css">
                     <children>
