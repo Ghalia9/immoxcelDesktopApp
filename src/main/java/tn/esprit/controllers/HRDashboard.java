@@ -4,27 +4,48 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
+import tn.esprit.models.User;
 import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceLeaves;
 import tn.esprit.controllers.AfficherEmployees;
+import tn.esprit.utils.DataSource;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
 public class HRDashboard implements Initializable {
+
+    @FXML
+    public Pane paneToChange;
+
+    Connection connection = DataSource.getInstance().getCnx();
+
+    int verifyUpdateFrom=0;
+    public User userConnected;
+    LoginController loginController;
+
+    @FXML
+    public Text username;
     @FXML
     private HBox cardLayout;
     @FXML
@@ -33,6 +54,8 @@ public class HRDashboard implements Initializable {
 
     @FXML
     private VBox employeesLayout;
+
+    public @FXML Pane getPane(){return paneToChange;}
 
     public VBox getEmployeesLayout() {
         return employeesLayout;
@@ -48,6 +71,13 @@ public class HRDashboard implements Initializable {
 
     private final ServiceLeaves sl= new ServiceLeaves();
     private final ServiceEmployees se = new ServiceEmployees();
+
+    public void setLoginController(LoginController login, User user)
+    {
+        this.loginController=login;
+        userConnected=user;
+        username.setText(userConnected.getUsername());
+    }
 
     private int idSelectedEmployee(Employees employee){
         return employee.getId();
@@ -70,6 +100,7 @@ public class HRDashboard implements Initializable {
         showOldLeaves();
         //EMPLOYEESLIST
         showEmployeesList();
+
     }
     public void showEmployeesList(){
         Set<Employees> setemployees= se.getAll();
@@ -174,6 +205,60 @@ public void showOldLeaves(){
             e.printStackTrace();
             e.getCause();
         }
+    }
+
+    //Selim
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+        String query = "SELECT id FROM user WHERE username=?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1,username.getText());
+        ResultSet rst=statement.executeQuery();
+        if(rst.next())
+        {
+            verifyUpdateFrom=2;
+            int id=rst.getInt("id");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+            Parent parent = loader.load();
+
+            // Set the instance of DashboardController to AddAccountController
+            UpdateUserController updateUser = loader.getController();
+            updateUser.setHrController(this,id,username.getText());
+            updateUser.initializeFields();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+
+        }
+    }
+
+
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setdashbord(this);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
     }
 
 }

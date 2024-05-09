@@ -13,12 +13,16 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
@@ -27,6 +31,7 @@ import tn.esprit.utils.DataSource;
 public class UpdateUserController {
 
     private final ServiceUser su = new ServiceUser();
+    public Button Update;
     Connection connection = DataSource.getInstance().getCnx();
 
     @FXML
@@ -47,15 +52,71 @@ public class UpdateUserController {
 
     private DashboardController dashboardController;
 
+    private int verifyFrom;
+
+    private HRDashboard hrDashboard;
+
+    private Object Controller;
     private int emp_id;
 
     private String usernameFromTable;
 
+    private ProjectsDashboardController projectsDashboardController;
+
+    private ShowTasksController tasksController;
+
+    private ShowDepotController depotController;
+
+    private DisplayController supplierController;
+
+    private Display2Controller transactionContorller;
+
     // Method to set the DashboardController
+
+    public void setTransactionContorller(Display2Controller transaction,int id,String name) {
+        this.transactionContorller=transaction;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+
+    public void setSupplierContorller(DisplayController supplier,int id,String name) {
+        this.supplierController=supplier;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
     public void setDashboardController(DashboardController dashboardController,int id,String name) {
         this.dashboardController = dashboardController;
         this.userID=id;
         this.usernameFromTable=name;
+    }
+
+    public void setInventoryController(ShowDepotController depot,int id,String name) {
+        this.depotController = depot;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+
+    public void setProjectController(ProjectsDashboardController projController,int id,String name) {
+        this.projectsDashboardController = projController;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+
+    public void setProjectTasksController(ShowTasksController task,int id,String name) {
+        this.tasksController = task;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+
+    public void setHrController(HRDashboard hrController,int id,String name) {
+        this.hrDashboard = hrController;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+    private LoginController loginController;
+    public void setLoginController(LoginController login)
+    {
+        this.loginController=login;
     }
 
     private boolean searchUsername(String username) throws SQLException {
@@ -151,35 +212,235 @@ public class UpdateUserController {
             }
         }
     public void updateUser(ActionEvent actionEvent) throws SQLException, IOException {
-       if(dashboardController.verifyUpdateFrom==2)
-       { if(username.getText().equals(dashboardController.usernameConnected.getText()))
+
+        if(transactionContorller!=null && transactionContorller.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(transactionContorller.username.getText()))
             {
-           updateData();
-           dashboardController.usernameConnected.setText(username.getText());
-            dashboardController.userConnected.setUsername(username.getText());
+                updateData();
+                transactionContorller.username.setText(username.getText());
+                transactionContorller.userConnected.setUsername(username.getText());
+                transactionContorller.verifyUpdateFrom=0;
+                closePopUp();
             }
-        else
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    transactionContorller.username.setText(username.getText());
+                    transactionContorller.userConnected.setUsername(username.getText());
+                    transactionContorller.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+        else if(supplierController!=null && supplierController.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(supplierController.username.getText()))
+            {
+                updateData();
+                supplierController.username.setText(username.getText());
+                supplierController.userConnected.setUsername(username.getText());
+                supplierController.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    supplierController.username.setText(username.getText());
+                    supplierController.userConnected.setUsername(username.getText());
+                    supplierController.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+       else if(depotController!=null && depotController.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(depotController.username.getText()))
+            {
+                updateData();
+                depotController.username.setText(username.getText());
+                depotController.userConnected.setUsername(username.getText());
+                depotController.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    depotController.username.setText(username.getText());
+                    depotController.userConnected.setUsername(username.getText());
+                    depotController.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+        else if(tasksController!=null && tasksController.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(tasksController.username.getText()))
+            {
+                updateData();
+                tasksController.username.setText(username.getText());
+                tasksController.userConnected.setUsername(username.getText());
+                tasksController.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    tasksController.username.setText(username.getText());
+                    tasksController.userConnected.setUsername(username.getText());
+                    tasksController.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+        else if(projectsDashboardController!=null && projectsDashboardController.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(projectsDashboardController.username.getText()))
+            {
+                updateData();
+                projectsDashboardController.username.setText(username.getText());
+                projectsDashboardController.userConnected.setUsername(username.getText());
+                projectsDashboardController.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    projectsDashboardController.username.setText(username.getText());
+                    projectsDashboardController.userConnected.setUsername(username.getText());
+                    projectsDashboardController.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+        else if(hrDashboard!=null && hrDashboard.verifyUpdateFrom==2)
+        {
+            System.out.println("test");
+            if(username.getText().equals(hrDashboard.username.getText()))
+            {
+                updateData();
+                hrDashboard.username.setText(username.getText());
+                hrDashboard.userConnected.setUsername(username.getText());
+                hrDashboard.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    hrDashboard.username.setText(username.getText());
+                    hrDashboard.userConnected.setUsername(username.getText());
+                    hrDashboard.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+       else if(dashboardController!=null && dashboardController.verifyUpdateFrom==2)
        {
-           if(!searchUsername(username.getText()))
-           {
-               updateData();
-               dashboardController.usernameConnected.setText(username.getText());
-               dashboardController.userConnected.setUsername(username.getText());
-           }
-           else
-           {
-               Alert alert = new Alert(Alert.AlertType.ERROR);
-               alert.setTitle("Error");
-               alert.setContentText("Username already taken");
-               alert.showAndWait();
-           }
+           System.out.println("first : "+dashboardController.usernameConnected.getText());
+           if(username.getText().equals(dashboardController.usernameConnected.getText()))
+            {
+                System.out.println("before : "+dashboardController.usernameConnected.getText());
+                updateData();
+
+                dashboardController.userConnected.setUsername(username.getText());
+                dashboardController.usernameConnected.setText(dashboardController.userConnected.getUsername());
+                System.out.println("after : "+dashboardController.usernameConnected.getText());
+                dashboardController.setLoginController(loginController,dashboardController.userConnected);
+                dashboardController.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+                {
+                    if(!searchUsername(username.getText()))
+                        {
+                            System.out.println("before : "+dashboardController.usernameConnected.getText());
+                           updateData();
+
+                           dashboardController.userConnected.setUsername(username.getText());
+                            dashboardController.usernameConnected.setText(dashboardController.userConnected.getUsername());
+                            System.out.println("after : "+dashboardController.usernameConnected.getText());
+
+                           dashboardController.verifyUpdateFrom=0;
+
+
+                            closePopUp();
+
+                        }
+                    else
+                       {
+                           Alert alert = new Alert(Alert.AlertType.ERROR);
+                           alert.setTitle("Error");
+                           alert.setContentText("Username already taken");
+                           alert.showAndWait();
+                       }
+                }
        }
-       }
-       else if(dashboardController.verifyUpdateFrom==0){if(username.getText().equals(usernameFromTable))
+       else if(dashboardController!=null && dashboardController.verifyUpdateFrom==0 && hrDashboard==null){
+           if(username.getText().equals(usernameFromTable))
        {
+           System.out.println("test");
            updateData();
            initializeFields();
            refreshUsersTable();
+           closePopUp();
        }
        else
        {
@@ -188,6 +449,7 @@ public class UpdateUserController {
                updateData();
                initializeFields();
                refreshUsersTable();
+               closePopUp();
            }
            else
            {
@@ -196,10 +458,24 @@ public class UpdateUserController {
                alert.setContentText("Username already taken");
                alert.showAndWait();
            }
-       }}
+       }
+
+       }
 
 
     }
+
+    private void closePopUp()
+        {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Update");
+            alert.setContentText("User Updated");
+            alert.showAndWait();
+
+            Stage stage = (Stage) Update.getScene().getWindow();
+            // Close the stage
+            stage.close();
+        }
 
 
 

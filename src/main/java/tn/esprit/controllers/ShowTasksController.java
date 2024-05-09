@@ -2,9 +2,11 @@ package tn.esprit.controllers;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,17 +20,29 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.Projects;
 import tn.esprit.models.Tasks;
+import tn.esprit.models.User;
 import tn.esprit.services.ServiceProjects;
 import tn.esprit.services.ServiceTasks;
+import tn.esprit.utils.DataSource;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class ShowTasksController {
+    LoginController loginController;
+    User userConnected;
+
+    @FXML
+    public Text username;
     @FXML
     private Button addTaslkButton;
 
@@ -86,8 +100,7 @@ public class ShowTasksController {
     @FXML
     private MenuButton transactions;
 
-    @FXML
-    private Text username;
+
 
     @FXML
     private Button navigateBackbutton;
@@ -221,6 +234,7 @@ private Projects project;
             stage.setScene(new Scene(root1));
 
             ProjectsDashboardController projectsDashboardController = fxmlLoader.getController();
+            projectsDashboardController.setLoginController(loginController,userConnected);
             projectsDashboardController.refreshProjects(); // Refresh projects when navigating back
 
             stage.show();
@@ -229,7 +243,47 @@ private Projects project;
         }
     }
 
-    public void setData(Projects project) {
+    public void setData(Projects project, LoginController login, User user) {
         this.project=project;
+        this.loginController=login;
+        this.userConnected=user;
+        username.setText(userConnected.getUsername());
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    int verifyUpdateFrom=0;
+    Connection connection = DataSource.getInstance().getCnx();
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+        String query = "SELECT id FROM user WHERE username=?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, username.getText());
+        ResultSet rst = statement.executeQuery();
+        if (rst.next()) {
+            verifyUpdateFrom = 2;
+            int id = rst.getInt("id");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+            Parent parent = loader.load();
+
+            // Set the instance of DashboardController to AddAccountController
+            UpdateUserController updateUser = loader.getController();
+            updateUser.setProjectTasksController(this, id, username.getText());
+            updateUser.initializeFields();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+
+        }
     }
 }

@@ -1,4 +1,7 @@
 package tn.esprit.controllers;
+
+import javafx.scene.layout.AnchorPane;
+
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -16,7 +19,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tn.esprit.models.Employees;
 import tn.esprit.models.User;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceUser;
 import tn.esprit.utils.DataSource;
 import javafx.scene.layout.Pane;
@@ -34,6 +39,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DashboardController{
+
+    private DashboardController dashboard=this;
+
+    private Display2Controller transaction;
+
+    private DisplayController supplier;
+    private HRDashboard HR;
+
+    private ProjectsDashboardController projects;
+
+    private ShowDepotController depot;
+
+    @FXML
+    public Pane paneToChange;
 
     List<Node> originalOrder = new ArrayList<>();
 
@@ -225,29 +244,63 @@ public class DashboardController{
 
 
     public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
-        String query = "SELECT id FROM user WHERE username=?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1,usernameConnected.getText());
-        ResultSet rst=statement.executeQuery();
-        if(rst.next())
-        {
-            verifyUpdateFrom=2;
-            int id=rst.getInt("id");
+
+
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
             Parent parent = loader.load();
 
             // Set the instance of DashboardController to AddAccountController
             UpdateUserController updateUser = loader.getController();
-            updateUser.setDashboardController(this,id,usernameConnected.getText());
+            updateUser.setLoginController(loginController);
+        if(transaction!=null)
+        {
+            System.out.println("transaction");
+            transaction.verifyUpdateFrom=2;
+            updateUser.setTransactionContorller(transaction,userConnected.getId(),usernameConnected.getText());
             updateUser.initializeFields();
+        }
 
+            else if(supplier!=null)
+            {
+                System.out.println("supplier");
+                supplier.verifyUpdateFrom=2;
+                updateUser.setSupplierContorller(supplier,userConnected.getId(),usernameConnected.getText());
+                updateUser.initializeFields();
+            }
+
+             else if(HR!=null)
+            {
+                System.out.println("hr");
+                HR.verifyUpdateFrom=2;
+                updateUser.setHrController(HR,userConnected.getId(),usernameConnected.getText());
+                updateUser.initializeFields();
+            }
+            else if(projects!=null)
+                {
+                    System.out.println("project");
+                    projects.verifyUpdateFrom=2;
+                    updateUser.setProjectController(projects,userConnected.getId(),usernameConnected.getText());
+                    updateUser.initializeFields();
+                }
+            else if(depot!=null)
+                {
+                    System.out.println("depot");
+                    depot.verifyUpdateFrom=2;
+                    updateUser.setInventoryController(depot,userConnected.getId(),usernameConnected.getText());
+                    updateUser.initializeFields();
+                }
+
+        verifyUpdateFrom=2;
+        updateUser.setDashboardController(this, userConnected.getId(), usernameConnected.getText());
+        updateUser.initializeFields();
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
 
-        }
+
     }
 
     public void handleSearch() {
@@ -298,5 +351,125 @@ public class DashboardController{
                 UsersLayout.getChildren().addAll(nodesToAdd);
             }
         }
+    }
+
+    public void ShowEmployees(ActionEvent actionEvent) throws IOException {
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        Parent HrRoot = HrLoader.load();
+        HRDashboard HrController = HrLoader.getController();
+        this.HR=HrController;
+
+        HrController.setLoginController(loginController,userConnected);
+
+
+        if (HrController != null) {
+            // Find the side_bar node by its fx:id
+
+            this.paneToChange.getChildren().setAll(HrController.getPane().getChildren());
+        } else {
+            System.out.println("Pane or controller is null");
+        }
+    }
+
+    public void ShowDashboard(ActionEvent actionEvent) throws IOException {
+        HR=null;
+        projects=null;
+        depot=null;
+        supplier=null;
+        transaction=null;
+        verifyUpdateFrom=2;
+        FXMLLoader DashboardLoader = new FXMLLoader(getClass().getResource("/Admin.fxml"));
+        Parent DashboardRoot = DashboardLoader.load();
+        DashboardController DashboardController = DashboardLoader.getController();
+        DashboardController.setLoginController(loginController,userConnected);
+        System.out.println(userConnected.getUsername());
+        DashboardController.initData();
+        dashboard=DashboardController;
+        this.paneToChange.getChildren().setAll(DashboardController.paneToChange.getChildren());
+    }
+
+    public void ShowProject(ActionEvent actionEvent) throws IOException {
+        HR=null;
+        dashboard=null;
+        depot=null;
+        supplier=null;
+        transaction=null;
+        FXMLLoader ProjectLoader = new FXMLLoader(getClass().getResource("/ShowProjects.fxml"));
+        Parent ProjectRoot = ProjectLoader.load();
+        ProjectsDashboardController ProjectController = ProjectLoader.getController();
+        ProjectController.setLoginController(loginController, userConnected);
+        projects=ProjectController;
+
+
+        this.paneToChange.getChildren().setAll(ProjectController.paneToChange.getChildren());
+    }
+
+    public void ShowDepot(ActionEvent actionEvent) throws IOException, SQLException {
+        HR=null;
+        projects=null;
+        dashboard=null;
+        supplier=null;
+        transaction=null;
+        FXMLLoader InventoryLoader = new FXMLLoader(getClass().getResource("/ShowDepots.fxml"));
+        Parent InventoryRoot = InventoryLoader.load();
+        ShowDepotController InventoryController = InventoryLoader.getController();
+        InventoryController.setLoginController(loginController, userConnected);
+        InventoryController.loadData();
+        depot=InventoryController;
+
+
+
+        this.paneToChange.getChildren().setAll(InventoryController.paneToChange.getChildren());
+    }
+
+    public void ShowTransaction(ActionEvent actionEvent) throws IOException, SQLException {
+        HR=null;
+        projects=null;
+        depot=null;
+        supplier=null;
+        dashboard=null;
+        FXMLLoader Transactionloader = new FXMLLoader(getClass().getResource("/Dispa.fxml"));
+        Parent root = Transactionloader.load();
+        Display2Controller TransactionController = Transactionloader.getController();
+        TransactionController.setLoginController(loginController,userConnected);
+        transaction=TransactionController;
+
+
+
+        this.paneToChange.getChildren().setAll(TransactionController.paneToChange.getChildren());
+    }
+    public void ShowSupplier(ActionEvent actionEvent) throws IOException, SQLException {
+        HR=null;
+        projects=null;
+        depot=null;
+        dashboard=null;
+        transaction=null;
+        FXMLLoader SupplierLoader = new FXMLLoader(getClass().getResource("/Display.fxml"));
+        Parent FinanceRoot = SupplierLoader.load();
+        DisplayController SupplierController = SupplierLoader.getController();
+        SupplierController.setLoginController(loginController, userConnected);
+        supplier=SupplierController;
+
+
+        this.paneToChange.getChildren().setAll(SupplierController.paneToChange.getChildren());
+    }
+
+    private ServiceEmployees se=new ServiceEmployees();
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        Parent HrRoot = HrLoader.load();
+        HRDashboard HrController = HrLoader.getController();
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setdashbord(HrController);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
     }
 }

@@ -7,22 +7,34 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.json.simple.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import tn.esprit.models.Employees;
 import tn.esprit.models.User;
 import tn.esprit.services.ServiceUser;
 import tn.esprit.utils.DataSource;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.*;
 import java.sql.Date;
 //import java.util.Date;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.simple.parser.JSONParser;
 public class AddAccountController {
 
+    private String mailStatus;
     @FXML
     private VBox employeesLayout;
     List<Employees> employeesCopy=new ArrayList<>();
@@ -31,6 +43,36 @@ public class AddAccountController {
     EmployeeCardController employeeCard;
 
     List<Node> originalOrder = new ArrayList<>();
+
+    public String verifyEmail(String emailToVerify) throws IOException {
+      // Replace with the email address you want to verify
+        String apiKey = "4cba6e27b13603b5433ae634f9eda0e58ec9751c"; // Replace with your own API key from hunter.io
+
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet request = new HttpGet("https://api.hunter.io/v2/email-verifier?email=" + emailToVerify + "&api_key=" + apiKey);
+
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                String jsonResponse = EntityUtils.toString(response.getEntity());
+                JSONParser parser = new JSONParser();
+                JSONObject jsonObject = (JSONObject) parser.parse(jsonResponse);
+
+                // Extract relevant data
+                JSONObject data = (JSONObject) jsonObject.get("data");
+                String status = (String) data.get("status");
+                long score = (long) data.get("score");
+
+                // Push to dataLayer with event name emailStatus and parameters
+                // You can replace this with your desired logic to handle the data
+                System.out.println("Email status: " + status);
+                System.out.println("Email score: " + score);
+                mailStatus=status;
+            }
+        } catch (IOException | org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }
+        return mailStatus;
+    }
+
 
     public void setEmployeeCard(EmployeeCardController employeeCardController) {
         this.employeeCard=employeeCardController;
@@ -73,16 +115,16 @@ public class AddAccountController {
     private ChoiceBox<String> employeeChoiceBox;
 
     @FXML
-    private TextField fusername;
+    public TextField fusername;
 
     @FXML
-    private TextField email;
+    public TextField email;
 
     @FXML
-    private PasswordField password;
+    public PasswordField password;
 
     @FXML
-    private PasswordField confirm_password;
+    public PasswordField confirm_password;
 
     private final ServiceUser su = new ServiceUser();
 
@@ -204,16 +246,19 @@ public class AddAccountController {
                     alert.setContentText("Username already taken");
                     alert.showAndWait();
                 } else {
-                    if (Objects.equals(password.getText(), confirm_password.getText()) && validateMail(email.getText()) && !password.getText().isEmpty() && !confirm_password.getText().isEmpty()) {
+
+                    if (Objects.equals(password.getText(), confirm_password.getText()) && validateMail(email.getText()) && !password.getText().isEmpty() && !confirm_password.getText().isEmpty() && verifyEmail(email.getText()).equals("valid")) {
                         int customCostFactor = 13;
                         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(customCostFactor);
                         hashed_password = encoder.encode(password.getText());
+                        verifyEmail(email.getText());
                         su.ajouter(new User(hashed_password, fusername.getText(), email.getText(), emp_id));
                         fusername.clear();
                         email.clear();
                         password.clear();
                         confirm_password.clear();
                         employeeName.setText("");
+
                         ObservableList<Node> children = employeesLayout.getChildren();
                         List<Node> nodesToRemove = new ArrayList<>();
 
@@ -241,7 +286,9 @@ public class AddAccountController {
                         populateEmployeeTable();
                         refreshUsersTable();
                         refreshUsers();
+
                     } else if (!validateMail(email.getText()) || email.getText().isEmpty()) {
+
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setTitle("Invalid Mail");
                         alert.setContentText("Wrong Mail Format");
@@ -262,7 +309,13 @@ public class AddAccountController {
                         alert.setContentText("Confirm Password is blank");
                         alert.showAndWait();
                     }
-
+                    else if(validateMail(email.getText()) && !verifyEmail(email.getText()).equals("valid"))
+                        {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Mail");
+                            alert.setContentText("Suspicious Mail try another one");
+                            alert.showAndWait();
+                        }
 
                 }
             }
