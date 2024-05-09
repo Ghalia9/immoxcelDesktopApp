@@ -2,6 +2,7 @@ package tn.esprit.controllers;
 
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import tn.esprit.models.Supplier;
 import tn.esprit.models.Transaction;
 import tn.esprit.models.Capital;
 import javafx.event.ActionEvent;
@@ -86,6 +87,22 @@ public class Display2Controller implements Initializable {
                 cardLayout.getChildren().addAll(createCardBoxesForTransactions(filteredTransactions));
             }
         }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            text_search.clear();
+            List<Transaction> recentlyAdded = recentlyAdded();
+            for (Transaction transaction : recentlyAdded) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
+                try {
+                    HBox cardBox = fxmlLoader.load();
+                    TableController cardController = fxmlLoader.getController();
+                    cardController.setData(transaction);
+                    cardLayout.getChildren().add(cardBox);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
     private boolean transactionContainsSearchWords(Transaction transaction, String searchQuery) {
         String transactionText = transactionToString(transaction).toLowerCase();
@@ -116,7 +133,7 @@ public class Display2Controller implements Initializable {
     }*/
     private String transactionToString(Transaction transaction) {
         // Implement this method based on how you want to represent a transaction as a string
-        return transaction.getType() + transaction.getDescription() + transaction.getTotalamount() + transaction.getCost();
+        return transaction.getType() + transaction.getDescription() + transaction.getTotalamount() + transaction.getCost()+transaction.getDate();
     }
     private HBox createCardBoxForTransaction(Transaction transaction) {
         try {

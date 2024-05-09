@@ -175,17 +175,14 @@ public class DisplayArchivedTrController implements Initializable {
         Stage stage = (Stage) CancelButton.getScene().getWindow();
         stage.close();
     }
-    public void swtichToMenu(ActionEvent event) {
+    public void menuGO(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Dispa.fxml"));
-            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dispa.fxml"));
+            Parent root = loader.load();
+            Display2Controller display2Controller = loader.getController();
+            text_search.getScene().setRoot(root);
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error loading SupplierAdd.fxml");
-            alert.showAndWait();
+            displayErrorAlert("Error loading Dispa.fxml");
         }
     }
     public void listSuppliersGO(ActionEvent event) {
@@ -219,6 +216,12 @@ public class DisplayArchivedTrController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    private void displayErrorAlert(String message) {
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 }

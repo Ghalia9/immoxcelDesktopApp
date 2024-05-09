@@ -1,5 +1,8 @@
 package tn.esprit.controllers;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import tn.esprit.models.Transaction;
 import tn.esprit.models.Supplier;
 import tn.esprit.models.Capital;
@@ -48,15 +51,15 @@ public class DisplayController implements Initializable {
         showAllSuppliers();
     }
 
-    public void setUpdateSupplierController(UpdateSupplierController controller)
-    {
-        this.updateSupplierController=controller;
+    public void setUpdateSupplierController(UpdateSupplierController controller) {
+        this.updateSupplierController = controller;
     }
-    public void setSupplierAddController(SupplierAddController controller)
-    {
-        this.supplierAddController=controller;
+
+    public void setSupplierAddController(SupplierAddController controller) {
+        this.supplierAddController = controller;
     }
-    public void refrechData(){
+
+    public void refrechData() {
         supplierContainer.getChildren().clear();
         List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
         for (Supplier supplier : recentlyAddedSupplier) {
@@ -71,11 +74,21 @@ public class DisplayController implements Initializable {
             }
         }
     }
+
     // search
-    public void search(ActionEvent event) {
-        supplierContainer.getChildren().clear();
-        List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
-        displaySuppliers(filteredSuppliers);
+    public void search(KeyEvent event) {
+
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            supplierContainer.getChildren().clear();
+            List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
+            displaySuppliers(filteredSuppliers);
+        }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            text_search.clear();
+            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
+            displaySuppliers(recentlyAddedSupplier);
+        }
     }
 
     private List<Supplier> filterSuppliers(String searchQuery) {
@@ -100,7 +113,7 @@ public class DisplayController implements Initializable {
     // displaying  data in the gridPane with verfication empty or not
     private void displaySuppliers(List<Supplier> suppliers) {
         if (suppliers.isEmpty()) {
-            Label noDataLabel = new Label("No data found.");
+            Label noDataLabel = new Label("No Supplier found.");
             supplierContainer.getChildren().add(noDataLabel);
         } else {
             for (int i = 0; i < suppliers.size(); i++) {
@@ -160,6 +173,26 @@ public class DisplayController implements Initializable {
     public void  setCancelButtonIDActionOn(ActionEvent event) {
         Stage stage = (Stage) CancelButtonn.getScene().getWindow();
         stage.close();
+    }
+    public void refreshTransactionDisplay(KeyEvent event) {
+        if(event.getCode()== KeyCode.F) {
+            supplierContainer.getChildren().clear();
+            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
+            displaySuppliers(recentlyAddedSupplier);
+        }
+    }
+
+    public void listSuppliersGO(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display.fxml"));
+            Parent root = loader.load();
+            DisplayController displayController = loader.getController();
+            text_search.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error loading Display.fxml");
+            alert.showAndWait();
+        }
     }
 
     private void showPopUp(Parent root) {

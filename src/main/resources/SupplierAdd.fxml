@@ -47,7 +47,7 @@
             <Label prefHeight="18.0" prefWidth="137.0" text="Phone number" />
             <HBox spacing="20.0">
                <children>
-                  <ComboBox fx:id="comboboxCountriesUpdate" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="100.0" onAction="#CountriesOnClick" prefHeight="28.0" prefWidth="126.0" promptText="Countries" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css" />
+                  <ComboBox fx:id="comboboxCountries" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="100.0" onAction="#CountriesOnClick" prefHeight="28.0" prefWidth="126.0" promptText="Countries" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css" />
                   <TextField fx:id="prefixLabel" layoutY="10.0" maxHeight="0.0" maxWidth="0.0" minHeight="30.0" minWidth="60.0" prefHeight="30.0" prefWidth="124.0" styleClass="pane_AddSupplier" stylesheets="@../../../../../IdeaProjects/Version2MonProjet/MyJavaFxApp/src/main/resources/com/example/myjavafxapp/Style.css">
                      <font>
                         <Font name="Century Gothic Bold" size="14.0" />

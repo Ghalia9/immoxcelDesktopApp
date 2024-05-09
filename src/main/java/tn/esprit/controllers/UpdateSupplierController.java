@@ -20,6 +20,7 @@ import tn.esprit.utils.DataSource;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -68,16 +69,17 @@ public class UpdateSupplierController implements Initializable {
     String imagePath = "";
     private DisplayController displayController;
     Connection cnx = DataSource.getInstance().getCnx();
+    private ComparingImage compareim ;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        compareim = new ComparingImage();
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\CountryCodes.json")) {
-            // Parse the JSON file
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;
 
-            // Extract country names from JSON and add them to a list
             List<String> countryNames = new ArrayList<>();
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
@@ -87,7 +89,6 @@ public class UpdateSupplierController implements Initializable {
             }
             System.out.println("Country Names: " + countryNames);
 
-            // Populate the ComboBox with country names
             comboboxCountriesUpdate.getItems().addAll(countryNames);
         } catch (Exception e) {
             e.printStackTrace();
@@ -121,35 +122,34 @@ public class UpdateSupplierController implements Initializable {
         }
     }
 
-    public void EditOnClickButtonUpdate(ActionEvent event){
+    public void EditOnClickButtonUpdate(ActionEvent event) throws IOException {
         System.out.println(" l id of update supplier function = "+idSuppTextField.getText());
-
-        String imagePath = "";
-        System.out.println("i am just after getting the data from the fields");
-        if (image != null) {
-            imagePath = image.getUrl();
-        }
-
-        if (companyNameTextFiled.getText().isEmpty() || addressTextFiled.getText().isEmpty() || ProductTextField.getText().isEmpty() || PhoneNumberTextFiled.getText().isEmpty() || PatentTextField.getText().isEmpty() || ImageView.getImage()==null) {
+        if (companyNameTextFiled.getText().isEmpty() || addressTextFiled.getText().isEmpty() || ProductTextField.getText().isEmpty() || PhoneNumberTextFiled.getText().isEmpty() || PatentTextField.getText().isEmpty() || ImageView.getImage() == null) {
             displayErrorAlert("You need to fill blank field ");
-        }else {
-            if(!isNumeric(PhoneNumberTextFiled.getText())  ){
-                displayErrorAlert("Requires numbers Check The Quantity and cost Field");
-            }
-            else {
-                if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3|| PhoneNumberTextFiled.getText().length() < 8|| PatentTextField.getText().length() <8)
-                {
-                    displayErrorAlert("fields  [ company name | adress | Product ] requires more than 3  And [Phone Number | Patent ] Requires more than 8 ");
+        } else {
+            String imagePath = "";
+            if (image != null) {
+                imagePath = image.getUrl();
+                double percentage = compareim.compare(imagePath);
+                if (percentage > 20) {
+                    displayErrorAlert("The Image isn't a document ");
                 }
                 else {
-                    int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
-                    // Convert CostTextField input to a float
-                    int id = Integer.parseInt(idSuppTextField.getText());
-                    sp.modifier(new Supplier(id,companyNameTextFiled.getText(), addressTextFiled.getText(),ProductTextField.getText(),phone,PatentTextField.getText(),imagePath));
-                    refreshDisplay();
-                    displayConfirmationAlert("Modified Succfuly");
-                    Stage stage = (Stage) companyNameTextFiled.getScene().getWindow();
-                    stage.close();
+                    if (!isNumeric(PhoneNumberTextFiled.getText())) {
+                        displayErrorAlert("Requires numbers Check The Quantity and cost Field");
+                    } else {
+                        if (companyNameTextFiled.getText().length() < 3 || addressTextFiled.getText().length() < 3 || ProductTextField.getText().length() < 3 || PhoneNumberTextFiled.getText().length() < 8 || PatentTextField.getText().length() < 8) {
+                            displayErrorAlert("fields  [ company name | adress | Product ] requires more than 3  And [Phone Number | Patent ] Requires more than 8 ");
+                        } else {
+                            int phone = Integer.parseInt(PhoneNumberTextFiled.getText());
+                            // Convert CostTextField input to a float
+                            int id = Integer.parseInt(idSuppTextField.getText());
+                            sp.modifier(new Supplier(id, companyNameTextFiled.getText(), addressTextFiled.getText(), ProductTextField.getText(), phone, PatentTextField.getText(), imagePath));
+                            displayConfirmationAlert("Modified Successfully ✅");
+                            Stage stage = (Stage) companyNameTextFiled.getScene().getWindow();
+                            stage.close();
+                        }
+                    }
                 }
             }
         }

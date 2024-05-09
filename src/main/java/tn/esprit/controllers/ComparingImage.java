@@ -16,48 +16,42 @@ public class ComparingImage {
     public String image;
     public String Resultat="";
     public ComparingImage(){}
-    public String compare(String imagePath ) throws IOException {
+    public double compare(String imagePath ) throws IOException {
 
         String cleanedImagePath = cleanImagePath(imagePath);
 
         BufferedImage img1 = ImageIO.read(new File("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\com\\example\\myjavafxapp\\Pictures\\Doc1.jpeg"));
         BufferedImage img2 = ImageIO.read(new File(cleanedImagePath));
-        int w1 = img1.getWidth();
-        int w2 = img2.getWidth();
-        int h1 = img1.getHeight();
-        int h2 = img2.getHeight();
-        if ((w1 != w2) || (h1 != h2)) {
-            System.out.println("Both images should have same dimention");
-            Resultat= "Both images should have same dimention";
+        BufferedImage resizedImg = resizeImage(img2, img1.getWidth(), img1.getHeight());
 
-        } else {
-            long diff = 0;
-            for (int j = 0; j < h1; j++) {
-                for (int i = 0; i < w1; i++) {
-                    //Getting the RGB values of a pixel
-                    int pixel1 = img1.getRGB(i, j);
-                    Color color1 = new Color(pixel1, true);
-                    int r1 = color1.getRed();
-                    int g1 = color1.getGreen();
-                    int b1 = color1.getBlue();
-                    int pixel2 = img2.getRGB(i, j);
-                    Color color2 = new Color(pixel2, true);
-                    int r2 = color2.getRed();
-                    int g2 = color2.getGreen();
-                    int b2 = color2.getBlue();
-                    //sum of differences of RGB values of the two images
-                    long data = Math.abs(r1 - r2) + Math.abs(g1 - g2) + Math.abs(b1 - b2);
-                    diff = diff + data;
-                }
+        long diff = 0;
+        int width = img1.getWidth();
+        int height = img1.getHeight();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int rgb1 = img1.getRGB(x, y);
+                int rgb2 = resizedImg.getRGB(x, y);
+                // Comparer les composants RGB
+                int redDiff = Math.abs((rgb1 >> 16) & 0xFF - (rgb2 >> 16) & 0xFF);
+                int greenDiff = Math.abs((rgb1 >> 8) & 0xFF - (rgb2 >> 8) & 0xFF);
+                int blueDiff = Math.abs((rgb1) & 0xFF - (rgb2) & 0xFF);
+                // Calculer la différence totale
+                diff += redDiff + greenDiff + blueDiff;
             }
-            double avg = diff / (w1 * h1 * 3);
-            double percentage = (avg / 255) * 100;
-            System.out.println("Difference: " + percentage);
-            Resultat="DDifference: " + percentage;
-
-
         }
-        return Resultat;
+        double avgDiff = diff / (width * height * 3.0); // Divisé par 3 car nous avons trois composants de couleur (R, G, B)
+        double percentage = (avgDiff / 255) * 100; // Convertir en pourcentage
+        return  percentage;
+    }
+
+    private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = resizedImage.createGraphics();
+        g.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        g.dispose();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        return resizedImage;
     }
     private String cleanImagePath(String imagePath) {
         String cleanedImagePath = imagePath;

@@ -90,22 +90,7 @@ public class CardController {
                         e.printStackTrace();
                         displayErrorAlert("An error occurred while loading the Register form.");
                     }
-                    // Delete the transaction from the database
-                    //sp.supprimer(idTransaction);
-                    // Remove the card from the UI
-                       /* Card.getChildren().clear();
-                        Card.setVisible(false); // Hide the card
-                        Card.setManaged(false); // Make sure it's not managed by the layout
-                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                        successAlert.setTitle("Success");
-                        successAlert.setContentText("Transaction deleted successfully!");
-                        successAlert.showAndWait();*/
-                   /* } catch (SQLException e) {
-                        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                        errorAlert.setTitle("SQL Exception");
-                        errorAlert.setContentText("Error while deleting transaction: " + e.getMessage());
-                        errorAlert.showAndWait();
-                    }*/
+
                 }
             });
         } catch (Exception e) {

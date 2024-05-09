@@ -21,6 +21,7 @@ import tn.esprit.utils.DataSource;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,6 +67,8 @@ public class SupplierAddController  implements Initializable {
     @FXML
     private ComboBox<String> comboboxCountries;
     ServiceSupplier sup = new ServiceSupplier();
+    private ComparingImage compareim ;
+
     private Image image;
 
     private Alert alert;
@@ -79,14 +82,12 @@ public class SupplierAddController  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Read the JSON file
+        compareim = new ComparingImage();
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\CountryCodes.json")) {
-            // Parse the JSON file
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;
 
-            // Extract country names from JSON and add them to a list
             List<String> countryNames = new ArrayList<>();
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
@@ -96,7 +97,6 @@ public class SupplierAddController  implements Initializable {
             }
             System.out.println("Country Names: " + countryNames);
 
-            // Populate the ComboBox with country names
             comboboxCountries.getItems().addAll(countryNames);
         } catch (Exception e) {
             e.printStackTrace();
@@ -130,13 +130,17 @@ public class SupplierAddController  implements Initializable {
         }
         return true;
     }
-    public void saveSupplierButtonOnAction(ActionEvent event) {
+    public void saveSupplierButtonOnAction(ActionEvent event) throws IOException {
 
-        System.out.println("hell i am inside the addSupplier function");
         String imagePath = "";
-        System.out.println("i am just after getting the data from the fields");
         if (image != null) {
             imagePath = image.getUrl();
+            double percentage =compareim.compare( imagePath );
+            if(percentage <20){
+                System.out.println("it is inserted ");
+            }else {
+                displayErrorAlert("The Image isn't a document ");
+            }
         }
         if (companyNameTextFiled.getText().isEmpty() || addressTextFiled.getText().isEmpty() || ProductTextField.getText().isEmpty() || PhoneNumberTextFiled.getText().isEmpty() || PatentTextField.getText().isEmpty()) {
             alert = new Alert(Alert.AlertType.ERROR);
@@ -207,27 +211,23 @@ public class SupplierAddController  implements Initializable {
     }
 
 
-    public void CountriesOnClick(ActionEvent event){
+    public void CountriesOnClick(ActionEvent event) {
         // Add an event handler to listen for changes in the selected item
-            String selectedItem = comboboxCountries.getValue();
+        String selectedItem = comboboxCountries.getValue();
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\CountryCodes.json")) {
             // Parse the JSON file
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;
-            Map< List<String>,List<String> > map = new HashMap<>();
-
+            Map<List<String>, List<String>> map = new HashMap<>();
             // Extract country names from JSON and add them to a list
             List<String> countryNames = new ArrayList<>();
             for (Object o : jsonArray) {
                 JSONObject jsonObject = (JSONObject) o;
                 String countryName = (String) jsonObject.get("name");
-                String phoneNumberPrefix=(String) jsonObject.get("dial_code");
+                String phoneNumberPrefix = (String) jsonObject.get("dial_code");
                 countryNames.add(countryName);
-
-                if(comboboxCountries.getValue().equals(countryName)){
-                    System.out.println("Selected Item: " + selectedItem);
-                    System.out.println("the phonenumber=" +phoneNumberPrefix);
+                if (comboboxCountries.getValue().equals(countryName)) {
                     prefixLabel.setText(phoneNumberPrefix);
                 }
             }
@@ -236,7 +236,11 @@ public class SupplierAddController  implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    }
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
