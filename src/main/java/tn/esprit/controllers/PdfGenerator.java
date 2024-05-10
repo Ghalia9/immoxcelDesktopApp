@@ -2,13 +2,14 @@ package tn.esprit.controllers;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.colors.Color;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.border.Border;
-import com.itextpdf.layout.border.DashedBorder;
-import com.itextpdf.layout.border.SolidBorder;
+import com.itextpdf.layout.borders.Border;
+import com.itextpdf.layout.borders.DashedBorder;
+import com.itextpdf.layout.borders.SolidBorder;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
@@ -27,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 
 public class PdfGenerator {
+   /*
     public Date currentDate=new Date();
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -78,9 +80,8 @@ public class PdfGenerator {
         nestedtable.addCell(getHeaderTextCellValue(currentDateTime));
         table.addCell(new Cell().add(nestedtable).setBorder(Border.NO_BORDER));
 
-        Border gb = new SolidBorder(com.itextpdf.kernel.color.Color.BLACK, 1f/2f);
         Table divider= new Table (fullwidth);
-        divider.setBorder(gb);
+
         document.add(table);
         document.add(onesp);
         document.add(divider);
@@ -116,16 +117,16 @@ public class PdfGenerator {
         document.add(oneColTab1.setMarginBottom(10f));
 
         Table tableDivider2= new Table(fullwidth);
-        Border dgb= new DashedBorder(com.itextpdf.kernel.color.Color.BLACK,0.5f);
+        //Border dgb= new DashedBorder(com.itextpdf.kernel.color.Color.BLACK,0.5f);
         document.add(onesp);
-        document.add(tableDivider2.setBorder(dgb));
+        //document.add(tableDivider2.setBorder(dgb));
         document.add(onesp);
 
         Paragraph prductText=new Paragraph("The Transaction Details ");
-        document.add(prductText.setBold().setFontColor(com.itextpdf.kernel.color.Color.RED));
+        //document.add(prductText.setBold().setFontColor(com.itextpdf.kernel.color.Color.RED));
 
         Table threeColTab= new Table(threeColumnWidth);
-        threeColTab.setBackgroundColor(com.itextpdf.kernel.color.Color.BLACK,0.7f);
+       // threeColTab.setBackgroundColor(com.itextpdf.kernel.color.Color.BLACK,0.7f);
         threeColTab.addCell(titleColorsFont("Description "));
         threeColTab.addCell(titleColorsCenter("Quantity "));
         threeColTab.addCell(titleColorsCenterWithMergine("Price"));
@@ -148,7 +149,7 @@ public class PdfGenerator {
         Table tb= new Table(fullwidth);
         document.add(onesp1);
 
-        tb.addCell(new Cell().add("TERMS AND CONDITIONS \n").setBold().setBorder(Border.NO_BORDER).setFontColor(com.itextpdf.kernel.color.Color.RED));
+        //tb.addCell(new Cell().add("TERMS AND CONDITIONS \n").setBold());
         document.add(onesp);
         List<String> tncList=new ArrayList<>();
         tncList.add("1.The Seller shall not be liable to the buyer directly or indirectly for any loss or damage suffered from the Buyer");
@@ -161,7 +162,7 @@ public class PdfGenerator {
 
 
         for (String tnc : tncList){
-            tb.addCell(new Cell().add(tnc).setBorder(Border.NO_BORDER));
+           // tb.addCell(new Cell().add(tnc).setBorder(Border.NO_BORDER));
         }
         document.add(tb);
         document.close();
@@ -194,9 +195,9 @@ public class PdfGenerator {
         nestedtable.addCell(getHeaderTextCellValue(currentDateTime));
         table.addCell(new Cell().add(nestedtable).setBorder(Border.NO_BORDER));
 
-        Border gb = new SolidBorder(com.itextpdf.kernel.color.Color.BLACK, 1f/2f);
+        //Border gb = new SolidBorder(com.itextpdf.kernel.color.Color.BLACK, 1f/2f);
         Table divider= new Table (fullwidth);
-        divider.setBorder(gb);
+        //divider.setBorder(gb);
         document.add(table);
         document.add(onesp);
         document.add(divider);
@@ -233,13 +234,13 @@ public class PdfGenerator {
 
 
         Table tableDivider2= new Table(fullwidth);
-        Border dgb= new DashedBorder(com.itextpdf.kernel.color.Color.BLACK,0.5f);
+        //Border dgb= new DashedBorder(com.itextpdf.kernel.color.Color.BLACK,0.5f);
         document.add(onesp);
-        document.add(tableDivider2.setBorder(dgb));
+        //document.add(tableDivider2.setBorder(dgb));
 
         Table tb= new Table(fullwidth);
 
-        tb.addCell(new Cell().add("TERMS AND CONDITIONS \n").setBold().setBorder(Border.NO_BORDER).setFontColor(com.itextpdf.kernel.color.Color.RED));
+        //tb.addCell(new Cell().add("TERMS AND CONDITIONS \n").setBold().setBorder(Border.NO_BORDER).setFontColor(com.itextpdf.kernel.color.Color.RED));
         document.add(onesp);
         List<String> tncList=new ArrayList<>();
         tncList.add("1.The Seller shall not be liable to the buyer directly or indirectly for any loss or damage suffered from the Buyer");
@@ -258,7 +259,7 @@ public class PdfGenerator {
 
 
         for (String tnc : tncList){
-            tb.addCell(new Cell().add(tnc).setBorder(Border.NO_BORDER));
+            //tb.addCell(new Cell().add(tnc).setBorder(Border.NO_BORDER));
         }
         document.add(tb);
         document.close();
@@ -293,5 +294,6 @@ public class PdfGenerator {
     Cell titleColorsCenterWithMergine(String textValue){
         return new Cell().add(textValue).setFontSize(12f).setBold().setBorder(Border.NO_BORDER).setFontColor(com.itextpdf.kernel.color.Color.WHITE).setTextAlignment(TextAlignment.RIGHT).setMarginRight(15f);
     }
-
+*/
 }
+

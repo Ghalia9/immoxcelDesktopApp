@@ -199,7 +199,7 @@ public class SupplierContainerController {
             if (supplier != null) {
                 supplierContainerDetailsController.setData(supp);
                 String phoneStr= String.valueOf(supplier.getPhone_number());
-                pdfGenerat.GeneratePDFSupplier(supplier.getCompany_name(), supplier.getAddress(), "+215",phoneStr,supplier.getPatent_ref());
+                //pdfGenerat.GeneratePDFSupplier(supplier.getCompany_name(), supplier.getAddress(), "+215",phoneStr,supplier.getPatent_ref());
 
             } else {
                 System.out.println("Transaction with ID " + idSupplier + " not found.");

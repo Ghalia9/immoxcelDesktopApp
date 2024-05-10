@@ -168,7 +168,7 @@ public class TableController {
 
             int idTransaction = Integer.parseInt(id.getText());
 
-            pdfIns.GeneratePDFTransaction(idTransaction);
+            //pdfIns.GeneratePDFTransaction(idTransaction);
             displayConfirmation("Check Your Folder");
 
 

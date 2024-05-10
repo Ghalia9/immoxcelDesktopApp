@@ -183,7 +183,7 @@ public class SupplierAddController  implements Initializable {
                             alert.showAndWait();
                         } else {
                             String phoneStr = String.valueOf(phone);
-                            pdfSupplier.GeneratePDFSupplier(companyName, address, prefixLabel.getText(), phoneStr, patentRef);
+                           // pdfSupplier.GeneratePDFSupplier(companyName, address, prefixLabel.getText(), phoneStr, patentRef);
                             sup.ajouter(new Supplier(companyName, address, Products, phone, patentRef, imagePath));
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Success");
