@@ -235,7 +235,7 @@ public class ProjectsDashboardController {
             ProjectDetailsController projectDetails = fxmlLoader.getController();
             projectDetails.setProjectsDashboardController(this,loginController,userConnected);
             projectDetails.setData(project);
-
+            projectDetails.setDashboard(dashboard);
             stage.show();
         } catch (Exception e) {
             System.err.println(e.getMessage());

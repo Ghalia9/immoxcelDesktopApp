@@ -89,6 +89,8 @@ public class ProjectDetailsController {
         }
     }
 
+    public void setDashboard(DashboardController d)
+    {this.dashboard=d;}
     @FXML
     void handleProjectTasks(ActionEvent event) {
         try {
