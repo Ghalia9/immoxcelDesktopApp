@@ -49,6 +49,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
+                  <Label layoutX="155.0" layoutY="215.0" text="Label" />
                </children>
             </AnchorPane>
          </children>
@@ -57,7 +58,7 @@
          <children>
             <Pane prefHeight="73.0" prefWidth="961.0" styleClass="top_bar" stylesheets="@style.css">
                <children>
-                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css" onKeyTyped="#handleSearch">
+                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" onKeyTyped="#handleSearch" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -82,7 +83,7 @@
                </font>
             </Label>
             <Pane layoutX="-1.0" layoutY="173.0" prefHeight="3.0" prefWidth="966.0" style="-fx-background-color: black;" />
-            <HBox fx:id="AddDepot" layoutX="888.0" layoutY="255.0" onMouseClicked="#showAddDepot" prefHeight="50.0" prefWidth="50.0">
+            <HBox fx:id="AddDepot" layoutX="890.0" layoutY="287.0" onMouseClicked="#showAddDepot" prefHeight="50.0" prefWidth="50.0">
                <children>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,52 +92,50 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox layoutX="-1.0" layoutY="314.0" prefHeight="438.0" prefWidth="963.0">
+            <HBox layoutX="7.0" layoutY="332.0" prefHeight="55.0" prefWidth="963.0" styleClass="column-header-background" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="55.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@depot.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="username11" alignment="CENTER" prefHeight="55.0" prefWidth="141.0" text="Location" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="username21" alignment="CENTER" prefHeight="55.0" prefWidth="159.0" text="Address" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="username31" alignment="CENTER" prefHeight="55.0" prefWidth="156.0" text="Limit Stock" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="username311" alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="94.0" prefWidth="165.0" text="Stock Available" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="username41" alignment="CENTER" prefHeight="55.0" prefWidth="272.0" text="Actions" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="-1.0" layoutY="388.0" prefHeight="364.0" prefWidth="963.0">
                <children>
                   <ScrollPane prefHeight="438.0" prefWidth="982.0">
                      <content>
-                        <VBox fx:id="depotLayout" prefHeight="439.0" prefWidth="963.0">
-                           <children>
-                              <HBox prefHeight="55.0" prefWidth="200.0">
-                                 <children>
-                                    <ImageView fitHeight="55.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@depot.jpg" />
-                                       </image>
-                                    </ImageView>
-                                    <Label fx:id="username1" alignment="CENTER" prefHeight="55.0" prefWidth="141.0" text="Location" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="username2" alignment="CENTER" prefHeight="55.0" prefWidth="159.0" text="Address" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="username3" alignment="CENTER" prefHeight="55.0" prefWidth="156.0" text="Limit Stock" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="username31" alignment="CENTER" layoutX="480.0" layoutY="10.0" prefHeight="94.0" prefWidth="165.0" text="Stock Available" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="username4" alignment="CENTER" prefHeight="55.0" prefWidth="272.0" text="Actions" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
+                        <VBox fx:id="depotLayout" prefHeight="364.0" prefWidth="963.0" />
                      </content>
                   </ScrollPane>
                </children>
             </HBox>
+            <Button fx:id="sort" layoutX="862.0" layoutY="138.0" mnemonicParsing="false" onMouseClicked="#sortOnClick" prefHeight="30.0" prefWidth="78.0" styleClass="update_btn" stylesheets="@style.css" text="Sort" />
          </children>
       </Pane>
    </children>

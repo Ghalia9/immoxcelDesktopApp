@@ -9,5 +9,8 @@
         <module name="MyJavaFxApp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="immoxcel" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

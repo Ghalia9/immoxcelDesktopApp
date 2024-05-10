@@ -1,17 +1,11 @@
 package tn.esprit.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -29,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -139,6 +134,7 @@ public class ShowDepotController implements Initializable {
                         nodesToRemove.add(child); // Remove the matching node
                         nodesToAdd.add(child); // Add it below the headers
 
+
                     } else {
                         child.setVisible(false);
                     }
@@ -156,5 +152,29 @@ public class ShowDepotController implements Initializable {
                 depotLayout.getChildren().addAll(nodesToAdd);
             }
         }
+    }
+
+
+    public void sortOnClick(MouseEvent actionEvent) {
+        depotLayout.getChildren().clear();
+        depotToUpdate.stream()
+                .sorted(Comparator.comparing(Depot::getLimit_stock))
+                .forEach(depot -> {
+                    System.out.println(depot);
+                    FXMLLoader fxmlLoader=new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/CardDepot.fxml"));
+                    HBox hBox = null;
+                    try {
+                        hBox = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    CardDepotController cdc= fxmlLoader.getController();
+                    cdc.initDepot(this,depot);
+                    hBox.getProperties().put("controller",cdc);
+                    cdc.setData(depot);
+                    depotLayout.getChildren().add(hBox);
+                });
     }
 }
