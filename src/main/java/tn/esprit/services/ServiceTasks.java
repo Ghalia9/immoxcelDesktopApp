@@ -153,4 +153,22 @@ ps.setInt(1,projectId);
 
         return tasks;
     }
+    public void updateStatus(String taskTitle, String doing) {
+        String req = "UPDATE `task` SET  `task_status`=? WHERE `task_title`=?";
+
+        try {
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, doing);
+            ps.setString(2, taskTitle);
+
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("Task with title " + taskTitle + " updated successfully!");
+            } else {
+                System.out.println("Task with title " + taskTitle + " not found or update failed.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating task: " + e.getMessage());
+        }
+    }
 }

@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -32,19 +33,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ProjectsDashboardController {
-
-
-    @FXML
-    public Pane paneToChange;
-
-    public int verifyUpdateFrom=0;
-
-    Connection connection = DataSource.getInstance().getCnx();
-
     @FXML
     private Button addProjectButton;
 
@@ -58,21 +52,15 @@ public class ProjectsDashboardController {
     private AnchorPane side_bar;
 
     @FXML
-    public Text username;
+    Text username;
+
+
+    @FXML
+    private Button sort;
 
     private final ServiceProjects serviceProjects = new ServiceProjects();
 
     private final BooleanProperty projectAdded = new SimpleBooleanProperty(false);
-    private LoginController loginController;
-
-    public User userConnected;
-
-    public void setLoginController(LoginController login, User user)
-    {
-        this.loginController=login;
-        this.userConnected = user;
-        username.setText(userConnected.getUsername());
-    }
 
     public void initialize() {
         projectAdded.addListener((observable, oldValue, newValue) -> {
@@ -93,11 +81,109 @@ public class ProjectsDashboardController {
 
         // Load projects initially
         loadProjects();
+        search_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Update the list of employees dynamically
+            updateProjectsList(newValue);
+        });
     }
-    public void refreshProjects() {
-        loadProjects();
+    public void refreshProjects() {loadProjects();
     }
 
+    @FXML
+    void sortOnClick(ActionEvent event) {
+        // Get all projects and sort them by deadline
+        grid.getChildren().clear(); // Clear existing projects
+
+        List<Projects> allProjects = new ArrayList<>(serviceProjects.getAll());
+        List<Projects> sortedProjects = allProjects.stream()
+                .sorted(Comparator.comparing(Projects::getDate_pred_finish))
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < sortedProjects.size(); i++) {
+            Projects project = sortedProjects.get(i);
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjectItem.fxml"));
+                AnchorPane anchorPane = loader.load();
+
+                ProjectItemController projectItem = loader.getController();
+                projectItem.setData(project);
+                projectItem.setProjectsDashboardController(this); //This is for the Delete button to get the current Dashboard Controller to refresh
+
+
+                int finalI = i;
+                anchorPane.setOnMouseClicked(mouseEvent -> {
+                    try {
+                        openProjectDetails(sortedProjects.get(finalI));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                if (i % 3 == 0) {
+                    grid.addRow(i / 3);
+                }
+                grid.add(anchorPane, i % 3, i / 3);
+                GridPane.setMargin(anchorPane, new Insets(10));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private void updateProjectsList(String searchQuery) {
+        List<Projects> allProjects = new ArrayList<>(serviceProjects.getAll());
+
+        List<Projects> filteredProjects = allProjects.stream()
+                .filter(project -> matchesSearchQuery(project, searchQuery))
+                .collect(Collectors.toList());
+
+        // Clear existing UI
+        grid.getChildren().clear();
+
+        // Display filtered projects or show "No projects found" text
+        if (filteredProjects.isEmpty()) {
+            showNoProjectsAlert();
+        } else {
+            for (int i = 0; i < filteredProjects.size(); i++) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ProjectItem.fxml"));
+                    AnchorPane anchorPane = loader.load();
+
+                    ProjectItemController projectItem = loader.getController();
+                    projectItem.setData(filteredProjects.get(i));
+                    projectItem.setProjectsDashboardController(this); //This is for the Delete button to get the current Dashboard Controller to refresh
+
+
+                    int finalI = i;
+                    anchorPane.setOnMouseClicked(event -> {
+                        try {
+                            openProjectDetails(filteredProjects.get(finalI));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
+                    if (i % 3 == 0) {
+                        grid.addRow(i / 3);
+                    }
+                    grid.add(anchorPane, i % 3, i / 3);
+                    GridPane.setMargin(anchorPane, new Insets(10));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    // Method to check if an employee matches the search query
+    private boolean matchesSearchQuery(Projects project, String searchQuery) {
+        // You can customize this method based on your search requirements
+        // For simplicity, this example checks if the project's title or description contains the search query
+        String title = project.getProject_name();
+        return title.toLowerCase().contains(searchQuery.toLowerCase());
+    }
+
+    private void showNoProjectsAlert() {
+        grid.getChildren().add(new Label("No projects found."));
+    }
     public void loadProjects() {
         grid.getChildren().clear(); // Clear existing projects
 
@@ -145,9 +231,11 @@ public class ProjectsDashboardController {
             Stage stage = new Stage();
             stage.setTitle("Project Details");
             stage.setScene(new Scene(root1));
+
             ProjectDetailsController projectDetails = fxmlLoader.getController();
             projectDetails.setProjectsDashboardController(this,loginController,userConnected);
             projectDetails.setData(project);
+
             stage.show();
         } catch (Exception e) {
             System.err.println(e.getMessage());
@@ -176,6 +264,25 @@ public class ProjectsDashboardController {
     }
 
     //Selim
+
+    @FXML
+    public Pane paneToChange;
+
+    public int verifyUpdateFrom=0;
+
+    Connection connection = DataSource.getInstance().getCnx();
+
+
+    private LoginController loginController;
+
+    public User userConnected;
+
+    public void setLoginController(LoginController login, User user)
+    {
+        this.loginController=login;
+        this.userConnected = user;
+        username.setText(userConnected.getUsername());
+    }
     public void logout(ActionEvent actionEvent) throws IOException {
         userConnected=null;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
@@ -234,5 +341,28 @@ public class ProjectsDashboardController {
         employeedetails.setDetailsData(employeeInfo);
         employeedetails.setCurrentEmployee(employeeInfo);
         detailsEmpStage.showAndWait();
+    }
+
+    private DashboardController dashboard;
+    public void setDashboard(DashboardController dashboardController) {
+        this.dashboard=dashboardController;
+    }
+
+
+    public void ShowCalendar(ActionEvent actionEvent) throws IOException {
+        FXMLLoader ProjectLoader = new FXMLLoader(getClass().getResource("/GoogleCalendarEvents.fxml"));
+        Parent ProjectRoot = ProjectLoader.load();
+        GoogleCalendarEventsController ProjectController = ProjectLoader.getController();
+        ProjectController.setLoginController(loginController, userConnected);
+        this.paneToChange.getChildren().setAll(ProjectController.paneToChange.getChildren());
+    }
+
+    public void ShowProjects(ActionEvent actionEvent) throws IOException {
+        FXMLLoader ProjectLoader = new FXMLLoader(getClass().getResource("/ShowProjects.fxml"));
+        Parent ProjectRoot = ProjectLoader.load();
+        ProjectsDashboardController ProjectController = ProjectLoader.getController();
+        ProjectController.setLoginController(loginController, userConnected);
+
+       this.paneToChange.getChildren().setAll(ProjectController.paneToChange.getChildren());
     }
 }

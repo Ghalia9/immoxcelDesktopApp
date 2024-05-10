@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="65.0" prefWidth="279.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TaskItemController">
+<AnchorPane onDragDetected="#onDragDetected" onDragDone="#onDragDone" onDragDropped="#onDragDropped" prefHeight="65.0" prefWidth="279.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.TaskItemController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="21.0" prefHeight="194.0" prefWidth="237.0" AnchorPane.bottomAnchor="21.400000000000006" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="4.599999999999966" AnchorPane.topAnchor="21.0">
          <children>
@@ -35,7 +35,7 @@
       </VBox>
       <Label layoutX="22.0" layoutY="64.0" text="Deadline:" />
       <Label fx:id="taskDeadlineLabel" layoutX="78.0" layoutY="64.0" text="21/12/1111" textFill="RED" />
-      <Button fx:id="deleteTaskButton" layoutX="195.0" layoutY="57.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Delete" textFill="WHITE" >
+      <Button fx:id="deleteTaskButton" layoutX="195.0" layoutY="57.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
