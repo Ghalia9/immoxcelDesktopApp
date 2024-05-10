@@ -10,8 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -33,6 +32,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -46,6 +46,9 @@ public class ShowDepotController {
 
     @FXML
     public Text username;
+public class ShowDepotController implements Initializable {
+
+    List<Node> originalOrder = new ArrayList<>();
     Connection cnx = DataSource.getInstance().getCnx();
 
     public List<Depot> depotToUpdate= new ArrayList<>();
@@ -81,7 +84,16 @@ public class ShowDepotController {
         depotToUpdate=ls;
         return ls;
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            loadData();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void loadData() throws SQLException, IOException {
         System.out.println(userConnected);
         List<Depot> depots = new ArrayList<>(depots());
@@ -94,13 +106,15 @@ public class ShowDepotController {
             HBox hBox = fxmlLoader.load();
 
             CardDepotController cdc= fxmlLoader.getController();
-
             cdc.initDepot(this,depots.get(i));
             hBox.getProperties().put("controller",cdc);
             cdc.setData(depots.get(i));
             depotLayout.getChildren().add(hBox);
 
         }
+
+        List<Node> test = new ArrayList<>(depotLayout.getChildren());
+        originalOrder=test;
 
     }
     public void showAddDepot(MouseEvent mouseEvent) throws IOException {
@@ -179,4 +193,82 @@ public class ShowDepotController {
     }
 
 
+
+    @FXML
+    private TextField search_field;
+    public void handleSearch() {
+
+
+        String query = search_field.getText().trim().toLowerCase();
+        List<Node> nodesToRemove = new ArrayList<>();
+        List<Node> nodesToAdd = new ArrayList<>();
+        // Store the original order of user cards
+
+        // If the query is empty, reset visibility and restore original order
+        if (query.isEmpty()) {
+
+            for (Node child : depotLayout.getChildren()) {
+                if (child instanceof HBox) {
+                    child.setVisible(true);
+                }
+            }
+            // Clear the layout and add user cards back in original order
+            depotLayout.getChildren().clear();
+            //original order of cards
+            depotLayout.getChildren().addAll(originalOrder);
+            return;
+        }
+
+        for (Node child : originalOrder) { // Iterate over the original order list
+            if (child instanceof HBox) {
+                CardDepotController card = (CardDepotController) child.getProperties().get("controller");
+                if (card != null) {
+                    if (card.Depotlocation.getText().toLowerCase().contains(query)) {
+                        child.setVisible(true);
+                        nodesToRemove.add(child); // Remove the matching node
+                        nodesToAdd.add(child); // Add it below the headers
+
+
+                    } else {
+                        child.setVisible(false);
+                    }
+                }
+            }
+        }
+
+        // Perform removal and addition after the iteration
+        depotLayout.getChildren().removeAll(nodesToRemove);
+        if (!nodesToAdd.isEmpty()) {
+            if (depotLayout.getChildren().size() > 1) {
+                depotLayout.getChildren().addAll(1, nodesToAdd);
+            } else {
+                // If the list size is 1 or less, just add nodes without specifying index
+                depotLayout.getChildren().addAll(nodesToAdd);
+            }
+        }
+    }
+
+
+    public void sortOnClick(MouseEvent actionEvent) {
+        depotLayout.getChildren().clear();
+        depotToUpdate.stream()
+                .sorted(Comparator.comparing(Depot::getLimit_stock))
+                .forEach(depot -> {
+                    System.out.println(depot);
+                    FXMLLoader fxmlLoader=new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/CardDepot.fxml"));
+                    HBox hBox = null;
+                    try {
+                        hBox = fxmlLoader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                    CardDepotController cdc= fxmlLoader.getController();
+                    cdc.initDepot(this,depot);
+                    hBox.getProperties().put("controller",cdc);
+                    cdc.setData(depot);
+                    depotLayout.getChildren().add(hBox);
+                });
+    }
 }

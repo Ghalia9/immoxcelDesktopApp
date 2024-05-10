@@ -31,7 +31,7 @@
       </Label>
       <HBox alignment="CENTER" prefHeight="70.0" prefWidth="272.0" spacing="20.0">
          <children>
-            <HBox fx:id="updateDepot" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#ShowUpdateDepot">
+            <HBox fx:id="updateDepot" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#ShowUpdateDepot" prefHeight="35.0" prefWidth="29.0">
                <children>
                   <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -40,7 +40,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="deleteDepot" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#deleteDepot" prefHeight="35.0" prefWidth="29.0" spacing="15.0" >
+            <HBox fx:id="deleteDepot" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#deleteDepot" prefHeight="35.0" prefWidth="29.0" spacing="15.0">
                <children>
                   <ImageView fitHeight="38.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -49,7 +49,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="addMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#showAddMaterials">
+            <HBox fx:id="addMaterials" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#showAddMaterials" prefHeight="35.0" prefWidth="29.0">
                <children>
                   <ImageView fx:id="addMaterial" fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,11 +58,20 @@
                   </ImageView>
                </children>
             </HBox>
-            <HBox fx:id="showMaterials" accessibleRole="BUTTON" alignment="CENTER" prefHeight="35.0" prefWidth="29.0" onMouseClicked="#showMaterials">
+            <HBox fx:id="showMaterials" accessibleRole="BUTTON" alignment="CENTER" onMouseClicked="#showMaterials" prefHeight="35.0" prefWidth="29.0">
                <children>
                   <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@seo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="pdf" accessibleRole="BUTTON" alignment="CENTER" layoutX="215.0" layoutY="10.0" onMouseClicked="#generatePDF" prefHeight="35.0" prefWidth="29.0">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pdf.png" />
                      </image>
                   </ImageView>
                </children>

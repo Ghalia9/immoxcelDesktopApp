@@ -4,27 +4,36 @@ package tn.esprit.controllers;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import tn.esprit.models.Depot;
 import tn.esprit.services.ServiceDepot;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class UpdateDepotController {
+public class UpdateDepotController  implements Initializable {
     @FXML
     private TextField AdresseUpdate;
 
     @FXML
     private TextField LimitstockUpdate;
 
+
     @FXML
-    private TextField LocationUpdate;
+    private ComboBox<String> locationComboBox;
 
     private ShowDepotController depotController;
 
@@ -37,7 +46,7 @@ public class UpdateDepotController {
     }
 
     public void setdata(){
-        this.LocationUpdate.setText(depot.getLocation());
+        this.locationComboBox.setValue(depot.getLocation());
         this.AdresseUpdate.setText(depot.getAdresse());
         this.LimitstockUpdate.setText(String.valueOf(depot.getLimit_stock()));
     }
@@ -56,7 +65,7 @@ public class UpdateDepotController {
     }
 
     public void UpdateDepot(ActionEvent actionEvent) throws SQLException, IOException {
-        if(LocationUpdate.getText().isEmpty() || AdresseUpdate.getText().isEmpty() || LimitstockUpdate.getText().isEmpty())
+        if(locationComboBox.getValue().isEmpty() || AdresseUpdate.getText().isEmpty() || LimitstockUpdate.getText().isEmpty())
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -76,7 +85,7 @@ public class UpdateDepotController {
             }
             else {
                 if (depot.getStock_available() == depot.getLimit_stock()) {
-                    depot.setLocation(LocationUpdate.getText());
+                    depot.setLocation(locationComboBox.getValue());
                     depot.setAdresse(AdresseUpdate.getText());
                     depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
                     depot.setStock_available(Integer.parseInt(LimitstockUpdate.getText()));
@@ -92,7 +101,7 @@ public class UpdateDepotController {
                         alert.showAndWait();
                     } else {
                         int quantityToadd = Integer.parseInt(LimitstockUpdate.getText()) - depot.getLimit_stock();
-                        depot.setLocation(LocationUpdate.getText());
+                        depot.setLocation(locationComboBox.getValue());
                         depot.setAdresse(AdresseUpdate.getText());
                         depot.setLimit_stock(Integer.parseInt(LimitstockUpdate.getText()));
                         depot.setStock_available(depot.getStock_available() + quantityToadd);
@@ -103,6 +112,31 @@ public class UpdateDepotController {
 
                 }
             }
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        JSONParser parser = new JSONParser();
+        try (FileReader reader = new FileReader("C:\\Users\\MSI\\Desktop\\immoxcel-java\\immoxcelDesktopApp\\src\\main\\resources\\regionTunis.json")) {
+            // Parse the JSON file
+            Object obj = parser.parse(reader);
+            JSONArray jsonArray = (JSONArray) obj;
+
+            // Extract country names from JSON and add them to a list
+            List<String> locationName = new ArrayList<>();
+            for (Object o : jsonArray) {
+                JSONObject jsonObject = (JSONObject) o;
+                String Region = (String) jsonObject.get("location");
+                locationName.add(Region);
+            }
+            System.out.println("Country Names: " + locationName);
+
+            // Populate the ComboBox with country names
+            locationComboBox.getItems().addAll(locationName);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
