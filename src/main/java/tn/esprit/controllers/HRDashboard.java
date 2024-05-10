@@ -233,7 +233,7 @@ public void showOldLeaves(){
 
             // Set the instance of DashboardController to AddAccountController
             UpdateUserController updateUser = loader.getController();
-            updateUser.setHrController(this,id,username.getText());
+            //updateUser.setEController(this,id,username.getText());
             updateUser.initializeFields();
 
             Scene scene = new Scene(parent);
@@ -251,7 +251,7 @@ public void showOldLeaves(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
         Parent Details = loader.load();
         DetailsEmployee employeedetails=loader.getController();
-        employeedetails.setdashbord(this);
+       // employeedetails.setdashbord(this);
         Stage detailsEmpStage = new Stage();
         detailsEmpStage.initStyle(StageStyle.DECORATED);
         detailsEmpStage.setScene(new Scene(Details, 638, 574));

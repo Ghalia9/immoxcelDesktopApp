@@ -261,9 +261,13 @@ public class Display2Controller implements Initializable {
     private ServiceEmployees se=new ServiceEmployees();
 
     public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
-        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
         Parent HrRoot = HrLoader.load();
-        HRDashboard HrController = HrLoader.getController();
+        //HRDashboard HrController = HrLoader.getController();
+        DisplayEmployees HrController = HrLoader.getController();
+
+
+        HrController.setLoginController(loginController,userConnected);
         Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
         Parent Details = loader.load();

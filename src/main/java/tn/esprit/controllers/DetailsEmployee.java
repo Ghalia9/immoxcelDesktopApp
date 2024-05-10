@@ -227,13 +227,18 @@ public class DetailsEmployee  implements Initializable {
             leavesProgressBar.setStyle("-fx-accent: green;");
         }
     }
-    private HRDashboard dashboard;
+    private DisplayEmployees dashboard;
 
-    public void setdashbord(HRDashboard dashboard)
+    private DisplayLeaves leave;
+
+    public void setdashbord(DisplayEmployees dashboard)
     {
         this.dashboard=dashboard;
     }
-
+    public void setleaves(DisplayLeaves dashboard)
+    {
+        this.leave=dashboard;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         leavesProgressBar.setStyle("-fx-accent: red");

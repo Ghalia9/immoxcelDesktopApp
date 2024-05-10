@@ -161,10 +161,13 @@ public class LoginController {
                                     break;
 
                                 case "HR_Manager":
-                                    FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/Dashboard.fxml"));
+                                    FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
                                     Parent HrRoot = HrLoader.load();
-                                    HRDashboard HrController = HrLoader.getController();
-                                    HrController.setLoginController(this, user);
+                                    //HRDashboard HrController = HrLoader.getController();
+                                    DisplayEmployees HrController = HrLoader.getController();
+
+
+                                    HrController.setLoginController(this,user);
                                     Stage HrStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                                     Scene HrScene = new Scene(HrRoot);
                                     HrStage.setScene(HrScene);

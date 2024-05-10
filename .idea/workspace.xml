@@ -5,119 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="removed Style.css from cached files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/JavaConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ResetPasswordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/SendUserMailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/GoogleRecaptcha.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ResetPassword.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/SendMailPassword.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/7880075.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Card.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/CountryCodes.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Dispa.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Display.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Register.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/SendSms.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/SupplierAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/SupplierContainer.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/Table.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/TransactionAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/UpdateSupplier.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/UpdateTransaction.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/blogger(1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/blogger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/bullying.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/caac9977-845d-4092-ab69-443c21d7abb3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/display2.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dots.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/finger(1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/finger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/hop.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/image1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/logo-ct-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/logo-ct-dark11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mobile-payment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Display2Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/HelloController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/RegisterController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/SendSms.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/SupplierAddController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/SupplierContainerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/SupplierDetailsController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/TableController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateSupplierController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateTransactionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Transaction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceSupplier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/services/ServiceTransaction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainAhmed.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainGhalia.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainSelim.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/tn/esprit/tests/MainSouleima.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DetailsEmployee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Display2Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/Display2Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EmployeeCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/EmployeeCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayEmployees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayLeaves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/DisplayLeaves.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/HRDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/HRDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ProjectsDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowMaterialsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowMaterialsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowTasksController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Functions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/models/Functions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AddUserAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddUserAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Dispa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Dispa.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Display.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Display.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SendSms.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SendSms.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowProjects.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowTasks.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SupplierAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SupplierAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/SupplierContainer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/SupplierContainer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Table.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Table.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TransactionAdd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TransactionAdd.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateSupplier.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateTransaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateTransaction.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hello-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AddUserAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddUserAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShowProjects.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowProjects.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ShowTasks.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowTasks.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/UpdateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DisplayEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pagination.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DisplayEmployees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagination.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EmployeeCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/EmployeeCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DetailsEmployee.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Display2Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/Display2Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayEmployees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayLeaves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/DisplayLeaves.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/HRDashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/HRDashboard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectDetailsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectDetailsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ProjectsDashboardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowMaterialsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowMaterialsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowTasksController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowTasksController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/models/Functions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/models/Functions.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +79,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/ghali/Desktop/Fac3/S2/PIJava/backup0805",
     "node.js.detected.package.eslint": "true",

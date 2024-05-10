@@ -54,7 +54,7 @@ public class UpdateUserController {
 
     private int verifyFrom;
 
-    private HRDashboard hrDashboard;
+    private DisplayEmployees EmployeesDashboard;
 
     private Object Controller;
     private int emp_id;
@@ -108,8 +108,14 @@ public class UpdateUserController {
         this.usernameFromTable=name;
     }
 
-    public void setHrController(HRDashboard hrController,int id,String name) {
-        this.hrDashboard = hrController;
+    public void setDisplayEmployeesController(DisplayEmployees DController,int id,String name) {
+        this.EmployeesDashboard = DController;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+    private DisplayLeaves leaves;
+    public void setLeavesController(DisplayLeaves leaves,int id,String name) {
+        this.leaves = leaves;
         this.userID=id;
         this.usernameFromTable=name;
     }
@@ -362,15 +368,15 @@ public class UpdateUserController {
             }
         }
 
-        else if(hrDashboard!=null && hrDashboard.verifyUpdateFrom==2)
+        else if(EmployeesDashboard!=null && EmployeesDashboard.verifyUpdateFrom==2)
         {
             System.out.println("test");
-            if(username.getText().equals(hrDashboard.username.getText()))
+            if(username.getText().equals(EmployeesDashboard.username.getText()))
             {
                 updateData();
-                hrDashboard.username.setText(username.getText());
-                hrDashboard.userConnected.setUsername(username.getText());
-                hrDashboard.verifyUpdateFrom=0;
+                EmployeesDashboard.username.setText(username.getText());
+                EmployeesDashboard.userConnected.setUsername(username.getText());
+                EmployeesDashboard.verifyUpdateFrom=0;
                 closePopUp();
             }
             else
@@ -378,9 +384,9 @@ public class UpdateUserController {
                 if(!searchUsername(username.getText()))
                 {
                     updateData();
-                    hrDashboard.username.setText(username.getText());
-                    hrDashboard.userConnected.setUsername(username.getText());
-                    hrDashboard.verifyUpdateFrom=0;
+                    EmployeesDashboard.username.setText(username.getText());
+                    EmployeesDashboard.userConnected.setUsername(username.getText());
+                    EmployeesDashboard.verifyUpdateFrom=0;
                     closePopUp();
                 }
                 else
@@ -433,7 +439,7 @@ public class UpdateUserController {
                        }
                 }
        }
-       else if(dashboardController!=null && dashboardController.verifyUpdateFrom==0 && hrDashboard==null){
+       else if(dashboardController!=null && dashboardController.verifyUpdateFrom==0 && EmployeesDashboard==null){
            if(username.getText().equals(usernameFromTable))
        {
            System.out.println("test");
