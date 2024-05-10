@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -82,12 +83,12 @@
                         <Font size="15.0" />
                      </font>
                   </MenuButton>
-                  <Button fx:id="dashboard1" layoutX="29.0" layoutY="553.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Personal Informations" textFill="WHITE" onAction="#showSelfUpdate">
+                  <Button fx:id="dashboard1" layoutX="29.0" layoutY="553.0" mnemonicParsing="false" onAction="#showSelfUpdate" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Personal Informations" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE" onAction="#sh">
+                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" onAction="#sh" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -115,7 +116,7 @@
                         <Image url="@utilisateur.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" onAction="#logout"/>
+                  <Button fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" />
                   <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
                </children>
             </Pane>
@@ -132,32 +133,38 @@
                            <children>
                               <ScrollPane prefHeight="268.0" prefWidth="962.0" styleClass="round-layout" stylesheets="@style.css">
                                  <content>
-                                    <HBox fx:id="cardLayout" prefHeight="247.0" prefWidth="941.0" style="-fx-background-color: #5e72e4;" styleClass="transparent" stylesheets="@style.css" />
+                                    <HBox fx:id="cardLayout" prefHeight="253.0" prefWidth="942.0" style="-fx-background-color: #5e72e4;" styleClass="transparent" stylesheets="@style.css" />
                                  </content>
                               </ScrollPane>
                            </children>
                         </HBox>
-                        <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                        <HBox prefHeight="332.0" prefWidth="934.0">
                            <children>
-                              <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
+                              <Separator prefWidth="325.0" />
+                              <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
                                  <children>
-                                    <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
+                                    <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
+                                       </children>
                                        <padding>
-                                          <Insets left="10.0" />
+                                          <Insets bottom="5.0" top="5.0" />
                                        </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pagination fx:id="pagination" prefHeight="287.0" prefWidth="934.0" />
                                  </children>
-                                 <padding>
-                                    <Insets bottom="5.0" top="5.0" />
-                                 </padding>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
-                              <Pagination fx:id="pagination" prefHeight="287.0" prefWidth="934.0" />
+                              </VBox>
+                              <Separator prefWidth="325.0" />
                            </children>
-                        </VBox>
+                        </HBox>
                         <HBox spacing="790.0">
                            <children>
                               <Button mnemonicParsing="false" onAction="#navigateToEmployees" styleClass="save_btn" stylesheets="@style.css" text="to employees" />
