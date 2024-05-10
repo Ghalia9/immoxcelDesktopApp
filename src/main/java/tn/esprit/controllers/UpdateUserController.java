@@ -70,6 +70,7 @@ public class UpdateUserController {
     private DisplayController supplierController;
 
     private Display2Controller transactionContorller;
+    private GoogleCalendarEventsController Calendar;
 
     // Method to set the DashboardController
 
@@ -102,14 +103,26 @@ public class UpdateUserController {
         this.usernameFromTable=name;
     }
 
-    public void setProjectTasksController(ShowTasksController task,int id,String name) {
+
+    public void setTasksController(ShowTasksController task,int id,String name) {
         this.tasksController = task;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+    public void setProjectTasksController(ProjectsDashboardController project ,int id,String name) {
+        this.projectsDashboardController = project;
         this.userID=id;
         this.usernameFromTable=name;
     }
 
     public void setDisplayEmployeesController(DisplayEmployees DController,int id,String name) {
         this.EmployeesDashboard = DController;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
+    
+    public void setCalendar(GoogleCalendarEventsController google,int id,String name) {
+        this.Calendar = google;
         this.userID=id;
         this.usernameFromTable=name;
     }
@@ -219,7 +232,37 @@ public class UpdateUserController {
         }
     public void updateUser(ActionEvent actionEvent) throws SQLException, IOException {
 
-        if(transactionContorller!=null && transactionContorller.verifyUpdateFrom==2)
+        if(Calendar!=null && Calendar.verifyUpdateFrom==2)
+        {
+            if(username.getText().equals(Calendar.username.getText()))
+            {
+                updateData();
+                Calendar.username.setText(username.getText());
+                Calendar.userConnected.setUsername(username.getText());
+                Calendar.verifyUpdateFrom=0;
+                closePopUp();
+            }
+            else
+            {
+                if(!searchUsername(username.getText()))
+                {
+                    updateData();
+                    Calendar.username.setText(username.getText());
+                    Calendar.userConnected.setUsername(username.getText());
+                    Calendar.verifyUpdateFrom=0;
+                    closePopUp();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setContentText("Username already taken");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+        else if(transactionContorller!=null && transactionContorller.verifyUpdateFrom==2)
         {
             if(username.getText().equals(transactionContorller.username.getText()))
             {

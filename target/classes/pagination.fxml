@@ -88,7 +88,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" onAction="#ShowPersonalInformation" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
+                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" onAction="#sh" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

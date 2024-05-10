@@ -235,6 +235,12 @@ public class DetailsEmployee  implements Initializable {
     {
         this.dashboard=dashboard;
     }
+
+    GoogleCalendarEventsController google;
+    public void setCalendar(GoogleCalendarEventsController dashboard)
+    {
+        this.google=dashboard;
+    }
     public void setleaves(DisplayLeaves dashboard)
     {
         this.leave=dashboard;

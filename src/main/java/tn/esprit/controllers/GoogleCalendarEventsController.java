@@ -20,22 +20,37 @@ import com.google.api.services.calendar.model.Events;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Pair;
+import tn.esprit.models.Employees;
 import tn.esprit.models.GoogleCalendarAuth;
 import tn.esprit.models.GoogleCalendarAuth;
+import tn.esprit.models.User;
+import tn.esprit.services.ServiceEmployees;
+import tn.esprit.utils.DataSource;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -44,8 +59,12 @@ import java.util.*;
 
 public class GoogleCalendarEventsController {
 
+    public Text username;
+    public Pane paneToChange;
     @FXML
     private CalendarView calendarView; // New CalendarFX component
+    private LoginController loginController;
+    User userConnected;
 
     public void initialize() throws GeneralSecurityException, IOException {
         // Keep your existing logic for ListView
@@ -415,5 +434,66 @@ private Node createCustomEntryDialogContent(DateControl.EntryDetailsParameter pa
         return new com.google.api.services.calendar.Calendar.Builder(HTTP_TRANSPORT, Auth.getJSON_FACTORY(), getCredentials(HTTP_TRANSPORT))
                 .setApplicationName(Auth.getAPPLICATION_NAME())
                 .build();
+    }
+
+    public void setLoginController(LoginController loginController, User userConnected) {
+        this.loginController=loginController;
+        this.userConnected=userConnected;
+        this.username.setText(userConnected.getUsername());
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    Connection connection = DataSource.getInstance().getCnx();
+    public int verifyUpdateFrom=0;
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+        String query = "SELECT id FROM user WHERE username=?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1,username.getText());
+        ResultSet rst=statement.executeQuery();
+        if(rst.next())
+        {
+            verifyUpdateFrom=2;
+            int id=rst.getInt("id");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+            Parent parent = loader.load();
+
+            // Set the instance of DashboardController to AddAccountController
+            UpdateUserController updateUser = loader.getController();
+            updateUser.setCalendar(this,id,username.getText());
+            updateUser.initializeFields();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+
+        }
+    }
+
+    private ServiceEmployees se=new ServiceEmployees();
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setCalendar(this);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
     }
 }

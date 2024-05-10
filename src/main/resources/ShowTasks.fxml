@@ -88,7 +88,7 @@
                                 <Font size="15.0" />
                             </font>
                         </Button>
-                        <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE" onAction="#showSelfUpdate">
+                        <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" onAction="#showSelfUpdate" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
                             <font>
                                 <Font size="15.0" />
                             </font>
@@ -97,7 +97,7 @@
                 </AnchorPane>
             </children>
         </VBox>
-        <Pane prefHeight="750.0" prefWidth="961.0">
+        <Pane fx:id="paneToChange" prefHeight="750.0" prefWidth="961.0">
             <children>
                 <Pane prefHeight="73.0" prefWidth="961.0">
                     <children>
@@ -116,7 +116,7 @@
                                 <Image url="@utilisateur.png" />
                             </image>
                         </ImageView>
-                        <Button id="logout_btn" fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" onAction="#logout"/>
+                        <Button id="logout_btn" fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" />
                         <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
                     </children>
                 </Pane>
@@ -175,7 +175,7 @@
                                                 </GridPane>
                                             </content>
                                         </ScrollPane>
-                                        <ScrollPane fx:id="scroll1" fitToHeight="true" fitToWidth="true" layoutX="28.0" layoutY="10.0" onDragDropped="#handleDropDoing"  prefHeight="578.0" prefWidth="904.0" styleClass="transparent" stylesheets="@style.css">
+                                        <ScrollPane fx:id="scroll1" fitToHeight="true" fitToWidth="true" layoutX="28.0" layoutY="10.0" onDragDropped="#handleDropDoing" prefHeight="578.0" prefWidth="904.0" styleClass="transparent" stylesheets="@style.css">
                                             <content>
                                                 <GridPane fx:id="gridDoing" alignment="TOP_CENTER" prefHeight="443.0" prefWidth="902.0" styleClass="root" stylesheets="@style.css">
                                                     <rowConstraints>

@@ -18,6 +18,7 @@ import java.sql.Date;
 
 public class ProjectDetailsController {
 
+    public DashboardController dashboard;
     @FXML
     private Text username;
     @FXML
@@ -95,17 +96,26 @@ public class ProjectDetailsController {
             Parent parent = fxmlLoader.load();
 
             ShowTasksController showTasksController = fxmlLoader.getController();
-            showTasksController.setData(project,loginController,user); // Pass the Projects object
+            showTasksController.setData(project,loginController,user);
+            // Pass the Projects object
             showTasksController.refreshTasks();
 
+
+            if(dashboard==null)
+            {
+                projectsDashboardController.paneToChange.getChildren().setAll(showTasksController.paneToChange.getChildren());
+            }
+            else{
+                dashboard.ShowTasks(showTasksController);
+            }
             // Close all open windows except the ShowTasks stage
-            closeAllWindowsExceptShowTasks();
+            /*closeAllWindowsExceptShowTasks();
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Tasks");
             stage.setScene(new Scene(parent));
-            stage.showAndWait();
+            stage.showAndWait();*/
         } catch (IOException e) {
             e.printStackTrace();
         }

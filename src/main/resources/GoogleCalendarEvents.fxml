@@ -94,7 +94,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Pane prefHeight="750.0" prefWidth="961.0">
+      <Pane fx:id="paneToChange" prefHeight="750.0" prefWidth="961.0">
          <children>
             <Pane prefHeight="73.0" prefWidth="961.0">
                <children>
@@ -113,7 +113,7 @@
                         <Image url="@utilisateur.png" />
                      </image>
                   </ImageView>
-                  <Button id="logout_btn" fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" />
+                  <Button id="logout_btn" fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" onAction="#logout"/>
                   <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
                </children>
             </Pane>

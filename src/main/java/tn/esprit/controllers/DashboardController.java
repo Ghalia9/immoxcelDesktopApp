@@ -396,7 +396,12 @@ public class DashboardController{
         dashboard=DashboardController;
         this.paneToChange.getChildren().setAll(DashboardController.paneToChange.getChildren());
     }
-
+    public void ShowTasks(ShowTasksController tasks)
+    {
+        if(tasks!=null){
+            System.out.println("hi");
+            this.paneToChange.getChildren().setAll(tasks.paneToChange.getChildren());}
+    }
     public void ShowProject(ActionEvent actionEvent) throws IOException {
         HR=null;
         dashboard=null;
@@ -408,11 +413,24 @@ public class DashboardController{
         ProjectsDashboardController ProjectController = ProjectLoader.getController();
         ProjectController.setLoginController(loginController, userConnected);
         projects=ProjectController;
+        ProjectController.setDashboard(this);
 
 
         this.paneToChange.getChildren().setAll(ProjectController.paneToChange.getChildren());
     }
 
+    public void ShowCalender(ActionEvent actionEvent) throws IOException {
+        HR=null;
+        dashboard=null;
+        depot=null;
+        supplier=null;
+        transaction=null;
+        FXMLLoader ProjectLoader = new FXMLLoader(getClass().getResource("/GoogleCalendarEvents.fxml"));
+        Parent ProjectRoot = ProjectLoader.load();
+        GoogleCalendarEventsController ProjectController = ProjectLoader.getController();
+        ProjectController.setLoginController(loginController, userConnected);
+        this.paneToChange.getChildren().setAll(ProjectController.paneToChange.getChildren());
+    }
     public void ShowDepot(ActionEvent actionEvent) throws IOException, SQLException {
         HR=null;
         projects=null;
