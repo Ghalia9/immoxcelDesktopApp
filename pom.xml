@@ -90,10 +90,6 @@
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-vision</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-vision</artifactId>
-        </dependency>
         <!-- Google API Client Library -->
         <dependency>
             <groupId>com.google.api-client</groupId>

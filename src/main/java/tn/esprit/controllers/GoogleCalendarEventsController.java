@@ -1,7 +1,6 @@
 package tn.esprit.controllers;
 
 import com.calendarfx.model.Calendar;
-import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
 import com.calendarfx.view.CalendarView;

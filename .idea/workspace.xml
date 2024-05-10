@@ -7,8 +7,9 @@
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="Merge branch 'ProjectsManagement'&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/lib.xml&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;pom.xml&#10;#&#9;src/main/java/tn/esprit/services/ServiceProjects.java&#10;#&#9;src/main/java/tn/esprit/tests/Main.java&#10;#&#9;src/main/resources/style.css&#10;#&#9;target/classes/style.css&#10;#&#9;target/classes/tn/esprit/services/ServiceEmployees.class&#10;#&#9;target/classes/tn/esprit/services/ServiceProjects.class&#10;#&#9;target/classes/tn/esprit/tests/Main.class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainIsmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/tests/MainIsmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/GoogleCalendarEventsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/GoogleCalendarEventsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +21,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -43,12 +45,17 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;ProjectsManagement&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/moham/Desktop/Esprit/3 eme A/S2/JAVA/immoxcelRemote&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -146,6 +153,12 @@
       <workItem from="1715268791446" duration="125000" />
       <workItem from="1715305932155" duration="17000" />
       <workItem from="1715305999809" duration="391000" />
+      <workItem from="1715308721178" duration="49000" />
+      <workItem from="1715308858606" duration="328000" />
+      <workItem from="1715309204473" duration="273000" />
+      <workItem from="1715309560948" duration="137000" />
+      <workItem from="1715309763649" duration="90000" />
+      <workItem from="1715309862856" duration="3000" />
     </task>
     <servers />
   </component>
