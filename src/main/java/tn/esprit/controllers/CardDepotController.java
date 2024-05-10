@@ -68,7 +68,7 @@ public class CardDepotController {
     private Label limitStock;
 
     @FXML
-    private Label Depotlocation;
+    Label Depotlocation;
 
     @FXML
     private Label quantityAvailable;

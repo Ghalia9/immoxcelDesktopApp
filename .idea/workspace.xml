@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbcea0b1-1075-48e6-ae68-c92eaf60f6de" name="Changes" comment="removed Style.css from cached files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pagination.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pagination.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pagination.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/pdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/regionTunis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/pdf.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/AddDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/CardDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/ShowDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateDepotController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/controllers/UpdateDepotController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/CardDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CardDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ShowDepots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UpdateDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UpdateDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/AddDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AddDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/CardDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/CardDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShowDepots.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/UpdateDepot.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/UpdateDepot.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/AddDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/CardDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/ShowDepotController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateDepotController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/controllers/UpdateDepotController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/ghali/Desktop/Fac3/S2/PIJava/backup0805",
     "node.js.detected.package.eslint": "true",
@@ -75,7 +94,7 @@
       <recent name="C:\Users\ghali\Desktop\Fac3\S2\PIJava\immoxcel\src\main\resources\images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Selim">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="MainFX" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -104,10 +123,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tn.esprit.tests.MainAhmed" />
+      <module name="MyJavaFxApp" />
+      <option name="VM_PARAMETERS" value=" --module-path &quot;C:\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.MainFX" />
       <item itemvalue="Application.MainGhalia" />
       <item itemvalue="Application.Selim" />
+      <item itemvalue="Application.Unnamed" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -173,6 +201,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Merge HR into main" />
     <MESSAGE value="removed Style.css from cached files" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed Style.css from cached files" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
