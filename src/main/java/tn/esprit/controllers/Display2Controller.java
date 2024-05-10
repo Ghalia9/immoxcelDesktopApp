@@ -1,8 +1,8 @@
 package tn.esprit.controllers;
 
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import tn.esprit.models.Supplier;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import tn.esprit.models.Employees;
 import tn.esprit.models.Transaction;
 import tn.esprit.models.Capital;
 import javafx.event.ActionEvent;
@@ -21,11 +21,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tn.esprit.models.User;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceSupplier;
 import tn.esprit.services.ServiceTransaction;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,6 +36,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Display2Controller implements Initializable {
+
+    @FXML
+    public Pane paneToChange;
+    public Text username;
 
     @FXML
     private Button CancelButton;
@@ -70,38 +77,20 @@ public class Display2Controller implements Initializable {
 
     private final ServiceTransaction sptrans = new ServiceTransaction();
 
-    public  void search(KeyEvent event) {
-        if(event.getCode()== KeyCode.ENTER) {
+    public  void search(ActionEvent event) {
+        cardLayout.getChildren().clear();
+       // cardLayout.getChildren().addAll(SearchList(text_search.getText(), recentlyAdded()));*/
+        String searchQuery = text_search.getText().toLowerCase().trim();
+        List<Transaction> filteredTransactions = filterTransactions(searchQuery);
+        if (filteredTransactions.isEmpty()) {
+            // Display a message when no data is found
             cardLayout.getChildren().clear();
-            // cardLayout.getChildren().addAll(SearchList(text_search.getText(), recentlyAdded()));*/
-            String searchQuery = text_search.getText().toLowerCase().trim();
-            List<Transaction> filteredTransactions = filterTransactions(searchQuery);
-            if (filteredTransactions.isEmpty()) {
-                // Display a message when no data is found
-                cardLayout.getChildren().clear();
-                Label noDataLabel = new Label("No Transaction found ❌.");
-                cardLayout.getChildren().add(noDataLabel);
-            } else {
-                // Display the filtered transactions
-                cardLayout.getChildren().clear();
-                cardLayout.getChildren().addAll(createCardBoxesForTransactions(filteredTransactions));
-            }
-        }
-        if (event.getCode() == KeyCode.ESCAPE) {
-            text_search.clear();
-            List<Transaction> recentlyAdded = recentlyAdded();
-            for (Transaction transaction : recentlyAdded) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
-                try {
-                    HBox cardBox = fxmlLoader.load();
-                    TableController cardController = fxmlLoader.getController();
-                    cardController.setData(transaction);
-                    cardLayout.getChildren().add(cardBox);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            Label noDataLabel = new Label("No data found.");
+            cardLayout.getChildren().add(noDataLabel);
+        } else {
+            // Display the filtered transactions
+            cardLayout.getChildren().clear();
+            cardLayout.getChildren().addAll(createCardBoxesForTransactions(filteredTransactions));
         }
     }
     private boolean transactionContainsSearchWords(Transaction transaction, String searchQuery) {
@@ -133,7 +122,7 @@ public class Display2Controller implements Initializable {
     }*/
     private String transactionToString(Transaction transaction) {
         // Implement this method based on how you want to represent a transaction as a string
-        return transaction.getType() + transaction.getDescription() + transaction.getTotalamount() + transaction.getCost()+transaction.getDate();
+        return transaction.getType() + transaction.getDescription() + transaction.getTotalamount() + transaction.getCost();
     }
     private HBox createCardBoxForTransaction(Transaction transaction) {
         try {
@@ -150,6 +139,7 @@ public class Display2Controller implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        search(null); // Initially display all transactions
         cardLayout.getChildren().clear();
         try {
             // displaying the data of capital entity
@@ -176,20 +166,6 @@ public class Display2Controller implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    public void newTransactionPopUp(ActionEvent event){try {
-
-        Parent root = FXMLLoader.load(getClass().getResource("/TransactionAdd.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.initStyle ( StageStyle.UTILITY);
-        stage.show();
-    } catch (IOException e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText("Error loading TransactionAdd.fxml");
-        alert.showAndWait();
-    }
     }
     private List<Transaction> recentlyAdded() {
         List<Transaction> transactions = new ArrayList<>();
@@ -225,49 +201,84 @@ public class Display2Controller implements Initializable {
             alert.showAndWait();
         }
     }
-    public void refreshTransactionDisplay(KeyEvent event) {
-        if(event.getCode()==KeyCode.F) {
-            Capital capital = sptrans.retrieveCurrentCapitalFromDatabase();
-            salaryLabel.setText(String.valueOf(capital.getSalary()));
-            expensesLabel.setText(String.valueOf(capital.getExepenses()));
-            profitsLabel.setText(String.valueOf(capital.getProfits()));
-            fundsTextField.setText(String.valueOf(capital.getBig_capital()));
-            cardLayout.getChildren().clear(); // Clear existing display
+    public void newTransactionPopUp(ActionEvent event){try {
 
-            // Reload transactions
-            List<Transaction> recentlyAdded = recentlyAdded();
-            for (Transaction transaction : recentlyAdded) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
-                try {
-                    HBox cardBox = fxmlLoader.load();
-                    TableController cardController = fxmlLoader.getController();
-                    cardController.setData(transaction);
-                    cardLayout.getChildren().add(cardBox);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-    @FXML
-    void ArchiveGo(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayArchivedTr.fxml"));
-            System.out.println("text1 ");
-            Parent root = loader.load();
-            System.out.println("text2 ");
-            DisplayArchivedTrController display2Controller = loader.getController();
-            System.out.println("text3 ");
-            text_search.getScene().setRoot(root);
-        } catch (IOException e) {
-            displayErrorAlert("Error loading DisplayArchivedTr.fxml");
-        }
-    }
-    private void displayErrorAlert(String message) {
+        Parent root = FXMLLoader.load(getClass().getResource("/TransactionAdd.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle ( StageStyle.UTILITY);
+        stage.show();
+    } catch (IOException e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(message);
+        alert.setContentText("Error loading TransactionAdd.fxml");
         alert.showAndWait();
     }
+    }
 
+    //Selim
+    private LoginController loginController;
+    public User userConnected;
+
+    public void setLoginController(LoginController loginController, User user) {
+        this.loginController=loginController;
+        this.userConnected=user;
+        this.username.setText(userConnected.getUsername());
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public int verifyUpdateFrom=0;
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+
+        verifyUpdateFrom=2;
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+        Parent parent = loader.load();
+
+        // Set the instance of DashboardController to AddAccountController
+        UpdateUserController updateUser = loader.getController();
+        updateUser.setTransactionContorller(this,userConnected.getId(),username.getText());
+        updateUser.initializeFields();
+
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+
+    }
+
+    private ServiceEmployees se=new ServiceEmployees();
+
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
+        Parent HrRoot = HrLoader.load();
+        //HRDashboard HrController = HrLoader.getController();
+        DisplayEmployees HrController = HrLoader.getController();
+
+
+        HrController.setLoginController(loginController,userConnected);
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setdashbord(HrController);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
+    }
 }

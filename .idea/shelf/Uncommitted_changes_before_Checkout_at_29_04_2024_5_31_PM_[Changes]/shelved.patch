@@ -1,0 +1,90 @@
+Index: src/main/java/tn/esprit/services/ServiceProjects.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tn.esprit.services;\r\n\r\nimport tn.esprit.models.Projects;\r\nimport tn.esprit.utils.DataSource;\r\n\r\nimport java.sql.*;\r\nimport java.util.HashSet;\r\nimport java.util.Set;\r\n\r\npublic class ServiceProjects implements IService<Projects>{\r\n\r\n        Connection cnx = DataSource.getInstance().getCnx();\r\n        @Override\r\n        public void ajouter(Projects project) {\r\n        /*String req = \"INSERT INTO `projects`(`nom`, `prenom`) VALUES ('\"+personne.getNom()+\"','\"+personne.getPrenom()+\"')\";\r\n        try {\r\n            Statement st = cnx.createStatement();\r\n            st.executeUpdate(req);\r\n            System.out.println(\"Personne added !\");\r\n        } catch (SQLException e) {\r\n            System.out.println(e.getMessage());\r\n        }*/\r\n            String req = \"INSERT INTO `personne`(`nom`, `prenom`) VALUES (?,?)\";\r\n            try {\r\n                PreparedStatement ps = cnx.prepareStatement(req);\r\n                ps.setString(1,.getNom());\r\n                ps.setString(2,personne.getPrenom());\r\n                ps.executeUpdate();\r\n                System.out.println(\"Personne added !\");\r\n            } catch (SQLException e) {\r\n                System.out.println(e.getMessage());\r\n            }\r\n        }\r\n\r\n        @Override\r\n        public void modifier(Projects project) {\r\n\r\n        }\r\n\r\n        @Override\r\n        public void supprimer(int id) {\r\n\r\n        }\r\n\r\n        @Override\r\n        public Projects getOneById(int id) {\r\n            return null;\r\n        }\r\n\r\n        @Override\r\n        public Set<Projects> getAll() {\r\n            /*Set<Projects> personnes = new HashSet<>();\r\n\r\n            String req = \"Select * from personne\";\r\n            try {\r\n                Statement st = cnx.createStatement();\r\n                ResultSet res = st.executeQuery(req);\r\n                while (res.next()){\r\n                    int id = res.getInt(\"id\");\r\n                    String nom = res.getString(2);\r\n                    String prenom = res.getString(\"prenom\");\r\n                    Personne p = new Personne(id,nom,prenom);\r\n                    personnes.add(p);\r\n                }\r\n            } catch (SQLException e) {\r\n                System.out.println(e.getMessage());\r\n            }*/\r\n\r\n            return P;\r\n        }\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/tn/esprit/services/ServiceProjects.java b/src/main/java/tn/esprit/services/ServiceProjects.java
+--- a/src/main/java/tn/esprit/services/ServiceProjects.java	
++++ b/src/main/java/tn/esprit/services/ServiceProjects.java	
+@@ -9,64 +9,28 @@
+ 
+ public class ServiceProjects implements IService<Projects>{
+ 
+-        Connection cnx = DataSource.getInstance().getCnx();
+-        @Override
+-        public void ajouter(Projects project) {
+-        /*String req = "INSERT INTO `projects`(`nom`, `prenom`) VALUES ('"+personne.getNom()+"','"+personne.getPrenom()+"')";
+-        try {
+-            Statement st = cnx.createStatement();
+-            st.executeUpdate(req);
+-            System.out.println("Personne added !");
+-        } catch (SQLException e) {
+-            System.out.println(e.getMessage());
+-        }*/
+-            String req = "INSERT INTO `personne`(`nom`, `prenom`) VALUES (?,?)";
+-            try {
+-                PreparedStatement ps = cnx.prepareStatement(req);
+-                ps.setString(1,.getNom());
+-                ps.setString(2,personne.getPrenom());
+-                ps.executeUpdate();
+-                System.out.println("Personne added !");
+-            } catch (SQLException e) {
+-                System.out.println(e.getMessage());
+-            }
+-        }
++    @Override
++    public void ajouter(Projects projects) {
++
++    }
+ 
+-        @Override
+-        public void modifier(Projects project) {
++    @Override
++    public void modifier(Projects projects) {
+ 
+-        }
++    }
+ 
+-        @Override
+-        public void supprimer(int id) {
++    @Override
++    public void supprimer(int id) {
+ 
+-        }
++    }
+ 
+-        @Override
+-        public Projects getOneById(int id) {
+-            return null;
+-        }
++    @Override
++    public Projects getOneById(int id) {
++        return null;
++    }
+ 
+-        @Override
+-        public Set<Projects> getAll() {
+-            /*Set<Projects> personnes = new HashSet<>();
+-
+-            String req = "Select * from personne";
+-            try {
+-                Statement st = cnx.createStatement();
+-                ResultSet res = st.executeQuery(req);
+-                while (res.next()){
+-                    int id = res.getInt("id");
+-                    String nom = res.getString(2);
+-                    String prenom = res.getString("prenom");
+-                    Personne p = new Personne(id,nom,prenom);
+-                    personnes.add(p);
+-                }
+-            } catch (SQLException e) {
+-                System.out.println(e.getMessage());
+-            }*/
+-
+-            return P;
+-        }
++    @Override
++    public Set<Projects> getAll() {
++        return null;
+     }
+ }

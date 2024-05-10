@@ -74,6 +74,11 @@ public class EditEmployee {
     private ChoiceBox<Sexe> sexeField;
     private HRDashboard dashboard;
     private Employees currentEmployee;
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
+    }
 
     public void setCurrentEmployee(Employees currentEmployee)
     {
@@ -151,12 +156,13 @@ public class EditEmployee {
             Stage stage = (Stage) firstNameField.getScene().getWindow();
             stage.close();
             System.out.println(dashboard);
-            dashboard.getEmployeesLayout().getChildren().clear();
-            dashboard.showEmployeesList();
-            dashboard.getLeavesLayout().getChildren().clear();
+            de.getEmployeesLayout().getChildren().clear();
+            de.showEmployeesList();
+            /*dashboard.getLeavesLayout().getChildren().clear();
             dashboard.showOldLeaves();
             dashboard.getCardLayout().getChildren().clear();
             dashboard.showPendingLeaves();
+             */
             //displayPage.getChildren().clear();
             //REFRESH DETAILS EMPLOYEE
            /* FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));

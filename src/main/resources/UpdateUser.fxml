@@ -27,7 +27,7 @@
          <children>
             <TextField fx:id="username" layoutX="175.0" layoutY="110.0" stylesheets="@style.css" />
             <TextField fx:id="email" layoutX="175.0" layoutY="183.0" stylesheets="@style.css" />
-            <Button layoutX="106.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="49.0" prefWidth="138.0" styleClass="update_btn" stylesheets="@style.css" text="Save" textFill="WHITE">
+            <Button fx:id="Update" layoutX="106.0" layoutY="402.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="49.0" prefWidth="138.0" styleClass="update_btn" stylesheets="@style.css" text="Save" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

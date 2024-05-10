@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1191.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.DisplayLeaves">
+   <children>
+      <VBox prefHeight="750.0" prefWidth="230.0">
+         <children>
+            <AnchorPane fx:id="side_bar" prefHeight="752.0" prefWidth="230.0" styleClass="side_bar" stylesheets="@style.css">
+               <children>
+                  <Pane fx:id="innerPane" layoutX="6.0" layoutY="8.0" prefHeight="73.0" prefWidth="216.0" styleClass="innerPane" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="53.0" fitWidth="186.0" layoutX="9.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo-ct.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Button fx:id="dashboard" layoutX="29.0" layoutY="132.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Dashbord" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <MenuButton layoutX="29.0" layoutY="200.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Employees" textFill="#f5f5f5">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="inventory" layoutX="29.0" layoutY="268.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Inventory" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="projects" layoutX="29.0" layoutY="337.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="         Projects" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="transactions" layoutX="29.0" layoutY="407.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="      Transactions" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <MenuButton fx:id="supplier" layoutX="29.0" layoutY="480.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="           Supplier" textFill="WHITE">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                     </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <Button fx:id="dashboard1" layoutX="29.0" layoutY="553.0" mnemonicParsing="false" onAction="#showSelfUpdate" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Personal Informations" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="dashboard11" layoutX="28.0" layoutY="627.0" mnemonicParsing="false" onAction="#sh" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="User Profile" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+      <Pane fx:id="paneToChange" prefHeight="750.0" prefWidth="961.0">
+         <children>
+            <Pane prefHeight="73.0" prefWidth="961.0">
+               <children>
+                  <TextField fx:id="search_field" layoutX="481.0" layoutY="20.0" prefHeight="35.0" prefWidth="186.0" promptText="Search" stylesheets="@style.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="672.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@chercher.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="47.0" layoutX="741.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@utilisateur.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="logout_btn" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" styleClass="logout_btn" stylesheets="@style.css" text="Log Out" />
+                  <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
+               </children>
+            </Pane>
+            <Pane layoutY="60.0" prefHeight="1210.0" prefWidth="1723.0">
+               <children>
+                  <VBox layoutY="-2.0" prefHeight="677.0" prefWidth="955.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="132.0" text="Pending leaves">
+                           <font>
+                              <Font name="Berlin Sans FB" size="15.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="268.0" prefWidth="941.0" spacing="50.0" styleClass="transparent" stylesheets="@style.css">
+                           <children>
+                              <ScrollPane prefHeight="268.0" prefWidth="962.0" styleClass="round-layout" stylesheets="@style.css">
+                                 <content>
+                                    <HBox fx:id="cardLayout" prefHeight="253.0" prefWidth="942.0" style="-fx-background-color: #5e72e4;" styleClass="transparent" stylesheets="@style.css" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="332.0" prefWidth="934.0">
+                           <children>
+                              <Separator prefWidth="325.0" />
+                              <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="206.0" text="LEAVE">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="55.0" text="STATUS" />
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pagination fx:id="pagination" prefHeight="287.0" prefWidth="934.0" />
+                                 </children>
+                              </VBox>
+                              <Separator prefWidth="325.0" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="790.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#navigateToEmployees" styleClass="save_btn" stylesheets="@style.css" text="to employees" />
+                              <Button mnemonicParsing="false" onAction="#toEmailOnClick" styleClass="save_btn" stylesheets="@style.css" text="Email" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</HBox>

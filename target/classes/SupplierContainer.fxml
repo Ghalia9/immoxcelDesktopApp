@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="287.0" prefWidth="294.0" spacing="15.0" style="-fx-border-radius: 50;" styleClass="pane_11" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupplierDetailsController">
+   <children>
+      <HBox prefHeight="247.0" prefWidth="314.0" spacing="10.0">
+         <children>
+            <ImageView fx:id="imageViewRef" fitHeight="222.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox spacing="20.0">
+               <children>
+                  <Label fx:id="companyName" minHeight="30.0" prefHeight="35.0" prefWidth="126.0" styleClass="pane_AddSupplier" stylesheets="@style.css" text="Label" />
+                  <Label fx:id="Address" prefHeight="100.0" prefWidth="153.0" styleClass="pane_AddSupplier" stylesheets="@style.css" text="Label" />
+                  <Label fx:id="productName" prefHeight="68.0" prefWidth="131.0" styleClass="pane_AddSupplier" stylesheets="@style.css" text="Label" />
+                  <Label fx:id="phoneNumber" prefHeight="70.0" prefWidth="127.0" styleClass="pane_AddSupplier" stylesheets="@style.css" text="Label" />
+                  <Label fx:id="patentRef" prefHeight="91.0" prefWidth="114.0" styleClass="pane_AddSupplier" stylesheets="@style.css" text="Label">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets top="25.0" />
+         </padding>
+      </HBox>
+      <Label fx:id="idSup" opacity="0.0" prefHeight="72.0" prefWidth="146.0" text="Label" />
+   </children>
+</VBox>

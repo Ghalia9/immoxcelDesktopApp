@@ -3,10 +3,12 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -15,11 +17,13 @@ import tn.esprit.models.Employees;
 import tn.esprit.models.Leaves;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
-public class DetailsEmployee {
+public class DetailsEmployee  implements Initializable {
     @FXML
     private Label address;
 
@@ -62,11 +66,24 @@ public class DetailsEmployee {
     private Label allowedLeaveDays;
     @FXML
     private Label takenLeaveDays;
+    @FXML
+    private ProgressBar leavesProgressBar;
     private Employees currentEmployee;
 
     public void setCurrentEmployee(Employees currentEmployee)
     {
         this.currentEmployee=currentEmployee;
+    }
+
+    private DisplayLeaves dl;
+
+    public void setDl(DisplayLeaves dl) {
+        this.dl = dl;
+    }
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
     }
     @FXML
     private AnchorPane displayPage;
@@ -81,7 +98,8 @@ public class DetailsEmployee {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ShowLeavePerEmployee.fxml"));
             Parent leaves = loader.load();
             ShowLeavePerEmployee employeeLeaves=loader.getController();
-            employeeLeaves.setdashbord(dashboard);
+            employeeLeaves.setDE(de);
+            //employeeLeaves.setdashbord(dashboard);
             System.out.println(currentEmployee);
             employeeLeaves.displayLeaves(currentEmployee);
             if (currentEmployee != null) {
@@ -119,7 +137,8 @@ public class DetailsEmployee {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddLeave.fxml"));
                 Parent root = loader.load();
                 AddLeave leave = loader.getController();
-                leave.setdashbord(dashboard);
+                leave.setDl(dl);
+                //leave.setdashbord(dashboard);
                 System.out.println(currentEmployee);
                 leave.setCurrentEmployee(currentEmployee);
                 Stage addLeaveStage = new Stage();
@@ -149,7 +168,8 @@ public class DetailsEmployee {
             EditEmployee employeeedit=loader.getController();
             if (dashboard==null)
                 System.out.println("hneeeeeeeeeeeeeeeeeeeeeeee");
-            employeeedit.setdashbord(dashboard);
+            employeeedit.setDE(de);
+            //employeeedit.setdashbord(dashboard);
             Stage editEmpStage = new Stage();
             editEmpStage.initStyle(StageStyle.DECORATED);
             editEmpStage.setScene(new Scene(Edit, 638, 574));
@@ -189,13 +209,39 @@ public class DetailsEmployee {
         lastname.setText(employee.getEmpLastName());
         phone.setText(employee.getEmpPhone());
         sexe.setText(employee.getEmpSex());
-        takenLeaveDays.setText(String.valueOf(employee.getEmpTakenLeaves()));
+        takenLeaveDays.setText(String.valueOf(employee.getEmpTakenLeaves())+"/"+ String.valueOf(employee.getAllowedLeaveDays()));
         allowedLeaveDays.setText(String.valueOf(employee.getAllowedLeaveDays()));
-    }
-    private HRDashboard dashboard;
+        float progress= (float) employee.getEmpTakenLeaves() / employee.getAllowedLeaveDays();
+        System.out.println(progress);
+        leavesProgressBar.setProgress(progress);
+        // Change the color based on progress
+        if (progress >= 0.8) {
+            // Set color to red
+            leavesProgressBar.setStyle("-fx-accent: red;");
 
-    public void setdashbord(HRDashboard dashboard)
+        } else if (progress >= 0.5) {
+            // Set color to yellow
+            leavesProgressBar.setStyle("-fx-accent: yellow;");
+        } else {
+            // Set color to green
+            leavesProgressBar.setStyle("-fx-accent: green;");
+        }
+    }
+    private DisplayEmployees dashboard;
+
+    private DisplayLeaves leave;
+
+    public void setdashbord(DisplayEmployees dashboard)
     {
         this.dashboard=dashboard;
+    }
+    public void setleaves(DisplayLeaves dashboard)
+    {
+        this.leave=dashboard;
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        leavesProgressBar.setStyle("-fx-accent: red");
+
     }
 }

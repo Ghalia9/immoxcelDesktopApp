@@ -1,11 +1,8 @@
 package tn.esprit.controllers;
 
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.HBox;
-import tn.esprit.models.Transaction;
-import tn.esprit.models.Supplier;
-import tn.esprit.models.Capital;
+import javafx.scene.Node;
+import javafx.scene.text.Text;
+import tn.esprit.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,16 +18,26 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import tn.esprit.services.ServiceEmployees;
 import tn.esprit.services.ServiceSupplier;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DisplayController implements Initializable {
+
+    @FXML
+    public Pane paneToChange;
+
+    @FXML
+    public Text username;
 
     @FXML
     private GridPane supplierContainer;
@@ -51,15 +58,15 @@ public class DisplayController implements Initializable {
         showAllSuppliers();
     }
 
-    public void setUpdateSupplierController(UpdateSupplierController controller) {
-        this.updateSupplierController = controller;
+    public void setUpdateSupplierController(UpdateSupplierController controller)
+    {
+        this.updateSupplierController=controller;
     }
-
-    public void setSupplierAddController(SupplierAddController controller) {
-        this.supplierAddController = controller;
+    public void setSupplierAddController(SupplierAddController controller)
+    {
+        this.supplierAddController=controller;
     }
-
-    public void refrechData() {
+    public void refrechData(){
         supplierContainer.getChildren().clear();
         List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
         for (Supplier supplier : recentlyAddedSupplier) {
@@ -74,21 +81,11 @@ public class DisplayController implements Initializable {
             }
         }
     }
-
     // search
-    public void search(KeyEvent event) {
-
-        if (event.getCode() == KeyCode.ENTER)
-        {
-            supplierContainer.getChildren().clear();
-            List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
-            displaySuppliers(filteredSuppliers);
-        }
-        if (event.getCode() == KeyCode.ESCAPE) {
-            text_search.clear();
-            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
-            displaySuppliers(recentlyAddedSupplier);
-        }
+    public void search(ActionEvent event) {
+        supplierContainer.getChildren().clear();
+        List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
+        displaySuppliers(filteredSuppliers);
     }
 
     private List<Supplier> filterSuppliers(String searchQuery) {
@@ -109,11 +106,12 @@ public class DisplayController implements Initializable {
     // we put the list of pane here
     public void showAllSuppliers() {
         displaySuppliers(recentlyAddedSuppliers());
+
     }
     // displaying  data in the gridPane with verfication empty or not
     private void displaySuppliers(List<Supplier> suppliers) {
         if (suppliers.isEmpty()) {
-            Label noDataLabel = new Label("No Supplier found.");
+            Label noDataLabel = new Label("No data found.");
             supplierContainer.getChildren().add(noDataLabel);
         } else {
             for (int i = 0; i < suppliers.size(); i++) {
@@ -149,6 +147,7 @@ public class DisplayController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dispa.fxml"));
             Parent root = loader.load();
             Display2Controller display2Controller = loader.getController();
+            display2Controller.setLoginController(loginController,userConnected);
             text_search.getScene().setRoot(root);
         } catch (IOException e) {
             displayErrorAlert("Error loading Dispa.fxml");
@@ -174,26 +173,6 @@ public class DisplayController implements Initializable {
         Stage stage = (Stage) CancelButtonn.getScene().getWindow();
         stage.close();
     }
-    public void refreshTransactionDisplay(KeyEvent event) {
-        if(event.getCode()== KeyCode.F) {
-            supplierContainer.getChildren().clear();
-            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
-            displaySuppliers(recentlyAddedSupplier);
-        }
-    }
-
-    public void listSuppliersGO(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display.fxml"));
-            Parent root = loader.load();
-            DisplayController displayController = loader.getController();
-            text_search.getScene().setRoot(root);
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Error loading Display.fxml");
-            alert.showAndWait();
-        }
-    }
 
     private void showPopUp(Parent root) {
         Scene scene = new Scene(root);
@@ -209,4 +188,71 @@ public class DisplayController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    //Selim
+    private LoginController loginController;
+    public User userConnected;
+
+    public void setLoginController(LoginController loginController, User user) {
+        this.loginController=loginController;
+        this.userConnected=user;
+        this.username.setText(userConnected.getUsername());
+    }
+
+    public void logout(ActionEvent actionEvent) throws IOException {
+        userConnected=null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Login.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public int verifyUpdateFrom=0;
+    public void showSelfUpdate(ActionEvent actionEvent) throws SQLException, IOException {
+
+            verifyUpdateFrom=2;
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/UpdateUser.fxml"));
+            Parent parent = loader.load();
+
+            // Set the instance of DashboardController to AddAccountController
+            UpdateUserController updateUser = loader.getController();
+            updateUser.setSupplierContorller(this,userConnected.getId(),username.getText());
+            updateUser.initializeFields();
+
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+
+        }
+
+    private ServiceEmployees se=new ServiceEmployees();
+
+    public void ShowPersonalInformation(ActionEvent actionEvent) throws IOException {
+        FXMLLoader HrLoader = new FXMLLoader(getClass().getResource("/DisplayEmployees.fxml"));
+        Parent HrRoot = HrLoader.load();
+        //HRDashboard HrController = HrLoader.getController();
+        DisplayEmployees HrController = HrLoader.getController();
+
+
+        HrController.setLoginController(loginController,userConnected);
+        Employees employeeInfo=se.getOneById(userConnected.getEmp_id());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsEmployee.fxml"));
+        Parent Details = loader.load();
+        DetailsEmployee employeedetails=loader.getController();
+        employeedetails.setdashbord(HrController);
+        Stage detailsEmpStage = new Stage();
+        detailsEmpStage.initStyle(StageStyle.DECORATED);
+        detailsEmpStage.setScene(new Scene(Details, 638, 574));
+        detailsEmpStage.setTitle("Employee Details");
+        employeedetails.setDetailsData(employeeInfo);
+        employeedetails.setCurrentEmployee(employeeInfo);
+        detailsEmpStage.showAndWait();
+    }
+
 }
