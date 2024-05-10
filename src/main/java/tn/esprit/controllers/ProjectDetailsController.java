@@ -3,6 +3,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import tn.esprit.models.Projects;
@@ -10,12 +11,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
+import tn.esprit.models.User;
 
 import java.io.IOException;
 import java.sql.Date;
 
 public class ProjectDetailsController {
 
+    @FXML
+    private Text username;
     @FXML
     private Label projectName;
 
@@ -44,8 +48,14 @@ public class ProjectDetailsController {
 
     private ProjectsDashboardController projectsDashboardController;
 
-    public void setProjectsDashboardController(ProjectsDashboardController controller) {
+    private LoginController loginController;
+    private User user;
+
+    public void setProjectsDashboardController(ProjectsDashboardController controller, LoginController login, User userConnected) {
         this.projectsDashboardController = controller;
+        this.loginController=login;
+        this.user=userConnected;
+
     }
 
 
@@ -85,7 +95,7 @@ public class ProjectDetailsController {
             Parent parent = fxmlLoader.load();
 
             ShowTasksController showTasksController = fxmlLoader.getController();
-            showTasksController.setData(project); // Pass the Projects object
+            showTasksController.setData(project,loginController,user); // Pass the Projects object
             showTasksController.refreshTasks();
 
             // Close all open windows except the ShowTasks stage

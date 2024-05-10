@@ -81,6 +81,11 @@ public class AddEmployee {
     {
         this.dashboard=dashboard;
     }
+    private DisplayEmployees de;
+
+    public void setDE(DisplayEmployees de) {
+        this.de = de;
+    }
     private static final String UPLOAD_DIRECTORY = "C:/Users/ghali/Desktop/Fac3/S2/PIJava/immoxcel/src/main/resources/CVuploads"; // Change this to your desired directory
 
     @FXML
@@ -142,8 +147,8 @@ public class AddEmployee {
                 // Close the form stage
                 Stage stage = (Stage) firstNameField.getScene().getWindow();
                 stage.close();
-                dashboard.getEmployeesLayout().getChildren().clear();
-                dashboard.showEmployeesList();
+                de.getEmployeesLayout().getChildren().clear();
+                de.showEmployeesList();
             } else {
                 // If the employee already exists, show an error message
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -161,24 +166,85 @@ public class AddEmployee {
     }
 
     private boolean validateInputs() {
-        // Validate age
-        LocalDate birthday = birthdayField.getValue();
-        LocalDate currentDate = LocalDate.now();
-        if (birthday != null && birthday.plusYears(18).isAfter(currentDate)) {
-            showValidationError("Employee must be at least 18 years old.");
+        // Check if all fields are empty
+        if (firstNameField.getText().isEmpty() &&
+                lastNameField.getText().isEmpty() &&
+                addressField.getText().isEmpty() &&
+                cinField.getText().isEmpty() &&
+                emailField.getText().isEmpty() &&
+                phoneField.getText().isEmpty() &&
+                sexeField.getValue() == null &&
+                functionField.getValue() == null &&
+                contractTypeField.getValue() == null) {
+            showValidationError("All fields must be filled.");
+            return false;
+        }
+        // Validate first name
+        String firstName = firstNameField.getText();
+        if (firstName.isEmpty()) {
+            showValidationError("First name is required.");
+            return false;
+        }
+        if (!firstName.matches("[a-zA-Z]+")) {
+            showValidationError("First name must contain only letters.");
             return false;
         }
 
-        // Validate phone number
-        String phoneNumber = phoneField.getText();
-        if (!validatePhoneNumber(phoneNumber)) {
+        // Validate last name
+        String lastName = lastNameField.getText();
+        if (lastName.isEmpty()) {
+            showValidationError("Last name is required.");
+            return false;
+        }
+        if (!lastName.matches("[a-zA-Z]+")) {
+            showValidationError("Last name must contain only letters.");
+            return false;
+        }
+        // Validate CIN
+        String cin = cinField.getText();
+        if (cin.isEmpty()) {
+            showValidationError("CIN is required.");
+            return false;
+        }
+        if (!cin.matches("\\d{8}")) {
+            showValidationError("CIN must contain exactly 8 numbers.");
+            return false;
+        }
+
+        // Validate gender
+        String gender = sexeField.getValue().toString();
+        if (gender == null) {
+            showValidationError("Gender is required.");
+            return false;
+        }
+
+        // Validate birthdate
+        LocalDate birthday = birthdayField.getValue();
+        if (birthday == null) {
+            showValidationError("Birthdate is required.");
+            return false;
+        }
+        LocalDate currentDate = LocalDate.now();
+        if (birthday.plusYears(18).isAfter(currentDate)) {
+            showValidationError("Employee must be at least 18 years old.");
             return false;
         }
 
         // Validate email
         String email = emailField.getText();
+        if (email.isEmpty()) {
+            showValidationError("Email is required.");
+            return false;
+        }
         if (!isValidEmail(email)) {
             showValidationError("Invalid email address.");
+            return false;
+        }
+
+        // Validate function
+        String function = functionField.getValue().toString();
+        if (function == null) {
+            showValidationError("Function is required.");
             return false;
         }
 
@@ -190,18 +256,33 @@ public class AddEmployee {
             return false;
         }
 
-        return true;
-    }
+        // Validate contract type
+        String contractType = contractTypeField.getValue().toString();
+        if (contractType == null) {
+            showValidationError("Contract type is required.");
+            return false;
+        }
 
-    private boolean validatePhoneNumber(String phoneNumber) {
-        // Define the regular expression pattern for the phone number
+        // Validate address
+        String address = addressField.getText();
+        if (address.isEmpty()) {
+            showValidationError("Address is required.");
+            return false;
+        }
+
+        // Validate phone number
+        String phoneNumber = phoneField.getText();
+        if (phoneNumber.isEmpty()) {
+            showValidationError("Phone number is required.");
+            return false;
+        }
         String regexPattern = "^(9\\d{7}|40\\d{6}|41\\d{6}|42\\d{6}|44\\d{6}|5[0-5]\\d{6}|58\\d{6}|2\\d{7}|46\\d{6})$";
-
-        // Check if the phone number matches the pattern
         if (!phoneNumber.matches(regexPattern)) {
             showValidationError("Please enter a valid phone number.");
             return false;
         }
+
+        // All validations passed
         return true;
     }
     private boolean isValidEmail(String email) {

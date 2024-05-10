@@ -51,6 +51,8 @@ public class SupplierContainerController {
 
     private final ServiceSupplier sp = new ServiceSupplier();
 
+    PdfGenerator pdfGenerat = new PdfGenerator();
+
 
 
     public void setData(Supplier supplier){
@@ -195,9 +197,10 @@ public class SupplierContainerController {
             Supplier supplier = sp.getOneById(idSupplier);
             Supplier supp=new Supplier(idSupplier,supplier.getCompany_name(), supplier.getAddress(), supplier.getMaterails_s(), supplier.getPhone_number(),supplier.getPatent_ref(),supplier.getImage());
             if (supplier != null) {
-                System.out.println("id transaction before "+idSupplier);
                 supplierContainerDetailsController.setData(supp);
-                System.out.println("supplier : "+supplier.getId_supp());
+                String phoneStr= String.valueOf(supplier.getPhone_number());
+                //pdfGenerat.GeneratePDFSupplier(supplier.getCompany_name(), supplier.getAddress(), "+215",phoneStr,supplier.getPatent_ref());
+
             } else {
                 System.out.println("Transaction with ID " + idSupplier + " not found.");
             }
@@ -209,7 +212,6 @@ public class SupplierContainerController {
             alert.setContentText("An error occurred while loading the Register form.");
             alert.show();
         }
-
-
     }
+
 }

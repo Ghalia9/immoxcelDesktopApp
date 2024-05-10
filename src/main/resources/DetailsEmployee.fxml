@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -168,6 +169,7 @@
                            </children>
                         </HBox>
                         <Label fx:id="takenLeaveDays" prefHeight="25.6" prefWidth="287.0" text="Label" />
+                        <ProgressBar fx:id="leavesProgressBar" prefWidth="200.0" progress="0.0" />
                      </children>
                      <padding>
                         <Insets left="15.0" right="15.0" />

@@ -1,5 +1,12 @@
 package tn.esprit.controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import tn.esprit.models.Transaction;
 import tn.esprit.models.Supplier;
 import tn.esprit.models.Capital;
@@ -11,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import tn.esprit.services.ServiceTransaction;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class CardController {
@@ -35,6 +43,8 @@ public class CardController {
     private final ServiceTransaction sp = new ServiceTransaction();
     //private String [] colors  = {B9E5FF, "BDB2FE", "FB9AA8", "FF5056"};
 
+
+
     public void setData(Transaction transaction){
 
         System.out.println("the id is retrieved from cardController "+transaction.getId());
@@ -49,8 +59,9 @@ public class CardController {
 
     }
     public void deleteOnClickButton(ActionEvent event ) {
+
         try {
-            int  idTransaction= Integer.parseInt(id.getText());
+            int  idTrans= Integer.parseInt(id.getText());
             // Ask for confirmation before deleting
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Delete Transaction");
@@ -58,16 +69,28 @@ public class CardController {
             confirmationAlert.setContentText("This action cannot be undone.");
             confirmationAlert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
-                    // Delete the transaction from the database
-                    sp.supprimer(idTransaction);
-                    // Remove the card from the UI
-                    box.getChildren().clear();
-                    box.setVisible(false); // Hide the card
-                    box.setManaged(false); // Make sure it's not managed by the layout
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Success");
-                    successAlert.setContentText("Transaction deleted successfully!");
-                    successAlert.showAndWait();
+                    System.out.println("l'id egale a == du controlleur cardController "+ idTrans);
+                    // try {
+                    // smssendcode.sendsmsCodeVerification();
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CodeSms.fxml"));
+                        Parent root = loader.load();
+                        CodeSmsController codeSmsController = loader.getController();
+                        // Create a new stage for the popup window
+                        Stage popupStage= new Stage();
+                        popupStage.initModality(Modality.APPLICATION_MODAL);// Make the pop-up Window  model
+                        popupStage.initStyle(StageStyle.UTILITY);
+                        popupStage.setTitle("Update Transaction");
+                        // set scene to the pop-up window
+                        Scene scene = new Scene (root);
+                        popupStage.setScene(scene);
+                        codeSmsController.setFields(idTrans);
+                        popupStage.showAndWait();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        displayErrorAlert("An error occurred while loading the Register form.");
+                    }
+
                 }
             });
         } catch (Exception e) {
@@ -78,68 +101,29 @@ public class CardController {
         }
     }
 
-    public void EditOnClickButton(ActionEvent event){/*
-
+    private void showPopUpforCode(Parent root) {
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
+    }
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void codePopUpValidator() {
         try {
-             int  idTransaction= Integer.parseInt(id.getText());
-            System.out.println("l'id de transaction que vous voulez faire une transaction "+idTransaction);
-            // Ask for confirmation before deleting
-            Alert confirmationAlert =  new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationAlert.setTitle("Update Transaction");
-            confirmationAlert.setHeaderText("Are you sure you want to update this transaction?");
-            confirmationAlert.setContentText("This action cannot be undone.");
-            confirmationAlert.showAndWait().ifPresent(response -> {
-                if (response == ButtonType.OK) {
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Register.fxml"));
-                        Parent root = loader.load();
-                        RegisterController registerController = loader.getController();
-                        id.getScene().setRoot(root);
-
-                        Transaction transaction = sp.getOneById(idTransaction);
-                        if (transaction != null) {
-
-                            System.out.println("id transaction before YOOOOOOOOOO "+idTransaction);
-
-                            registerController.setFields(idTransaction,transaction.getType(), transaction.getQuantity(), transaction.getDescription(), transaction.getCost());
-                            System.out.println("transactionid : "+transaction.getId());
-                        } else {
-                            System.out.println("Transaction with ID " + idTransaction + " not found.");
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Error");
-                        alert.setContentText("An error occurred while loading the Register form.");
-                        alert.show();
-                    }
-                 /*  try {
-                        Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("Register.fxml"));
-                        id.getScene().setRoot(root);
-                        sp.getOneById(idTransaction);
-                        System.out.println("Hello WORLD ");
-                        Transaction transaction =  sp.getOneById(idTransaction);
-                        RegisterController registerController = loader.getController();
-                       System.out.println("l'id apres "+idTransaction);
-                        registerController.setFields(sp.getOneById(idTransaction).getType(),sp.getOneById(idTransaction).getQuantity(),sp.getOneById(idTransaction).getDescription(),sp.getOneById(idTransaction).getCost());
-                        System.out.println("type "+ transaction.getType());
-                        System.out.println("quantity "+ transaction.getQuantity());
-                        System.out.println("Description "+ transaction.getDescription());
-                    } catch (IOException e) {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setContentText("Sorry");
-                        alert.setTitle("Error");
-                        alert.show();
-                    }
-
-                }
-            });
-        } catch (Exception e) {
-            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-            errorAlert.setTitle("Error");
-            errorAlert.setContentText("An unexpected error occurred: " + e.getMessage());
-            errorAlert.showAndWait();
-        }*/
+            Parent root = FXMLLoader.load(getClass().getResource("/CodeSms.fxml"));
+            showPopUpforCode(root);
+        } catch (IOException e) {
+            displayErrorAlert("Error loading CodeSms.fxml");
+        }
+    }
+    private void confirmationAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

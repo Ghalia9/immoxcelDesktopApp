@@ -15,7 +15,7 @@ public class MainSouleima extends Application {
     public void start(Stage stage) throws IOException {
         //Dispa
         FXMLLoader fxmlLoader = new FXMLLoader(MainSouleima.class.getResource("/Display.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1105, 755);
+        Scene scene = new Scene(fxmlLoader.load(), 1191, 750);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
