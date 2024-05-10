@@ -86,7 +86,7 @@ public class AddEmployee {
     public void setDE(DisplayEmployees de) {
         this.de = de;
     }
-    private static final String UPLOAD_DIRECTORY = "C:/Users/ghali/Desktop/Fac3/S2/PIJava/immoxcel/src/main/resources/CVuploads"; // Change this to your desired directory
+    private static final String UPLOAD_DIRECTORY = "src/main/resources/CVuploads"; // Change this to your desired directory
 
     @FXML
     void uploadCVOnClick(ActionEvent event) {
@@ -98,7 +98,7 @@ public class AddEmployee {
         if (file != null) {
             try {
                 // Generate a unique file name (e.g., using UUID)
-               // String fileName = UUID.randomUUID().toString() + "_" + file.getName();
+                // String fileName = UUID.randomUUID().toString() + "_" + file.getName();
                 String fileName = file.getName();
                 //cvField.setText(cvFileName);
                 // Construct the full destination path
@@ -321,17 +321,36 @@ public class AddEmployee {
         sexeField.setItems(FXCollections.observableArrayList(Sexe.values()));
     }
 
-    public Employees setInformations(){
-        try {
-            Blob cv = fileToBlob(new File(getFullFilePath(cvField.getText())));
-            Employees employee=new Employees(firstNameField.getText(),lastNameField.getText(),sexeField.getValue().toString(),emailField.getText(),addressField.getText(),phoneField.getText(),functionField.getValue().toString(), Date.valueOf(birthdayField.getValue()),Date.valueOf(hiraDateField.getValue()),Date.valueOf(endContractField.getValue()),contractTypeField.getValue().toString(),12,cv,0,cinField.getText());
-            return employee;
-        }catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public Employees setInformations() {
+        Blob cv = null;
+        String cvFilePath = cvField.getText();
+        if (!cvFilePath.isEmpty()) {
+            try {
+                cv = fileToBlob(new File(getFullFilePath(cvFilePath)));
+            } catch (IOException | SQLException e) {
+                e.printStackTrace();
+                // Handle error
+                showNotification("Error occurred while processing CV file.");
+                return null;
+            }
         }
-
-        return null;
+        Employees employee = new Employees(
+                firstNameField.getText(),
+                lastNameField.getText(),
+                sexeField.getValue().toString(),
+                emailField.getText(),
+                addressField.getText(),
+                phoneField.getText(),
+                functionField.getValue().toString(),
+                Date.valueOf(birthdayField.getValue()),
+                Date.valueOf(hiraDateField.getValue()),
+                Date.valueOf(endContractField.getValue()),
+                contractTypeField.getValue().toString(),
+                12,
+                cv,
+                0,
+                cinField.getText()
+        );
+        return employee;
     }
 }

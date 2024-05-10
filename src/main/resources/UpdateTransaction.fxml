@@ -26,14 +26,14 @@
       </Label>
       <Pane layoutX="43.0" layoutY="139.0" prefHeight="403.0" prefWidth="344.0" styleClass="transparent" stylesheets="@style.css">
          <children>
-            <Label layoutX="2.0" text="Type" textFill="WHITE">
+            <Label layoutX="2.0" text="Type">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="2.0" layoutY="70.0" text="Quantity" textFill="#fffafa">
+            <Label layoutX="2.0" layoutY="70.0" text="Quantity">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Century Gothic" size="14.0" />
                </font>
             </Label>
             <TextField fx:id="QuantityTextField" layoutX="2.0" layoutY="94.0" prefHeight="25.0" prefWidth="300.0" promptText="Quantity " styleClass="pane_AddSupplier" stylesheets="@style.css">
@@ -41,7 +41,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="2.0" layoutY="134.0" text="Description" textFill="#fffdfd">
+            <Label layoutX="2.0" layoutY="134.0" text="Description">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Font name="Century Gothic" size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="2.0" layoutY="199.0" text="cost" textFill="#fff8f8">
+            <Label layoutX="2.0" layoutY="199.0" prefHeight="18.0" prefWidth="47.0" text="cost">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -63,7 +63,7 @@
             </TextField>
             <HBox layoutX="20.0" layoutY="308.0" minWidth="100.0" spacing="20.0">
                <children>
-                  <Button fx:id="Editbtn" mnemonicParsing="false" onAction="#EditOnClickOnUP" prefWidth="110.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@style.css" text="Save" textFill="#c3c9cf">
+                  <Button mnemonicParsing="false" onAction="#EditOnClickOnUP" prefWidth="110.0" style="-fx-background-radius: 20;" styleClass="EditOnClickButtonUpdate" stylesheets="@style.css" text="Save" textFill="#c3c9cf">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -80,18 +80,18 @@
             </HBox>
             <Label fx:id="LabelMessage" layoutX="144.0" layoutY="262.0" />
             <ComboBox fx:id="typeTextField" layoutX="2.0" layoutY="30.0" prefHeight="25.0" prefWidth="300.0" promptText="Income" styleClass="pane_AddSupplier" stylesheets="@style.css" />
-            <Label layoutY="253.0" text="Supplier" textFill="#fff6f6">
+            <Label layoutY="260.0" prefHeight="18.0" prefWidth="66.0" text="Supplier">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="SupplierComboBox" layoutX="2.0" layoutY="271.0" prefHeight="26.0" prefWidth="300.0" promptText="--" styleClass="pane_AddSupplier" stylesheets="@style.css" />
+            <ComboBox fx:id="SupplierComboBox" layoutX="2.0" layoutY="279.0" prefHeight="26.0" prefWidth="300.0" promptText="--" styleClass="pane_AddSupplier" stylesheets="@style.css" />
             <Label fx:id="idtrans" layoutX="351.0" layoutY="30.0" opacity="0.0" text="Label" />
          </children>
       </Pane>
       <ImageView fitHeight="113.0" fitWidth="132.0" layoutX="142.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/blogger.png" />
+            <Image url="@blogger.png" />
          </image>
       </ImageView>
    </children>

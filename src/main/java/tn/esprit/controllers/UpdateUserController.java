@@ -79,6 +79,12 @@ public class UpdateUserController {
         this.usernameFromTable=name;
     }
 
+    DisplayArchivedTrController Archive;
+    public void setArchiveContorller(DisplayArchivedTrController archive,int id,String name) {
+        this.Archive=archive;
+        this.userID=id;
+        this.usernameFromTable=name;
+    }
     public void setSupplierContorller(DisplayController supplier,int id,String name) {
         this.supplierController=supplier;
         this.userID=id;

@@ -141,7 +141,7 @@
                         <HBox prefHeight="332.0" prefWidth="934.0">
                            <children>
                               <Separator prefWidth="325.0" />
-                              <VBox prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
+                              <VBox fx:id="leavesLayout" prefHeight="411.0" prefWidth="318.0" spacing="5.0" styleClass="transparent" stylesheets="@style.css">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" minHeight="45.0" prefHeight="45.0" prefWidth="318.0" style="-fx-background-color: #5e72e4;" stylesheets="@style.css">
                                        <children>

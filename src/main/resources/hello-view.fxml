@@ -35,12 +35,20 @@
       </Label>
       <HBox layoutX="-1.0" layoutY="156.0" prefHeight="50.0" prefWidth="221.0" spacing="12.0">
          <children>
-            <Button fx:id="editButton" minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="30.0" prefWidth="57.0" styleClass="editbtn" stylesheets="@style.css" text="Edit " textFill="WHITE" />
-            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#deleteOnClickButton" styleClass="editbtn" stylesheets="@style.css" text="Delete" textFill="WHITE" />
-            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#detailsOnclickbtn" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@style.css" text="Details" textFill="#fff6f6">
+            <Button minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@style.css" text="Edit" textFill="#fff6f6">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="96.0" layoutY="25.0" minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#deleteOnClickButton" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@style.css" text="Delete" textFill="#fff6f6">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="25.0" layoutY="25.0" minHeight="20.0" minWidth="59.0" mnemonicParsing="false" onAction="#detailsOnclickbtn" prefHeight="31.0" prefWidth="60.0" styleClass="editbtn" stylesheets="@style.css" text="Details" textFill="#fff6f6">
                <font>
                   <Font name="Century Gothic" size="12.0" />
                </font>

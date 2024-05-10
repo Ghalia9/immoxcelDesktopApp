@@ -380,6 +380,13 @@ public class DashboardController{
             System.out.println("hi");
         this.paneToChange.getChildren().setAll(leaves.paneToChange.getChildren());}
     }
+
+    public void ShowArchive(DisplayArchivedTrController Archive)
+    {
+        if(Archive!=null){
+            System.out.println("hi");
+            this.paneToChange.getChildren().setAll(Archive.paneToChange.getChildren());}
+    }
     public void ShowDashboard(ActionEvent actionEvent) throws IOException {
         HR=null;
         projects=null;
@@ -441,6 +448,7 @@ public class DashboardController{
         Parent root = Transactionloader.load();
         Display2Controller TransactionController = Transactionloader.getController();
         TransactionController.setLoginController(loginController,userConnected);
+        TransactionController.setDashboard(this);
         transaction=TransactionController;
 
 

@@ -1,6 +1,8 @@
 package tn.esprit.controllers;
 
 import javafx.scene.Node;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import tn.esprit.models.*;
 import javafx.event.ActionEvent;
@@ -82,10 +84,19 @@ public class DisplayController implements Initializable {
         }
     }
     // search
-    public void search(ActionEvent event) {
-        supplierContainer.getChildren().clear();
-        List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
-        displaySuppliers(filteredSuppliers);
+    public void search(KeyEvent event) {
+
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            supplierContainer.getChildren().clear();
+            List<Supplier> filteredSuppliers = filterSuppliers(text_search.getText());
+            displaySuppliers(filteredSuppliers);
+        }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            text_search.clear();
+            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
+            displaySuppliers(recentlyAddedSupplier);
+        }
     }
 
     private List<Supplier> filterSuppliers(String searchQuery) {
@@ -169,6 +180,19 @@ public class DisplayController implements Initializable {
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
+    public void listSuppliersGO(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display.fxml"));
+            Parent root = loader.load();
+            DisplayController displayController = loader.getController();
+            displayController.setLoginController(loginController,userConnected);
+             text_search.getScene().setRoot(root);
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Error loading Display.fxml");
+            alert.showAndWait();
+        }
+    }
     public void  setCancelButtonIDActionOn(ActionEvent event) {
         Stage stage = (Stage) CancelButtonn.getScene().getWindow();
         stage.close();
@@ -180,6 +204,12 @@ public class DisplayController implements Initializable {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
+    } public void refreshTransactionDisplay(KeyEvent event) {
+        if(event.getCode()== KeyCode.F) {
+            supplierContainer.getChildren().clear();
+            List<Supplier> recentlyAddedSupplier = recentlyAddedSuppliers();
+            displaySuppliers(recentlyAddedSupplier);
+        }
     }
 
     private void displayErrorAlert(String message) {

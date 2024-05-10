@@ -16,7 +16,6 @@
             <Label fx:id="Quantity" layoutX="420.0" layoutY="6.0" text="Label" />
             <Label fx:id="TotalAmount" layoutX="480.0" layoutY="5.0" prefHeight="18.0" prefWidth="94.0" text="Label" />
             <Button fx:id="editbtn" layoutX="572.0" mnemonicParsing="false" onAction="#EditOnClickButton" prefHeight="29.0" prefWidth="54.0" styleClass="editbtn" stylesheets="@style.css" text="Edit" textFill="#948d8d" />
-            <Button fx:id="Deletebtn" layoutX="635.0" mnemonicParsing="false" onAction="#deleteOnClickButton" styleClass="Deletebtn" stylesheets="@style.css" text="Delete" textFill="#9e9c9c" />
             <Label fx:id="id" layoutX="705.0" layoutY="4.0" opacity="0.0" prefHeight="18.0" prefWidth="0.0" text="Label" />
             <Button fx:id="ArchiveOn" layoutX="700.0" mnemonicParsing="false" onAction="#ArchiveOnClick" styleClass="Deletebtn" stylesheets="@style.css" text="Archive" textFill="#9e9c9c" />
          </children>

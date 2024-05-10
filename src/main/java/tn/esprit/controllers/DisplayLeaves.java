@@ -75,7 +75,7 @@ public class DisplayLeaves implements Initializable{
 
         // Initialize pagination
         pagination.setPageFactory(this::createPage);
-        pagination.setPageCount(oldleaves.size() / 4);
+        pagination.setPageCount((oldleaves.size() / 4)+1);
     }
 
     private Node createPage(int pageIndex) {

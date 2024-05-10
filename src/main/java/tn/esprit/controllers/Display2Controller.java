@@ -1,5 +1,7 @@
 package tn.esprit.controllers;
 
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import tn.esprit.models.Employees;
@@ -67,6 +69,7 @@ public class Display2Controller implements Initializable {
 
     @FXML
     private TextField text_search;
+    public DashboardController dashboard;
 
     @FXML
     void setCancelButtonIDAction(ActionEvent event) {
@@ -77,20 +80,38 @@ public class Display2Controller implements Initializable {
 
     private final ServiceTransaction sptrans = new ServiceTransaction();
 
-    public  void search(ActionEvent event) {
-        cardLayout.getChildren().clear();
-       // cardLayout.getChildren().addAll(SearchList(text_search.getText(), recentlyAdded()));*/
-        String searchQuery = text_search.getText().toLowerCase().trim();
-        List<Transaction> filteredTransactions = filterTransactions(searchQuery);
-        if (filteredTransactions.isEmpty()) {
-            // Display a message when no data is found
+    public  void search(KeyEvent event) {
+        if(event.getCode()== KeyCode.ENTER) {
             cardLayout.getChildren().clear();
-            Label noDataLabel = new Label("No data found.");
-            cardLayout.getChildren().add(noDataLabel);
-        } else {
-            // Display the filtered transactions
-            cardLayout.getChildren().clear();
-            cardLayout.getChildren().addAll(createCardBoxesForTransactions(filteredTransactions));
+            // cardLayout.getChildren().addAll(SearchList(text_search.getText(), recentlyAdded()));*/
+            String searchQuery = text_search.getText().toLowerCase().trim();
+            List<Transaction> filteredTransactions = filterTransactions(searchQuery);
+            if (filteredTransactions.isEmpty()) {
+                // Display a message when no data is found
+                cardLayout.getChildren().clear();
+                Label noDataLabel = new Label("No Transaction found ❌.");
+                cardLayout.getChildren().add(noDataLabel);
+            } else {
+                // Display the filtered transactions
+                cardLayout.getChildren().clear();
+                cardLayout.getChildren().addAll(createCardBoxesForTransactions(filteredTransactions));
+            }
+        }
+        if (event.getCode() == KeyCode.ESCAPE) {
+            text_search.clear();
+            List<Transaction> recentlyAdded = recentlyAdded();
+            for (Transaction transaction : recentlyAdded) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
+                try {
+                    HBox cardBox = fxmlLoader.load();
+                    TableController cardController = fxmlLoader.getController();
+                    cardController.setData(transaction);
+                    cardLayout.getChildren().add(cardBox);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
     private boolean transactionContainsSearchWords(Transaction transaction, String searchQuery) {
@@ -139,7 +160,7 @@ public class Display2Controller implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        search(null); // Initially display all transactions
+//search(null); // Initially display all transactions
         cardLayout.getChildren().clear();
         try {
             // displaying the data of capital entity
@@ -178,7 +199,10 @@ public class Display2Controller implements Initializable {
     }
     public void swtichToMenu(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Dispa.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Dispa.fxml"));
+            Parent root = loader.load();
+            Display2Controller display2Controller = loader.getController();
+    display2Controller.setLoginController(loginController,userConnected);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -194,7 +218,12 @@ public class Display2Controller implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Display.fxml"));
             Parent root = loader.load();
             DisplayController displayController = loader.getController();
-            typeylabel.getScene().setRoot(root);
+            displayController.setLoginController(loginController,userConnected);
+            //typeylabel.getScene().setRoot(root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Error loading Display.fxml");
@@ -214,6 +243,62 @@ public class Display2Controller implements Initializable {
         alert.setContentText("Error loading TransactionAdd.fxml");
         alert.showAndWait();
     }
+    }
+
+    public void setDashboard(DashboardController d)
+    {
+        this.dashboard=d;
+    }
+    @FXML
+    void ArchiveGo(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DisplayArchivedTr.fxml"));
+            Parent root = loader.load();
+            DisplayArchivedTrController display2Controller = loader.getController();
+            display2Controller.setLoginController(loginController,userConnected);
+
+            if(dashboard==null)
+            {
+                this.paneToChange.getChildren().setAll(display2Controller.paneToChange.getChildren());
+            }
+            else {
+                dashboard.ShowArchive(display2Controller);
+            }
+            //text_search.getScene().setRoot(root);
+        } catch (IOException e) {
+            displayErrorAlert("Error loading DisplayArchivedTr.fxml");
+        }
+
+    }
+    private void displayErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    public void refreshTransactionDisplay(KeyEvent event) {
+        if(event.getCode()== KeyCode.F) {
+            Capital capital = sptrans.retrieveCurrentCapitalFromDatabase();
+            salaryLabel.setText(String.valueOf(capital.getSalary()));
+            expensesLabel.setText(String.valueOf(capital.getExepenses()));
+            profitsLabel.setText(String.valueOf(capital.getProfits()));
+            fundsTextField.setText(String.valueOf(capital.getBig_capital()));
+            cardLayout.getChildren().clear(); // Clear existing display
+
+            // Reload transactions
+            List<Transaction> recentlyAdded = recentlyAdded();
+            for (Transaction transaction : recentlyAdded) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("/Table.fxml"));
+                try {
+                    HBox cardBox = fxmlLoader.load();
+                    TableController cardController = fxmlLoader.getController();
+                    cardController.setData(transaction);
+                    cardLayout.getChildren().add(cardBox);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     //Selim

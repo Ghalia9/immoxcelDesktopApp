@@ -53,12 +53,12 @@ public class AfficherLeaves {
     private Label toALL;
     private Employees employee;
     public void setData(Leaves leave){
-    name.setText(leave.getEmployee().getEmpLastName()+" "+leave.getEmployee().getEmpName());
-    takenLeaves.setText(leave.getEmployee().getEmpTakenLeaves()+"/"+leave.getEmployee().getAllowedLeaveDays());
-    leaveReason.setText(leave.getLeaveType());
-    description.setText(leave.getLeaveDescription());
-    from.setText(new SimpleDateFormat("yyyy-MM-dd").format(leave.getStartDate()));
-    to.setText(new SimpleDateFormat("yyyy-MM-dd").format(leave.getFinishDate()));
+        name.setText(leave.getEmployee().getEmpLastName()+" "+leave.getEmployee().getEmpName());
+        takenLeaves.setText(leave.getEmployee().getEmpTakenLeaves()+"/"+leave.getEmployee().getAllowedLeaveDays());
+        leaveReason.setText(leave.getLeaveType());
+        description.setText(leave.getLeaveDescription());
+        from.setText(new SimpleDateFormat("yyyy-MM-dd").format(leave.getStartDate()));
+        to.setText(new SimpleDateFormat("yyyy-MM-dd").format(leave.getFinishDate()));
     }
     public void setDataALL(Leaves leave){
         if(leave.getStatus().equals("Approved"))
@@ -120,8 +120,8 @@ public class AfficherLeaves {
         dashboard.showEmployeesList();
         */
         dl.getCardLayout().getChildren().clear();
-        dl.getLeavesLayout().getChildren().clear();
-        dl.showOldLeaves();
+        //dl.getLeavesLayout().getChildren().clear();
+        //dl.showOldLeaves();
         dl.showPendingLeaves();
 
     }

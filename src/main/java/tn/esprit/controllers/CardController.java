@@ -33,6 +33,8 @@ public class CardController {
 
     @FXML
     private Label id;
+    @FXML
+    private Label dateLabel;
 
 
     @FXML
@@ -49,6 +51,7 @@ public class CardController {
 
         System.out.println("the id is retrieved from cardController "+transaction.getId());
         id.setText(String.valueOf(transaction.getId()));
+        dateLabel.setText(String.valueOf(transaction.getDate()));
         typeTextField.setText(transaction.getType());
         Quantity.setText(String.valueOf(transaction.getQuantity()));
         Descrption.setText(transaction.getDescription());

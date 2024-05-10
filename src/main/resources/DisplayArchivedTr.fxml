@@ -45,7 +45,7 @@
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="supplier" layoutX="29.0" layoutY="213.0" mnemonicParsing="false" onAction="#listSuppliersGO" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Supplier" textFill="WHITE">
+                  <Button fx:id="supplier" layoutX="29.0" layoutY="210.0" mnemonicParsing="false" onAction="#listSuppliersGO" prefHeight="47.0" prefWidth="173.0" styleClass="dashboard" stylesheets="@style.css" text="Supplier" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -54,7 +54,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <Pane prefHeight="750.0" prefWidth="959.0">
+      <Pane fx:id="paneToChange" prefHeight="750.0" prefWidth="959.0">
          <children>
             <Pane fx:id="pane_1" layoutX="132.0" layoutY="150.0" prefHeight="100.0" prefWidth="120.0" stylesheets="@style.css">
                <children>
@@ -165,7 +165,7 @@
                   <String fx:value="card" />
                </styleClass>
             </Pane>
-            <Pane fx:id="pane_112" layoutX="667.0" layoutY="150.0" prefHeight="100.0" prefWidth="120.0" stylesheets="@style.css">
+            <Pane layoutX="667.0" layoutY="150.0" prefHeight="100.0" prefWidth="120.0" stylesheets="@style.css">
                <children>
                   <Text fill="WHITE" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funds" wrappingWidth="86.199951171875">
                      <font>
@@ -206,7 +206,7 @@
                      </image>
                   </ImageView>
                   <Text fx:id="username" layoutX="784.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="79.13671875" />
-                  <Button fx:id="CancelButton" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" onAction="#setCancelButtonIDAction" styleClass="logout_btn" stylesheets="" text="Log Out" />
+                  <Button fx:id="CancelButton" layoutX="872.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" styleClass="logout_btn" stylesheets="" text="Log Out" />
                </children>
             </Pane>
 
