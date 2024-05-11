@@ -55,8 +55,12 @@ public class AddProjectController {
                 return; // Exit the method early if any field is empty or null
             }
 
-            // Convert budget input to float
+            // Check if budget is positive
             float budget = Float.parseFloat(budgetText);
+            if (budget <= 0) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Budget must be a positive number");
+                return; // Exit the method if budget is not positive
+            }
 
             // Check if project name is unique
             if (serviceProjects.isProjectNameUnique(projectName)) {

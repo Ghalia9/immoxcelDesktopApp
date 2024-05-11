@@ -117,7 +117,7 @@ public class AddDepotController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("C:\\Users\\MSI\\Desktop\\immoxcel-java\\immoxcelDesktopApp\\src\\main\\resources\\regionTunis.json")) {
+        try (FileReader reader = new FileReader("C:\\Users\\moham\\Desktop\\Esprit\\3 eme A\\S2\\JAVA\\immoxcelRemote\\src\\main\\resources\\regionTunis.json")) {
             // Parse the JSON file
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;

@@ -46,6 +46,7 @@ public class RegisterController  implements Initializable {
 
     private String [] type ={"Income","Salary","Expenses"};
     private Alert alert;
+    SendSms send = new SendSms();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -103,7 +104,9 @@ public class RegisterController  implements Initializable {
                                 displayErrorAlert("You cannot proceed. Insufficient salary.");
                             } else {
                                 sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                                send.sendsms("Salary");
                                 displayConfirmationAlert("Added Succefully ");
+
                                 Stage stage = (Stage) CostTextField.getScene().getWindow();
                                 stage.close();
 
@@ -115,6 +118,8 @@ public class RegisterController  implements Initializable {
                                 displayErrorAlert("You cannot proceed. Insufficient Money in Expenses.");
                             } else {
                                 sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                                send.sendsms("Expenses");
+
                                 displayConfirmationAlert("Added Succefully ");
                                 Stage stage = (Stage) CostTextField.getScene().getWindow();
                                 stage.close();
@@ -122,6 +127,8 @@ public class RegisterController  implements Initializable {
                         }
                         else {
                             sp.ajouter(new Transaction(typeTextField.getValue(), DescrptionTextField.getText(), quantity, cost, supplier1));
+                            send.sendsms("Income");
+
                             displayConfirmationAlert("Added Succefully ");
                             Stage stage = (Stage) CostTextField.getScene().getWindow();
                             stage.close();

@@ -22,7 +22,7 @@
          <children>
             <AnchorPane fx:id="side_bar" prefHeight="752.0" prefWidth="230.0" styleClass="side_bar" stylesheets="@style.css">
                <children>
-                  <Pane fx:id="innerPane" layoutX="6.0" layoutY="8.0" prefHeight="73.0" prefWidth="216.0" styleClass="innerPane" stylesheets="@style.css">
+                  <Pane fx:id="innerPane" onKeyPressed="#refreshTransactionDisplay" layoutX="6.0" layoutY="8.0" prefHeight="73.0" prefWidth="216.0" styleClass="innerPane" stylesheets="@style.css">
                      <children>
                         <ImageView fitHeight="53.0" fitWidth="186.0" layoutX="9.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>

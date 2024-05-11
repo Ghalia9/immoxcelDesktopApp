@@ -76,7 +76,7 @@ public class UpdateSupplierController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         compareim = new ComparingImage();
         JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\CountryCodes.json")) {
+        try (FileReader reader = new FileReader("C:\\Users\\moham\\Desktop\\Esprit\\3 eme A\\S2\\JAVA\\immoxcelRemote\\src\\main\\resources\\CountryCodes.json")) {
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;
 
@@ -210,7 +210,7 @@ public class UpdateSupplierController implements Initializable {
         // Add an event handler to listen for changes in the selected item
         String selectedItem = comboboxCountriesUpdate.getValue();
         JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\CountryCodes.json")) {
+        try (FileReader reader = new FileReader("C:\\Users\\moham\\Desktop\\Esprit\\3 eme A\\S2\\JAVA\\immoxcelRemote\\src\\main\\resources\\CountryCodes.json")) {
             // Parse the JSON file
             Object obj = parser.parse(reader);
             JSONArray jsonArray = (JSONArray) obj;

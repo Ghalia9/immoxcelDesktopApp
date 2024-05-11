@@ -413,7 +413,7 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
 }
-.selected{
+.selected2{
     -fx-background-color: #303551;
     -fx-border-width: 0 0 0 5;
     -fx-border-color: #303551;

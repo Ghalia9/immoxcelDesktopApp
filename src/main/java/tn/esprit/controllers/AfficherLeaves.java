@@ -140,8 +140,8 @@ public class AfficherLeaves {
         dashboard.showPendingLeaves();
 */
         dl.getCardLayout().getChildren().clear();
-        dl.getLeavesLayout().getChildren().clear();
-        dl.showOldLeaves();
+        //dl.getLeavesLayout().getChildren().clear();
+        //dl.showOldLeaves();
         dl.showPendingLeaves();
 
     }

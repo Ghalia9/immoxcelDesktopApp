@@ -20,7 +20,7 @@ public class ComparingImage {
 
         String cleanedImagePath = cleanImagePath(imagePath);
 
-        BufferedImage img1 = ImageIO.read(new File("C:\\Users\\Alice\\IdeaProjects\\MyJavaFxApp\\src\\main\\resources\\com\\example\\myjavafxapp\\Pictures\\Doc1.jpeg"));
+        BufferedImage img1 = ImageIO.read(new File("C:\\Users\\moham\\Desktop\\Esprit\\3 eme A\\S2\\JAVA\\immoxcelRemote\\src\\main\\resources\\Doc1.jpeg"));
         BufferedImage img2 = ImageIO.read(new File(cleanedImagePath));
         BufferedImage resizedImg = resizeImage(img2, img1.getWidth(), img1.getHeight());
 

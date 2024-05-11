@@ -111,7 +111,7 @@ public class CodeSmsController  implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    //send.sendsmsCodeVerification(msg);
+    send.sendsmsCodeVerification(msg);
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             secondsRemaining--;
             if (secondsRemaining < 0) {
